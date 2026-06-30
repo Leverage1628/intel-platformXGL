@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+<name>Global Intelligence Platform v12 — Week 9 (27 Jun 2026)</name>
+<description>Static KML snapshot. For the full interactive version (strike-exchange tracker, leverage maps, confidence-graded logs, 9-week history), open the dashboard HTML and use its KML/KMZ export button.</description>
+<Folder><name>MILITARY</name>
+<Placemark><name>US–Israel vs. Iran — Ceasefire Breaking</name>
+<description><![CDATA[<b>US–Israel vs. Iran — Ceasefire Breaking</b><br/>Category: military<br/>Region: Middle East<br/>Severity: critical<br/>Index: 78/100<br/>Vessel strike → US strikes Qeshm → Iran responds]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>51,32,0</coordinates></Point></Placemark>
+<Placemark><name>Sudan Civil War — SAF vs. RSF</name>
+<description><![CDATA[<b>Sudan Civil War — SAF vs. RSF</b><br/>Category: military<br/>Region: North Africa<br/>Severity: critical<br/>Index: 96/100<br/>El Obeid "precipice" · UAE named · HRC Jul 7 deadline]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>30,15.5,0</coordinates></Point></Placemark>
+<Placemark><name>Lebanon — US-Backed Framework Agreement</name>
+<description><![CDATA[<b>Lebanon — US-Backed Framework Agreement</b><br/>Category: military<br/>Region: Middle East<br/>Severity: high<br/>Index: 74/100<br/>Israel to quit 2 areas · Hezbollah calls deal "null"]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>35.4,33.3,0</coordinates></Point></Placemark>
+<Placemark><name>Russia–Ukraine War</name>
+<description><![CDATA[<b>Russia–Ukraine War</b><br/>Category: military<br/>Region: Europe / Russia<br/>Severity: critical<br/>Index: 85/100<br/>Zelenskyy 40-day op · record ~660-drone assault · Crimea emergency]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>32,49,0</coordinates></Point></Placemark>
+<Placemark><name>Israel–Gaza War</name>
+<description><![CDATA[<b>Israel–Gaza War</b><br/>Category: military<br/>Region: Middle East<br/>Severity: critical<br/>Index: 77/100<br/>Yellow Line · Board of Peace · Gulf-capital competition]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>34.3,31.35,0</coordinates></Point></Placemark>
+<Placemark><name>Sahel Jihadist Insurgency — JNIM vs ISSP</name>
+<description><![CDATA[<b>Sahel Jihadist Insurgency — JNIM vs ISSP</b><br/>Category: military<br/>Region: West / Central Africa<br/>Severity: critical<br/>Index: 93/100<br/>JNIM took Kidal + killed Mali defense min · Niamey airport]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>2,14,0</coordinates></Point></Placemark>
+<Placemark><name>DRC — M23/Rwanda + ADF + Cobalt</name>
+<description><![CDATA[<b>DRC — M23/Rwanda + ADF + Cobalt</b><br/>Category: military<br/>Region: Central / South Africa<br/>Severity: critical<br/>Index: 81/100<br/>M23 took Uvira · FARDC killed M23 spokesman · Ebola border]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>29.2,-1.5,0</coordinates></Point></Placemark>
+<Placemark><name>Nigeria — ISWAP + Bandits + IPOB/ESN</name>
+<description><![CDATA[<b>Nigeria — ISWAP + Bandits + IPOB/ESN</b><br/>Category: military<br/>Region: West / Central Africa<br/>Severity: high<br/>Index: 67/100<br/>ISWAP offensive · IS-ISWAP bridge · state policing]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>9.5,11.5,0</coordinates></Point></Placemark>
+<Placemark><name>Pakistan–Afghanistan War</name>
+<description><![CDATA[<b>Pakistan–Afghanistan War</b><br/>Category: military<br/>Region: South / Central Asia<br/>Severity: critical<br/>Index: 75/100<br/>Durand Line · MOU brokered in Islamabad]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>69.2,33.5,0</coordinates></Point></Placemark>
+<Placemark><name>Taiwan Strait — China Gray Zone</name>
+<description><![CDATA[<b>Taiwan Strait — China Gray Zone</b><br/>Category: military<br/>Region: East Asia / Pacific<br/>Severity: high<br/>Index: 70/100<br/>China = top Hormuz beneficiary · G7 minerals de-risking]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>121,23.7,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>POLITICAL</name>
+<Placemark><name>US Foreign Policy — Strikes + Frameworks</name>
+<description><![CDATA[<b>US Foreign Policy — Strikes + Frameworks</b><br/>Category: political<br/>Region: North America<br/>Severity: high<br/>Index: 63/100<br/>Struck Iran · brokered Lebanon · UAE arms fork]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/purple-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>-77,38.9,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>ECONOMIC</name>
+<Placemark><name>Global Economy — Recovery Under Test</name>
+<description><![CDATA[<b>Global Economy — Recovery Under Test</b><br/>Category: economic<br/>Region: Global<br/>Severity: medium<br/>Index: 56/100<br/>Oil at pre-war low · strike exchange tests recovery]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>0,0,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>STRATEGIC</name>
+<Placemark><name>Maritime Chokepoints — Hormuz Contested</name>
+<description><![CDATA[<b>Maritime Chokepoints — Hormuz Contested</b><br/>Category: strategic<br/>Region: Global<br/>Severity: high<br/>Index: 66/100<br/>Open but struck · route dispute · 11,000 mariners stranded]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/ltblu-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>50,25,0</coordinates></Point></Placemark>
+<Placemark><name>Geopolitical Blocs + China-Cuba Intel</name>
+<description><![CDATA[<b>Geopolitical Blocs + China-Cuba Intel</b><br/>Category: strategic<br/>Region: Global<br/>Severity: watch<br/>Index: 58/100<br/>GCC central to $300B · OTS-Hungary · Bejucal SIGINT]]></description>
+<Style><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/ltblu-circle.png</href></Icon></IconStyle></Style>
+<Point><coordinates>45,35,0</coordinates></Point></Placemark>
+</Folder>
+</Document></kml>
