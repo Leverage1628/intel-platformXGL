@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLOBAL INTELLIGENCE PLATFORM v13 — 29 JUNE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#020407;--s1:#050810;--s2:#080e1a;--s3:#0b1422;--s4:#0e1b2e;
+  --edge:#0f1c2e;--edge2:#182840;--edge3:#203555;
+  --fire:#e83020;--fire-d:rgba(232,48,32,.13);--fire-g:rgba(232,48,32,.4);
+  --amber:#d07800;--amber-d:rgba(208,120,0,.12);
+  --gold:#c49800;--gold-d:rgba(196,152,0,.10);
+  --teal:#00b0c4;--teal-d:rgba(0,176,196,.08);
+  --sage:#18a050;--sage-d:rgba(24,160,80,.10);
+  --cobalt:#1460c0;--cobalt-d:rgba(20,96,192,.12);
+  --violet:#7020b8;--violet-d:rgba(112,32,184,.10);
+  --orange:#e06018;--orange-d:rgba(224,96,24,.10);
+  --energy:#e8a020;--energy-d:rgba(232,160,32,.10);
+  --osint:#20a8e0;--osint-d:rgba(32,168,224,.09);
+  --geo:#80c020;--geo-d:rgba(128,192,32,.09);
+  --intel:#c020a8;--intel-d:rgba(192,32,168,.09);
+  --disp:#e84890;--disp-d:rgba(232,72,144,.12);
+  --lev:#f0b020;--lev-d:rgba(240,176,32,.10);
+  --exch:#ff6a3d;--exch-d:rgba(255,106,61,.10);
+  --dipl:#30c8a0;--dipl-d:rgba(48,200,160,.10);
+  --txt:#b4c6dc;--txt2:#506878;--txt3:#1c3040;--hi:#d8eafc;
+  --FD:'Barlow Condensed',sans-serif;--FM:'JetBrains Mono',monospace;--FB:'Rajdhani',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%}
+body{background:var(--ink);color:var(--txt);font-family:var(--FB);font-size:13px;font-weight:400;display:flex;flex-direction:column;overflow:hidden;}
+body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.03) 3px,rgba(0,0,0,.03) 4px);}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 0% 0%,rgba(232,48,32,.03) 0%,transparent 100%),radial-gradient(ellipse 60% 60% at 100% 100%,rgba(20,96,192,.03) 0%,transparent 100%);}
+.topbar{position:relative;z-index:600;height:50px;min-height:50px;flex-shrink:0;background:linear-gradient(180deg,rgba(5,8,16,.99),rgba(2,4,7,.97));border-bottom:1px solid var(--edge2);display:flex;align-items:center;padding:0 14px;}
+.tlogo{font-family:var(--FD);font-size:18px;letter-spacing:5px;font-weight:700;color:var(--hi);white-space:nowrap;}
+.tlogo em{color:var(--fire);font-style:normal;}
+.tlogo sup{font-size:8px;color:var(--txt3);letter-spacing:2px;vertical-align:super;margin-left:3px;}
+.tsep{width:1px;height:22px;background:var(--edge2);margin:0 10px;flex-shrink:0;}
+.tlive{display:flex;align-items:center;gap:5px;font-family:var(--FM);font-size:7.5px;letter-spacing:2px;color:var(--fire);border:1px solid rgba(232,48,32,.3);padding:2px 8px;background:var(--fire-d);}
+.ldot{width:5px;height:5px;border-radius:50%;background:var(--fire);animation:lp 1s ease-in-out infinite;}
+@keyframes lp{0%,100%{opacity:1}50%{opacity:.15}}
+.week-chip{font-family:var(--FM);font-size:7.5px;letter-spacing:2px;padding:2px 8px;border:1px solid;margin-left:5px;flex-shrink:0;}
+.wk-old{color:var(--txt3);border-color:var(--txt3);}
+.wk-curr{color:var(--orange);border-color:rgba(224,96,24,.4);background:var(--orange-d);animation:lp 2.5s ease-in-out infinite;}
+.searchbox{margin-left:12px;display:flex;align-items:center;gap:5px;border:1px solid var(--edge2);background:rgba(2,4,7,.8);padding:3px 9px;flex-shrink:0;}
+.searchbox input{background:transparent;border:none;outline:none;color:var(--hi);font-family:var(--FM);font-size:9px;letter-spacing:1px;width:130px;}
+.searchbox input::placeholder{color:var(--txt3);}
+.searchbox span{font-size:9px;color:var(--txt3);}
+.tstats{display:flex;gap:10px;margin-left:auto;align-items:center;flex-shrink:0;}
+.tstat{display:flex;align-items:baseline;gap:3px;font-family:var(--FM);font-size:7.5px;letter-spacing:1px;color:var(--txt3);}
+.tstat b{font-size:15px;font-weight:700;line-height:1;}
+.nc{color:var(--fire)}.na{color:var(--amber)}.nd{color:var(--sage)}.nx{color:var(--exch)}.ndp{color:var(--dipl)}
+.tdate{font-family:var(--FM);font-size:7px;letter-spacing:1.5px;color:var(--txt3);margin-left:10px;flex-shrink:0;}
+.alert-bar{position:relative;z-index:550;flex-shrink:0;background:rgba(255,106,61,.08);border-bottom:1px solid rgba(255,106,61,.25);padding:4px 14px 4px 18px;display:flex;align-items:center;gap:8px;overflow:hidden;}
+.alert-bar::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--exch);}
+.ab-type{font-family:var(--FM);font-size:7px;letter-spacing:2px;color:var(--exch);flex-shrink:0;border:1px solid rgba(255,106,61,.35);padding:1px 6px;background:var(--exch-d);}
+.ab-text{font-family:var(--FM);font-size:7.5px;color:rgba(255,150,110,.9);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ab-src{font-family:var(--FM);font-size:7px;color:var(--txt3);margin-left:auto;flex-shrink:0;white-space:nowrap;}
+.toolbar{position:relative;z-index:500;flex-shrink:0;background:rgba(2,4,7,.99);border-bottom:1px solid var(--edge);padding:5px 14px;display:flex;align-items:center;gap:5px;overflow-x:auto;}
+.tbl{font-family:var(--FM);font-size:7px;letter-spacing:2px;color:var(--txt3);white-space:nowrap;}
+.xb{font-family:var(--FM);font-size:7.5px;letter-spacing:1px;padding:3px 11px;border:1px solid;background:transparent;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.xkml{color:var(--sage);border-color:rgba(24,160,80,.4)}.xkml:hover{background:var(--sage-d)}
+.xkmz{color:var(--cobalt);border-color:rgba(20,96,192,.4)}.xkmz:hover{background:var(--cobalt-d)}
+.xcsv{color:var(--amber);border-color:rgba(208,120,0,.4)}.xcsv:hover{background:var(--amber-d)}
+.xtl{color:var(--teal);border-color:rgba(0,176,196,.4)}.xtl:hover{background:var(--teal-d)}
+.xmv{color:var(--disp);border-color:rgba(232,72,144,.4)}.xmv:hover{background:var(--disp-d)}
+.xlv{color:var(--lev);border-color:rgba(240,176,32,.4)}.xlv:hover{background:var(--lev-d)}
+.xex{color:var(--exch);border-color:rgba(255,106,61,.4)}.xex:hover{background:var(--exch-d)}
+.xdp{color:var(--dipl);border-color:rgba(48,200,160,.4)}.xdp:hover{background:var(--dipl-d)}
+.fsp{width:1px;height:16px;background:var(--edge2);margin:0 3px;flex-shrink:0;}
+.fb{font-family:var(--FM);font-size:7px;letter-spacing:1px;padding:3px 8px;border:1px solid var(--edge);background:transparent;color:var(--txt3);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.fb:hover{color:var(--txt);border-color:var(--txt3);}
+.fb.act{color:var(--hi);border-color:var(--txt2);background:rgba(255,255,255,.04)}
+.fb[data-f=critical].act{color:var(--fire);border-color:var(--fire);background:var(--fire-d)}
+.fb[data-f=escalating].act{color:var(--fire);border-color:var(--fire);background:var(--fire-d)}
+.fb[data-f=deescalating].act{color:var(--sage);border-color:var(--sage);background:var(--sage-d)}
+.fb[data-f=volatile].act{color:var(--amber);border-color:var(--amber);background:var(--amber-d)}
+.fb[data-f=exchange].act{color:var(--exch);border-color:var(--exch);background:var(--exch-d)}
+.fb[data-f=diplomatic].act{color:var(--dipl);border-color:var(--dipl);background:var(--dipl-d)}
+.fb[data-f=disputed].act{color:var(--disp);border-color:var(--disp);background:var(--disp-d)}
+.fb[data-f=w10].act{color:var(--orange);border-color:var(--orange);background:var(--orange-d)}
+.fb[data-f=merged].act{color:var(--geo);border-color:var(--geo);background:var(--geo-d)}
+.main{display:grid;grid-template-columns:410px 1fr;flex:1;min-height:0;position:relative;z-index:10;}
+.lpane{border-right:1px solid var(--edge);display:flex;flex-direction:column;overflow:hidden;}
+.lhdr{display:grid;grid-template-columns:14px 1fr 56px 64px 60px;gap:6px;padding:5px 12px;background:rgba(2,4,7,.99);border-bottom:1px solid var(--edge);flex-shrink:0;}
+.lh{font-family:var(--FM);font-size:7px;color:var(--txt3);letter-spacing:1.5px;}
+.lscroll{overflow-y:auto;flex:1;}
+.lscroll::-webkit-scrollbar{width:2px}.lscroll::-webkit-scrollbar-thumb{background:var(--edge2)}
+.cat-hdr{padding:5px 12px 4px;display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--edge);cursor:pointer;position:sticky;top:0;z-index:25;transition:filter .15s;}
+.cat-hdr:hover{filter:brightness(1.15);}
+.ch-mil{background:rgba(232,48,32,.045);}.ch-pol{background:rgba(112,32,184,.045);}
+.ch-eco{background:rgba(24,160,80,.045);}.ch-energy{background:rgba(232,160,32,.045);}
+.ch-strategic{background:rgba(32,168,224,.045);}
+.cat-lbl{font-family:var(--FD);font-size:11px;letter-spacing:2.5px;font-weight:600;}
+.cl-mil{color:var(--fire)}.cl-pol{color:var(--violet)}.cl-eco{color:var(--sage)}.cl-energy{color:var(--energy)}.cl-strategic{color:var(--osint)}
+.cat-cnt{font-family:var(--FM);font-size:7px;color:var(--txt3);margin-left:auto;letter-spacing:1px;}
+.cat-tog{font-size:9px;color:var(--txt3);transition:transform .22s;margin-left:4px;}
+.cat-blk.col .cat-tog{transform:rotate(-90deg)}.cat-blk.col .cat-body{display:none}
+.rhdr{padding:5px 12px;background:rgba(5,8,16,.97);display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--edge);cursor:pointer;position:sticky;top:25px;z-index:20;}
+.rhdr:hover{background:rgba(10,16,28,.99)}
+.rname{font-family:var(--FD);font-size:9px;letter-spacing:2.5px;color:var(--hi);font-weight:600;}
+.rcnt{font-family:var(--FM);font-size:7px;color:var(--txt3);margin-left:auto;}
+.rtog{font-size:8px;color:var(--txt3);transition:transform .2s;margin-left:4px;}
+.rblk.col .rtog{transform:rotate(-90deg)}.rblk.col .rrows{display:none}
+.crow{display:grid;grid-template-columns:14px 1fr 56px 64px 60px;gap:6px;padding:7px 12px;border-bottom:1px solid rgba(15,24,40,.5);cursor:pointer;transition:background .1s;align-items:center;}
+.crow:hover{background:rgba(8,14,24,.7)}
+.crow.sel{background:rgba(14,56,100,.18);border-left:2px solid var(--cobalt);padding-left:10px;}
+.crow.w10{border-left:2px solid var(--orange);padding-left:10px;}
+.crow.w10.sel{border-left:2px solid var(--orange);}
+.pip{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.p-crit{background:var(--fire);box-shadow:0 0 5px var(--fire-g)}.p-high{background:var(--amber)}
+.p-med{background:var(--gold)}.p-low{background:var(--sage)}.p-pol{background:var(--violet)}
+.p-eco{background:var(--sage)}.p-energy{background:var(--energy)}.p-strategic{background:var(--osint)}
+.cn{font-family:var(--FB);font-weight:600;font-size:11px;color:var(--hi);line-height:1.3;}
+.cs{font-size:9.5px;color:var(--txt2);margin-top:1px;line-height:1.3;}
+.wbadge{display:inline-block;font-family:var(--FM);font-size:6.5px;letter-spacing:1px;padding:1px 4px;border:1px solid;margin-top:2px;}
+.wb10{color:var(--orange);border-color:var(--orange);background:var(--orange-d);}
+.wbm{color:var(--geo);border-color:var(--geo);background:var(--geo-d);}
+.wbdsp{color:var(--disp);border-color:var(--disp);background:var(--disp-d);}
+.wbex{color:var(--exch);border-color:var(--exch);background:var(--exch-d);}
+.wbdp{color:var(--dipl);border-color:var(--dipl);background:var(--dipl-d);}
+.cst{font-family:var(--FM);font-size:7.5px;letter-spacing:.5px;}
+.ss-act{color:var(--fire)}.ss-esc{color:var(--amber)}.ss-sta{color:var(--gold)}.ss-dec{color:var(--sage)}
+.ss-cfa{color:var(--teal)}.ss-vol{color:var(--amber)}.ss-ong{color:var(--osint)}.ss-cri{color:var(--fire)}.ss-watch{color:var(--energy)}
+.spark{display:flex;align-items:flex-end;gap:1px;height:16px;}
+.spk-bar{width:3px;background:var(--edge3);border-radius:1px 1px 0 0;min-height:2px;}
+.idxcell{display:flex;align-items:center;gap:4px;justify-content:flex-end;}
+.delta{font-family:var(--FM);font-size:7.5px;font-weight:700;padding:0 2px;}
+.dl-up{color:var(--fire)}.dl-dn{color:var(--sage)}.dl-fl{color:var(--txt3)}
+.trend-arrow{font-family:var(--FM);font-size:8px;font-weight:700;}
+.rpane{display:flex;flex-direction:column;overflow:hidden;background:rgba(2,4,7,.96);}
+.dempty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--txt3);font-family:var(--FM);font-size:9px;letter-spacing:2px;text-align:center;}
+.di{font-size:36px;opacity:.07;}
+.dcontent{flex:1;overflow-y:auto;display:flex;flex-direction:column;}
+.dcontent::-webkit-scrollbar{width:2px}.dcontent::-webkit-scrollbar-thumb{background:var(--edge2)}
+.dtabs{display:flex;background:rgba(2,4,7,.99);border-bottom:1px solid var(--edge);position:sticky;top:0;z-index:30;flex-shrink:0;overflow-x:auto;}
+.dtab{font-family:var(--FM);font-size:7.5px;letter-spacing:1.5px;padding:8px 12px;color:var(--txt3);cursor:pointer;border-bottom:2px solid transparent;border-right:1px solid var(--edge);transition:all .15s;white-space:nowrap;}
+.dtab:hover{color:var(--txt);background:rgba(8,14,24,.5)}
+.dtab.act{color:var(--hi);border-bottom-color:var(--cobalt);background:rgba(20,96,192,.08)}
+.tpanel{display:none}.tpanel.act{display:block}
+.dhero{padding:15px 18px 12px;border-bottom:1px solid var(--edge);}
+.dsev{font-family:var(--FM);font-size:7.5px;letter-spacing:3px;display:flex;align-items:center;gap:7px;margin-bottom:7px;flex-wrap:wrap;}
+.dtitle{font-family:var(--FD);font-size:23px;letter-spacing:2px;font-weight:700;color:var(--hi);line-height:1.1;margin-bottom:4px;}
+.dloc{font-family:var(--FM);font-size:8.5px;color:var(--txt2);margin-bottom:2px;}
+.dreg{font-family:var(--FM);font-size:8px;color:var(--txt3);}
+.tpill{font-family:var(--FM);font-size:7.5px;letter-spacing:1px;padding:2px 7px;border:1px solid;}
+.tp-up{color:var(--fire);border-color:var(--fire);background:var(--fire-d)}
+.tp-dn{color:var(--sage);border-color:var(--sage);background:var(--sage-d)}
+.tp-ss{color:var(--gold);border-color:var(--gold);background:var(--gold-d)}
+.tp-vl{color:var(--amber);border-color:var(--amber);background:var(--amber-d)}
+.hero-spark{display:flex;align-items:flex-end;gap:3px;height:46px;margin-top:10px;padding:8px 10px;background:rgba(2,4,7,.5);border:1px solid var(--edge);}
+.hs-col{display:flex;flex-direction:column;align-items:center;gap:3px;}
+.hs-bar{width:14px;border-radius:1px 1px 0 0;min-height:3px;}
+.hs-lbl{font-family:var(--FM);font-size:6px;color:var(--txt3);letter-spacing:.5px;}
+.hs-val{font-family:var(--FM);font-size:6.5px;color:var(--txt2);}
+.dsg{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--edge);}
+.dsc{padding:9px 12px;border-right:1px solid var(--edge);}.dsc:last-child{border-right:none}
+.dsl{font-family:var(--FM);font-size:6.5px;color:var(--txt3);letter-spacing:2px;margin-bottom:3px;}
+.dsv{font-family:var(--FM);font-size:10px;color:var(--txt);font-weight:600;line-height:1.3;}
+.intel-3{display:grid;grid-template-columns:repeat(3,1fr);}
+.icol{padding:11px 13px;border-right:1px solid var(--edge);}.icol:last-child{border-right:none}
+.icol-hdr{font-family:var(--FM);font-size:7.5px;letter-spacing:2px;margin-bottom:9px;padding-bottom:5px;border-bottom:1px solid var(--edge);display:flex;align-items:center;gap:5px;}
+.icol-hdr::before{content:'';width:2px;height:9px;background:currentColor;opacity:.5;}
+.icol-body{font-family:var(--FB);font-size:11.5px;line-height:1.7;color:var(--txt);}
+.icol-body p{margin-bottom:8px}.icol-body p:last-child{margin-bottom:0}
+.dsec{padding:12px 18px;border-bottom:1px solid var(--edge);}
+.dsect{font-family:var(--FM);font-size:7.5px;letter-spacing:2.5px;color:var(--txt3);margin-bottom:9px;padding-bottom:5px;border-bottom:1px solid var(--edge);display:flex;align-items:center;gap:5px;}
+.dsect::before{content:'';width:2px;height:9px;background:currentColor;opacity:.4;}
+.parties{display:flex;flex-direction:column;gap:3px;}
+.party{display:flex;align-items:flex-start;gap:7px;padding:5px 9px;background:rgba(8,12,24,.7);border:1px solid var(--edge);font-family:var(--FM);font-size:9.5px;line-height:1.4;}
+.ptag{font-size:6.5px;letter-spacing:1px;padding:2px 5px;border:1px solid;flex-shrink:0;margin-top:1px;}
+.pa{color:var(--cobalt);border-color:var(--cobalt)}.pb{color:var(--fire);border-color:var(--fire)}
+.pc{color:var(--amber);border-color:var(--amber)}.pext{color:var(--txt3);border-color:var(--txt3)}
+.disp-box{background:var(--disp-d);border:1px solid var(--disp);padding:9px 12px;margin-bottom:10px;}
+.disp-hdr{font-family:var(--FM);font-size:7.5px;letter-spacing:2px;color:var(--disp);margin-bottom:6px;display:flex;align-items:center;gap:5px;}
+.disp-row{display:flex;gap:8px;padding:4px 0;border-top:1px solid rgba(232,72,144,.2);font-family:var(--FB);font-size:11px;line-height:1.5;}
+.disp-side{font-family:var(--FM);font-size:7px;letter-spacing:.5px;color:var(--disp);min-width:90px;flex-shrink:0;padding-top:1px;}
+.disp-res{background:rgba(24,160,80,.08);border:1px solid rgba(24,160,80,.25);padding:6px 9px;margin-top:7px;font-family:var(--FB);font-size:11px;line-height:1.5;color:var(--txt);}
+.disp-res b{color:var(--sage);font-weight:600;}
+.lev-grid{display:flex;flex-direction:column;gap:5px;}
+.lev-item{display:grid;grid-template-columns:120px 1fr 56px;gap:9px;padding:8px 10px;background:rgba(8,12,24,.7);border:1px solid var(--edge);border-left:2px solid var(--lev);align-items:center;}
+.lev-actor{font-family:var(--FM);font-size:9px;color:var(--hi);letter-spacing:.5px;line-height:1.3;}
+.lev-asset{font-family:var(--FB);font-size:11px;line-height:1.4;color:var(--txt);}
+.lev-asset b{color:var(--lev);font-weight:600;}
+.lev-str{font-family:var(--FM);font-size:6.5px;letter-spacing:.5px;padding:2px 5px;border:1px solid;text-align:center;}
+.lev-hi{color:var(--fire);border-color:var(--fire);background:var(--fire-d)}
+.lev-md{color:var(--amber);border-color:var(--amber);background:var(--amber-d)}
+.lev-lo{color:var(--sage);border-color:var(--sage);background:var(--sage-d)}
+.lev-intro{font-family:var(--FB);font-size:11.5px;line-height:1.7;color:var(--txt);margin-bottom:10px;padding:9px 11px;background:var(--lev-d);border:1px solid rgba(240,176,32,.25);}
+.exch-intro{font-family:var(--FB);font-size:11.5px;line-height:1.7;color:var(--txt);margin-bottom:12px;padding:9px 11px;background:var(--exch-d);border:1px solid rgba(255,106,61,.3);}
+.exch-chain{display:flex;flex-direction:column;position:relative;padding-left:8px;}
+.exch-step{display:grid;grid-template-columns:84px 70px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid rgba(15,24,40,.6);position:relative;align-items:start;}
+.exch-step:last-child{border-bottom:none}
+.exch-date{font-family:var(--FM);font-size:8px;color:var(--txt3);letter-spacing:.5px;padding-top:2px;}
+.exch-actor{font-family:var(--FM);font-size:8px;letter-spacing:.5px;padding:3px 6px;border:1px solid;text-align:center;align-self:start;height:fit-content;}
+.ea-a{color:var(--cobalt);border-color:var(--cobalt);background:var(--cobalt-d)}
+.ea-b{color:var(--fire);border-color:var(--fire);background:var(--fire-d)}
+.ea-n{color:var(--txt2);border-color:var(--txt3)}
+.exch-act{font-family:var(--FB);font-size:11.5px;line-height:1.5;color:var(--txt);}
+.exch-act b{color:var(--hi);font-weight:600}
+.exch-resp{font-family:var(--FM);font-size:7px;letter-spacing:.5px;margin-top:3px;}
+.er-strike{color:var(--fire)}.er-deescal{color:var(--sage)}.er-hold{color:var(--amber)}
+.exch-meter{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding:9px 11px;background:rgba(8,12,24,.6);border:1px solid var(--edge2);}
+.em-lbl{font-family:var(--FM);font-size:7.5px;letter-spacing:1px;color:var(--txt3);}
+.em-bar{flex:1;height:8px;background:linear-gradient(90deg,var(--sage),var(--amber),var(--fire));border-radius:2px;position:relative;}
+.em-needle{position:absolute;top:-3px;width:3px;height:14px;background:var(--hi);box-shadow:0 0 4px var(--hi);}
+.em-val{font-family:var(--FM);font-size:9px;font-weight:700;}
+/* DIPLOMATIC TRACK */
+.dipl-intro{font-family:var(--FB);font-size:11.5px;line-height:1.7;color:var(--txt);margin-bottom:12px;padding:9px 11px;background:var(--dipl-d);border:1px solid rgba(48,200,160,.3);}
+.dipl-track{display:flex;flex-direction:column;gap:6px;}
+.dipl-item{display:grid;grid-template-columns:1fr 96px;gap:10px;padding:9px 11px;background:rgba(8,12,24,.7);border:1px solid var(--edge);border-left:2px solid var(--dipl);}
+.dipl-main{min-width:0;}
+.dipl-name{font-family:var(--FB);font-size:12.5px;font-weight:600;color:var(--hi);line-height:1.3;margin-bottom:2px;}
+.dipl-desc{font-family:var(--FB);font-size:10.5px;color:var(--txt2);line-height:1.45;}
+.dipl-meta{display:flex;flex-direction:column;gap:4px;align-items:flex-end;}
+.dipl-status{font-family:var(--FM);font-size:6.5px;letter-spacing:.5px;padding:2px 6px;border:1px solid;text-align:center;white-space:nowrap;}
+.dp-active{color:var(--dipl);border-color:var(--dipl);background:var(--dipl-d)}
+.dp-signed{color:var(--sage);border-color:var(--sage);background:var(--sage-d)}
+.dp-stalled{color:var(--amber);border-color:var(--amber);background:var(--amber-d)}
+.dp-collapsed{color:var(--fire);border-color:var(--fire);background:var(--fire-d)}
+.dp-scheduled{color:var(--cobalt);border-color:var(--cobalt);background:var(--cobalt-d)}
+.dipl-next{font-family:var(--FM);font-size:7px;color:var(--txt3);letter-spacing:.5px;text-align:right;line-height:1.3;}
+.dipl-next b{color:var(--orange);}
+.ulog{display:flex;flex-direction:column;}
+.ue{display:flex;border-bottom:1px solid rgba(15,24,40,.5);position:relative;}
+.ue:last-child{border-bottom:none}
+.ue::before{content:'';position:absolute;left:96px;top:0;bottom:0;width:1px;background:var(--edge2);}
+.udcol{width:96px;min-width:96px;padding:7px 8px 7px 0;display:flex;flex-direction:column;gap:3px;}
+.udate{font-family:var(--FM);font-size:7.5px;color:var(--txt3);letter-spacing:.5px;line-height:1.4;}
+.utag{font-family:var(--FM);font-size:6.5px;letter-spacing:1px;padding:1px 5px;border:1px solid;align-self:flex-start;}
+.ut-k{color:var(--fire);border-color:var(--fire)}.ut-d{color:var(--cobalt);border-color:var(--cobalt)}
+.ut-i{color:var(--violet);border-color:var(--violet)}.ut-h{color:var(--amber);border-color:var(--amber)}
+.ut-s{color:var(--teal);border-color:var(--teal)}.ut-e{color:var(--sage);border-color:var(--sage)}
+.ut-p{color:var(--violet);border-color:var(--violet)}.ut-osint{color:var(--osint);border-color:var(--osint)}
+.utcol{flex:1;padding:7px 14px;font-family:var(--FB);font-size:11px;line-height:1.6;color:var(--txt);}
+.conf{display:inline-block;font-family:var(--FM);font-size:6px;letter-spacing:.5px;padding:1px 4px;border:1px solid;margin-left:6px;vertical-align:middle;}
+.cf-wire{color:var(--sage);border-color:var(--sage);background:var(--sage-d);}
+.cf-corr{color:var(--teal);border-color:var(--teal);background:var(--teal-d);}
+.cf-single{color:var(--amber);border-color:var(--amber);background:var(--amber-d);}
+.cf-osint{color:var(--osint);border-color:var(--osint);background:var(--osint-d);}
+.cf-rumint{color:var(--violet);border-color:var(--violet);background:var(--violet-d);}
+.cf-truth{color:var(--orange);border-color:var(--orange);background:var(--orange-d);}
+.cf-disputed{color:var(--disp);border-color:var(--disp);background:var(--disp-d);}
+.src-note{font-family:var(--FM);font-size:7px;color:var(--txt3);margin-top:3px;font-style:italic;}
+.abox{background:rgba(9,14,24,.6);border:1px solid var(--edge2);padding:11px 13px;font-family:var(--FB);font-size:12px;line-height:1.75;color:var(--txt);}
+.abox strong{color:var(--hi);font-weight:600;}
+.watches{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px;}
+.watch{font-family:var(--FM);font-size:7.5px;letter-spacing:1px;padding:2px 7px;border:1px solid var(--amber);color:var(--amber);background:var(--amber-d);}
+.cbox{font-family:var(--FM);font-size:8.5px;color:var(--sage);background:rgba(4,18,10,.5);border:1px solid rgba(24,160,80,.2);padding:6px 10px;margin-top:7px;}
+.tl-overlay{position:fixed;inset:0;z-index:9000;background:rgba(2,4,7,.97);display:none;flex-direction:column;}
+.tl-overlay.show{display:flex;}
+.tl-head{display:flex;align-items:center;padding:12px 18px;border-bottom:1px solid var(--edge2);flex-shrink:0;}
+.tl-title{font-family:var(--FD);font-size:18px;letter-spacing:3px;color:var(--hi);font-weight:700;}
+.tl-close{margin-left:auto;font-family:var(--FM);font-size:9px;color:var(--fire);border:1px solid var(--fire);padding:4px 12px;cursor:pointer;background:var(--fire-d);letter-spacing:1px;}
+.tl-filters{display:flex;gap:5px;padding:8px 18px;border-bottom:1px solid var(--edge);flex-shrink:0;overflow-x:auto;}
+.tl-scroll{flex:1;overflow-y:auto;padding:14px 18px;}
+.tl-scroll::-webkit-scrollbar{width:3px}.tl-scroll::-webkit-scrollbar-thumb{background:var(--edge2)}
+.tl-day{margin-bottom:16px;}
+.tl-date-hdr{font-family:var(--FD);font-size:14px;letter-spacing:2px;color:var(--orange);font-weight:600;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--edge2);}
+.tl-item{display:flex;gap:10px;padding:6px 0 6px 14px;border-left:1px solid var(--edge2);margin-left:6px;position:relative;}
+.tl-item::before{content:'';position:absolute;left:-4px;top:11px;width:7px;height:7px;border-radius:50%;background:var(--edge3);}
+.tl-item.crit::before{background:var(--fire);box-shadow:0 0 5px var(--fire-g);}
+.tl-theater{font-family:var(--FM);font-size:7.5px;color:var(--cobalt);letter-spacing:1px;width:150px;min-width:150px;padding-top:1px;}
+.tl-txt{flex:1;font-family:var(--FB);font-size:11.5px;line-height:1.6;color:var(--txt);}
+.mv-row{display:grid;grid-template-columns:1fr 80px 130px;gap:12px;padding:9px 12px;border-bottom:1px solid var(--edge);align-items:center;cursor:pointer;}
+.mv-row:hover{background:rgba(8,14,24,.6)}
+.mv-name{font-family:var(--FB);font-size:13px;font-weight:600;color:var(--hi);}
+.mv-cat{font-family:var(--FM);font-size:7px;color:var(--txt3);letter-spacing:1px;margin-top:2px;}
+.mv-delta{font-family:var(--FM);font-size:16px;font-weight:700;text-align:center;}
+.mv-spark{display:flex;align-items:flex-end;gap:2px;height:24px;}
+.mv-sec{font-family:var(--FD);font-size:13px;letter-spacing:2px;padding:10px 12px 6px;color:var(--hi);font-weight:600;border-bottom:1px solid var(--edge2);}
+.lev-board,.exch-board,.dipl-board{padding:14px 18px;}
+.lev-bcat{font-family:var(--FD);font-size:14px;letter-spacing:2px;font-weight:600;margin:14px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--edge2);color:var(--lev);}
+.lev-brow{display:grid;grid-template-columns:160px 150px 1fr 60px;gap:10px;padding:7px 10px;border-bottom:1px solid var(--edge);align-items:center;cursor:pointer;}
+.lev-brow:hover{background:rgba(8,14,24,.6)}
+.lev-btheater{font-family:var(--FM);font-size:8px;color:var(--cobalt);letter-spacing:.5px;}
+.lev-bactor{font-family:var(--FM);font-size:9px;color:var(--hi);}
+.lev-basset{font-family:var(--FB);font-size:11.5px;color:var(--txt);line-height:1.4;}
+.exch-bgroup,.dipl-bgroup{margin-bottom:22px;}
+.exch-bhdr{font-family:var(--FD);font-size:15px;letter-spacing:2px;font-weight:600;color:var(--exch);margin-bottom:4px;}
+.exch-bsub{font-family:var(--FM);font-size:8px;color:var(--txt3);letter-spacing:1px;margin-bottom:10px;}
+.dipl-bhdr{font-family:var(--FD);font-size:15px;letter-spacing:2px;font-weight:600;color:var(--dipl);margin-bottom:8px;}
+.fnote{padding:6px 12px;flex-shrink:0;background:rgba(4,18,10,.4);border-top:1px solid rgba(24,160,80,.1);font-family:var(--FM);font-size:7.5px;color:rgba(24,160,80,.45);letter-spacing:1px;}
+::-webkit-scrollbar{width:2px;height:2px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--edge2)}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tlogo">GLOBAL <em>INTEL</em> PLATFORM<sup>v13</sup></div>
+  <div class="tsep"></div>
+  <div class="tlive"><div class="ldot"></div>LIVE</div>
+  <div class="week-chip wk-old">W8</div>
+  <div class="week-chip wk-old">W9</div>
+  <div class="week-chip wk-curr">⟡ W10 · 29 JUN 2026</div>
+  <div class="searchbox"><span>⌕</span><input id="searchInput" type="text" placeholder="SEARCH..." oninput="onSearch(this.value)"></div>
+  <div class="tstats">
+    <div class="tstat"><b id="sc" class="nc">—</b>CRIT</div>
+    <div class="tstat"><b id="se" class="na">—</b>ESC↑</div>
+    <div class="tstat"><b id="sd" class="nd">—</b>DESC↓</div>
+    <div class="tstat"><b id="sx" class="nx">—</b>EXCH</div>
+    <div class="tstat"><b id="sdp" class="ndp">—</b>DIPL</div>
+    <div class="tstat"><b id="st">—</b>TOT</div>
+  </div>
+  <div class="tdate">29 JUN 2026 · v13.0</div>
+</div>
+<div class="alert-bar">
+  <div class="ab-type">◆ SPIKE & SETTLE</div>
+  <div class="ab-text">US-IRAN EXCHANGE PEAKED THEN STOOD DOWN IN 96H: JUN 27 IRAN HIT 2ND TANKER (M/T KIKU) → US HIT 10 IRANIAN TARGETS → JUN 28 IRAN STRUCK US SITES IN BAHRAIN + KUWAIT → BOTH "STAND DOWN," DOHA TALKS JUN 30 · TRUMP: IRAN "WILL NO LONGER EXIST" IF STRIKES CONTINUE · LEBANON FRAMEWORK SIGNED — HEZBOLLAH "NULL & VOID," ANALYSTS WARN "GAZA STRIP 2" · ISW: RUSSIA NET −281 SQ KM, OFFENSIVE "LARGELY HALTED" · SUDAN: YALE/ACLED SAY EL OBEID FALL COULD BE WORSE THAN EL FASHER</div>
+  <div class="ab-src">SWEEP: 29 JUN 2026 · ISW/CTP · ACLED · CRISIS GROUP · YALE HRL · IRC · CNN · NPR · RFERL · AJ · HRW</div>
+</div>
+<div class="toolbar">
+  <span class="tbl">EXPORT ▸</span>
+  <button class="xb xkml" onclick="exportKML()">⬇ KML</button>
+  <button class="xb xkmz" onclick="exportKMZ()">⬇ KMZ</button>
+  <button class="xb xcsv" onclick="exportCSV()">⬇ CSV</button>
+  <div class="fsp"></div>
+  <button class="xb xtl" onclick="openTimeline()">⊞ TIMELINE</button>
+  <button class="xb xmv" onclick="openMovers()">⇅ MOVERS</button>
+  <button class="xb xlv" onclick="openLeverage()">⚖ LEVERAGE</button>
+  <button class="xb xex" onclick="openExchange()">⇄ EXCHANGES</button>
+  <button class="xb xdp" onclick="openDiplomatic()">⊹ DIPLOMATIC</button>
+  <div class="fsp"></div>
+  <span class="tbl">FILTER ▸</span>
+  <button class="fb act" data-f="all"          onclick="setF('all',this)">ALL</button>
+  <button class="fb"     data-f="critical"     onclick="setF('critical',this)">CRIT</button>
+  <button class="fb"     data-f="escalating"   onclick="setF('escalating',this)">ESC ↑</button>
+  <button class="fb"     data-f="deescalating" onclick="setF('deescalating',this)">DESC ↓</button>
+  <button class="fb"     data-f="volatile"     onclick="setF('volatile',this)">VOL ↕</button>
+  <button class="fb"     data-f="exchange"     onclick="setF('exchange',this)">⇄ EXCH</button>
+  <button class="fb"     data-f="diplomatic"   onclick="setF('diplomatic',this)">⊹ DIPL</button>
+  <button class="fb"     data-f="disputed"     onclick="setF('disputed',this)">⊗ DISP</button>
+  <button class="fb"     data-f="w10"          onclick="setF('w10',this)">⟡ W10</button>
+  <button class="fb"     data-f="merged"       onclick="setF('merged',this)">⊕ MRG</button>
+</div>
+<div class="main">
+  <div class="lpane">
+    <div class="lhdr">
+      <div class="lh"></div><div class="lh">THEATER</div>
+      <div class="lh">STATUS</div><div class="lh">TREND</div><div class="lh">IDX · Δ</div>
+    </div>
+    <div class="lscroll" id="listWrap"></div>
+  </div>
+  <div class="rpane" id="rpane">
+    <div class="dempty" id="dempty">
+      <div class="di">⊕</div>
+      <div>SELECT A THEATER</div>
+      <div style="font-size:7.5px;opacity:.35;margin-top:4px">5 CATEGORIES · CONFIDENCE-GRADED · 10-WEEK HISTORY · AUTO-DELTAS</div>
+      <div style="font-size:7px;opacity:.25;margin-top:6px;font-family:var(--FM);letter-spacing:1px">NEW v13: ⊹ DIPLOMATIC TRACK — the negotiation calendar alongside the kinetic one</div>
+    </div>
+    <div class="hidden" id="dcontent"></div>
+  </div>
+</div>
+<div class="tl-overlay" id="tlOverlay">
+  <div class="tl-head"><div class="tl-title" id="ovTitle">⊞ GLOBAL TIMELINE</div><div class="tl-close" onclick="closeOverlay()">✕ CLOSE</div></div>
+  <div class="tl-filters" id="tlFilters"></div>
+  <div class="tl-scroll" id="tlScroll"></div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   GLOBAL INTELLIGENCE PLATFORM v13.0 — 29 JUNE 2026 — Week 10
+   NEW THIS VERSION: DIPLOMATIC TRACK
+     - per-entry "diplomacy" array: negotiation tracks w/ status + next date
+     - global ⊹ Diplomatic board aggregating every active negotiation
+     - counterpart to the Strike-Exchange Tracker: logs the TALKS, not the strikes
+     - rationale: Week 10 showed the negotiation calendar (Doha Jun 30, Lebanon
+       framework signed, Boulos/Quintet, HRC Jul 7) now drives outcomes as much
+       as the kinetic track
+   ALSO: Ukraine DISPUTED flag RESOLVED via ISW dataset (Russia net -281 sq km)
+   Analyst-grade sourcing: ISW/CTP, ACLED, Crisis Group, Yale HRL, IRC
+   esc_history now [W1..W10]
+   ═══════════════════════════════════════════════════════════════════ */
+const DB = [
+
+/* ═══ MILITARY ═══ */
+{id:'sudan',cat:'military',region:'North Africa',
+ name:'Sudan Civil War — SAF vs. RSF',sub:'El Obeid: analysts warn fall could exceed El Fasher',
+ domain:'Civil War / Genocide',sev:'critical',status:'active',since:'Apr 2023',esc:96,lat:15.5,lon:30,
+ trend:'ss',w10:true,merged:true,diplomacy_active:true,esc_history:[93,93,94,94,95,96,96,96,96,96],
+ cas:'150,000+ dead; El Fasher 6,000 in 72h; El Obeid 50+ in 10 days',
+ disp:'14M+ displaced; 563k at risk at El Obeid (+105k IDPs); ~25M food-insecure',
+ note:'Yale HRL (Raymond) + ACLED: El Obeid fall could be WORSE than El Fasher (RSF wants Khartoum road) · IRC: fuel/water cut, ~2,000 fled to White Nile, Kosti route at risk · US Envoy Boulos got Hemedti "protect civilians" pledge · Ethiopia-hosted UAE-funded RSF camp confirmed (Reuters) · HRC closes Jul 7',
+ leverage:[
+   {actor:'UAE',asset:'RSF supply architecture — drones, arms, Colombian mercenaries; Ethiopia training camp',str:'hi'},
+   {actor:'US / UK / France',asset:'Arms sales + diplomatic cover for UAE — the unused counter-lever',str:'hi'},
+   {actor:'RSF (Hemedti)',asset:'Encirclement of El Obeid; control of Darfur + much of Kordofan',str:'hi'},
+   {actor:'SAF (Burhan)',asset:'Holds center/east + Nile valley; air force; broke W.Kordofan RSF push',str:'md'},
+ ],
+ diplomacy:[
+   {name:'Quintet civilian-dialogue track',desc:'US Envoy Boulos + Quintet pushing Sudanese civilian-led dialogue; Hemedti pledged to "protect civilians"',status:'active',next:'UNSC brief delivered Fri'},
+   {name:'UN HRC urgent-debate demand',desc:'38 NGOs + 29 nations demand urgent debate / fact-finding mission before session closes',status:'scheduled',next:'HRC closes JUL 7'},
+   {name:'Jeddah Declaration (civilian protection)',desc:'Both parties bound to protect civilians under prior commitments — repeatedly violated',status:'stalled',next:'no enforcement'},
+ ],
+ watches:['RSF ground assault on El Obeid (imminent-atrocity trigger)','HRC urgent debate before Jul 7','US halt of UAE arms sales (the policy fork)','Kosti evacuation route — trap risk (IRC)'],
+ mil:`Sudan holds at its project-high 96, frozen on the brink. The analyst reads sharpened the stakes: Yale Humanitarian Research Lab's Nathaniel Raymond says El Obeid matters "beyond even the strategic implications" — it shows what happens when two highly depleted forces fight in close proximity, and the RSF wants the Khartoum road, threatening to re-expose the capital and create "havoc for civilians." ACLED's Ali Mahmoud Ali notes that if the RSF takes and holds the city the situation "could deteriorate rapidly," though sustaining the siege would cost the RSF significant manpower and equipment. The IRC (Jun 29) warns drone strikes have cut fuel and water, ~2,000 have already fled to White Nile, and civilians risk being trapped if the Kosti evacuation route is blocked — the exact El Fasher pattern. A SAF official claimed recent drone strikes destroyed an RSF battalion and 50+ armored vehicles in West Kordofan, preventing the advance.`,
+ pol:`The international chorus has peaked (UNSC statement, 29-nation coalition, 38 NGOs, HRC debate demand before the July 7 close) and the UAE is now firmly in the public record: Reuters confirmed the first direct evidence of an Ethiopia-hosted, UAE-funded RSF training camp. US Special Envoy Massad Boulos extracted a "protect civilians" pledge from Hemedti and is pushing a Quintet civilian-led dialogue; both envoys briefed the UNSC Friday. The structural read is now institutional consensus: the binding constraint is political (UAE leverage), not informational.`,
+ eco:`Roughly half the population (~25M) faces acute food insecurity. El Obeid's fuel depots and water stations have been struck, cutting both; the rainy season threatens to compound the crisis. Gold-mining regions remain under RSF forced-labor control.`,
+ parties:[{s:'A',n:'SAF — Gen. Burhan; broke W.Kordofan RSF push; holds center+east'},{s:'B',n:'RSF — Gen. Hemeti; massing for El Obeid ground assault'},{s:'ext',n:'UAE — RSF\'s primary backer (Ethiopia camp confirmed by Reuters)'},{s:'ext',n:'US/UK/France — hold the UAE counter-lever; Boulos diplomacy'},{s:'ext',n:'Yale HRL + ACLED + IRC — atrocity-pattern analysis'}],
+ updates:[
+   {d:'Jun 29',tag:'h',cf:'wire',src:'IRC',t:'IRC: RSF drone strikes on El Obeid fuel depots + water stations cut both; ~2,000 already fled to White Nile; civilians risk being trapped if Kosti evacuation route is blocked. Direct El Fasher-pattern warning.'},
+   {d:'Jun 27',tag:'i',cf:'corr',src:'Yale HRL (Raymond) / ACLED',t:'Yale\'s Raymond: El Obeid fall could be worse than El Fasher — RSF wants the Khartoum road, threatening to re-expose the capital. ACLED\'s Ali: if RSF holds the city, it "could deteriorate rapidly."'},
+   {d:'Jun 23',tag:'d',cf:'wire',src:'Sudan Tribune',t:'US Envoy Boulos got an RSF pledge from Hemedti to "protect civilians"; Quintet pushing civilian-led dialogue; both envoys to brief UNSC Friday.'},
+   {d:'Feb 2026',tag:'i',cf:'wire',src:'Reuters',t:'First direct evidence: Ethiopia hosting a UAE-funded RSF military training camp near the Sudan border — the backer network entering the public record.'},
+ ],
+ assess:`Sudan holds at 96 — no de-escalation, but no further jump as the situation stays frozen on the brink awaiting either an RSF assault or the July 7 HRC deadline. The analyst consensus this week is sobering: Yale, ACLED, and the IRC independently assess El Obeid's potential fall as comparable to or worse than El Fasher, because of its position on the Khartoum road. The newly added Diplomatic Track makes the central problem legible — there are three negotiation tracks (Quintet dialogue, HRC debate, Jeddah Declaration) and all three are constrained by the same unused lever: US pressure on the UAE, now backed by Reuters-confirmed evidence of an Ethiopia training camp. The diplomacy is real but structurally toothless without that lever.`
+},
+
+{id:'iran-us',cat:'military',region:'Middle East',
+ name:'US–Israel vs. Iran — Spike & Settle',sub:'2nd tanker → Bahrain/Kuwait hit → stand-down → Doha',
+ domain:'Interstate War → Managed Standoff',sev:'critical',status:'volatile',since:'Feb 28 2026',esc:79,lat:32,lon:51,
+ trend:'vl',w10:true,merged:false,disputed:true,exchange_active:true,diplomacy_active:true,esc_history:[92,70,72,71,72,71,72,78,79,79],
+ cas:'War: Khamenei killed in opening salvo; thousands dead; Gulf capitals struck',
+ disp:'Shipping caution; demining disputed',
+ note:'EXCHANGE PEAKED THEN SETTLED IN 96H · Jun 27 Iran hit 2nd tanker (M/T Kiku) → US hit 10 Iranian targets → Jun 28 Iran struck US sites in Bahrain + Kuwait → both "stand down," Doha talks Jun 30 · Iran: strait "governed by Iran," strike was "ceasefire management" · $6B frozen assets from Qatar released · Iran rejects France/Oman demining',
+ exchange:{
+   title:'US ↔ IRAN — HORMUZ CEASEFIRE EXCHANGE (PEAKED → SETTLED)',
+   meter:55, meterLabel:'COOLING — peaked at Gulf-capital strikes Jun 28, both stood down, talks Jun 30',
+   steps:[
+     {d:'Jun 25',actor:'B',al:'IRAN',act:'IRGC drone strike on the <b>M/V Ever Lovely</b> (Singapore-flagged) on the US-cleared Omani route.',resp:'strike',respl:'OPENING STRIKE'},
+     {d:'Jun 26',actor:'A',al:'US',act:'CENTCOM hits 4 Iranian targets (missile/drone storage, radar) incl. Qeshm Island.',resp:'strike',respl:'RETALIATION'},
+     {d:'Jun 27',actor:'B',al:'IRAN',act:'Iran drone-strikes a <b>2nd tanker — the M/T Kiku</b> (Panamanian-flagged) at 4:30am on the Omani route.',resp:'strike',respl:'2ND TANKER'},
+     {d:'Jun 27',actor:'A',al:'US',act:'CENTCOM hits <b>10 Iranian military targets</b> — surveillance, comms, air defense, drone storage, minelayer capabilities.',resp:'strike',respl:'MAJOR RETALIATION'},
+     {d:'Jun 28',actor:'B',al:'IRAN',act:'IRGC strikes <b>US military sites in Bahrain + Kuwait</b> with drones + ballistic missiles. Bahrain hit in Muharraq ("dangerous escalation"); Kuwait fends off drones. Horizontal escalation.',resp:'strike',respl:'GULF-CAPITAL ESCALATION'},
+     {d:'Jun 28',actor:'N',al:'BOTH',act:'Trump: Iran "will no longer exist" if strikes continue; Iran threatens to halt all diplomacy. Then <b>both agree to "stand down for now,"</b> vessels move freely, talks move to Doha Jun 30.',resp:'deescal',respl:'STAND-DOWN + TALKS'},
+   ]
+ },
+ leverage:[
+   {actor:'Iran (IRGC)',asset:'Hormuz control + horizontal reach (Gulf capitals) + sole-demining claim + tolls',str:'hi'},
+   {actor:'United States',asset:'Naval/air strike power + $300B gatekeeping + sanctions relief + "will no longer exist" threat',str:'hi'},
+   {actor:'Israel',asset:'Spoiler veto; Katz prepping independent Iran strike "within two days" if hit',str:'md'},
+   {actor:'Qatar / GCC',asset:'$6B frozen-asset custodian; Doha mediation venue; toll rejection',str:'md'},
+ ],
+ diplomacy:[
+   {name:'Doha technical talks (Hormuz)',desc:'Relocated from Switzerland after the flareup; topic shifted to the Hormuz standoff itself; Qatar + Pakistan mediating',status:'scheduled',next:'DOHA · JUN 30'},
+   {name:'14-point MOU implementation',desc:'60-day clock to final deal; $6B frozen assets released via Qatar; nuclear/IAEA still disputed',status:'active',next:'60-day clock running'},
+   {name:'France/Oman demining coordination',desc:'France + Oman agreed to coordinate Hormuz demining — Iran rejected, insists only Iran may demine',status:'collapsed',next:'Iran veto'},
+ ],
+ watches:['Doha Jun 30 — holds the stand-down or collapses','Iran sole-demining claim vs France/Oman','nuclear/IAEA access dispute (60-day clock)','Katz independent-strike threat "within two days"','Iran toll resumption after 60-day suspension'],
+ mil:`The strike exchange built into v12 ran its full arc in 96 hours (see the Strike-Exchange tab). After the June 26 US strikes, Iran drone-struck a second tanker — the M/T Kiku (Panamanian-flagged) — on the US-cleared Omani route June 27; CENTCOM responded by hitting 10 Iranian military targets (surveillance, comms, air defense, drone storage, minelayer capabilities). On June 28 Iran escalated horizontally, striking US military sites in Bahrain and Kuwait with drones and ballistic missiles — Bahrain (hit in Muharraq) called it a "dangerous escalation." Then both sides agreed to "stand down for now," with vessels moving freely and talks relocating to Doha June 30.`,
+ pol:`The defining framing came from Iran's parliamentary security chair Ebrahim Azizi: the strait is "governed by Iran" and the tanker strike was "ceasefire management," not a breach — "do not mistake control for escalation." Iran is asserting a managed-access regime over Hormuz as a permanent right. Trump warned Iran "will no longer exist" if strikes continue; Iran threatened to halt all diplomacy, then both stepped back. Iran received $6B in frozen assets via Qatar (an MOU condition) and rejected a France/Oman demining offer, insisting only Iran may demine the strait — a new flashpoint.`,
+ eco:`Oil ticked back up modestly during the exchange but the impact stayed "relatively contained" (Swissquote) thanks to strategic-reserve releases and tankers quietly exiting Hormuz. The $6B asset release is a concrete MOU deliverable. Shipping normalization slowed but did not reverse.`,
+ parties:[{s:'A',n:'United States — 10-target strike; "will no longer exist" threat; Doha talks'},{s:'B',n:'Iran — 2 tanker strikes + Bahrain/Kuwait; "strait is governed by Iran"'},{s:'A',n:'Israel — Katz prepping independent Iran strike if hit'},{s:'ext',n:'Bahrain + Kuwait — struck by Iran; condemned "dangerous escalation"'},{s:'ext',n:'Qatar — $6B asset custodian; Doha venue'}],
+ updates:[
+   {d:'Jun 28',tag:'d',cf:'wire',src:'RFERL/Axios/CNN',t:'Both sides agree to "stand down for now," vessels move freely; talks move to Doha Jun 30 (relocated from Switzerland, topic now the Hormuz standoff). Trump had warned Iran "will no longer exist" if strikes continue.'},
+   {d:'Jun 28',tag:'k',cf:'wire',src:'NPR/CNN',t:'Iran IRGC strikes US military sites in Bahrain + Kuwait with drones + ballistic missiles in retaliation. Bahrain (Muharraq) calls it "dangerous escalation"; Kuwait fends off drones. Horizontal escalation.'},
+   {d:'Jun 27',tag:'k',cf:'wire',src:'NPR/CENTCOM',t:'Iran drone-strikes 2nd tanker (M/T Kiku, Panamanian) at 4:30am on Omani route. US hits 10 Iranian targets — surveillance, comms, air defense, drone storage, minelayer capabilities.'},
+   {d:'Jun 27',tag:'i',cf:'wire',src:'Azizi/NPR',t:'Iran parliamentary security chair Azizi: the strait is "governed by Iran"; the tanker strike was "ceasefire management" not a breach — "do not mistake control for escalation." Managed-access doctrine.'},
+   {d:'Jun 29',tag:'e',cf:'wire',src:'CBS/Iranian state media',t:'Iran to receive $6B in frozen assets held in Qatar (an MOU condition). Tehran-Dubai flights resumed. Iran rejects France/Oman demining offer — insists only Iran may demine Hormuz.'},
+   {d:'Jun 28',tag:'i',cf:'disputed',src:'US vs Iran',t:'CONFLICTING: US + Iran still disagree on IAEA inspections + whether the MOU covers Iran\'s missile program (Pezeshkian says no). Nuclear file unresolved on the 60-day clock.'},
+ ],
+ assess:`Iran-US ticks to 79 but the within-week shape is the story: a full spike-and-settle arc that even spread horizontally to Bahrain and Kuwait before snapping back to a stand-down and a scheduled Doha meeting — exactly the dynamic the Strike-Exchange Tracker (meter now cooling to 55) was built to render. The key doctrine to log is Azizi's "the strait is governed by Iran / ceasefire management, not breach" — Iran is formalizing a managed-access regime over Hormuz as a claimed right, which is the deeper structural fact beneath every strike. The new Diplomatic Track shows the flip side: three negotiation tracks now run in parallel (Doha Jun 30, MOU implementation with the $6B released, and the collapsed France/Oman demining offer). Whether Doha holds the stand-down is the single highest-stakes question on the board.`
+},
+
+{id:'lebanon-deconfliction',cat:'military',region:'Middle East',
+ name:'Lebanon — Framework Signed (Contested)',sub:'Trilateral framework signed · Hezbollah "null & void"',
+ domain:'Framework → Disputed Implementation',sev:'high',status:'volatile',since:'Jun 22 2026',esc:76,lat:33.3,lon:35.4,
+ trend:'up',w10:true,merged:false,diplomacy_active:true,esc_history:[0,0,80,78,78,78,78,78,74,76],
+ cas:'IDF Cpt. Hazutt killed Jun 28; 4 IDF wounded Beit Yahoun; hundreds since Apr 17',disp:'1M+ displaced (>20% of Lebanon)',
+ note:'Trilateral framework SIGNED Jun 26 (5th round, DC) — IDF withdraws from 2 pilot zones, LAF oversees Hezbollah disarmament · Hezbollah (Qassem): "null & void," "surrender," won\'t disarm · Katz: won\'t withdraw "a millimeter" beyond pilot zones · Haaretz: risks "Gaza Strip 2" · permanent-deal odds 1.4%',
+ leverage:[
+   {actor:'Israel',asset:'Occupation of S.Lebanon "security zone"; pilot-zone withdrawal as bargaining chip',str:'hi'},
+   {actor:'United States',asset:'Mediation; ties Lebanon to Iran track; Article 7 excludes Iran',str:'hi'},
+   {actor:'Hezbollah',asset:'Spoiler veto — rejected framework as "null & void"; retains Shia support base',str:'md'},
+   {actor:'Lebanese Armed Forces',asset:'To receive pilot zones + oversee disarmament — sovereignty lever (untested)',str:'md'},
+ ],
+ diplomacy:[
+   {name:'Israel-Lebanon trilateral framework',desc:'Signed Jun 26 in DC (5th round); IDF withdraws from 2 pilot zones, LAF takes over + oversees Hezbollah disarmament; mutual right to "live in peace"',status:'signed',next:'pilot-zone handover'},
+   {name:'Hezbollah disarmament (the crux)',desc:'Framework requires it; Qassem rejects as "null & void," vows to keep fighting until full IDF withdrawal',status:'collapsed',next:'Hezbollah veto'},
+   {name:'"Move vs move" enforcement mechanism',desc:'Reciprocal step-for-step verification agreed at the 4th round; ceasefire confirmed but daily strikes continue',status:'stalled',next:'untested'},
+ ],
+ watches:['Pilot-zone withdrawals — actually happen or freeze?','Hezbollah "null & void" → spoiler campaign','Katz "not a millimeter" vs framework','"Gaza Strip 2" indefinite-occupation risk (Haaretz)','Iran exclusion (Article 7) vs US-Iran MOU'],
+ mil:`A genuine state-change from "framework announced" to "framework signed" — but every serious read says it won't hold. The trilateral framework was signed June 26 in Washington (5th round): IDF withdraws from two pilot zones, the Lebanese Armed Forces take over and oversee Hezbollah disarmament. Yet violence continued: Hezbollah killed IDF Cpt. David Hazutt (21) at Deir Siryan June 28, wounded four soldiers at Beit Yahoun, and a car-bomb assassination attempt struck Holon inside Israel. Israel blew a 200m Hezbollah drone tunnel under Majdal Zoun with announced plans for 500 tons of explosives under Beaufort Ridge.`,
+ pol:`Katz (Jun 28): Israel has "no territorial ambitions" but won't withdraw "a millimeter" beyond the two pilot zones until Hezbollah is disarmed — "people should not hold their breath." Hezbollah's Qassem called the framework "null and void," a "surrender," vowed to keep fighting, and called the US-Iran deal an "official declaration of defeat." A Haaretz analysis warns the deal could make southern Lebanon a "Gaza Strip 2" — indefinite Israeli presence, expanding controlled zone, no realistic disarmament path; Article 7 excludes Iran, contradicting the Swiss understandings. Prediction-market odds of a permanent deal by June 30 fell to 1.4%.`,
+ eco:`The Lebanon→energy-market transmission remains weak (established in v10), so this stays a political track. Over 1M displaced (>20% of Lebanon's population). A durable framework would remove the most-cited derailment risk to the Iran settlement — but implementation odds are very low.`,
+ parties:[{s:'A',n:'Israel — signed framework; won\'t move "a millimeter" beyond pilot zones'},{s:'A',n:'United States — mediator; Article 7 excludes Iran'},{s:'A',n:'Lebanese government — signed; declared Hezbollah "enemy of Lebanon"'},{s:'B',n:'Hezbollah (Qassem) — "null & void"; won\'t disarm'}],
+ updates:[
+   {d:'Jun 26',tag:'d',cf:'wire',src:'Wikipedia/Times of Israel',t:'Trilateral Israel-Lebanon framework SIGNED in DC (5th round): IDF withdraws from 2 pilot zones, LAF takes over + oversees Hezbollah disarmament; mutual right to "live in peace"; prisoner/remains exchange.'},
+   {d:'Jun 27',tag:'p',cf:'wire',src:'Al Jazeera',t:'Hezbollah\'s Qassem: framework is "null & void," a "surrender"; won\'t disarm, will keep fighting until full IDF withdrawal. Calls US-Iran deal an "official declaration of defeat."'},
+   {d:'Jun 28',tag:'p',cf:'wire',src:'Times of Israel',t:'Katz: "no territorial ambitions" but won\'t withdraw "a millimeter" beyond the 2 pilot zones until Hezbollah disarmed. "People should not hold their breath."'},
+   {d:'Jun 28',tag:'k',cf:'wire',src:'Times of Israel/Al Jazeera',t:'Hezbollah kills IDF Cpt. Hazutt (21) at Deir Siryan; 4 IDF wounded at Beit Yahoun; car-bomb assassination attempt in Holon. IDF blows 200m Hezbollah drone tunnel under Majdal Zoun.'},
+   {d:'Jun 28',tag:'i',cf:'corr',src:'Haaretz analysis',t:'Framework risks making S.Lebanon a "Gaza Strip 2" — indefinite Israeli presence, expanding zone, no disarmament path. Article 7 excludes Iran. Permanent-deal odds (prediction market) fell to 1.4%.'},
+ ],
+ assess:`Lebanon ticks back up 74→76 — counterintuitively, because the framework got signed. The signing is real (the first Israel-Lebanon framework since the 1983 May 17 Agreement), but the Diplomatic Track makes the trap visible: of its three negotiation strands, one is signed (the framework), one has already collapsed (Hezbollah disarmament, rejected as "null & void"), and one is stalled (the move-vs-move mechanism). The serious analytic consensus — Katz's "not a millimeter," Haaretz's "Gaza Strip 2," the 1.4% market odds — is that the signed paper institutionalizes an indefinite Israeli presence rather than resolving anything. The index rises because a signed-but-rejected framework with continued killings is more volatile, not less, than open talks.`
+},
+
+{id:'ukraine',cat:'military',region:'Europe / Russia',
+ name:'Russia–Ukraine War',sub:'ISW: Russia net −281 sq km · offensive "largely halted"',
+ domain:'Interstate War',sev:'critical',status:'escalating',since:'Feb 2022',esc:84,lat:49,lon:32,
+ trend:'ss',w10:true,merged:false,exchange_active:true,esc_history:[88,88,88,86,84,84,84,85,84,84],
+ cas:'~1.4M Russian casualties (Ukraine est.); 250–300k Ukrainian',disp:'~10M Ukrainians',
+ note:'DISPUTED FLAG RESOLVED: ISW data — Russia gained 40.64 sq km but LOST 281.1 sq km Dec25-May26 (net loss); only 7.87% of 2025 pace; offensive "largely halted," NOT seasonal · Ukraine advancing at Pokrovsk · Putin resisting own economists\' warnings to cut war spending',
+ exchange:{
+   title:'UKRAINE ↔ RUSSIA — DEEP-STRIKE / BARRAGE EXCHANGE',
+   meter:60, meterLabel:'SUSTAINED — reciprocal deep strikes; Russian ground offensive largely halted',
+   steps:[
+     {d:'Jun 26',actor:'A',al:'UKRAINE',act:'Zelenskyy "40-day influence operation"; record ~660-drone assault; "Flamingo" FP-5 missiles hit Volgograd. Continued long-range strikes on Russian oil infrastructure (Jun 27-28).',resp:'strike',respl:'DEEP-STRIKE CAMPAIGN'},
+     {d:'Jun 27',actor:'B',al:'RUSSIA',act:'Overnight: 2 Zircon/Onyx anti-ship missiles, 6 Iskander-M/S-400 ballistic missiles, 142 drones against Ukraine. Crimea state of emergency continues.',resp:'strike',respl:'MISSILE/DRONE BARRAGE'},
+     {d:'Jun 28',actor:'A',al:'UKRAINE',act:'Ukrainian forces <b>advancing in the Pokrovsk direction</b> (ISW); drone strikes impede Russian rotations + accumulation. Russia\'s 2026 gains only 7.87% of 2025 pace.',resp:'strike',respl:'GROUND COUNTER-ADVANCE'},
+     {d:'Jun 28',actor:'N',al:'BOTH',act:'Reciprocal strikes continue; <b>160-each POW exchange</b> proceeds. ISW: Russian Spring-Summer offensive "largely halted," not seasonal.',resp:'hold',respl:'EXCHANGE + POW SWAP'},
+   ]
+ },
+ leverage:[
+   {actor:'Ukraine',asset:'Deep-strike drones halting ~40% of Russian oil exports + Flamingo missiles + Pokrovsk advance',str:'hi'},
+   {actor:'Russia',asset:'Missile/drone barrage; manpower — but ground offensive largely halted',str:'md'},
+   {actor:'E3 / EU / NATO',asset:'Weapons, financing, EU accession; NATO summit next month',str:'md'},
+   {actor:'US (Trump)',asset:'Signaled Russian-oil re-sanctioning; swing broker',str:'md'},
+ ],
+ watches:['Pokrovsk — Ukraine now advancing (ISW)','Russian economy — Putin resisting spending-cut warnings','NATO summit next month','Russian refining at 16-yr low','40-day operation outcome'],
+ mil:`The v12 DISPUTED-map flag now resolves decisively in Ukraine's favor on the strength of ISW's rigorous dataset (see Conflicting Reports → resolution). ISW assesses Russia gained or infiltrated just 40.64 sq km between December 2025 and May 2026 while losing 281.1 sq km of controlled territory — a net loss — seizing only 7.87% as much territory in 2026 as in 2025. The Spring-Summer offensive is "largely halted," and ISW explicitly assesses this is not seasonal but reflects comprehensive battlefield shifts. Ukrainian forces are advancing in the Pokrovsk direction, with drone strikes impeding Russian rotations and accumulation. The reciprocal deep-strike exchange continues (142 Russian drones + missiles overnight Jun 27), with a 160-each POW swap proceeding.`,
+ pol:`The post-G7 "strategic awakening" holds, with a NATO summit next month as the next inflection. Putin is reportedly resisting his own economic officials' warnings to cut defense spending, betting he can win before the economy breaks — which ISW reads as a sign he believes the war remains winnable near-term despite the stalled offensive. The pro-Kremlin "Zelenskyy term expired" narrative continues as groundwork to contest a future deal.`,
+ eco:`Ukraine's economic-warfare lever remains decisive: ~40% of Russian oil export capacity halted, refining at a 16-year low, "Flamingo" strikes reaching military-industrial targets deep inside Russia. This is the "hi" lever — doing more strategic work than the ground line, which Ukraine is now contesting at Pokrovsk.`,
+ parties:[{s:'A',n:'Ukraine — deep strikes; Pokrovsk advance; 40-day op; EU accession'},{s:'A',n:'E3/EU/NATO — weapons, financing; summit next month'},{s:'B',n:'Russia — offensive largely halted; economy strained; "term expired" info-ops'},{s:'ext',n:'ISW/CTP — rigorous territorial dataset (net Russian loss)'}],
+ updates:[
+   {d:'Jun 28',tag:'i',cf:'wire',src:'ISW / Critical Threats',t:'RESOLVED: ISW data — Russia gained/infiltrated 40.64 sq km Dec25-May26 but LOST 281.1 sq km of controlled territory (net loss); only 7.87% of 2025 pace. Offensive "largely halted," explicitly NOT seasonal. Ukraine advancing at Pokrovsk.'},
+   {d:'Jun 28',tag:'k',cf:'wire',src:'ISW/Kyiv Post',t:'Overnight: Russia launched 2 Zircon/Onyx anti-ship missiles, 6 Iskander-M/S-400 ballistic missiles, 142 drones. Ukraine continued long-range strikes on Russian oil infrastructure.'},
+   {d:'Jun 28',tag:'i',cf:'corr',src:'ISW',t:'Putin reportedly resisting his own economic officials\' warnings to cut war spending — ISW reads this as Putin believing he can still win near-term despite the stalled offensive.'},
+ ],
+ assess:`Ukraine holds at 84. The headline is analytical, not kinetic: the v12 ISW-vs-DeepState disputed flag now resolves to Ukraine's favor on ISW's rigorous data — Russia is net-losing controlled territory (−281 sq km) and advancing at only 7.87% of its 2025 pace, with the offensive "largely halted" for non-seasonal reasons. That converts the "first chance to win" thesis from speculation into an evidence-backed assessment. The Strike-Exchange tab captures the continuing reciprocal deep-strike rhythm (meter 60), but the ground picture has flipped: Ukraine is the one advancing at Pokrovsk. The wildcard is the Russian economy — Putin overriding his own officials' warnings is either confidence or denial, and which one determines how the next quarter goes.`
+},
+
+{id:'gaza',cat:'military',region:'Middle East',
+ name:'Israel–Gaza War',sub:'Israel "running out of targets" · Mladenov plan rejected',
+ domain:'Counterinsurgency',sev:'critical',status:'stalemate',since:'Oct 7 2023',esc:77,lat:31.35,lon:34.3,
+ trend:'ss',w10:false,merged:false,diplomacy_active:true,esc_history:[85,85,82,80,79,78,78,78,77,77],
+ cas:'73,000+ Palestinians killed (UNRWA, mid-2026)',disp:'2.2M+ Gazans',
+ note:'Shaky ceasefire holds; J-Post: Israel "running out of quality targets," now hitting low-level operatives · 2 killed Khan Younis tent camps Jun 29 · Board of Peace Mladenov demilitarization plan apparently rejected by Hamas · Gulf-capital competition w/ Iran $300B',
+ leverage:[
+   {actor:'Israel',asset:'"Unlimited" Gaza security-zone control; Yellow Line enforcement',str:'hi'},
+   {actor:'Hamas',asset:'Refusal to disarm; rejected Mladenov plan; residual hostage/body leverage',str:'md'},
+   {actor:'Board of Peace / Gulf',asset:'$5B+ reconstruction capital (competing with Iran $300B)',str:'md'},
+ ],
+ diplomacy:[
+   {name:'Board of Peace demilitarization (Mladenov)',desc:'Board of Peace rep Mladenov\'s Gaza demilitarization plan apparently rejected by Hamas',status:'collapsed',next:'Hamas rejection'},
+   {name:'Reconstruction financing ($5B+)',desc:'Board of Peace pledged $5B+; competing with Iran\'s $300B for Gulf capital; not flowing',status:'stalled',next:'security-framework gate'},
+ ],
+ watches:['Hamas disarmament impasse (Mladenov plan rejected)','Israel "running out of targets" (J-Post)','Gulf-capital competition (Iran $300B vs Gaza)','anti-Hamas protests in Gaza'],
+ mil:`Gaza continues to smolder under a shaky ceasefire. The Jerusalem Post notes Israel is "running out of quality targets" — now hitting low-level operatives (e.g. a Hamas "looter" far from any front) rather than senior figures, having killed most senior/mid-level officials. IDF strikes on Khan Younis tent camps killed two June 29. Hostage/body exchanges continue; the disarmament impasse is unresolved.`,
+ pol:`The Board of Peace's demilitarization plan, presented by representative Nickolay Mladenov, was apparently rejected by Hamas — a diplomatic setback that the Israel-Lebanon track was partly meant to compensate for. The Gulf-capital competition with Iran's $300B reconstruction persists.`,
+ eco:`Reconstruction pledged ($5B+) but not flowing; Gulf capital is being pulled toward Iran's larger $300B ask.`,
+ parties:[{s:'A',n:'Israel — "unlimited" Gaza security zones; running low on targets'},{s:'B',n:'Hamas — rejects disarmament + Mladenov plan'},{s:'ext',n:'Board of Peace — $5B+ pledged; Mladenov plan rejected'}],
+ updates:[
+   {d:'Jun 29',tag:'k',cf:'wire',src:'Palestine Chronicle',t:'Israeli strikes on Khan Younis tent camps kill 2; child dies of wounds. Daily strikes continue despite the Oct 2025 ceasefire.'},
+   {d:'Jun 28',tag:'i',cf:'corr',src:'Jerusalem Post',t:'Israel "running out of quality targets" — now hitting low-level operatives (a Hamas "looter" far from the front), having killed most senior/mid-level Hamas officials.'},
+   {d:'Jun 2026',tag:'d',cf:'single',src:'Times of Israel/Wikipedia',t:'Board of Peace rep Mladenov\'s Gaza demilitarization plan apparently rejected by Hamas — a setback the Israel-Lebanon track was partly meant to offset.'},
+ ],
+ assess:`Gaza holds at 77. The frozen ceasefire persists, with the J-Post's "running out of targets" observation a quietly significant marker — Israel has degraded Hamas's command structure to the point of striking looters, which suggests the military phase is largely spent even as strikes continue. The Diplomatic Track shows both Gaza strands stuck: the Mladenov demilitarization plan rejected, reconstruction financing gated behind an absent security framework. The Gulf-capital competition with Iran's $300B is the slow structural pressure.`
+},
+
+{id:'sahel',cat:'military',region:'West / Central Africa',
+ name:'Sahel Jihadist Insurgency — JNIM vs ISSP',sub:'Two-group war: drone 10→80, Kirtachi/Benin, Westerner kidnappings',
+ domain:'Jihadist Insurgency',sev:'critical',status:'escalating',since:'2012',esc:93,lat:14,lon:2,
+ trend:'ss',w10:true,merged:true,esc_history:[91,91,91,92,92,92,92,93,93,93],
+ cas:'10,000+ deaths 2025 (Burkina/Mali/Niger); Mali defense min killed; Crisis Group: 39,850 JNIM-linked deaths since 2017',disp:'3M+ Sahel',
+ note:'ACLED/ICG reframe: JNIM armed-drone strikes 10 (2024)→80 (2025) · JNIM overran Kirtachi camp Niger (12+ killed, 7 captured) + hit Koualou Benin · NEW: JNIM + ISSP kidnapping campaigns vs Westerners (record highs) · JNIM vs Dozo militias in Mopti · Africa Corps reduced to escorting fuel convoys',
+ leverage:[
+   {actor:'JNIM',asset:'Territorial governance + Kidal + Bamako blockade; drones (10→80); economic warfare',str:'hi'},
+   {actor:'ISSP (Islamic State)',asset:'Outbidding rival; Niamey/Tahoua airport attacks; Westerner kidnapping; Nigeria expansion',str:'md'},
+   {actor:'Juntas + Russia Africa Corps',asset:'Africa Corps reduced to escorting fuel convoys — cannot prevent advances',str:'lo'},
+   {actor:'US',asset:'Mali ISR re-entry being rebuilt',str:'md'},
+ ],
+ watches:['JNIM-ISSP outbidding → high-impact attacks','drone proliferation (10→80 trajectory)','Benin/Togo coastal expansion (ICG: "greatest peril")','Westerner kidnapping campaigns'],
+ mil:`The ACLED and Crisis Group desks reframe the Sahel beyond the Kidal headline into a two-group war with rapidly professionalizing tactics. JNIM armed-drone strikes jumped an order of magnitude — from fewer than 10 in 2024 to around 80 in 2025. JNIM overran a National Guard camp at Kirtachi, Niger (12+ soldiers killed, 7 captured) and hit Koualou, Benin, deepening the coastal expansion Crisis Group flags (Benin and Togo "in greatest peril"). Both JNIM and ISSP launched kidnapping campaigns targeting Westerners and foreign workers — record highs in Mali and Niger, with ISSP outsourcing abductions to criminal networks. In Mopti, JNIM launched a deadly campaign against Dozo militias, attacking the very communities that had made local accommodation deals — a governance-consolidation move.`,
+ pol:`This is now an insurgent-vs-insurgent contest as much as insurgents-vs-state, with JNIM (Mali/Burkina) and ISSP (Niger) outbidding each other toward higher-visibility attacks. Crisis Group's running total: 16,023 JNIM incidents and 39,850 deaths since 2017. The juntas' Russia-backed model continues to fail — ACLED notes Africa Corps has been reduced to escorting fuel convoys on key routes, unable to prevent advances. The US-Mali ISR re-entry deal advances as a countercurrent.`,
+ eco:`JNIM's economic warfare is central: the Bamako fuel blockade (since Sept 2025) disrupts 60%+ of Mali's trade along the Northern Bamako-Dakar corridor, and village-level taxation deepens the collapse. Kidnapping-for-ransom is now a deliberate revenue and pressure strategy.`,
+ parties:[{s:'A',n:'Mali/Burkina/Niger juntas + Russia Africa Corps (fuel-convoy escort)'},{s:'A',n:'US — advancing Mali ISR re-entry'},{s:'B',n:'JNIM (al-Qaeda) — Kidal, Bamako blockade, Kirtachi, Benin; drones'},{s:'B',n:'ISSP (Islamic State) — Niamey/Tahoua airports; Westerner kidnapping; Nigeria'},{s:'ext',n:'Benin/Togo — "greatest peril" (Crisis Group)'}],
+ updates:[
+   {d:'Jun 2026',tag:'k',cf:'corr',src:'ACLED (Africa Overview)',t:'JNIM overran a National Guard camp at Kirtachi, Niger (12+ killed, 7 captured) + hit Koualou, Benin — deepening coastal-littoral expansion. Both seized weapons + materiel.'},
+   {d:'May 2026',tag:'i',cf:'corr',src:'ACLED',t:'JNIM armed-drone strikes jumped from <10 (2024) to ~80 (2025) — order-of-magnitude proliferation. Drones now the primary technology-driven risk for both JNIM + ISSP.'},
+   {d:'Jun 2026',tag:'i',cf:'corr',src:'ACLED',t:'JNIM + ISSP kidnapping campaigns targeting Westerners + foreign workers drove record-high abductions in Mali + Niger. ISSP outsourcing to criminal networks.'},
+   {d:'Apr 17',tag:'i',cf:'corr',src:'Crisis Group',t:'JNIM expansion beyond the Sahel: Benin + Togo "in greatest peril." 16,023 JNIM incidents / 39,850 deaths since 2017 (ACLED-based estimate).'},
+ ],
+ assess:`The Sahel holds at 93. The analyst-grade reframe is the value-add this week: this is a two-group war (JNIM vs ISSP) in which "outbidding" is driving both toward higher-impact attacks, drones have proliferated tenfold in a year, and kidnapping Westerners has become a deliberate revenue-and-pressure strategy. The Leverage Map distinguishes JNIM ("hi" — Kidal, Bamako blockade, governance) from ISSP ("md" — outbidding challenger), while the juntas' Russia-backed model rates "lo" — Africa Corps reduced to escorting fuel convoys. Crisis Group's warning that Benin and Togo are in "greatest peril" is the forward-looking signal: the conflict is migrating toward the coast.`
+},
+
+{id:'drc',cat:'military',region:'Central / South Africa',
+ name:'DRC — M23/Rwanda + ADF + Cobalt',sub:'Ebola in 4th province · M23 took Uvira · drone war',
+ domain:'Proxy War / Resource War',sev:'critical',status:'escalating',since:'2022',esc:81,lat:-1.5,lon:29.2,
+ trend:'ss',w10:true,merged:true,esc_history:[80,80,80,80,80,80,80,81,81,81],
+ cas:'10,000+ since 2022; 6M+ displaced; Ebola now in 4th province (entire NE)',disp:'6M+ IDPs',
+ note:'Ebola confirmed in a 4TH province — entire DRC northeast now affected · M23 took Uvira (ACLED); FARDC killed M23 spokesman Ngoma in record drone campaign · ADF active Ituri · G7 Critical Minerals Alliance',
+ leverage:[
+   {actor:'Rwanda',asset:'M23 proxy — took Uvira; control of mineral-rich east; drone supply',str:'hi'},
+   {actor:'DRC + US/UAE PMC',asset:'Cobalt access (70% of reserves); FARDC drones (CH-4, Anka)',str:'md'},
+   {actor:'G7',asset:'Critical Minerals Alliance — de-risking supply concentration',str:'md'},
+ ],
+ watches:['Ebola spread (now 4th province, entire NE)','M23 advance (took Uvira)','FARDC aerial campaign (record tempo)','Qatar/US M23-Rwanda mediation'],
+ mil:`M23 seized Uvira (ACLED) and conducted a drone strike on a FARDC rear base far from the front; FARDC escalated to a record aerial tempo and killed M23 military spokesman Willy Ngoma alongside senior leaders. The ADF (ISIS-affiliate) remains active in Ituri. The dual-track structure (M23/Rwanda + ADF) persists.`,
+ pol:`The G7 Critical Minerals Alliance remains the structural response to cobalt/rare-earth concentration; Qatari and US mediators continue the M23/Rwanda track. The public-health emergency is widening fast.`,
+ eco:`Ebola has now been confirmed in a fourth province — the entire DRC northeast is affected — after the Goma outbreak closed the Petite Barrière border crossing (20,000-30,000 daily users). The cobalt chemical supply chain (Kolwezi, from your KML) recovered as Hormuz normalized, though the Iran exchange adds intermittent risk.`,
+ parties:[{s:'A',n:'FARDC + Wazalendo + US/UAE mine PMC; record drone campaign'},{s:'B',n:'M23 — Rwanda-backed; took Uvira; rear-base drone strike'},{s:'B',n:'ADF (ISIS) — Ituri'},{s:'ext',n:'G7 — Critical Minerals Alliance'},{s:'ext',n:'Qatar+US — M23/Rwanda mediation'}],
+ updates:[
+   {d:'Jun 29',tag:'h',cf:'wire',src:'Times of Israel/AP',t:'Ebola confirmed in a 4th DRC province — the entire northeast is now affected. Follows the Goma outbreak that closed the Petite Barrière border crossing.'},
+   {d:'Jun 2026',tag:'k',cf:'corr',src:'ACLED',t:'M23 seized Uvira; FARDC at record air/drone-strike tempo. FARDC drone strike killed M23 spokesman Willy Ngoma + senior leaders. M23 drone-struck a FARDC rear base far from the front.'},
+   {d:'Jun 17',tag:'e',cf:'wire',src:'Élysée',t:'G7 Critical Minerals Alliance — structural response to cobalt/rare-earth supply concentration.'},
+ ],
+ assess:`DRC holds at 81. The deteriorating thread this week is the Ebola outbreak, now confirmed in a fourth province with the entire northeast affected — a public-health emergency compounding the M23/Rwanda and ADF military tracks. The drone-war mechanization (M23 took Uvira; FARDC killed Ngoma in a record aerial campaign) continues. Rwanda's M23 proxy remains the "hi" lever; the cobalt chain linking this theater to Hormuz holds its recovery.`
+},
+
+{id:'nigeria',cat:'military',region:'West / Central Africa',
+ name:'Nigeria — ISWAP + Bandits + IPOB/ESN',sub:'ISSP first Nigeria ops in 6 yrs · IS bridge · officer killings',
+ domain:'Multi-Threat Insurgency',sev:'high',status:'escalating',since:'2009',esc:67,lat:11.5,lon:9.5,
+ trend:'ss',w10:true,merged:true,esc_history:[65,65,65,66,66,66,66,67,67,67],
+ cas:'Tumfa airstrike: Amnesty alleges 100+ civilians; Maiduguri suicide bombings; officer killings up',disp:'2.2M+ Lake Chad Basin',
+ note:'ACLED: ISSP claimed first Nigeria operations in 6+ years (May) · IS bridging ISSP + ISWAP across Niger-Nigeria border · ISWAP killing high-level officers (5 in 5 months) · state-policing plan advancing',
+ leverage:[
+   {actor:'ISWAP / IS',asset:'Drones + Niger-Nigeria bridge linking ISSP + ISWAP; officer-targeting',str:'md'},
+   {actor:'Nigerian state',asset:'Dangote refinery + CBN FX reform + state-policing framework',str:'md'},
+   {actor:'US/France',asset:'ISR + precision airstrikes (Lakurawa)',str:'md'},
+ ],
+ watches:['IS Niger-Nigeria bridge (ISSP+ISWAP link)','ISWAP officer-killings in Borno','state policing reform','IPOB/ESN post-Kanu trajectory'],
+ mil:`ACLED reports ISSP claimed its first operations in Nigeria in more than six years (May), replicating Sahel patterns — massacres to assert control across southwestern Niger and northwestern Nigeria via local "Lakurawa" recruits. The key structural risk is IS's attempt to bridge ISSP (Sahel) and ISWAP (Lake Chad) across the Niger-Nigeria border, connecting two of Africa's most powerful jihadi groups. ACLED notes the killing of high-level military officers (five in five months) and more complex ISWAP attacks signal rising risk for forces in Borno. The Tumfa airstrike (Amnesty alleges 100+ civilians), Mallam Fatori drone attack, and Maiduguri suicide bombings remain in the record from your files plus CTP/ACLED corroboration.`,
+ pol:`The decentralized state-policing plan advances. The US security footprint persists (Lakurawa airstrikes, ISR); Nigeria requested French support. The defense ministry is embedding journalists in operations to improve reporting.`,
+ eco:`Dangote refinery, CBN FX reforms, NUPRC licensing (from your stability layer) are the resilience variables; easing oil prices relieve fuel-cost pressure.`,
+ parties:[{s:'A',n:'Nigerian Armed Forces + US ISR/airstrikes + French support'},{s:'B',n:'ISWAP — officer-killings; IS Niger-Nigeria bridge'},{s:'B',n:'ISSP/Lakurawa — first Nigeria ops in 6 yrs'},{s:'B',n:'Boko Haram — Maiduguri suicide bombings'},{s:'B',n:'IPOB/ESN — Kanu life sentence Nov 2025'}],
+ updates:[
+   {d:'May 2026',tag:'k',cf:'corr',src:'ACLED',t:'ISSP claimed its first operations in Nigeria in 6+ years; replicating Sahel massacre patterns via local "Lakurawa" recruits in NW Nigeria/SW Niger.'},
+   {d:'Jun 25',tag:'i',cf:'corr',src:'ACLED/CTP',t:'IS attempting to bridge ISSP + ISWAP across the Niger-Nigeria border. ISWAP killed 5 high-level officers in 5 months; rising risk for Borno forces.'},
+   {d:'merged',tag:'k',cf:'osint',src:'user KML',t:'Tumfa airstrike (Amnesty alleges 100+ civilians); Mallam Fatori ISWAP drone attack; Abu Bilal al-Minuki killed. Retained from uploaded files.'},
+ ],
+ assess:`Nigeria holds at 67. The ACLED detail sharpens the escalation: ISSP's first Nigeria operations in six years plus the IS effort to bridge ISSP and ISWAP would fuse the Sahel and Lake Chad jihadi theaters — a structural escalation. The officer-killing trend (five in five months) signals rising military vulnerability in Borno. State-policing reform and the US/French footprint remain the countercurrents.`
+},
+
+{id:'pak-afg',cat:'military',region:'South / Central Asia',
+ name:'Pakistan–Afghanistan War',sub:'Pakistani airstrikes kill civilians · Iran-deal broker',
+ domain:'Interstate War',sev:'critical',status:'stalemate',since:'Feb 27 2026',esc:76,lat:33.5,lon:69.2,
+ trend:'up',w10:true,merged:false,esc_history:[78,78,78,76,75,75,75,75,75,76],
+ cas:'289+ civilian casualties; Mandokhail strike killed civilians incl. children',disp:'115,000+ border regions',
+ note:'Pakistani airstrikes killed civilians incl. children at Mandokhail (per Taliban) — fresh flare-up · Pakistan central to Iran-deal brokering (Doha mediation w/ Qatar)',
+ leverage:[
+   {actor:'Pakistan',asset:'Iran-deal mediator role (Doha w/ Qatar) — diplomatic capital',str:'md'},
+   {actor:'Taliban',asset:'TTP safe haven; control of Afghan territory',str:'md'},
+   {actor:'China',asset:'CPEC investment; mediation leverage',str:'md'},
+ ],
+ watches:['Mandokhail-type airstrikes → escalation','Pakistan Iran-deal mediation','TTP cross-border','China mediation'],
+ mil:`A fresh flare-up: Taliban officials report Pakistani airstrikes killed civilians, including children, at Mandokhail. Low-intensity Durand Line exchanges continue; both states remain nuclear-armed. Pakistan stays central to the Iran-deal brokering, co-mediating the Doha track with Qatar.`,
+ pol:`Pakistan's diplomatic standing remains elevated through its Iran-deal mediation even as the border conflict simmers and the Taliban shelters the TTP.`,
+ eco:`Pakistan under IMF pressure; easing oil shock relieves fuel-import strain, though the Iran exchange reintroduces volatility.`,
+ parties:[{s:'A',n:'Pakistan — Iran-deal mediator (Doha w/ Qatar)'},{s:'B',n:'Islamic Emirate of Afghanistan (Taliban)'},{s:'B',n:'TTP — cross-border'}],
+ updates:[
+   {d:'Jun 28',tag:'k',cf:'single',src:'Times of Israel/Taliban officials',t:'Taliban officials report Pakistani airstrikes killed civilians, including children, at Mandokhail — a fresh flare-up along the border.'},
+   {d:'Jun 2026',tag:'d',cf:'wire',src:'RFERL',t:'Pakistan (with Qatar) mediating the US-Iran Doha track — diplomatic capital remains high.'},
+ ],
+ assess:`Nudges to 76 on the Mandokhail airstrike flare-up. Pakistan's diplomatic stock stays high via Iran-deal mediation, but the border conflict's civilian toll is rising. The nuclear-adjacency and TTP safe-haven problems remain unresolved.`
+},
+
+{id:'taiwan',cat:'military',region:'East Asia / Pacific',
+ name:'Taiwan Strait — China Gray Zone',sub:'China = top Hormuz beneficiary · G7 minerals de-risking',
+ domain:'Geopolitical / Gray Zone',sev:'high',status:'escalating',since:'Ongoing',esc:70,lat:23.7,lon:121,
+ trend:'ss',w10:false,merged:true,esc_history:[70,70,70,70,70,70,70,70,70,70],
+ cas:'No kinetic casualties',disp:'N/A',
+ note:'China = top Hormuz oil customer; Iran exchange re-exposed China\'s supply interest · G7 minerals alliance targets China dependence · Dongsha pressure persists',
+ leverage:[
+   {actor:'China (PRC)',asset:'Rare-earth + permanent-magnet supply dominance; semiconductor demand',str:'hi'},
+   {actor:'Taiwan',asset:'90%+ of advanced semiconductors (TSMC) — the "silicon shield"',str:'hi'},
+   {actor:'G7',asset:'Critical Minerals Alliance — de-risking China dependence',str:'md'},
+ ],
+ watches:['China as prime Hormuz beneficiary (re-exposed by exchange)','G7 critical-minerals de-risking','Dongsha campaign','allied hedging post-Shangri-La'],
+ mil:`PLA gray-zone pressure continues. Your merged chokepoints layer maps the Taiwan Strait as one of seven global escalation nodes.`,
+ pol:`China remains the largest Hormuz oil customer and prime de-escalation beneficiary, so the renewed strike exchange re-exposed its supply interest. The G7 Critical Minerals Alliance targets reducing China dependence on rare earths and permanent magnets.`,
+ eco:`Taiwan produces 90%+ of advanced semiconductors. China's rare-earth dominance is an explicit G7 de-risking target even as it benefits from Hormuz oil — the dual cooperation-competition dynamic.`,
+ parties:[{s:'A',n:'Taiwan (ROC)'},{s:'B',n:'PRC — PLA Eastern Theater; top Hormuz oil customer'},{s:'ext',n:'G7 — Critical Minerals Alliance vs China dependence'}],
+ updates:[
+   {d:'Jun 2026',tag:'d',cf:'wire',src:'RFERL',t:'China is the largest Hormuz oil customer; the renewed strike exchange re-exposes its supply interest in the ceasefire holding.'},
+   {d:'Jun 17',tag:'s',cf:'wire',src:'Wikipedia/FPG',t:'G7 Critical Minerals Alliance targets cutting China dependence on rare earths + permanent magnets.'},
+ ],
+ assess:`Taiwan holds at 70. The mutual supply-chain hold (China rare earths / Taiwan semiconductors, both "hi") is unchanged. The Iran exchange is a reminder that Beijing has a large, underappreciated stake in the ceasefire holding, given its dependence on Hormuz oil.`
+},
+
+/* ═══ POLITICAL ═══ */
+{id:'us-politics',cat:'political',region:'North America',
+ name:'US Foreign Policy — Strikes + Brokerage',sub:'10-target strike · Doha talks · UAE arms fork',
+ domain:'Geopolitical Strategy',sev:'high',status:'volatile',since:'Jan 2025',esc:63,lat:38.9,lon:-77,
+ trend:'ss',w10:true,merged:false,diplomacy_active:true,esc_history:[78,78,75,62,60,60,60,63,63,63],
+ cas:'N/A',disp:'N/A',
+ note:'Struck Iran (10 targets) + brokered Lebanon framework + Doha talks Jun 30 · Trump "Iran will no longer exist" · UAE arms-sale fork on Sudan (Boulos diplomacy) · $300B funder fight',
+ leverage:[
+   {actor:'White House',asset:'Strike power + $300B gatekeeping + arms sales (UAE/Gulf) + multi-track mediation',str:'hi'},
+   {actor:'Congress (Graham et al.)',asset:'War Powers; "take the Strait" pressure; UAE arms conditioning',str:'md'},
+   {actor:'Truth Social',asset:'Real-time presidential signaling ("will no longer exist") that moves events',str:'md'},
+ ],
+ diplomacy:[
+   {name:'Iran — Doha technical talks',desc:'US sending delegation to Doha Jun 30 after the stand-down; topic now the Hormuz standoff',status:'scheduled',next:'DOHA · JUN 30'},
+   {name:'Lebanon framework (US-brokered)',desc:'Signed Jun 26; US is guarantor/overseer of disarmament + withdrawal',status:'signed',next:'pilot-zone handover'},
+   {name:'Sudan — Boulos/Quintet',desc:'US Envoy Boulos pushing civilian dialogue + humanitarian truce; UAE arms fork unresolved',status:'active',next:'post-Jul 7 HRC'},
+ ],
+ watches:['Doha Jun 30 outcome','UAE arms-sale conditioning (Sudan fork)','$300B funder fight (Gulf vs US)','Lebanon framework follow-through','Truth Social signaling in talks'],
+ mil:`A high-tempo week: the US struck 10 Iranian targets, then brokered the stand-down and the Doha talks (Jun 30) — force and diplomacy in the same 96 hours. Graham's "take the Strait" framing remains in reserve; Trump's "Iran will no longer exist" warning is the new high-water mark of the pressure track.`,
+ pol:`Three simultaneous mediation tracks now define US posture (see the Diplomatic tab): Iran (Doha), Lebanon (signed framework, US as guarantor), and Sudan (Boulos/Quintet). Each carries a cross-pressure — most sharply the UAE arms-sale fork, where the lever most effective on Sudan is the partnership the US needs for the Iran $300B funding. Truth Social signaling remains the wildcard.`,
+ eco:`Oil stayed "relatively contained" through the exchange; the $300B Iran reconstruction funding question (Gulf vs US taxpayer) is unresolved. Post-IEEPA tariff architecture (Section 122 expiry ~Jul 20) is the next cliff.`,
+ parties:[{s:'A',n:'Trump White House — 10-target strike; 3-track mediation; "will no longer exist"'},{s:'ext',n:'Congress/Graham — "take the Strait"; UAE arms conditioning'},{s:'ext',n:'UAE — arms relationship contested over Sudan'}],
+ updates:[
+   {d:'Jun 28',tag:'p',cf:'wire',src:'CBS/RFERL',t:'US struck 10 Iranian targets, then brokered the stand-down + Doha talks Jun 30 — force and diplomacy in 96 hours. Trump: Iran "will no longer exist" if strikes continue.'},
+   {d:'Jun 26',tag:'d',cf:'wire',src:'Wikipedia',t:'US brokered + guarantees the signed Israel-Lebanon framework (withdrawal + disarmament oversight) — second active mediation track.'},
+   {d:'Jun 24',tag:'p',cf:'wire',src:'Refugees International/Sudan Tribune',t:'Third track: Boulos/Quintet on Sudan. UAE arms-sale fork unresolved — the lever most effective on Sudan is the partnership needed for Iran\'s $300B.'},
+ ],
+ assess:`US foreign policy holds at 63. The week showcased an unusually active dual-track posture — striking Iran 10 times while simultaneously running three mediation tracks (Doha, Lebanon, Sudan). The Diplomatic Track makes the portfolio legible and exposes the central tension the Leverage Map already flagged: US leverage over the UAE is the most effective unused lever on Sudan, yet the UAE is the partner the US needs for the Iran $300B and the Gulf coalition. Pulling one lever risks another. "Volatile" stays the right status with the Truth Social wildcard and the Doha outcome both live.`
+},
+
+/* ═══ ECONOMIC ═══ */
+{id:'global-economy',cat:'economic',region:'Global',
+ name:'Global Economy — Contained Through the Exchange',sub:'Oil "relatively contained" · $6B unfrozen · shipping slowed',
+ domain:'Macro / Energy',sev:'medium',status:'declining',since:'Mar 2026',esc:55,lat:0,lon:0,
+ trend:'dn',w10:true,merged:false,esc_history:[90,90,55,58,54,54,54,56,56,55],
+ cas:'War cost: airlines $6.5B/mo fuel at peak; profit forecasts halved',disp:'Developing-world fuel crisis easing',
+ note:'Oil impact "relatively contained" through the exchange (Swissquote) — strategic-reserve releases + tankers quietly exiting Hormuz · $6B Iran assets unfrozen via Qatar · shipping normalization slowed not reversed · oil ticked up modestly',
+ leverage:[
+   {actor:'Iran',asset:'Hormuz control — can spike oil/insurance at will, but impact contained this round',str:'hi'},
+   {actor:'Strategic reserves / OPEC+',asset:'Reserve releases + oversupply cushioned the exchange shock',str:'md'},
+   {actor:'Shipping industry',asset:'Risk-pricing — normalization "slowed not reversed" (Windward)',str:'md'},
+ ],
+ watches:['Doha Jun 30 — oil read-through','demining dispute (Iran sole-claim)','$300B funding fight as market risk','shipping normalization pace'],
+ mil:`N/A — but the exchange was the first real stress test of the recovery, and it largely held. Iran's Hormuz leverage spiked oil only modestly because strategic-reserve releases and quiet tanker transits cushioned the shock.`,
+ pol:`Swissquote's Ozkardeskaya: "the impact on oil prices remains relatively contained" — some key markets even turned oversupplied thanks to strategic-reserve releases and tankers quietly exiting Hormuz, so investors reacted moderately to the escalation. Iran received $6B in frozen assets via Qatar.`,
+ eco:`Oil ticked up modestly during the four-day exchange but stayed near pre-war levels; Windward noted the strait remained operationally open with dozens of vessels transiting, though "the pace of normalization slowed." The pre-war track (Brent ~$60, ~3.1% inflation, IMF 3.3% growth) held through the stress test — the clearest evidence yet that the recovery is becoming resilient to Hormuz flare-ups.`,
+ parties:[{s:'ext',n:'Swissquote/Windward — "contained"; normalization "slowed not reversed"'},{s:'ext',n:'Strategic reserves/OPEC+ — releases cushioned the shock'},{s:'ext',n:'Qatar — $6B Iran asset release'},{s:'ext',n:'Developing nations — relief largely holding'}],
+ updates:[
+   {d:'Jun 29',tag:'e',cf:'wire',src:'Swissquote/CBS',t:'Oil impact "relatively contained" through the exchange — strategic-reserve releases + oversupply + quiet tanker transits cushioned the shock. Oil ticked up only modestly.'},
+   {d:'Jun 28',tag:'e',cf:'wire',src:'Windward/RFERL',t:'Strait remained operationally open with dozens of vessels transiting after the strikes, though "the pace of normalization slowed." $6B Iran assets unfrozen via Qatar.'},
+ ],
+ assess:`The global economy ticks back down to 55 (improving) — and the bigger story is resilience. The strike exchange was the first real stress test of the post-war recovery, and oil stayed "relatively contained" thanks to reserve releases and an oversupplied market, with shipping merely slowing rather than reversing. That's meaningful: the recovery is becoming robust to exactly the Hormuz flare-ups that would have spiked prices three months ago. Iran's Hormuz control remains a "hi" lever, but its macro bite is being absorbed. The Doha Jun 30 outcome is the next read-through.`
+},
+
+/* ═══ STRATEGIC ═══ */
+{id:'chokepoints',cat:'strategic',region:'Global',
+ name:'Maritime Chokepoints — Hormuz Managed-Access',sub:'Iran "governs" strait · sole-demining claim · 2 tankers struck',
+ domain:'Maritime Security',sev:'high',status:'volatile',since:'Ongoing',esc:65,lat:25,lon:50,
+ trend:'dn',w10:true,merged:true,disputed:true,esc_history:[72,72,60,62,58,62,62,66,66,65],
+ cas:'N/A',disp:'$trillions in trade; 2 tankers struck this week',disp2:'',
+ note:'Iran asserts managed-access regime: strait "governed by Iran," sole-demining claim rejecting France/Oman · 2 tankers struck (Ever Lovely, Kiku) on US-cleared Omani route · route dispute remains the strike trigger · stand-down restored free transit',
+ leverage:[
+   {actor:'Iran',asset:'Hormuz — strike capability + "governed by Iran" doctrine + sole-demining + route designation',str:'hi'},
+   {actor:'US 5th Fleet',asset:'Escort + strike power (hit 10 targets); cleared the Omani route — but can\'t compel safety',str:'md'},
+   {actor:'France/Oman',asset:'Offered demining coordination — rejected by Iran',str:'lo'},
+   {actor:'Houthis / China',asset:'Bab el-Mandeb residual + Taiwan Strait gray-zone (rising)',str:'md'},
+ ],
+ watches:['Iran sole-demining claim vs France/Oman','route dispute (US Omani vs Iran northern) — the strike trigger','Doha Jun 30 — Hormuz the agenda','Taiwan Strait gray-zone (rising)'],
+ mil:`Hormuz is now best understood as an Iranian managed-access regime under contestation. Iran struck two tankers this week (Ever Lovely, Kiku) specifically because they used the US-cleared southern Omani route rather than Iran's designated northern route — the route dispute is the literal strike trigger. Iran's parliamentary security chief declared the strait "governed by Iran," and Iran rejected a France/Oman demining offer, insisting only Iran may demine. The stand-down restored free transit, but the governing dispute is unresolved and now heads to Doha. Bab el-Mandeb (Houthi) and Taiwan (rising) remain residual nodes.`,
+ pol:`The methodological upgrade deepens: Iran's leverage over Hormuz is not just physical but doctrinal — it is asserting a sovereign-management claim ("governed by Iran") that the US rejects but cannot easily counter short of permanent escort. The 5th Fleet's "md" counter-lever can clear mines and strike back but cannot guarantee a tanker safe passage, the asymmetry both tanker strikes exposed.`,
+ eco:`The exchange slowed but did not reverse normalization; the central-route demining is now entangled in the sovereignty dispute (Iran's sole-claim vs France/Oman). Doha Jun 30 will take up Hormuz management directly.`,
+ parties:[{s:'ext',n:'Iran — "governs" strait; struck 2 tankers; sole-demining claim'},{s:'ext',n:'US 5th Fleet — cleared Omani route; struck 10 targets; escort limits'},{s:'ext',n:'France/Oman — demining offer rejected by Iran'},{s:'ext',n:'China — Taiwan Strait (rising)'}],
+ updates:[
+   {d:'Jun 28',tag:'s',cf:'wire',src:'RFERL/Araghchi',t:'Iran FM Araghchi: warns against "any new or separate arrangements" for Hormuz; Iran claims sole control. Rejects France/Oman demining offer — only Iran may demine.'},
+   {d:'Jun 27',tag:'s',cf:'wire',src:'NPR/Azizi',t:'2 tankers struck (Ever Lovely, Kiku) on the US-cleared Omani route. Iran: strait "governed by Iran"; route dispute (US Omani vs Iran northern) is the strike trigger.'},
+   {d:'Jun 28',tag:'s',cf:'disputed',src:'Iran vs US',t:'CONFLICTING: Iran asserts sovereign management of Hormuz ("governed by Iran"); US + GCC + Oman reject any Iranian toll/control claim. Open in practice, governance contested.'},
+   {d:'merged',tag:'s',cf:'corr',src:'user KML',t:'Seven-chokepoint database + US base layer (NSA Bahrain, Diego Garcia, Guam) + PLA Djibouti + Russian Tartus retained from uploaded OSINT maps.'},
+ ],
+ assess:`Chokepoints ease slightly to 65 as the stand-down restored free transit — but the structural picture hardened. Iran demonstrated and then doctrinally asserted a managed-access regime over Hormuz: two tankers struck for using the "wrong" route, the strait declared "governed by Iran," and a France/Oman demining offer rejected on sovereignty grounds. The DISPUTED flag now captures a governance dispute, not just a closure claim — Iran asserts sovereign management, the US and GCC reject it, and the strait stays open in practice while contested in principle. The 5th Fleet can strike and demine but can't escort its way out of the asymmetry. Doha Jun 30 takes up Hormuz management directly — the single most consequential maritime negotiation on the board.`
+},
+
+{id:'geopolitical',cat:'strategic',region:'Global',
+ name:'Geopolitical Blocs + China-Cuba Intel',sub:'Gulf as Doha venue + $6B custodian · OTS-Hungary · Bejucal',
+ domain:'Strategic Competition',sev:'watch',status:'watch',since:'2026',esc:58,lat:35,lon:45,
+ trend:'ss',w10:false,merged:true,esc_history:[60,60,58,58,58,58,58,58,58,58],
+ cas:'N/A — analytical + intelligence layer',disp:'N/A',
+ note:'Qatar = $6B Iran-asset custodian + Doha venue · GCC central to $300B + toll rejection · OTS-Hungary pro-EU · Bejucal SIGINT contested · US slashing African visa-processing embassies',
+ leverage:[
+   {actor:'Qatar / GCC',asset:'$6B custodian + Doha venue + $300B reconstruction capital + toll rejection',str:'hi'},
+   {actor:'China',asset:'Bejucal SIGINT (contested) + BRI + Cuba + rare earths',str:'md'},
+   {actor:'Hungary (OTS)',asset:'Pivot from Russia-ally to EU-accession enabler',str:'md'},
+ ],
+ watches:['Qatar as Doha mediator + $6B custodian','GCC as $300B funders + toll rejection','OTS-Hungary pro-EU pivot','Bejucal SIGINT confirmation'],
+ mil:`Your geopolitical comparison pack (GCC, OTS, Iranian/Persianate sphere, West Bank annexation) and China-Cuba layer (Bejucal SIGINT, Huawei, BRI, Mariel) are retained.`,
+ pol:`The Gulf is now the structural hinge of the Iran settlement: Qatar is custodian of the $6B in released Iranian assets and host of the Doha talks, while the GCC collectively rejects Iranian Hormuz tolls and is courted to fund the $300B reconstruction. The OTS-Hungary pro-EU pivot remains a landmark realignment. A minor thread: the US is slashing the number of African embassies that can process visas — soft-power retrenchment.`,
+ eco:`GCC controls ~35% of global oil reserves and is now both the $6B custodian and the courted $300B funder. China-Cuba ties and Bejucal remain the Western-hemisphere story.`,
+ parties:[{s:'ext',n:'Qatar/GCC — $6B custodian + Doha venue + $300B funders + toll rejectors'},{s:'ext',n:'OTS — Hungary now pro-EU'},{s:'ext',n:'China — Bejucal SIGINT (contested); BRI; Cuba'},{s:'ext',n:'US — African visa-embassy drawdown'}],
+ updates:[
+   {d:'Jun 29',tag:'s',cf:'wire',src:'CBS/RFERL',t:'Qatar = custodian of $6B released Iranian assets + host of Doha talks Jun 30. GCC central to $300B + collective toll rejection. The Gulf is the structural hinge of the settlement.'},
+   {d:'Jun 2026',tag:'p',cf:'single',src:'PBS/AP',t:'US to drastically slash the number of African embassies that can process visas — soft-power retrenchment.'},
+   {d:'merged',tag:'i',cf:'osint',src:'user KML',t:'China-Cuba: Bejucal contested SIGINT (US officials believe China upgraded collection 90mi from US), Huawei, BRI, Mariel. Retained as contested intelligence.'},
+ ],
+ assess:`The strategic layer holds at 58. The Gulf's role has crystallized into the structural hinge of the entire Iran settlement: Qatar holds the $6B and hosts Doha, the GCC funds the $300B and rejects the tolls. That makes the bloc the decisive swing actor — and the same reason the US can't easily pull the UAE arms-sale lever on Sudan. OTS-Hungary and Bejucal remain the other tracked threads.`
+},
+];
+
+/* ═══════════════ HELPERS ═══════════════ */
+const SEV_C={critical:'var(--fire)',high:'var(--amber)',medium:'var(--gold)',low:'var(--sage)',watch:'var(--energy)'};
+const SLBL={active:'ACTIVE',escalating:'ESCALATING',stalemate:'STALEMATE',declining:'DE-ESCALATING',deescalating:'DE-ESCALATING',frozen:'FROZEN',ceasefire:'CEASEFIRE',volatile:'VOLATILE',ongoing:'ONGOING',critical:'CRITICAL',watch:'WATCH'};
+const SCLS={active:'ss-act',escalating:'ss-esc',stalemate:'ss-sta',declining:'ss-dec',deescalating:'ss-dec',frozen:'ss-fro',ceasefire:'ss-cfa',volatile:'ss-vol',ongoing:'ss-ong',critical:'ss-cri',watch:'ss-watch'};
+const TCLS={up:'tp-up',dn:'tp-dn',ss:'tp-ss',vl:'tp-vl'};
+const TLBL={up:'↑ ESCALATING',dn:'↓ DE-ESCALATING',ss:'→ STEADY',vl:'↕ VOLATILE'};
+const TARR={up:'↑',dn:'↓',ss:'→',vl:'↕'};
+const TARRC={up:'var(--fire)',dn:'var(--sage)',ss:'var(--gold)',vl:'var(--amber)'};
+const PTAG={A:'pa',B:'pb',C:'pc',ext:'pext'};
+const UTCS={k:'ut-k',d:'ut-d',i:'ut-i',h:'ut-h',s:'ut-s',e:'ut-e',p:'ut-p',osint:'ut-osint'};
+const UTLBL={k:'KINETIC',d:'DIPLO',i:'INTEL',h:'HUMANIT',s:'STRATEGY',e:'ECONOMIC',p:'POLITICAL',osint:'OSINT'};
+const CONF={wire:['WIRE','cf-wire'],corr:['CORROB','cf-corr'],single:['1-SRC','cf-single'],osint:['OSINT-HOLD','cf-osint'],rumint:['RUMINT','cf-rumint'],truth:['TRUTH-SOC','cf-truth'],disputed:['⊗ DISPUTED','cf-disputed']};
+const LEVST={hi:['HIGH','lev-hi'],md:['MED','lev-md'],lo:['LOW','lev-lo']};
+const EACL={A:'ea-a',B:'ea-b',N:'ea-n'};
+const ERCL={strike:'er-strike',deescal:'er-deescal',hold:'er-hold'};
+const DPST={active:['ACTIVE','dp-active'],signed:['SIGNED','dp-signed'],stalled:['STALLED','dp-stalled'],collapsed:['COLLAPSED','dp-collapsed'],scheduled:['SCHEDULED','dp-scheduled']};
+const CCAT={military:'⚔',political:'🏛',economic:'📊',energy:'🛢',strategic:'🔭'};
+const CCLR={military:'var(--fire)',political:'var(--violet)',economic:'var(--sage)',energy:'var(--energy)',strategic:'var(--osint)'};
+const CLBL={military:'⚔ MILITARY CONFLICTS',political:'🏛 POLITICAL EVENTS',economic:'📊 ECONOMIC INTEL',energy:'🛢 ENERGY / OIL',strategic:'🔭 STRATEGIC'};
+const WEEKS=['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10'];
+let flt='all',selId=null,query='',ovMode='timeline',tlFilter='all';
+function groupBy(a,k){return a.reduce((m,i)=>{(m[i[k]]=m[i[k]]||[]).push(i);return m},{});}
+function getColor(d){return CCLR[d.cat]||SEV_C[d.sev]||'#888';}
+function getDelta(d){
+  const h=d.esc_history;if(!h||h.length<2)return 0;
+  const nz=h.filter(v=>v>0);if(nz.length<2)return 0;
+  return h[h.length-1]-h[h.length-2];
+}
+function deltaStr(dl){return dl>0?'+'+dl:dl<0?''+dl:'±0';}
+function deltaCls(dl){if(dl>0)return 'dl-up';if(dl<0)return 'dl-dn';return 'dl-fl';}
+function matchSearch(d){
+  if(!query) return true;
+  const q=query.toLowerCase();
+  const exch=d.exchange?(d.exchange.title+' '+d.exchange.steps.map(s=>s.al+' '+s.act).join(' ')):'';
+  const dipl=d.diplomacy?d.diplomacy.map(x=>x.name+' '+x.desc).join(' '):'';
+  const hay=[d.name,d.sub,d.region,d.domain,d.note,d.mil,d.pol,d.eco,d.assess,exch,dipl,...(d.updates||[]).map(u=>u.t),...(d.watches||[]),...((d.leverage||[]).map(l=>l.actor+' '+l.asset))].join(' ').toLowerCase();
+  return hay.includes(q);
+}
+function filteredDB(){
+  let d=DB.filter(matchSearch);
+  if(flt==='all') return d;
+  if(flt==='critical') return d.filter(x=>x.sev==='critical');
+  if(flt==='escalating') return d.filter(x=>x.trend==='up');
+  if(flt==='deescalating') return d.filter(x=>x.trend==='dn');
+  if(flt==='volatile') return d.filter(x=>x.trend==='vl');
+  if(flt==='disputed') return d.filter(x=>x.disputed===true);
+  if(flt==='exchange') return d.filter(x=>x.exchange_active===true);
+  if(flt==='diplomatic') return d.filter(x=>x.diplomacy_active===true);
+  if(flt==='w10') return d.filter(x=>x.w10===true);
+  if(flt==='merged') return d.filter(x=>x.merged===true);
+  return d;
+}
+function pipCls(d){
+  if(d.cat==='political') return 'p-pol';
+  if(d.cat==='economic') return 'p-eco';
+  if(d.cat==='energy') return 'p-energy';
+  if(d.cat==='strategic') return 'p-strategic';
+  return 'p-'+d.sev.substring(0,4);
+}
+function sparkMini(hist,color){
+  return `<div class="spark">${hist.map((v,i)=>{
+    const h=Math.max(2,Math.round(v/100*16));
+    const isNow=i===hist.length-1;
+    return `<div class="spk-bar" style="height:${h}px;background:${isNow?color:'var(--edge3)'};${isNow?'box-shadow:0 0 3px '+color:''}"></div>`;
+  }).join('')}</div>`;
+}
+function renderList(){
+  const data=filteredDB();
+  const byCat=groupBy(data,'cat');
+  document.getElementById('sc').textContent=data.filter(x=>x.sev==='critical').length;
+  document.getElementById('se').textContent=data.filter(x=>x.trend==='up').length;
+  document.getElementById('sd').textContent=data.filter(x=>x.trend==='dn').length;
+  document.getElementById('sx').textContent=data.filter(x=>x.exchange_active===true).length;
+  document.getElementById('sdp').textContent=data.filter(x=>x.diplomacy_active===true).length;
+  document.getElementById('st').textContent=data.length;
+  const wrap=document.getElementById('listWrap');
+  wrap.innerHTML='';
+  if(!data.length){wrap.innerHTML='<div style="padding:20px;font-family:var(--FM);font-size:9px;color:var(--txt3);letter-spacing:1px;text-align:center">NO MATCHES'+(query?' FOR "'+query.toUpperCase()+'"':'')+'</div>';return;}
+  ['military','political','economic','energy','strategic'].forEach(cat=>{
+    const items=byCat[cat];
+    if(!items||!items.length) return;
+    items.sort((a,b)=>b.esc-a.esc);
+    const byReg=groupBy(items,'region');
+    const cb=document.createElement('div');
+    cb.className='cat-blk';
+    cb.innerHTML=`<div class="cat-hdr ch-${cat}" onclick="this.parentElement.classList.toggle('col')">
+      <span>${CCAT[cat]}</span><span class="cat-lbl cl-${cat}">${CLBL[cat]}</span>
+      <span class="cat-cnt">${items.length}</span><span class="cat-tog">▾</span>
+    </div><div class="cat-body">`;
+    Object.entries(byReg).forEach(([reg,ritems])=>{
+      const rb=document.createElement('div');
+      rb.className='rblk';
+      rb.innerHTML=`<div class="rhdr" onclick="this.parentElement.classList.toggle('col')">
+        <span class="rname">${reg.toUpperCase()}</span><span class="rcnt">${ritems.length}</span><span class="rtog">▾</span>
+      </div><div class="rrows">
+        ${ritems.map(d=>{
+          const dl=getDelta(d);
+          return `
+        <div class="crow${d.id===selId?' sel':''}${d.w10?' w10':''}" onclick="sel('${d.id}')">
+          <div class="pip ${pipCls(d)}"></div>
+          <div>
+            <div class="cn">${d.name}</div>
+            <div class="cs">${d.sub}</div>
+            ${d.w10?'<span class="wbadge wb10">⟡ W10</span>':''}${d.exchange_active?'<span class="wbadge wbex">⇄</span>':''}${d.diplomacy_active?'<span class="wbadge wbdp">⊹</span>':''}${d.disputed?'<span class="wbadge wbdsp">⊗</span>':''}${d.merged?'<span class="wbadge wbm">⊕</span>':''}
+          </div>
+          <div class="cst ${SCLS[d.status]||'ss-act'}">${SLBL[d.status]||d.status.toUpperCase()}</div>
+          <div>${sparkMini(d.esc_history,getColor(d))}</div>
+          <div class="idxcell">
+            <span class="delta ${deltaCls(dl)}">${deltaStr(dl)}</span>
+            <span style="font-family:var(--FM);font-size:11px;font-weight:700;color:${getColor(d)}">${d.esc}</span>
+          </div>
+        </div>`;}).join('')}
+      </div>`;
+      cb.querySelector('.cat-body').appendChild(rb);
+    });
+    cb.querySelector('.cat-body').insertAdjacentHTML('beforeend','</div>');
+    wrap.appendChild(cb);
+  });
+}
+function heroSparkline(d){
+  const color=getColor(d);
+  return `<div class="hero-spark">${d.esc_history.map((v,i)=>{
+    const h=Math.max(3,Math.round(v/100*34));
+    const isNow=i===d.esc_history.length-1;
+    return `<div class="hs-col"><div class="hs-val">${v||'—'}</div>
+      <div class="hs-bar" style="height:${h}px;background:${isNow?color:'var(--edge3)'};${isNow?'box-shadow:0 0 5px '+color:''}"></div>
+      <div class="hs-lbl">${WEEKS[i]}</div></div>`;
+  }).join('')}</div>`;
+}
+function conflictBlock(d){
+  const disp=(d.updates||[]).filter(u=>u.cf==='disputed');
+  if(!disp.length && !d.dispResolved) return '';
+  let html=`<div class="disp-box"><div class="disp-hdr">⊗ CONFLICTING REPORTS — SOURCES DISAGREE</div>`;
+  html+=disp.map(u=>{
+    const parts=u.t.replace(/^CONFLICTING[^:]*:\s*/,'');
+    return `<div class="disp-row"><div class="disp-side">${u.src}</div><div>${parts}</div></div>`;
+  }).join('');
+  if(d.id==='ukraine'){
+    html+=`<div class="disp-res"><b>✓ RESOLVED (W10):</b> ISW's rigorous dataset settles the prior ISW-vs-DeepState dispute — Russia is net-LOSING controlled territory (−281 sq km Dec25–May26), advancing at only 7.87% of its 2025 pace, offensive "largely halted." The "first chance to win" thesis is now evidence-backed.</div>`;
+  }
+  html+=`</div>`;
+  return html;
+}
+function leverageBlock(d){
+  if(!d.leverage) return '';
+  return `<div class="dsec">
+    <div class="dsect" style="color:var(--lev)">⚖ LEVERAGE MAP — WHO HOLDS WHAT LEVER</div>
+    <div class="lev-intro">Leverage is the asset each actor can apply to change outcomes — more durable than any single event. Tracking it explains why a theater moves (or won't).</div>
+    <div class="lev-grid">
+      ${d.leverage.map(l=>`
+      <div class="lev-item">
+        <div class="lev-actor">${l.actor}</div>
+        <div class="lev-asset">${l.asset}</div>
+        <div class="lev-str ${LEVST[l.str][1]}">${LEVST[l.str][0]}</div>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+function exchangeBlock(d){
+  if(!d.exchange) return '';
+  const e=d.exchange;
+  return `<div class="dsec">
+    <div class="dsect" style="color:var(--exch)">⇄ STRIKE-EXCHANGE TRACKER — ${e.title}</div>
+    <div class="exch-intro">Action→reaction chains render tit-for-tat dynamics a flat event log can't show. Each step is dated and attributed; the meter estimates where the cycle sits between de-escalation and full war.</div>
+    <div class="exch-meter">
+      <span class="em-lbl">DE-ESCALATE</span>
+      <div class="em-bar"><div class="em-needle" style="left:calc(${e.meter}% - 1px)"></div></div>
+      <span class="em-lbl">FULL WAR</span>
+      <span class="em-val" style="color:${e.meter>66?'var(--fire)':e.meter>40?'var(--amber)':'var(--sage)'}">${e.meter}</span>
+    </div>
+    <div style="font-family:var(--FM);font-size:8px;color:var(--txt2);margin-bottom:12px;letter-spacing:.5px">${e.meterLabel}</div>
+    <div class="exch-chain">
+      ${e.steps.map(s=>`
+      <div class="exch-step">
+        <div class="exch-date">${s.d}</div>
+        <div class="exch-actor ${EACL[s.actor]||'ea-n'}">${s.al}</div>
+        <div><div class="exch-act">${s.act}</div><div class="exch-resp ${ERCL[s.resp]||'er-hold'}">▸ ${s.respl}</div></div>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+function diplomacyBlock(d){
+  if(!d.diplomacy) return '';
+  return `<div class="dsec">
+    <div class="dsect" style="color:var(--dipl)">⊹ DIPLOMATIC TRACK — NEGOTIATION STATUS</div>
+    <div class="dipl-intro">The negotiation calendar, tracked alongside the kinetic one. Each strand carries a status and a next milestone — because for several theaters the talks now drive outcomes as much as the strikes.</div>
+    <div class="dipl-track">
+      ${d.diplomacy.map(x=>`
+      <div class="dipl-item">
+        <div class="dipl-main">
+          <div class="dipl-name">${x.name}</div>
+          <div class="dipl-desc">${x.desc}</div>
+        </div>
+        <div class="dipl-meta">
+          <div class="dipl-status ${DPST[x.status][1]}">${DPST[x.status][0]}</div>
+          <div class="dipl-next">${x.next.replace(/(JUL 7|JUN 30|DOHA · JUN 30)/g,'<b>$1</b>')}</div>
+        </div>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+function sel(id){
+  selId=id;renderList();
+  const d=DB.find(x=>x.id===id);if(!d)return;
+  document.getElementById('dempty').classList.add('hidden');
+  const dc=document.getElementById('dcontent');
+  dc.classList.remove('hidden');
+  const col=getColor(d);
+  const dl=getDelta(d);
+  const showConflict=d.disputed||d.id==='ukraine';
+  dc.innerHTML=`
+  <div class="dtabs">
+    <div class="dtab act" onclick="sw(this,'tov')">OVERVIEW</div>
+    <div class="dtab" onclick="sw(this,'tul')">INTEL LOG</div>
+    ${d.exchange?'<div class="dtab" onclick="sw(this,\'texch\')" style="color:var(--exch)">⇄ EXCHANGE</div>':''}
+    ${d.diplomacy?'<div class="dtab" onclick="sw(this,\'tdipl\')" style="color:var(--dipl)">⊹ DIPLOMATIC</div>':''}
+    ${d.leverage?'<div class="dtab" onclick="sw(this,\'tlev\')">⚖ LEVERAGE</div>':''}
+    <div class="dtab" onclick="sw(this,'tpa')">ACTORS</div>
+    <div class="dtab" onclick="sw(this,'tas')">ASSESSMENT</div>
+  </div>
+  <div class="dhero">
+    <div class="dsev" style="color:${col}">
+      ${CCAT[d.cat]} ${d.cat.toUpperCase()} | ${(d.sev||'').toUpperCase()} | ${SLBL[d.status]||d.status.toUpperCase()}
+      &nbsp;<span class="tpill ${TCLS[d.trend]||'tp-ss'}">${TLBL[d.trend]||'→'}</span>
+      <span class="tpill" style="color:${col};border-color:${col}">Δ W9→W10 ${deltaStr(dl)}</span>
+      ${d.w10?'<span style="font-family:var(--FM);font-size:7.5px;color:var(--orange);border:1px solid var(--orange);padding:2px 7px;background:var(--orange-d);">⟡ WEEK 10</span>':''}
+      ${d.exchange_active?'<span style="font-family:var(--FM);font-size:7.5px;color:var(--exch);border:1px solid var(--exch);padding:2px 7px;background:var(--exch-d);">⇄ EXCHANGE</span>':''}
+      ${d.diplomacy_active?'<span style="font-family:var(--FM);font-size:7.5px;color:var(--dipl);border:1px solid var(--dipl);padding:2px 7px;background:var(--dipl-d);">⊹ DIPLOMACY</span>':''}
+      ${d.disputed?'<span style="font-family:var(--FM);font-size:7.5px;color:var(--disp);border:1px solid var(--disp);padding:2px 7px;background:var(--disp-d);">⊗ DISPUTED</span>':''}
+      ${d.merged?'<span style="font-family:var(--FM);font-size:7.5px;color:var(--geo);border:1px solid var(--geo);padding:2px 7px;background:var(--geo-d);">⊕ MERGED</span>':''}
+    </div>
+    <div class="dtitle">${d.name}</div>
+    <div class="dloc">📍 ${d.sub}</div>
+    <div class="dreg">🌐 ${d.region} · Since ${d.since}</div>
+    ${heroSparkline(d)}
+  </div>
+  <div class="dsg">
+    <div class="dsc"><div class="dsl">DOMAIN</div><div class="dsv" style="font-size:8.5px">${d.domain}</div></div>
+    <div class="dsc"><div class="dsl">SEVERITY</div><div class="dsv" style="color:${col}">${(d.sev||'').toUpperCase()}</div></div>
+    <div class="dsc"><div class="dsl">INDEX · Δ</div><div class="dsv" style="color:${col}">${d.esc} · ${deltaStr(dl)}</div></div>
+    <div class="dsc"><div class="dsl">HUMAN COST</div><div class="dsv" style="font-size:7.5px;color:var(--fire)">${d.cas}</div></div>
+    <div class="dsc"><div class="dsl">DISPLACEMENT</div><div class="dsv" style="font-size:7.5px;color:var(--amber)">${d.disp}</div></div>
+  </div>
+  <div class="tpanel act" id="tov">
+    ${showConflict?'<div class="dsec" style="padding-bottom:2px">'+conflictBlock(d)+'</div>':''}
+    <div class="intel-3" style="border-bottom:1px solid var(--edge);">
+      <div class="icol"><div class="icol-hdr" style="color:var(--fire)">⚔ MILITARY</div><div class="icol-body">${(d.mil||'—').split('\n\n').map(p=>`<p>${p}</p>`).join('')}</div></div>
+      <div class="icol"><div class="icol-hdr" style="color:var(--violet)">🏛 POLITICAL</div><div class="icol-body">${(d.pol||'—').split('\n\n').map(p=>`<p>${p}</p>`).join('')}</div></div>
+      <div class="icol"><div class="icol-hdr" style="color:var(--sage)">📊 ECONOMIC</div><div class="icol-body">${(d.eco||'—').split('\n\n').map(p=>`<p>${p}</p>`).join('')}</div></div>
+    </div>
+    <div class="dsec">
+      <div class="dsect" style="color:var(--amber)">INTELLIGENCE WATCHPOINTS</div>
+      <div class="watches">${(d.watches||[]).map(w=>`<span class="watch">${w}</span>`).join('')}</div>
+      <div class="cbox" style="margin-top:8px">COORDS: ${d.lat}°, ${d.lon}° · ${d.note}</div>
+    </div>
+  </div>
+  <div class="tpanel hidden" id="tul">
+    <div class="dsec">
+      <div class="dsect">INTELLIGENCE LOG — CONFIDENCE-GRADED</div>
+      <div style="font-family:var(--FM);font-size:7px;color:var(--txt3);margin-bottom:10px;letter-spacing:.5px;line-height:1.6">
+        LADDER: <span class="conf cf-wire">WIRE</span> · <span class="conf cf-corr">CORROB</span> 2+ · <span class="conf cf-single">1-SRC</span> · <span class="conf cf-osint">OSINT-HOLD</span> · <span class="conf cf-truth">TRUTH-SOC</span> · <span class="conf cf-rumint">RUMINT</span> · <span class="conf cf-disputed">⊗ DISPUTED</span> sources conflict
+      </div>
+      <div class="ulog">${(d.updates||[]).map(u=>`
+      <div class="ue">
+        <div class="udcol"><div class="udate">${u.d}</div><div class="utag ${UTCS[u.tag]||'ut-i'}">${UTLBL[u.tag]||'INTEL'}</div></div>
+        <div class="utcol">${u.t}<span class="conf ${CONF[u.cf]?CONF[u.cf][1]:'cf-single'}">${CONF[u.cf]?CONF[u.cf][0]:'1-SRC'}</span>${u.src?`<div class="src-note">src: ${u.src}</div>`:''}</div>
+      </div>`).join('')}</div>
+    </div>
+  </div>
+  ${d.exchange?'<div class="tpanel hidden" id="texch">'+exchangeBlock(d)+'</div>':''}
+  ${d.diplomacy?'<div class="tpanel hidden" id="tdipl">'+diplomacyBlock(d)+'</div>':''}
+  ${d.leverage?'<div class="tpanel hidden" id="tlev">'+leverageBlock(d)+'</div>':''}
+  <div class="tpanel hidden" id="tpa">
+    <div class="dsec"><div class="dsect">PARTIES / ACTORS</div>
+      <div class="parties">${(d.parties||[]).map(p=>`<div class="party"><span class="ptag ${PTAG[p.s]||'pext'}">${p.s}</span><span>${p.n}</span></div>`).join('')}</div>
+    </div>
+  </div>
+  <div class="tpanel hidden" id="tas">
+    <div class="dsec"><div class="dsect" style="color:var(--amber)">STRATEGIC ASSESSMENT — 29 JUNE 2026</div><div class="abox">${d.assess||'—'}</div></div>
+    <div class="dsec"><div class="dsect">ESCALATION HISTORY — W1 → W10 (Δ this week: ${deltaStr(dl)})</div>${heroSparkline(d)}
+      <div style="font-family:var(--FM);font-size:8px;color:var(--txt3);margin-top:8px;letter-spacing:.5px">Rubric: ±5 war start/end or ceasefire signed/collapsed · ±3 new front, mass-casualty, major diplomatic shift · ±1 continued tempo. Deltas auto-computed from esc_history. Indices are analytical judgments, not a computed metric.</div>
+    </div>
+  </div>`;
+  document.getElementById('rpane').scrollTop=0;
+}
+function sw(el,id){
+  document.querySelectorAll('.dtab').forEach(t=>t.classList.remove('act'));
+  document.querySelectorAll('.tpanel').forEach(p=>{p.classList.remove('act');p.classList.add('hidden');});
+  el.classList.add('act');
+  const p=document.getElementById(id);if(p){p.classList.remove('hidden');p.classList.add('act');}
+}
+function setF(f,btn){
+  flt=f;
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('act'));
+  btn.classList.add('act');
+  selId=null;
+  document.getElementById('dempty').classList.remove('hidden');
+  document.getElementById('dcontent').classList.add('hidden');
+  renderList();
+}
+function onSearch(v){
+  query=v.trim();selId=null;
+  document.getElementById('dempty').classList.remove('hidden');
+  document.getElementById('dcontent').classList.add('hidden');
+  renderList();
+}
+function buildTimeline(){
+  const all=[];
+  DB.forEach(d=>(d.updates||[]).forEach(u=>all.push({date:u.d,theater:d.name,cat:d.cat,sev:d.sev,tag:u.tag,cf:u.cf,src:u.src,t:u.t})));
+  const order=d=>{const m=d.match(/Jun (\d+)/);if(m)return 1000-parseInt(m[1]);if(/May|Apr|Mar|Feb|Jan|Nov|Oct|Dec/.test(d))return 2000;return 3000;};
+  all.sort((a,b)=>order(a.date)-order(b.date));
+  return all;
+}
+function openTimeline(){
+  ovMode='timeline';
+  document.getElementById('ovTitle').textContent='⊞ GLOBAL TIMELINE — ALL THEATERS';
+  document.getElementById('tlOverlay').classList.add('show');
+  const cats=['all','military','political','economic','energy','strategic'];
+  document.getElementById('tlFilters').innerHTML=cats.map(c=>`<button class="fb${c===tlFilter?' act':''}" onclick="setTlFilter('${c}')">${c==='all'?'ALL':CLBL[c]}</button>`).join('');
+  renderTimeline();
+}
+function closeOverlay(){document.getElementById('tlOverlay').classList.remove('show');}
+function setTlFilter(c){tlFilter=c;openTimeline();}
+function renderTimeline(){
+  let items=buildTimeline();
+  if(tlFilter!=='all') items=items.filter(i=>i.cat===tlFilter);
+  const byDate=groupBy(items,'date');
+  document.getElementById('tlScroll').innerHTML=Object.entries(byDate).map(([date,its])=>`
+    <div class="tl-day"><div class="tl-date-hdr">${date}</div>
+      ${its.map(i=>`<div class="tl-item${i.sev==='critical'?' crit':''}">
+        <div class="tl-theater">${CCAT[i.cat]} ${i.theater}</div>
+        <div class="tl-txt">${i.t}<span class="conf ${CONF[i.cf]?CONF[i.cf][1]:'cf-single'}">${CONF[i.cf]?CONF[i.cf][0]:'1-SRC'}</span>${i.src?` <span style="color:var(--txt3);font-size:7px">(${i.src})</span>`:''}</div>
+      </div>`).join('')}
+    </div>`).join('');
+}
+function openMovers(){
+  ovMode='movers';
+  document.getElementById('ovTitle').textContent='⇅ MOVERS — BIGGEST WEEK-OVER-WEEK CHANGES (W9→W10)';
+  document.getElementById('tlFilters').innerHTML='';
+  document.getElementById('tlOverlay').classList.add('show');
+  const scored=DB.map(d=>({d,dl:getDelta(d)}));
+  const risers=scored.filter(x=>x.dl>0).sort((a,b)=>b.dl-a.dl);
+  const fallers=scored.filter(x=>x.dl<0).sort((a,b)=>a.dl-b.dl);
+  const flat=scored.filter(x=>x.dl===0);
+  const rowHtml=({d,dl})=>{
+    const col=getColor(d);
+    return `<div class="mv-row" onclick="closeOverlay();sel('${d.id}')">
+      <div><div class="mv-name">${CCAT[d.cat]} ${d.name}</div><div class="mv-cat">${d.region} · idx ${d.esc}</div></div>
+      <div class="mv-delta" style="color:${dl>0?'var(--fire)':dl<0?'var(--sage)':'var(--txt3)'}">${deltaStr(dl)}</div>
+      <div class="mv-spark">${sparkMini(d.esc_history,col)}</div>
+    </div>`;
+  };
+  document.getElementById('tlScroll').innerHTML=`
+    <div class="mv-sec" style="color:var(--fire)">↑ ESCALATING THIS WEEK (${risers.length})</div>
+    ${risers.map(rowHtml).join('')||'<div style="padding:12px;font-family:var(--FM);font-size:9px;color:var(--txt3)">none</div>'}
+    <div class="mv-sec" style="color:var(--sage)">↓ DE-ESCALATING THIS WEEK (${fallers.length})</div>
+    ${fallers.map(rowHtml).join('')||'<div style="padding:12px;font-family:var(--FM);font-size:9px;color:var(--txt3)">none</div>'}
+    <div class="mv-sec" style="color:var(--txt2)">→ UNCHANGED (${flat.length})</div>
+    ${flat.map(rowHtml).join('')}`;
+}
+function openLeverage(){
+  ovMode='leverage';
+  document.getElementById('ovTitle').textContent='⚖ GLOBAL LEVERAGE MAP — WHO HOLDS WHAT LEVER';
+  document.getElementById('tlFilters').innerHTML='';
+  document.getElementById('tlOverlay').classList.add('show');
+  const rows=[];
+  DB.forEach(d=>(d.leverage||[]).forEach(l=>rows.push({theater:d.name,id:d.id,cat:d.cat,actor:l.actor,asset:l.asset,str:l.str})));
+  const byStr={hi:rows.filter(r=>r.str==='hi'),md:rows.filter(r=>r.str==='md'),lo:rows.filter(r=>r.str==='lo')};
+  const secLbl={hi:'⬤ HIGH LEVERAGE — actors who can change outcomes at will',md:'◐ MEDIUM LEVERAGE — meaningful but constrained',lo:'○ LOW LEVERAGE — limited or no enforcement power'};
+  const secCol={hi:'var(--fire)',md:'var(--amber)',lo:'var(--sage)'};
+  const rowHtml=r=>`<div class="lev-brow" onclick="closeOverlay();sel('${r.id}')">
+    <div class="lev-btheater">${CCAT[r.cat]} ${r.theater}</div>
+    <div class="lev-bactor">${r.actor}</div>
+    <div class="lev-basset">${r.asset}</div>
+    <div class="lev-str ${LEVST[r.str][1]}">${LEVST[r.str][0]}</div>
+  </div>`;
+  document.getElementById('tlScroll').innerHTML=`<div class="lev-board">
+    <div class="lev-intro" style="margin-bottom:14px">This board aggregates every actor's primary lever across all theaters, ranked by strength. It answers a different question than the event log: not "what happened" but "who can make things happen."</div>
+    ${['hi','md','lo'].map(s=>`
+      <div class="lev-bcat" style="color:${secCol[s]}">${secLbl[s]} (${byStr[s].length})</div>
+      ${byStr[s].map(rowHtml).join('')}
+    `).join('')}
+  </div>`;
+}
+function openExchange(){
+  ovMode='exchange';
+  document.getElementById('ovTitle').textContent='⇄ STRIKE-EXCHANGE BOARD — ACTIVE TIT-FOR-TAT CYCLES';
+  document.getElementById('tlFilters').innerHTML='';
+  document.getElementById('tlOverlay').classList.add('show');
+  const chains=DB.filter(d=>d.exchange);
+  document.getElementById('tlScroll').innerHTML=`<div class="exch-board">
+    <div class="exch-intro" style="margin-bottom:16px">Active reciprocal strike cycles across all theaters. Each chain shows the action→reaction sequence and an escalation meter (0 = de-escalating, 100 = full war).</div>
+    ${chains.map(d=>{
+      const e=d.exchange;
+      return `<div class="exch-bgroup">
+        <div class="exch-bhdr">${CCAT[d.cat]} ${e.title}</div>
+        <div class="exch-bsub">${d.name} · index ${d.esc} (Δ ${deltaStr(getDelta(d))}) · meter ${e.meter}/100 — ${e.meterLabel}</div>
+        <div class="exch-meter">
+          <span class="em-lbl">DE-ESCALATE</span>
+          <div class="em-bar"><div class="em-needle" style="left:calc(${e.meter}% - 1px)"></div></div>
+          <span class="em-lbl">FULL WAR</span>
+          <span class="em-val" style="color:${e.meter>66?'var(--fire)':e.meter>40?'var(--amber)':'var(--sage)'}">${e.meter}</span>
+        </div>
+        <div class="exch-chain" style="cursor:pointer" onclick="closeOverlay();sel('${d.id}')">
+          ${e.steps.map(s=>`
+          <div class="exch-step">
+            <div class="exch-date">${s.d}</div>
+            <div class="exch-actor ${EACL[s.actor]||'ea-n'}">${s.al}</div>
+            <div><div class="exch-act">${s.act}</div><div class="exch-resp ${ERCL[s.resp]||'er-hold'}">▸ ${s.respl}</div></div>
+          </div>`).join('')}
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+/* ═══ DIPLOMATIC BOARD (global) ═══ */
+function openDiplomatic(){
+  ovMode='diplomatic';
+  document.getElementById('ovTitle').textContent='⊹ DIPLOMATIC BOARD — THE NEGOTIATION CALENDAR';
+  document.getElementById('tlFilters').innerHTML='';
+  document.getElementById('tlOverlay').classList.add('show');
+  const rows=[];
+  DB.forEach(d=>(d.diplomacy||[]).forEach(x=>rows.push({theater:d.name,id:d.id,cat:d.cat,...x})));
+  const order={scheduled:0,active:1,signed:2,stalled:3,collapsed:4};
+  rows.sort((a,b)=>(order[a.status]??9)-(order[b.status]??9));
+  const byStatus=groupBy(rows,'status');
+  const statusOrder=['scheduled','active','signed','stalled','collapsed'];
+  const statusLbl={scheduled:'◷ SCHEDULED — upcoming sessions',active:'◉ ACTIVE — ongoing tracks',signed:'✓ SIGNED — agreements reached',stalled:'◌ STALLED — no movement',collapsed:'✕ COLLAPSED — rejected or dead'};
+  document.getElementById('tlScroll').innerHTML=`<div class="dipl-board">
+    <div class="dipl-intro" style="margin-bottom:16px">Every active negotiation across all theaters, grouped by status. This board is the counterpart to the Strike-Exchange view: it tracks the talks rather than the strikes. Week 10's lesson — the Doha Jun 30 meeting, the signed-but-rejected Lebanon framework, the Sudan HRC Jul 7 deadline — is that the negotiation calendar now drives outcomes as much as the kinetic one.</div>
+    ${statusOrder.filter(s=>byStatus[s]).map(s=>`
+      <div class="dipl-bgroup">
+        <div class="dipl-bhdr">${statusLbl[s]} (${byStatus[s].length})</div>
+        <div class="dipl-track">
+          ${byStatus[s].map(x=>`
+          <div class="dipl-item" style="cursor:pointer" onclick="closeOverlay();sel('${x.id}')">
+            <div class="dipl-main">
+              <div class="dipl-name">${x.name}</div>
+              <div class="dipl-desc">${CCAT[x.cat]} ${x.theater} · ${x.desc}</div>
+            </div>
+            <div class="dipl-meta">
+              <div class="dipl-status ${DPST[x.status][1]}">${DPST[x.status][0]}</div>
+              <div class="dipl-next">${x.next.replace(/(JUL 7|JUN 30|DOHA · JUN 30)/g,'<b>$1</b>')}</div>
+            </div>
+          </div>`).join('')}
+        </div>
+      </div>`).join('')}
+  </div>`;
+}
+/* ═══ EXPORT ═══ */
+function buildKML(data){
+  const cmap={critical:'ff1800e8',high:'ff0080d4',medium:'ff00c8c0',low:'ff40a814',watch:'ff2080e8',military:'ff1800e8',political:'ffb820b8',economic:'ff20a840',energy:'ff20a8e8',strategic:'ff2080d0'};
+  const stys=Object.keys(cmap).map(k=>`<Style id="s-${k}"><IconStyle><color>${cmap[k]}</color><scale>1.0</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/${k==='critical'||k==='military'?'red':k==='high'?'orange':k==='medium'?'ylw':k==='low'?'grn':k==='political'?'purple':'ltblu'}-circle.png</href></Icon></IconStyle><LabelStyle><color>${cmap[k]}</color><scale>0.7</scale></LabelStyle></Style>`).join('');
+  const byCat=groupBy(data,'cat');
+  const folders=Object.entries(byCat).map(([cat,items])=>`
+  <Folder><name>${CLBL[cat]||cat}</name><open>1</open>
+    ${items.map(d=>{const dl=getDelta(d);const lev=(d.leverage||[]).map(l=>l.actor+': '+l.asset+' ['+LEVST[l.str][0]+']').join(' | ');const exch=d.exchange?(d.exchange.title+' (meter '+d.exchange.meter+'/100): '+d.exchange.steps.map(s=>s.d+' '+s.al+' '+s.respl).join(' -> ')):'';const dipl=d.diplomacy?d.diplomacy.map(x=>x.name+' ['+DPST[x.status][0]+', next: '+x.next+']').join(' | '):'';return`
+    <Placemark><name>${d.name}</name>
+      <description><![CDATA[
+        <b>${d.name}</b><br/><b>Category:</b> ${d.cat.toUpperCase()}<br/>
+        <b>Region:</b> ${d.region}<br/><b>Domain:</b> ${d.domain}<br/>
+        <b>Severity:</b> ${(d.sev||'').toUpperCase()}<br/><b>Status:</b> ${SLBL[d.status]||d.status}<br/>
+        <b>Index:</b> ${d.esc}/100 (Δ W9→W10: ${deltaStr(dl)}; history: ${d.esc_history.join(' → ')})<br/>
+        <b>Trend:</b> ${TLBL[d.trend]}${d.disputed?' · DISPUTED':''}${d.exchange_active?' · ACTIVE EXCHANGE':''}${d.diplomacy_active?' · ACTIVE DIPLOMACY':''}<br/><b>Note:</b> ${d.note}<br/>
+        ${exch?'<b>Strike exchange:</b> '+exch+'<br/>':''}
+        ${dipl?'<b>Diplomatic track:</b> '+dipl+'<br/>':''}
+        <b>Leverage:</b> ${lev}<br/>
+        <b>Human cost:</b> ${d.cas}<br/><br/>
+        <b>Military:</b> ${(d.mil||'—').substring(0,400)}...<br/>
+        <b>Political:</b> ${(d.pol||'—').substring(0,300)}...<br/>
+        <b>Economic:</b> ${(d.eco||'—').substring(0,300)}...<br/>
+        <i>v13.0 · 29 Jun 2026 · Week 10</i>
+      ]]></description>
+      <styleUrl>#s-${d.cat}</styleUrl>
+      <ExtendedData>
+        <Data name="Category"><value>${d.cat}</value></Data>
+        <Data name="Index"><value>${d.esc}</value></Data>
+        <Data name="DeltaW9W10"><value>${deltaStr(dl)}</value></Data>
+        <Data name="EscHistory"><value>${d.esc_history.join('|')}</value></Data>
+        <Data name="Trend"><value>${d.trend}</value></Data>
+        <Data name="ActiveExchange"><value>${d.exchange_active?'YES':'no'}</value></Data>
+        <Data name="ActiveDiplomacy"><value>${d.diplomacy_active?'YES':'no'}</value></Data>
+        <Data name="Disputed"><value>${d.disputed?'YES':'no'}</value></Data>
+      </ExtendedData>
+      <Point><coordinates>${d.lon},${d.lat},0</coordinates></Point>
+    </Placemark>`;}).join('')}
+  </Folder>`).join('');
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+<name>Global Intelligence Platform v13.0 — 29 Jun 2026 (Week 10)</name>
+<description>Full-spectrum: ${data.length} theaters. US-Iran spike-and-settle (Bahrain/Kuwait struck, Doha Jun 30); Lebanon framework signed; ISW resolves Ukraine map (Russia net -281 sq km); diplomatic track + strike-exchange tracker + leverage map. 5 categories, confidence-graded, W1-W10 history, auto-deltas. Sources: ISW/CTP, ACLED, Crisis Group, Yale HRL, IRC, CNN, NPR, RFERL, Al Jazeera, HRW + 20 merged user KML/KMZ files.</description>
+${stys}${folders}
+</Document></kml>`;
+}
+function dl(c,n,m){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:m}));a.download=n;a.click();}
+function exportKML(){dl(buildKML(filteredDB()),`GIP-v13-Week10-${flt}.kml`,'application/vnd.google-earth.kml+xml');}
+function exportKMZ(){dl(buildKML(filteredDB()),'GIP-v13-Week10.kmz','application/vnd.google-earth.kmz');}
+function exportCSV(){
+  const data=filteredDB();
+  const hdr=['ID','Name','Cat','Region','Domain','Sev','Status','Trend','Index','DeltaW9W10','W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','ActiveExchange','ActiveDiplomacy','Disputed','TopLeverage','Lat','Lon','HumanCost','Note'];
+  const rows=data.map(d=>{const top=(d.leverage||[]).filter(l=>l.str==='hi').map(l=>l.actor).join('; ');return [d.id,`"${d.name}"`,d.cat,`"${d.region}"`,`"${d.domain}"`,d.sev||'',SLBL[d.status]||d.status,d.trend,d.esc,deltaStr(getDelta(d)),...d.esc_history,d.exchange_active?'YES':'',d.diplomacy_active?'YES':'',d.disputed?'YES':'',`"${top}"`,d.lat,d.lon,`"${d.cas}"`,`"${d.note}"`].join(',');});
+  dl([hdr.join(','),...rows].join('\n'),'GIP-v13-Week10.csv','text/csv');
+}
+renderList();
+</script>
+</body>
+</html>
