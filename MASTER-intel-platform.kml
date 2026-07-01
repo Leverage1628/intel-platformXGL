@@ -1,0 +1,2220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+<name>GLOBAL INTELLIGENCE PLATFORM — MASTER KML (consolidated)</name>
+<description><![CDATA[
+<b>Consolidated master overview</b> — every geographic layer from the project in one file.<br/>
+Merges the live v13 dashboard theaters (Week 10, 29 Jun 2026) with all originally-uploaded intelligence layers:
+chokepoints, oil infrastructure (2021-26), energy/utility grid, oil-sector delta, and the Nigeria non-kinetic stability layer.<br/>
+Toggle folders on/off in Google Earth to switch between analytical layers.<br/>
+<i>Total: 249 placemarks across 6 layer-groups. Sources: ISW/CTP, ACLED, Crisis Group, Yale HRL, IRC + user OSINT uploads.</i>
+]]></description>
+
+  <Style id="theater-crit"><IconStyle><color>ff1800e8</color><scale>1.3</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-stars.png</href></Icon></IconStyle><LabelStyle><scale>0.85</scale></LabelStyle></Style>
+  <Style id="theater"><IconStyle><color>ff1840e8</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle><LabelStyle><scale>0.7</scale></LabelStyle></Style>
+  <Style id="choke"><IconStyle><color>ff00c8ff</color><scale>1.0</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/ferry.png</href></Icon></IconStyle></Style>
+  <Style id="oil"><IconStyle><color>ff2080e8</color><scale>0.9</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/gas_stations.png</href></Icon></IconStyle></Style>
+  <Style id="energy"><IconStyle><color>ff20c8e8</color><scale>0.9</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/electronics.png</href></Icon></IconStyle></Style>
+  <Style id="nigeria"><IconStyle><color>ff40a814</color><scale>0.9</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/info-i.png</href></Icon></IconStyle></Style>
+
+<Folder><name>◤ A — LIVE THEATERS (v13 · Week 10)</name><open>1</open>
+<description><![CDATA[The 16 tracked theaters as of the latest sweep. Split by escalation index.]]></description>
+  <Folder>
+    <name>⚠ Critical (index ≥85)</name>
+    <open>1</open>
+    <description><![CDATA[Highest-escalation theaters]]></description>
+    <Placemark>
+      <name>Sudan Civil War — SAF vs. RSF</name>
+      <description><![CDATA[<b>Sudan Civil War — SAF vs. RSF</b><br/><b>Category:</b> MILITARY<br/><b>Region:</b> North Africa<br/><b>Domain:</b> Civil War / Genocide<br/><b>Severity:</b> CRITICAL<br/><b>Status:</b> ACTIVE<br/><b>Index:</b> 96/100<br/><b>History (W1→W10):</b> 93 → 93 → 94 → 94 → 95 → 96 → 96 → 96 → 96 → 96<br/><b>Flags:</b> ⊹ DIPLOMACY<br/><b>El Obeid: analysts warn fall could exceed El Fasher</b><br/>Yale HRL (Raymond) + ACLED: El Obeid fall could be WORSE than El Fasher (RSF wants Khartoum road) · IRC: fuel/water cut, ~2,000 fled to White Nile, Kosti route at risk · US Envoy Boulos got Hemedti "protect civilians" pledge · Ethiopia-hosted UAE-funded RSF camp confirmed (Reuters) · HRC closes Jul 7]]></description>
+      <styleUrl>#theater-crit</styleUrl>
+      <Point><coordinates>30,15.5,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sahel Jihadist Insurgency — JNIM vs ISSP</name>
+      <description><![CDATA[<b>Sahel Jihadist Insurgency — JNIM vs ISSP</b><br/><b>Category:</b> MILITARY<br/><b>Region:</b> West / Central Africa<br/><b>Domain:</b> Jihadist Insurgency<br/><b>Severity:</b> CRITICAL<br/><b>Status:</b> ESCALATING<br/><b>Index:</b> 93/100<br/><b>History (W1→W10):</b> 91 → 91 → 91 → 92 → 92 → 92 → 92 → 93 → 93 → 93<br/><b>Two-group war: drone 10→80, Kirtachi/Benin, Westerner kidnappings</b><br/>ACLED/ICG reframe: JNIM armed-drone strikes 10 (2024)→80 (2025) · JNIM overran Kirtachi camp Niger (12+ killed, 7 captured) + hit Koualou Benin · NEW: JNIM + ISSP kidnapping campaigns vs Westerners (record highs) · JNIM vs Dozo militias in Mopti · Africa Corps reduced to escorting fuel convoys]]></description>
+      <styleUrl>#theater-crit</styleUrl>
+      <Point><coordinates>2,14,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+  <Folder>
+    <name>● Active theaters (index &lt;85)</name>
+    <open>0</open>
+    <description><![CDATA[Other tracked theaters]]></description>
+    <Placemark>
+      <name>US–Israel vs. Iran — Spike &amp; Settle</name>
+      <description><![CDATA[<b>US–Israel vs. Iran — Spike & Settle</b><br/><b>Category:</b> MILITARY<br/><b>Region:</b> Middle East<br/><b>Domain:</b> Interstate War → Managed Standoff<br/><b>Severity:</b> CRITICAL<br/><b>Status:</b> VOLATILE<br/><b>Index:</b> 79/100<br/><b>History (W1→W10):</b> 92 → 70 → 72 → 71 → 72 → 71 → 72 → 78 → 79 → 79<br/><b>Flags:</b> ⇄ EXCHANGE · ⊹ DIPLOMACY · ⊗ DISPUTED<br/><b>2nd tanker → Bahrain/Kuwait hit → stand-down → Doha</b><br/>EXCHANGE PEAKED THEN SETTLED IN 96H · Jun 27 Iran hit 2nd tanker (M/T Kiku) → US hit 10 Iranian targets → Jun 28 Iran struck US sites in Bahrain + Kuwait → both "stand down," Doha talks Jun 30 · Iran: strait "governed by Iran," strike was "ceasefire management" · $6B frozen assets from Qatar released · Iran rejects France/Oman demining]]></description>
+      <styleUrl>#theater</styleUrl>
+      <Point><coordinates>51,32,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Lebanon — Framework Signed (Contested)</name>
+      <description><![CDATA[<b>Lebanon — Framework Signed (Contested)</b><br/><b>Category:</b> MILITARY<br/><b>Region:</b> Middle East<br/><b>Domain:</b> Framework → Disputed Implementation<br/><b>Severity:</b> HIGH<br/><b>Status:</b> VOLATILE<br/><b>Index:</b> 76/100<br/><b>History (W1→W10):</b> 0 → 0 → 80 → 78 → 78 → 78 → 78 → 78 → 74 → 76<br/><b>Flags:</b> ⊹ DIPLOMACY<br/><b>Trilateral framework signed · Hezbollah "null & void"</b><br/>Trilateral framework SIGNED Jun 26 (5th round, DC) — IDF withdraws from 2 pilot zones, LAF oversees Hezbollah disarmament · Hezbollah (Qassem): "null & void," "surrender," won\]]></description>
+      <styleUrl>#theater</styleUrl>
+      <Point><coordinates>35.4,33.3,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Russia–Ukraine War</name>
+      <description><![CDATA[<b>Russia–Ukraine War</b><br/><b>Category:</b> MILITARY<br/><b>Region:</b> Europe / Russia<br/><b>Domain:</b> Interstate War<br/><b>Severity:</b> CRITICAL<br/><b>Status:</b> ESCALATING<br/><b>Index:</b> 84/100<br/><b>History (W1→W10):</b> 88 → 88 → 88 → 86 → 84 → 84 → 84 → 85 → 84 → 84<br/><b>Flags:</b> ⇄ EXCHANGE<br/><b>ISW: Russia net −281 sq km · offensive "largely halted"</b><br/>DISPUTED FLAG RESOLVED: ISW data — Russia gained 40.64 sq km but LOST 281.1 sq km Dec25-May26 (net loss); only 7.87% of 2025 pace; offensive "largely halted," NOT seasonal · Ukraine advancing at Pokrovsk · Putin resisting own economists\]]></description>
+      <styleUrl>#theater</styleUrl>
+      <Point><coordinates>32,49,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Israel–Gaza War</name>
+      <description><![CDATA[<b>Israel–Gaza War</b><br/><b>Category:</b> MILITARY<br/><b>Region:</b> Middle East<br/><b>Domain:</b> Counterinsurgency<br/><b>Severity:</b> CRITICAL<br/><b>Status:</b> STALEMATE<br/><b>Index:</b> 77/100<br/><b>History (W1→W10):</b> 85 → 85 → 82 → 80 → 79 → 78 → 78 → 78 → 77 → 77<br/><b>Flags:</b> ⊹ DIPLOMACY<br/><b>Israel "running out of targets" · Mladenov plan rejected</b><br/>Shaky ceasefire holds; J-Post: Israel "running out of quality targets," now hitting low-level operatives · 2 killed Khan Younis tent camps Jun 29 · Board of Peace Mladenov demilitarization plan apparently rejected by Hamas · Gulf-capital competition w/ Iran $300B]]></description>
+      <styleUrl>#theater</styleUrl>
+      <Point><coordinates>34.3,31.35,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>DRC — M23/Rwanda + ADF + Cobalt</name>
+      <description><![CDATA[<b>DRC — M23/Rwanda + ADF + Cobalt</b><br/><b>Category:</b> MILITARY<br/><b>Region:</b> Central / South Africa<br/><b>Domain:</b> Proxy War / Resource War<br/><b>Severity:</b> CRITICAL<br/><b>Status:</b> ESCALATING<br/><b>Index:</b> 81/100<br/><b>History (W1→W10):</b> 80 → 80 → 80 → 80 → 80 → 80 → 80 → 81 → 81 → 81<br/><b>Ebola in 4th province · M23 took Uvira · drone war</b><br/>Ebola confirmed in a 4TH province — entire DRC northeast now affected · M23 took Uvira (ACLED); FARDC killed M23 spokesman Ngoma in record drone campaign · ADF active Ituri · G7 Critical Minerals Alliance]]></description>
+      <styleUrl>#theater</styleUrl>
+      <Point><coordinates>29.2,-1.5,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Nigeria — ISWAP + Bandits + IPOB/ESN</name>
+      <description><![CDATA[<b>Nigeria — ISWAP + Bandits + IPOB/ESN</b><br/><b>Category:</b> MILITARY<br/><b>Region:</b> West / Central Africa<br/><b>Domain:</b> Multi-Threat Insurgency<br/><b>Severity:</b> HIGH<br/><b>Status:</b> ESCALATING<br/><b>Index:</b> 67/100<br/><b>History (W1→W10):</b> 65 → 65 → 65 → 66 → 66 → 66 → 66 → 67 → 67 → 67<br/><b>ISSP first Nigeria ops in 6 yrs · IS bridge · officer killings</b><br/>ACLED: ISSP claimed first Nigeria operations in 6+ years (May) · IS bridging ISSP + ISWAP across Niger-Nigeria border · ISWAP killing high-level officers (5 in 5 months) · state-policing plan advancing]]></description>
+      <styleUrl>#theater</styleUrl>
+      <Point><coordinates>9.5,11.5,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Pakistan–Afghanistan War</name>
+      <description><![CDATA[<b>Pakistan–Afghanistan War</b><br/><b>Category:</b> MILITARY<br/><b>Region:</b> South / Central Asia<br/><b>Domain:</b> Interstate War<br/><b>Severity:</b> CRITICAL<br/><b>Status:</b> STALEMATE<br/><b>Index:</b> 76/100<br/><b>History (W1→W10):</b> 78 → 78 → 78 → 76 → 75 → 75 → 75 → 75 → 75 → 76<br/><b>Pakistani airstrikes kill civilians · Iran-deal broker</b><br/>Pakistani airstrikes killed civilians incl. children at Mandokhail (per Taliban) — fresh flare-up · Pakistan central to Iran-deal brokering (Doha mediation w/ Qatar)]]></description>
+      <styleUrl>#theater</styleUrl>
+      <Point><coordinates>69.2,33.5,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Taiwan Strait — China Gray Zone</name>
+      <description><![CDATA[<b>Taiwan Strait — China Gray Zone</b><br/><b>Category:</b> MILITARY<br/><b>Region:</b> East Asia / Pacific<br/><b>Domain:</b> Geopolitical / Gray Zone<br/><b>Severity:</b> HIGH<br/><b>Status:</b> ESCALATING<br/><b>Index:</b> 70/100<br/><b>History (W1→W10):</b> 70 → 70 → 70 → 70 → 70 → 70 → 70 → 70 → 70 → 70<br/><b>China = top Hormuz beneficiary · G7 minerals de-risking</b><br/>China = top Hormuz oil customer; Iran exchange re-exposed China\]]></description>
+      <styleUrl>#theater</styleUrl>
+      <Point><coordinates>121,23.7,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>US Foreign Policy — Strikes + Brokerage</name>
+      <description><![CDATA[<b>US Foreign Policy — Strikes + Brokerage</b><br/><b>Category:</b> POLITICAL<br/><b>Region:</b> North America<br/><b>Domain:</b> Geopolitical Strategy<br/><b>Severity:</b> HIGH<br/><b>Status:</b> VOLATILE<br/><b>Index:</b> 63/100<br/><b>History (W1→W10):</b> 78 → 78 → 75 → 62 → 60 → 60 → 60 → 63 → 63 → 63<br/><b>Flags:</b> ⊹ DIPLOMACY<br/><b>10-target strike · Doha talks · UAE arms fork</b><br/>Struck Iran (10 targets) + brokered Lebanon framework + Doha talks Jun 30 · Trump "Iran will no longer exist" · UAE arms-sale fork on Sudan (Boulos diplomacy) · $300B funder fight]]></description>
+      <styleUrl>#theater</styleUrl>
+      <Point><coordinates>-77,38.9,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Global Economy — Contained Through the Exchange</name>
+      <description><![CDATA[<b>Global Economy — Contained Through the Exchange</b><br/><b>Category:</b> ECONOMIC<br/><b>Region:</b> Global<br/><b>Domain:</b> Macro / Energy<br/><b>Severity:</b> MEDIUM<br/><b>Status:</b> DECLINING<br/><b>Index:</b> 55/100<br/><b>History (W1→W10):</b> 90 → 90 → 55 → 58 → 54 → 54 → 54 → 56 → 56 → 55<br/><b>Oil "relatively contained" · $6B unfrozen · shipping slowed</b><br/>Oil impact "relatively contained" through the exchange (Swissquote) — strategic-reserve releases + tankers quietly exiting Hormuz · $6B Iran assets unfrozen via Qatar · shipping normalization slowed not reversed · oil ticked up modestly]]></description>
+      <styleUrl>#theater</styleUrl>
+      <Point><coordinates>0,0,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Maritime Chokepoints — Hormuz Managed-Access</name>
+      <description><![CDATA[<b>Maritime Chokepoints — Hormuz Managed-Access</b><br/><b>Category:</b> STRATEGIC<br/><b>Region:</b> Global<br/><b>Domain:</b> Maritime Security<br/><b>Severity:</b> HIGH<br/><b>Status:</b> VOLATILE<br/><b>Index:</b> 65/100<br/><b>History (W1→W10):</b> 72 → 72 → 60 → 62 → 58 → 62 → 62 → 66 → 66 → 65<br/><b>Flags:</b> ⊗ DISPUTED<br/><b>Iran "governs" strait · sole-demining claim · 2 tankers struck</b><br/>Iran asserts managed-access regime: strait "governed by Iran," sole-demining claim rejecting France/Oman · 2 tankers struck (Ever Lovely, Kiku) on US-cleared Omani route · route dispute remains the strike trigger · stand-down restored free transit]]></description>
+      <styleUrl>#theater</styleUrl>
+      <Point><coordinates>50,25,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Geopolitical Blocs + China-Cuba Intel</name>
+      <description><![CDATA[<b>Geopolitical Blocs + China-Cuba Intel</b><br/><b>Category:</b> STRATEGIC<br/><b>Region:</b> Global<br/><b>Domain:</b> Strategic Competition<br/><b>Severity:</b> WATCH<br/><b>Status:</b> WATCH<br/><b>Index:</b> 58/100<br/><b>History (W1→W10):</b> 60 → 60 → 58 → 58 → 58 → 58 → 58 → 58 → 58 → 58<br/><b>Gulf as Doha venue + $6B custodian · OTS-Hungary · Bejucal</b><br/>Qatar = $6B Iran-asset custodian + Doha venue · GCC central to $300B + toll rejection · OTS-Hungary pro-EU · Bejucal SIGINT contested · US slashing African visa-processing embassies]]></description>
+      <styleUrl>#theater</styleUrl>
+      <Point><coordinates>45,35,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+</Folder>
+  <Folder>
+    <name>◤ B — MARITIME CHOKEPOINTS + ENERGY ROUTES</name>
+    <open>0</open>
+    <description><![CDATA[From your master chokepoints merge — Hormuz, Bab el-Mandeb, Malacca, Suez, Panama, Gibraltar, Turkish Straits, plus reference energy routes.]]></description>
+    <Placemark>
+      <name>Strait of Hormuz - partial reopening attempts, renewed seizures/shootings</name>
+      <description><![CDATA[Major update: Hormuz remains abnormal. Some vessels transited during partial reopening attempts, but renewed shootings/seizures and blockade pressure kept traffic unstable. Oil and insurance risk remain elevated. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>56.25,26.55,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Hormuz tanker/merchant route stress corridor</name>
+      <description><![CDATA[Approximate commercial transit corridor through the Gulf of Oman, Strait of Hormuz, and Persian Gulf currently under disruption pressure. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>55.2,25.2,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Gulf energy infrastructure damage zone - refineries/LNG/export terminals</name>
+      <description><![CDATA[Major update: Gulf energy facilities across Saudi Arabia, Kuwait, Qatar, UAE and export infrastructure have been damaged, shut, or affected by missile/drone/debris risk. This is the core energy-infrastructure shock zone. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>51.5,25.5,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Lebanon-Israel ceasefire/standoff - southern buffer zone</name>
+      <description><![CDATA[Major update: Lebanon front remains unstable despite wider ceasefire efforts. Israeli buffer-zone posture in southern Lebanon and Hezbollah-related resistance risk remain active. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>35.42,33.2,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Southern Lebanon - Litani buffer/standoff envelope</name>
+      <description><![CDATA[Broad analytical envelope for the southern Lebanon/Litani standoff zone. Not a legal boundary or exact line of control. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>35.1,33.0,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Ukraine - Odesa grid/substation pressure</name>
+      <description><![CDATA[Major update: Russian drone/missile pressure continues against Ukrainian infrastructure, including Odesa-region utility assets. Ukraine remains in high-intensity attritional phase. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>30.73,46.48,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Russia - Tuapse refinery halted/damaged by Ukrainian drone strikes</name>
+      <description><![CDATA[Major update: Russia Tuapse refinery operations halted/damaged after Ukrainian drone strikes, part of Ukraine renewed campaign against Russian energy sites. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>39.07,44.1,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sudan - acute food insecurity / aid collapse center</name>
+      <description><![CDATA[Major update: Sudan food crisis severe, with tens of millions facing acute food insecurity; war continues to destroy state capacity and aid access. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>32.55,15.5,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Chad-Sudan refugee pressure zone</name>
+      <description><![CDATA[Major update: Sudan spillover into Chad continues through refugee pressure, aid shortfalls, and border insecurity. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>22.8,13.8,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Global oil shock marker - Brent/WTI and lost supply pressure</name>
+      <description><![CDATA[Economic update: Hormuz disruption and damaged energy infrastructure pushed oil prices and created one of the largest modern supply shocks by daily output loss. Demand is also being hit by price and trade disruption. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>56.25,26.55,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>EU energy response - tax cuts, gas storage coordination</name>
+      <description><![CDATA[Economic/utility update: EU officials are preparing electricity-tax relief and coordinated gas-storage measures to cushion households and industry from energy-price shocks. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>4.35,50.85,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Germany growth downgrade linked to war energy/raw-material costs</name>
+      <description><![CDATA[Economic update: Germany cut 2026 growth expectations and raised inflation outlook, citing oil, gas, and raw-material cost pressure from the conflict system. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>13.4,52.52,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Aviation fuel cost shock - European long-haul pressure</name>
+      <description><![CDATA[Economic update: Jet-fuel spike is adding substantial cost per passenger on long-haul routes and pressuring airlines/travel demand. Marker placed near London/European aviation hub. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>0.0,51.47,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Corporate guidance + price hikes - global business impact</name>
+      <description><![CDATA[Economic update: Firms across consumer goods, travel, aerospace, mining, and industrial sectors have flagged higher costs, supply-chain disruption, or cut/withdrawn guidance. Marker placed at global market reference node: New York. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-74.01,40.71,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Aluminum supply shock - UAE smelter/export risk</name>
+      <description><![CDATA[Industry update: Gulf aluminum disruption has driven major price shock; the Middle East is a large global aluminum supply base. Marker near UAE industrial/export hub. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>55.27,25.2,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Aluminum supply shock - Bahrain / Gulf producer risk</name>
+      <description><![CDATA[Industry update: Bahrain aluminum production/export infrastructure is part of the Gulf industrial-metals shock from the regional war. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>50.56,26.07,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>DRC copper-cobalt chemical supply strain - Kolwezi/Lualaba</name>
+      <description><![CDATA[Industry update: Congo copper and cobalt miners cut chemical use after Iran-war shipping disruption delayed/cancelled sulfuric acid and related inputs. This can affect copper/cobalt output and battery supply chains. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>25.47,-10.72,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Global manufacturing input-cost pressure</name>
+      <description><![CDATA[Industry update: Factory input costs and delivery delays rose globally due to logistics disruption and energy/freight costs. Marker placed at Singapore as a global trade/logistics hub. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>103.85,1.29,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Electronics/connector supply cost pressure</name>
+      <description><![CDATA[Industry update: Industrial electronics suppliers have warned of price hikes from raw-material and transport-cost increases, including oil-linked plastics/resins. Marker placed in U.S. industrial/electronics corridor. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-75.16,40.0,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Cuba utility crisis - blackouts, fuel shortage, tourism hit</name>
+      <description><![CDATA[Utility update: Cuba remains in severe electricity/fuel stress, with long outages, water/medical-service strain, and tourism disruption. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-82.37,23.11,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Matanzas fuel node - Cuba oil relief but short duration</name>
+      <description><![CDATA[Utility update: Matanzas oil deliveries provide temporary relief but do not resolve Cuba structural fuel shortage and grid fragility. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-81.58,23.05,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Ukraine electricity infrastructure pressure - Odesa</name>
+      <description><![CDATA[Utility update: Ukrainian substations and civilian power infrastructure remain targeted by drone/missile strikes. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>30.73,46.48,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bangladesh imported-fuel power vulnerability</name>
+      <description><![CDATA[Utility update: Bangladesh power sector remains exposed to imported LNG/coal/fuel costs, making electricity pricing and supply vulnerable to Middle East disruption. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>90.41,23.81,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Europe household/industry electricity relief node</name>
+      <description><![CDATA[Utility update: Europe is preparing relief measures for households and industry, including electricity-tax cuts and gas storage coordination. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>4.35,50.85,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Iraq - U.S. dollar shipment halt / militia pressure</name>
+      <description><![CDATA[Regional update: U.S. halted physical dollar shipments to Iraq and suspended some security cooperation to pressure Baghdad over Iran-backed militias. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>44.37,33.31,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Syria-Iraq border watch - drone/militia spillover</name>
+      <description><![CDATA[Regional update: Syria-Iraq border remains a spillover watch zone after drone/militia-related incidents near bases and border areas. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>41.95,36.95,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Gaza - strikes, militia clashes, reconstruction logistics debate</name>
+      <description><![CDATA[Regional update: Gaza remains active with Israeli strikes, internal armed clashes, humanitarian access issues, and reconstruction logistics planning around ports/warehousing/security. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>34.47,31.5,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sahel - jihadist rivalries spill into Niger</name>
+      <description><![CDATA[Regional update: JNIM/Islamic State rivalry and Sahel-based violence have spilled into Niger; regional coordination remains strained. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>7.49,13.52,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Haiti - gang suppression force / Artibonite violence</name>
+      <description><![CDATA[Regional update: Haiti remains a severe armed-collapse zone; international gang-suppression force is understrength while gang attacks continue, including Artibonite region violence. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-72.33,19.45,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Venezuela - Orinoco oil normalization amid global supply stress</name>
+      <description><![CDATA[Regional update: Venezuela oil output/export normalization efforts, including Chevron-linked activity in the Orinoco Belt, gain importance as buyers seek barrels outside Hormuz risk. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-64.25,8.2,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Taiwan - defense budget / deterrence pressure</name>
+      <description><![CDATA[Regional update: Taiwan remains in deterrence pressure mode. U.S. officials warn against delaying defense budget while China applies diplomatic and military pressure. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>121.56,25.04,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>China diplomatic pressure on Taiwan - Africa overflight issue</name>
+      <description><![CDATA[Regional update: Beijing praised states that blocked Taiwan overflight during Africa travel, showing diplomatic coercion beyond the Taiwan Strait. Marker placed near Madagascar/SW Indian Ocean reference area. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>46.87,-18.91,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Myanmar - junta peace offer rejected / regime image management</name>
+      <description><![CDATA[Regional update: Myanmar military-backed government seeks talks with armed opposition, but key rebel groups rejected the offer; civil war remains unresolved. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>96.13,19.76,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sudan pledges and food-crisis support node</name>
+      <description><![CDATA[Regional update: International pledges and aid appeals continue but funding gaps and access constraints keep Sudan in severe humanitarian collapse. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>32.55,15.5,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Eastern DRC - M23/Rwanda track still unresolved</name>
+      <description><![CDATA[Watch update: No clean settlement. M23/Rwanda-DRC dynamics remain unresolved; mineral supply-chain impacts are separately tracked in industry layer. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>29.23,-1.68,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Lebanon ceasefire talks watch - Washington extension attempt</name>
+      <description><![CDATA[Watch update: Lebanon-Israel envoys seek ceasefire extension in Washington, but violations and buffer-zone disputes keep risk high. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-77.04,38.9,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Iran-U.S. talks watch - controlled reopening vs blockade</name>
+      <description><![CDATA[Watch update: Iran-U.S. diplomacy remains fragile. Controlled reopening of Hormuz and U.S. maritime pressure create a bargaining-and-coercion phase. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>51.39,35.69,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Hormuz - oil chokepoint</name>
+      <description><![CDATA[Reference: critical oil and gas shipping chokepoint between Iran and Oman. Current disruption is the primary global energy shock driver. Coordinates approximate.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>56.25,26.55,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bab el-Mandeb - Red Sea/Suez access</name>
+      <description><![CDATA[Reference: Red Sea access chokepoint. Watch for simultaneous disruption with Hormuz creating compounded shipping pressure.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>43.33,12.65,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Suez Canal</name>
+      <description><![CDATA[Reference: major Europe-Asia trade route. Red Sea disruption can reroute traffic around Africa.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>32.55,30.58,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Malacca</name>
+      <description><![CDATA[Reference: major Asia-Europe energy and goods shipping corridor.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>100.95,2.25,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Panama Canal</name>
+      <description><![CDATA[Reference: major Americas interoceanic shipping route.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-79.55,9.08,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Panama Canal marker</name>
+      <description><![CDATA[&lt;b&gt;Panama Canal&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Atlantic-Pacific canal route; major Americas interoceanic trade and energy corridor.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-79.55000,9.08000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Panama Canal reference ring</name>
+      <description><![CDATA[&lt;b&gt;Panama Canal&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Atlantic-Pacific canal route; major Americas interoceanic trade and energy corridor.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-79.55000,9.88939,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Gibraltar marker</name>
+      <description><![CDATA[&lt;b&gt;Strait of Gibraltar&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Western entrance to the Mediterranean; key Europe-Africa-Atlantic gateway.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-5.60000,35.96000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Gibraltar reference ring</name>
+      <description><![CDATA[&lt;b&gt;Strait of Gibraltar&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Western entrance to the Mediterranean; key Europe-Africa-Atlantic gateway.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-5.60000,36.76939,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Turkish Straits marker</name>
+      <description><![CDATA[&lt;b&gt;Turkish Straits&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Bosphorus-Dardanelles system linking Black Sea to Mediterranean; vital for Ukraine/Russia/Black Sea trade and naval access.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>29.05000,41.14000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Turkish Straits reference ring</name>
+      <description><![CDATA[&lt;b&gt;Turkish Straits&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Bosphorus-Dardanelles system linking Black Sea to Mediterranean; vital for Ukraine/Russia/Black Sea trade and naval access.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>29.05000,41.94939,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Suez Canal marker</name>
+      <description><![CDATA[&lt;b&gt;Suez Canal&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Europe-Asia canal route; central to Red Sea/Mediterranean trade and energy flows.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>32.27000,30.59000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Suez Canal reference ring</name>
+      <description><![CDATA[&lt;b&gt;Suez Canal&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Europe-Asia canal route; central to Red Sea/Mediterranean trade and energy flows.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>32.27000,31.39939,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bab el-Mandeb marker</name>
+      <description><![CDATA[&lt;b&gt;Bab el-Mandeb&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Red Sea-Indian Ocean gate between Yemen and Djibouti/Eritrea; critical for Suez traffic.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>43.34000,12.65000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bab el-Mandeb reference ring</name>
+      <description><![CDATA[&lt;b&gt;Bab el-Mandeb&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Red Sea-Indian Ocean gate between Yemen and Djibouti/Eritrea; critical for Suez traffic.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>43.34000,13.45939,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Cape of Good Hope marker</name>
+      <description><![CDATA[&lt;b&gt;Cape of Good Hope&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Major reroute around Africa when Suez/Red Sea lanes are disrupted; longer transit, higher fuel and insurance costs.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>18.47000,-34.36000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Cape of Good Hope reference ring</name>
+      <description><![CDATA[&lt;b&gt;Cape of Good Hope&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Major reroute around Africa when Suez/Red Sea lanes are disrupted; longer transit, higher fuel and insurance costs.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>18.47000,-33.55061,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Hormuz marker</name>
+      <description><![CDATA[&lt;b&gt;Strait of Hormuz&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Persian Gulf exit between Iran and Oman/UAE; core global oil and LNG chokepoint.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>56.25000,26.57000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Hormuz reference ring</name>
+      <description><![CDATA[&lt;b&gt;Strait of Hormuz&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Persian Gulf exit between Iran and Oman/UAE; core global oil and LNG chokepoint.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>56.25000,27.37939,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Malacca marker</name>
+      <description><![CDATA[&lt;b&gt;Strait of Malacca&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Main maritime route linking Indian Ocean to South China Sea and East Asia.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>103.90000,1.43000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Malacca reference ring</name>
+      <description><![CDATA[&lt;b&gt;Strait of Malacca&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Primary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Main maritime route linking Indian Ocean to South China Sea and East Asia.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>103.90000,2.23939,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>English Channel / Dover Strait marker</name>
+      <description><![CDATA[&lt;b&gt;English Channel / Dover Strait&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Dense Europe-UK maritime corridor; strategic but not usually the first global energy chokepoint analysts cite.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>1.50000,51.00000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>English Channel / Dover Strait reference ring</name>
+      <description><![CDATA[&lt;b&gt;English Channel / Dover Strait&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Dense Europe-UK maritime corridor; strategic but not usually the first global energy chokepoint analysts cite.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>1.50000,51.62953,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Danish Straits marker</name>
+      <description><![CDATA[&lt;b&gt;Danish Straits&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Baltic Sea exit/entry system; important for NATO-Russia/Baltic trade and naval access.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>12.70000,55.80000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Danish Straits reference ring</name>
+      <description><![CDATA[&lt;b&gt;Danish Straits&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Baltic Sea exit/entry system; important for NATO-Russia/Baltic trade and naval access.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>12.70000,56.42953,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mozambique Channel marker</name>
+      <description><![CDATA[&lt;b&gt;Mozambique Channel&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Western Indian Ocean route between Mozambique and Madagascar; relevant for East/Southern Africa shipping and alternate routing.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>41.00000,-18.50000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Mozambique Channel reference ring</name>
+      <description><![CDATA[&lt;b&gt;Mozambique Channel&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Western Indian Ocean route between Mozambique and Madagascar; relevant for East/Southern Africa shipping and alternate routing.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>41.00000,-17.87047,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Drake Passage marker</name>
+      <description><![CDATA[&lt;b&gt;Drake Passage&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Southern Ocean gateway between South America and Antarctica; extreme-weather alternate route, lower regular trade density than primary chokepoints.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-68.00000,-56.00000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Drake Passage reference ring</name>
+      <description><![CDATA[&lt;b&gt;Drake Passage&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Southern Ocean gateway between South America and Antarctica; extreme-weather alternate route, lower regular trade density than primary chokepoints.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-68.00000,-55.37047,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Korea / Tsushima Strait marker</name>
+      <description><![CDATA[&lt;b&gt;Korea / Tsushima Strait&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Route between Korea and Japan; strategically important for Northeast Asia naval movement and trade.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>129.70000,34.50000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Korea / Tsushima Strait reference ring</name>
+      <description><![CDATA[&lt;b&gt;Korea / Tsushima Strait&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Route between Korea and Japan; strategically important for Northeast Asia naval movement and trade.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>129.70000,35.12953,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Tsugaru Strait marker</name>
+      <description><![CDATA[&lt;b&gt;Tsugaru Strait&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Northern Japan passage between Honshu and Hokkaido; important Northeast Asia maritime corridor.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>140.50000,41.50000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Tsugaru Strait reference ring</name>
+      <description><![CDATA[&lt;b&gt;Tsugaru Strait&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Northern Japan passage between Honshu and Hokkaido; important Northeast Asia maritime corridor.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>140.50000,42.12953,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Taiwan / Luzon Strait marker</name>
+      <description><![CDATA[&lt;b&gt;Taiwan / Luzon Strait&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Key western Pacific gateway between Taiwan and the Philippines; connects South China Sea and Philippine Sea.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>121.50000,21.00000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Taiwan / Luzon Strait reference ring</name>
+      <description><![CDATA[&lt;b&gt;Taiwan / Luzon Strait&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Key western Pacific gateway between Taiwan and the Philippines; connects South China Sea and Philippine Sea.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>121.50000,21.62953,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sunda Strait marker</name>
+      <description><![CDATA[&lt;b&gt;Sunda Strait&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Indonesian passage between Java and Sumatra; alternate route to Malacca, constrained by depth/traffic.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>105.85000,-5.92000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sunda Strait reference ring</name>
+      <description><![CDATA[&lt;b&gt;Sunda Strait&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Indonesian passage between Java and Sumatra; alternate route to Malacca, constrained by depth/traffic.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>105.85000,-5.29047,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Lombok Strait marker</name>
+      <description><![CDATA[&lt;b&gt;Lombok Strait&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Deep-water Indonesian passage east of Bali; important alternate route for large vessels avoiding Malacca/Sunda.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>115.80000,-8.55000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Lombok Strait reference ring</name>
+      <description><![CDATA[&lt;b&gt;Lombok Strait&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Deep-water Indonesian passage east of Bali; important alternate route for large vessels avoiding Malacca/Sunda.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>115.80000,-7.92047,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>South China Sea Approaches marker</name>
+      <description><![CDATA[&lt;b&gt;South China Sea Approaches&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Broad strategic maritime basin connecting Malacca, Taiwan/Luzon, and East Asian shipping lanes.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>114.00000,12.00000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>South China Sea Approaches reference ring</name>
+      <description><![CDATA[&lt;b&gt;South China Sea Approaches&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;Tier:&lt;/b&gt; Secondary&lt;br/&gt;
+    &lt;b&gt;Function:&lt;/b&gt; Broad strategic maritime basin connecting Malacca, Taiwan/Luzon, and East Asian shipping lanes.&lt;br/&gt;
+    &lt;b&gt;Framework role:&lt;/b&gt; Maritime chokepoint / global trade route pressure node.&lt;br/&gt;
+    &lt;b&gt;Confidence:&lt;/b&gt; High - stable geography, analytical reference marker.&lt;br/&gt;
+    &lt;b&gt;Note:&lt;/b&gt; Point and ring are approximate, used for visualization in Google Earth, not legal boundaries.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>114.00000,12.62953,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Major: Hormuz / U.S.-Iran standoff</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Middle East / Gulf&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Conflict / maritime chokepoint&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Major&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; The U.S.-Iran track remains stalled and Strait of Hormuz shipping remains disrupted.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; This remains the highest global escalation node because it affects energy flows, shipping, and nearby fronts.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: U.S.-Iran talks stalled; Hormuz shipments lagging&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>56.300000,26.570000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Major: Hormuz / U.S.-Iran standoff - envelope</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Middle East / Gulf&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Conflict / maritime chokepoint&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Major&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; The U.S.-Iran track remains stalled and Strait of Hormuz shipping remains disrupted.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; This remains the highest global escalation node because it affects energy flows, shipping, and nearby fronts.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: U.S.-Iran talks stalled; Hormuz shipments lagging&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>57.408009,26.570000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Major: Eastern Lebanon strike expansion</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Lebanon&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Conflict / airstrike expansion&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Major&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Israeli strikes reportedly expanded into eastern Lebanon despite the ceasefire framework.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Signals continued instability on the Lebanon front and wider strike geography.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Israeli strikes hit east Lebanon, expanding scope&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>36.000000,33.850000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Major: Eastern Lebanon strike expansion - envelope</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Lebanon&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Conflict / airstrike expansion&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Major&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Israeli strikes reportedly expanded into eastern Lebanon despite the ceasefire framework.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Signals continued instability on the Lebanon front and wider strike geography.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Israeli strikes hit east Lebanon, expanding scope&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>36.759340,33.850000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Major: South Lebanon strike / casualties</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Lebanon&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Conflict / strike casualties&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Major&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Strike in southern Lebanon reportedly killed five people, including rescuers, and injured soldiers.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Shows the Lebanon front remains active and politically sensitive.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Israeli strikes kill five in south Lebanon&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>35.400000,33.200000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Major: South Lebanon strike / casualties - envelope</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Lebanon&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Conflict / strike casualties&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Major&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Strike in southern Lebanon reportedly killed five people, including rescuers, and injured soldiers.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Shows the Lebanon front remains active and politically sensitive.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Israeli strikes kill five in south Lebanon&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>36.045989,33.200000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Major: Gaza strike cluster</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Gaza&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Conflict / strike casualties&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Major&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Israeli strikes in Gaza reportedly killed multiple Palestinians, including a child, in Khan Younis and Gaza City.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Gaza remains an active kinetic theater with ongoing humanitarian consequences.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Israeli strikes on Gaza kill five&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>34.450000,31.360000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Major: Gaza strike cluster - envelope</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Gaza&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Conflict / strike casualties&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Major&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Israeli strikes in Gaza reportedly killed multiple Palestinians, including a child, in Khan Younis and Gaza City.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Gaza remains an active kinetic theater with ongoing humanitarian consequences.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Israeli strikes on Gaza kill five&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>35.083015,31.360000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Major: Tuapse refinery fire</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Russia / Ukraine theater&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Energy infrastructure strike&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Major&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; A Ukrainian drone strike caused a major fire at Russia's Tuapse refinery.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Reflects Ukraine's ongoing long-range attritional campaign against Russian energy infrastructure.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Ukraine strikes Russia's Tuapse refinery&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>39.070000,44.100000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Major: Tuapse refinery fire - envelope</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Russia / Ukraine theater&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Energy infrastructure strike&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Major&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; A Ukrainian drone strike caused a major fire at Russia's Tuapse refinery.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Reflects Ukraine's ongoing long-range attritional campaign against Russian energy infrastructure.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Ukraine strikes Russia's Tuapse refinery&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>39.571806,44.100000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Major: Darfur humanitarian breakdown</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Sudan / Darfur&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Humanitarian crisis&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Major&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; UN reporting said children in Darfur are at breaking point amid extreme hunger and violence.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Sudan remains one of the world's worst humanitarian disasters and a major instability node.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Children at breaking point in Darfur&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>24.900000,13.620000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Major: Darfur humanitarian breakdown - envelope</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Sudan / Darfur&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Humanitarian crisis&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Major&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; UN reporting said children in Darfur are at breaking point amid extreme hunger and violence.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Sudan remains one of the world's worst humanitarian disasters and a major instability node.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Children at breaking point in Darfur&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>26.012362,13.620000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Minor: Iraq militia-finance pressure</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Iraq&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Financial / militia pressure&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Minor&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Washington reportedly halted a major cash shipment to Iraq and suspended parts of security cooperation to pressure Iran-backed militias.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Iraq remains a key secondary pressure point in the wider regional conflict system.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: U.S. blocks Iraq dollar shipments&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>44.370000,33.310000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Minor: Iraq militia-finance pressure - envelope</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Iraq&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Financial / militia pressure&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Minor&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Washington reportedly halted a major cash shipment to Iraq and suspended parts of security cooperation to pressure Iran-backed militias.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Iraq remains a key secondary pressure point in the wider regional conflict system.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: U.S. blocks Iraq dollar shipments&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>45.232404,33.310000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Minor: Taiwan arms-sourcing pressure</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Taiwan&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Strategic competition / arms procurement&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Minor&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Taiwan said Chinese sanctions on European arms makers would not derail sourcing.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Deterrence competition continues even without open war.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Taiwan downplays impact of Chinese sanctions&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>121.560000,25.040000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Minor: Taiwan arms-sourcing pressure - envelope</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Taiwan&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Strategic competition / arms procurement&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Minor&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Taiwan said Chinese sanctions on European arms makers would not derail sourcing.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Deterrence competition continues even without open war.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Taiwan downplays impact of Chinese sanctions&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>122.355486,25.040000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Minor: Eastern DRC resource-security issue</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Eastern DRC&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Resource conflict / security&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Minor&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Outside companies and governments are paying more attention to eastern Congo mining assets amid persistent insecurity.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Links conflict dynamics more tightly to strategic minerals and outside interests.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: U.S. companies eye Congo mining assets&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>29.170000,-1.680000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Minor: Eastern DRC resource-security issue - envelope</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Eastern DRC&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Resource conflict / security&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Minor&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Outside companies and governments are paying more attention to eastern Congo mining assets amid persistent insecurity.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Links conflict dynamics more tightly to strategic minerals and outside interests.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: U.S. companies eye Congo mining assets&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>29.981159,-1.680000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Minor: Sahel/Horn spillover pressure</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Horn / wider African spillover&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Economic-humanitarian spillover&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Minor&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Conflict and shipping disruption are worsening aid and food-cost pressures in vulnerable African states.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Shows how conflicts are stacking across regions through transport and price shocks.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Iran war latest blow to Somalia's malnourished children&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>45.320000,2.040000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Minor: Sahel/Horn spillover pressure - envelope</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Horn / wider African spillover&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; Economic-humanitarian spillover&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Minor&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Conflict and shipping disruption are worsening aid and food-cost pressures in vulnerable African states.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Shows how conflicts are stacking across regions through transport and price shocks.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Iran war latest blow to Somalia's malnourished children&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>46.582061,2.040000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Minor: Haiti gang-control crisis</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Haiti&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; State collapse / gang violence&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Minor&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Haiti remains under severe gang pressure while an outside security mission expands.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Persistent crisis with strategic importance even without daily headline spikes.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Haiti gangs keep up attacks; outside mission builds&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-72.290000,19.140000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Latest Minor: Haiti gang-control crisis - envelope</name>
+      <description><![CDATA[&lt;b&gt;Region:&lt;/b&gt; Haiti&lt;br/&gt;&lt;b&gt;Category:&lt;/b&gt; State collapse / gang violence&lt;br/&gt;&lt;b&gt;Tier:&lt;/b&gt; Minor&lt;br/&gt;&lt;b&gt;Summary:&lt;/b&gt; Haiti remains under severe gang pressure while an outside security mission expands.&lt;br/&gt;&lt;b&gt;Why it matters:&lt;/b&gt; Persistent crisis with strategic importance even without daily headline spikes.&lt;br/&gt;&lt;b&gt;Reference notes:&lt;/b&gt;&lt;ul&gt;&lt;li&gt;Reuters Apr 2026: Haiti gangs keep up attacks; outside mission builds&lt;/li&gt;&lt;/ul&gt;&lt;i&gt;Approximate analytical marker only.&lt;/i&gt;]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-71.527107,19.140000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Merged Master Note</name>
+      <description><![CDATA[&lt;b&gt;Merged master note&lt;/b&gt;&lt;br/&gt;
+This file combines the prior conflict-energy-industry-utility master with the primary/secondary chokepoint overlay and the latest major/minor delta layers.&lt;br/&gt;
+Use it as the broader master view; add short-lived daily deltas separately if you want tighter time tracking.]]></description>
+      <styleUrl>#choke</styleUrl>
+      <Point><coordinates>-20.000000,15.000000,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+  <Folder>
+    <name>◤ C — OIL INFRASTRUCTURE ATTACKS (2021–26)</name>
+    <open>0</open>
+    <description><![CDATA[Confirmed physical attacks, chokepoint/transit disruption, cyber, non-attack damage, and OSINT-grade markers on global oil infrastructure.]]></description>
+    <Placemark>
+      <name>Tuapse refinery / port strike cluster</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Ukrainian drone strikes hit the Tuapse Black Sea port/refinery area, with fires and operational disruption.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukrainian drone attack on Tuapse / refinery halt</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>39.074000,44.100000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Tuapse refinery / port strike cluster - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Ukrainian drone strikes hit the Tuapse Black Sea port/refinery area, with fires and operational disruption.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukrainian drone attack on Tuapse / refinery halt</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>39.513081,44.100000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Novokuibyshevsk refinery halted after drone attack</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Primary oil processing halted after drone attack.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Novokuibyshevsk refinery halted</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>50.600000,53.100000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Novokuibyshevsk refinery halted after drone attack - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Primary oil processing halted after drone attack.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Novokuibyshevsk refinery halted</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>50.975113,53.100000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Syzran refinery strike marker</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Listed in Reuters summaries of Ukraine’s renewed attacks on Russian energy sites.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>48.466000,53.166000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Syzran refinery strike marker - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Listed in Reuters summaries of Ukraine’s renewed attacks on Russian energy sites.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>48.841689,53.166000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Saratov refinery strike marker</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Russian refinery node hit in the wider drone-strike campaign.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>46.000000,51.550000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Saratov refinery strike marker - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Russian refinery node hit in the wider drone-strike campaign.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>46.362197,51.550000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Lukoil NORSI / Kstovo refinery</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Major refinery disrupted by strikes; important Russian fuel-production node.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: NORSI refinery disruption</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>44.200000,56.150000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Lukoil NORSI / Kstovo refinery - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Major refinery disrupted by strikes; important Russian fuel-production node.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: NORSI refinery disruption</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>44.604339,56.150000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Volgograd refinery shutdown marker</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Reuters-linked reporting described shutdown after drone attacks.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>44.500000,48.700000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Volgograd refinery shutdown marker - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Reuters-linked reporting described shutdown after drone attacks.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>44.841249,48.700000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Ukhta refinery fire marker</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> Medium-High<br/>
+    <b>Summary:</b> Fire at primary processing unit after drone attack.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>53.690000,63.560000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Ukhta refinery fire marker - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> Medium-High<br/>
+    <b>Summary:</b> Fire at primary processing unit after drone attack.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>54.195828,63.560000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Ust-Luga gas processing / export complex</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Baltic gas-processing/export infrastructure halted or disrupted after fires/strikes.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ust-Luga disruptions</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>28.287000,59.667000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Ust-Luga gas processing / export complex - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Baltic gas-processing/export infrastructure halted or disrupted after fires/strikes.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ust-Luga disruptions</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>28.911356,59.667000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Primorsk oil terminal</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Strategic Baltic crude export terminal damaged or disrupted in Ukraine strike campaign.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>28.610000,60.366000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Primorsk oil terminal - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Strategic Baltic crude export terminal damaged or disrupted in Ukraine strike campaign.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>29.247699,60.366000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sheskharis / Novorossiysk oil terminal</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Black Sea export terminal area listed among damaged energy infrastructure.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>37.777000,44.713000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sheskharis / Novorossiysk oil terminal - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Black Sea export terminal area listed among damaged energy infrastructure.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>38.220706,44.713000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Samara pipeline / pumping infrastructure</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> Medium-High<br/>
+    <b>Summary:</b> Pipeline/pumping infrastructure node in broader energy strike campaign.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>50.100000,53.200000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Samara pipeline / pumping infrastructure - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Russia<br/>
+    <b>Event type:</b> Drone / physical attack<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> Medium-High<br/>
+    <b>Summary:</b> Pipeline/pumping infrastructure node in broader energy strike campaign.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Ukraine renews attacks on Russian energy sites</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>50.551185,53.200000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Jeddah Aramco petroleum distribution station</name>
+      <description><![CDATA[<b>Region / Country:</b> Saudi Arabia<br/>
+    <b>Event type:</b> Missile/drone physical attack<br/>
+    <b>Date range:</b> 2022<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Houthi attack caused fires at storage tanks at Jeddah petroleum distribution infrastructure.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Mar 2022: Aramco Jeddah attack</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>39.172000,21.543000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Jeddah Aramco petroleum distribution station - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Saudi Arabia<br/>
+    <b>Event type:</b> Missile/drone physical attack<br/>
+    <b>Date range:</b> 2022<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Houthi attack caused fires at storage tanks at Jeddah petroleum distribution infrastructure.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Mar 2022: Aramco Jeddah attack</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>39.414141,21.543000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Saudi Aramco western/central attack cluster</name>
+      <description><![CDATA[<b>Region / Country:</b> Saudi Arabia<br/>
+    <b>Event type:</b> Missile/drone physical attack cluster<br/>
+    <b>Date range:</b> 2022<br/>
+    <b>Confidence:</b> Medium-High<br/>
+    <b>Summary:</b> Houthi-claimed attacks against Saudi Aramco/vital facilities including Jeddah, Yanbu, Rabigh, Riyadh-linked targets.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Mar 2022: Saudi-led coalition reports Houthi attacks</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>44.000000,24.000000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Saudi Aramco western/central attack cluster - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Saudi Arabia<br/>
+    <b>Event type:</b> Missile/drone physical attack cluster<br/>
+    <b>Date range:</b> 2022<br/>
+    <b>Confidence:</b> Medium-High<br/>
+    <b>Summary:</b> Houthi-claimed attacks against Saudi Aramco/vital facilities including Jeddah, Yanbu, Rabigh, Riyadh-linked targets.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Mar 2022: Saudi-led coalition reports Houthi attacks</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>46.169549,24.000000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>ADNOC / Musaffah fuel-truck attack</name>
+      <description><![CDATA[<b>Region / Country:</b> UAE<br/>
+    <b>Event type:</b> Drone attack / energy-linked target<br/>
+    <b>Date range:</b> 2022<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Drone attack hit fuel trucks near ADNOC-linked facilities and airport infrastructure.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Jan 2022: UAE/ADNOC-linked drone attack</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>54.508000,24.337000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>ADNOC / Musaffah fuel-truck attack - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> UAE<br/>
+    <b>Event type:</b> Drone attack / energy-linked target<br/>
+    <b>Date range:</b> 2022<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Drone attack hit fuel trucks near ADNOC-linked facilities and airport infrastructure.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Jan 2022: UAE/ADNOC-linked drone attack</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>54.755191,24.337000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Ruwais refinery / ADNOC complex</name>
+      <description><![CDATA[<b>Region / Country:</b> UAE<br/>
+    <b>Event type:</b> Drone-related attack / precautionary shutdown<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Reuters reported ADNOC shut Ruwais after drone-related attack as a precaution.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Mar 2026: Ruwais / ADNOC shutdown</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>52.730000,24.110000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Ruwais refinery / ADNOC complex - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> UAE<br/>
+    <b>Event type:</b> Drone-related attack / precautionary shutdown<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Reuters reported ADNOC shut Ruwais after drone-related attack as a precaution.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Mar 2026: Ruwais / ADNOC shutdown</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>53.124802,24.110000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Habshan gas complex disruption</name>
+      <description><![CDATA[<b>Region / Country:</b> UAE<br/>
+    <b>Event type:</b> Projectile debris / fires / gas disruption<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> Medium-High<br/>
+    <b>Summary:</b> Regional reporting described suspension after projectile debris caused fires.<br/>
+    <b>Sources to check:</b><ul><li>Regional official reporting, Mar 2026: Habshan gas complex</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>54.700000,23.800000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Habshan gas complex disruption - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> UAE<br/>
+    <b>Event type:</b> Projectile debris / fires / gas disruption<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> Medium-High<br/>
+    <b>Summary:</b> Regional reporting described suspension after projectile debris caused fires.<br/>
+    <b>Sources to check:</b><ul><li>Regional official reporting, Mar 2026: Habshan gas complex</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>55.093854,23.800000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Fujairah export terminal / oil hub</name>
+      <description><![CDATA[<b>Region / Country:</b> UAE<br/>
+    <b>Event type:</b> Drone/fire disruption / export hub<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> Medium-High<br/>
+    <b>Summary:</b> Fujairah loading/export hub saw reported disruptions during Gulf escalation.<br/>
+    <b>Sources to check:</b><ul><li>Regional/industry reporting, 2026: Fujairah hub disruption</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>56.350000,25.130000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Fujairah export terminal / oil hub - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> UAE<br/>
+    <b>Event type:</b> Drone/fire disruption / export hub<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> Medium-High<br/>
+    <b>Summary:</b> Fujairah loading/export hub saw reported disruptions during Gulf escalation.<br/>
+    <b>Sources to check:</b><ul><li>Regional/industry reporting, 2026: Fujairah hub disruption</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>56.698281,25.130000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>South Pars / Asaluyeh energy region</name>
+      <description><![CDATA[<b>Region / Country:</b> Iran<br/>
+    <b>Event type:</b> Strike / energy infrastructure<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Attacks reported on the South Pars/Asaluyeh gas and petrochemical energy region.<br/>
+    <b>Sources to check:</b><ul><li>Reuters sitemap/video-linked reporting, Mar 2026: South Pars / Asaluyeh</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>52.650000,27.480000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>South Pars / Asaluyeh energy region - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Iran<br/>
+    <b>Event type:</b> Strike / energy infrastructure<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Attacks reported on the South Pars/Asaluyeh gas and petrochemical energy region.<br/>
+    <b>Sources to check:</b><ul><li>Reuters sitemap/video-linked reporting, Mar 2026: South Pars / Asaluyeh</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>53.208511,27.480000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Al-Jaili / Khartoum refinery</name>
+      <description><![CDATA[<b>Region / Country:</b> Sudan<br/>
+    <b>Event type:</b> War damage / refinery out of operation<br/>
+    <b>Date range:</b> 2023-2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Sudan’s major refinery remained out of operation with reported destruction and need for replacement after repeated strikes/damage.<br/>
+    <b>Sources to check:</b><ul><li>Al Jazeera / war-cost reporting, Apr 2026; Sudan conflict reporting</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>32.520000,15.800000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Al-Jaili / Khartoum refinery - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Sudan<br/>
+    <b>Event type:</b> War damage / refinery out of operation<br/>
+    <b>Date range:</b> 2023-2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Sudan’s major refinery remained out of operation with reported destruction and need for replacement after repeated strikes/damage.<br/>
+    <b>Sources to check:</b><ul><li>Al Jazeera / war-cost reporting, Apr 2026; Sudan conflict reporting</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>32.847696,15.800000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Heglig oilfield and processing facilities</name>
+      <description><![CDATA[<b>Region / Country:</b> Sudan<br/>
+    <b>Event type:</b> Drone attacks / field control shifts<br/>
+    <b>Date range:</b> 2025<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Sudan shut Heglig facilities after drone attacks; RSF later claimed control.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Sep 2025 and Dec 2025: Heglig oil facilities</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>29.396000,9.997000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Heglig oilfield and processing facilities - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Sudan<br/>
+    <b>Event type:</b> Drone attacks / field control shifts<br/>
+    <b>Date range:</b> 2025<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Sudan shut Heglig facilities after drone attacks; RSF later claimed control.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Sep 2025 and Dec 2025: Heglig oil facilities</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>29.807656,9.997000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Cano Limon-Covenas pipeline / Arauca attacks</name>
+      <description><![CDATA[<b>Region / Country:</b> Colombia<br/>
+    <b>Event type:</b> Pipeline bombing / explosives attack<br/>
+    <b>Date range:</b> 2023-2025<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Repeated attacks suspended pumping and triggered spill-control responses along the Cano Limon-Covenas route.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, 2023-2025: Cano Limon-Covenas attacks</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-71.850000,6.950000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Cano Limon-Covenas pipeline / Arauca attacks - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Colombia<br/>
+    <b>Event type:</b> Pipeline bombing / explosives attack<br/>
+    <b>Date range:</b> 2023-2025<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Repeated attacks suspended pumping and triggered spill-control responses along the Cano Limon-Covenas route.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, 2023-2025: Cano Limon-Covenas attacks</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-71.260080,6.950000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bicentenario pipeline attack zone</name>
+      <description><![CDATA[<b>Region / Country:</b> Colombia<br/>
+    <b>Event type:</b> Pipeline bombing / explosives attack<br/>
+    <b>Date range:</b> 2025<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Explosives attacks forced suspension of pumping on Bicentenario pipeline.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Mar-Apr 2025: Bicentenario pipeline attacks</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-72.150000,6.450000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bicentenario pipeline attack zone - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Colombia<br/>
+    <b>Event type:</b> Pipeline bombing / explosives attack<br/>
+    <b>Date range:</b> 2025<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Explosives attacks forced suspension of pumping on Bicentenario pipeline.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Mar-Apr 2025: Bicentenario pipeline attacks</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-71.560684,6.450000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Hormuz shipping disruption</name>
+      <description><![CDATA[<b>Region / Country:</b> Gulf<br/>
+    <b>Event type:</b> Chokepoint / transit disruption<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Iran seizures, gunfire incidents, and selective passage heavily disrupted energy shipping and maritime insurance.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Hormuz ship seizures/gunfire; shipping traffic disruption</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>56.300000,26.570000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Hormuz shipping disruption - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Gulf<br/>
+    <b>Event type:</b> Chokepoint / transit disruption<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Iran seizures, gunfire incidents, and selective passage heavily disrupted energy shipping and maritime insurance.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Hormuz ship seizures/gunfire; shipping traffic disruption</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>57.256917,26.570000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bab el-Mandeb / Red Sea tanker attack corridor</name>
+      <description><![CDATA[<b>Region / Country:</b> Red Sea<br/>
+    <b>Event type:</b> Chokepoint / tanker attack corridor<br/>
+    <b>Date range:</b> 2023-2025<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Houthi attacks against commercial ships and tankers created rerouting and insurance risk.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, 2023-2025: Houthi Red Sea attacks</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>43.350000,12.600000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bab el-Mandeb / Red Sea tanker attack corridor - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Red Sea<br/>
+    <b>Event type:</b> Chokepoint / tanker attack corridor<br/>
+    <b>Date range:</b> 2023-2025<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Houthi attacks against commercial ships and tankers created rerouting and insurance risk.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, 2023-2025: Houthi Red Sea attacks</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>44.550073,12.600000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sounion crude tanker fire/salvage zone</name>
+      <description><![CDATA[<b>Region / Country:</b> Red Sea<br/>
+    <b>Event type:</b> Tanker attack / crude cargo fire<br/>
+    <b>Date range:</b> 2024<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Crude tanker Sounion was hit by projectiles and burned for days before salvage.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Aug 2024: Sounion attack and fire</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>42.750000,14.900000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sounion crude tanker fire/salvage zone - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Red Sea<br/>
+    <b>Event type:</b> Tanker attack / crude cargo fire<br/>
+    <b>Date range:</b> 2024<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Crude tanker Sounion was hit by projectiles and burned for days before salvage.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Aug 2024: Sounion attack and fire</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>43.495797,14.900000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Rubymar sinking zone</name>
+      <description><![CDATA[<b>Region / Country:</b> Red Sea<br/>
+    <b>Event type:</b> Ship attack / sinking<br/>
+    <b>Date range:</b> 2024<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Rubymar was struck by missiles and later sank, demonstrating maritime attrition risk.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, 2024/2025 summaries: Houthi ship attacks</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>43.200000,13.700000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Rubymar sinking zone - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Red Sea<br/>
+    <b>Event type:</b> Ship attack / sinking<br/>
+    <b>Date range:</b> 2024<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Rubymar was struck by missiles and later sank, demonstrating maritime attrition risk.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, 2024/2025 summaries: Houthi ship attacks</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>43.941826,13.700000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Druzhba pipeline disruption / Ukraine section</name>
+      <description><![CDATA[<b>Region / Country:</b> Ukraine/EU route<br/>
+    <b>Event type:</b> Pipeline transit disruption<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Russian drone strike disrupted flows through the Ukrainian section affecting Hungary/Slovakia before restart.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Druzhba pipeline restart after disruption</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>24.700000,49.100000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Druzhba pipeline disruption / Ukraine section - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Ukraine/EU route<br/>
+    <b>Event type:</b> Pipeline transit disruption<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Russian drone strike disrupted flows through the Ukrainian section affecting Hungary/Slovakia before restart.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Druzhba pipeline restart after disruption</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>25.731974,49.100000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Colonial Pipeline ransomware disruption</name>
+      <description><![CDATA[<b>Region / Country:</b> United States<br/>
+    <b>Event type:</b> Cyber disruption<br/>
+    <b>Date range:</b> 2021<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Ransomware forced shutdown of major U.S. fuel pipeline network, causing shortages and panic buying.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, May 2021: Colonial Pipeline restart after ransomware attack</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-84.387000,33.749000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Colonial Pipeline ransomware disruption - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> United States<br/>
+    <b>Event type:</b> Cyber disruption<br/>
+    <b>Date range:</b> 2021<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Ransomware forced shutdown of major U.S. fuel pipeline network, causing shortages and panic buying.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, May 2021: Colonial Pipeline restart after ransomware attack</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-83.574381,33.749000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Ecuador SOTE pipeline rupture</name>
+      <description><![CDATA[<b>Region / Country:</b> Ecuador<br/>
+    <b>Event type:</b> Non-attack rupture / landslide damage<br/>
+    <b>Date range:</b> 2025<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> SOTE crude pipeline rupture spilled over 25,000 barrels after landslide; not a confirmed attack.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Mar 2025: SOTE rupture and spill</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-77.850000,-0.350000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Ecuador SOTE pipeline rupture - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Ecuador<br/>
+    <b>Event type:</b> Non-attack rupture / landslide damage<br/>
+    <b>Date range:</b> 2025<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> SOTE crude pipeline rupture spilled over 25,000 barrels after landslide; not a confirmed attack.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Mar 2025: SOTE rupture and spill</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-77.354495,-0.350000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Pemex Akal-B offshore platform fire</name>
+      <description><![CDATA[<b>Region / Country:</b> Mexico<br/>
+    <b>Event type:</b> Industrial fire / platform accident<br/>
+    <b>Date range:</b> 2024<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Fire killed one contractor and injured others; not a confirmed attack.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2024: Pemex Akal-B fire</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-92.200000,19.400000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Pemex Akal-B offshore platform fire - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Mexico<br/>
+    <b>Event type:</b> Industrial fire / platform accident<br/>
+    <b>Date range:</b> 2024<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Fire killed one contractor and injured others; not a confirmed attack.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2024: Pemex Akal-B fire</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-91.770191,19.400000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Dos Bocas refinery fires</name>
+      <description><![CDATA[<b>Region / Country:</b> Mexico<br/>
+    <b>Event type:</b> Industrial fire<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> Medium-High<br/>
+    <b>Summary:</b> Fire at Dos Bocas refinery reported, second since March; not a confirmed attack.<br/>
+    <b>Sources to check:</b><ul><li>Reuters video/reporting, Apr 2026: Dos Bocas refinery fire</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-93.088000,18.430000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Dos Bocas refinery fires - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Mexico<br/>
+    <b>Event type:</b> Industrial fire<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> Medium-High<br/>
+    <b>Summary:</b> Fire at Dos Bocas refinery reported, second since March; not a confirmed attack.<br/>
+    <b>Sources to check:</b><ul><li>Reuters video/reporting, Apr 2026: Dos Bocas refinery fire</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-92.755638,18.430000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Pemex Abkatun-area pipeline leak</name>
+      <description><![CDATA[<b>Region / Country:</b> Mexico<br/>
+    <b>Event type:</b> Pipeline leak / operational failure<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Gulf of Mexico spill tied to leak near Pemex Abkatun field; not a confirmed attack.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Pemex Abkatun-area leak</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-92.050000,19.250000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Pemex Abkatun-area pipeline leak - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Mexico<br/>
+    <b>Event type:</b> Pipeline leak / operational failure<br/>
+    <b>Date range:</b> 2026<br/>
+    <b>Confidence:</b> High<br/>
+    <b>Summary:</b> Gulf of Mexico spill tied to leak near Pemex Abkatun field; not a confirmed attack.<br/>
+    <b>Sources to check:</b><ul><li>Reuters, Apr 2026: Pemex Abkatun-area leak</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-91.620586,19.250000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Banias tanker incident / suspected drone attack</name>
+      <description><![CDATA[<b>Region / Country:</b> Syria<br/>
+    <b>Event type:</b> Reported / lower-confidence suspected attack<br/>
+    <b>Date range:</b> 2021<br/>
+    <b>Confidence:</b> Medium<br/>
+    <b>Summary:</b> Syrian oil ministry said tanker fire near Banias followed a suspected drone attack from Lebanese waters; place in lower-confidence layer.<br/>
+    <b>Sources to check:</b><ul><li>Regional reporting / Arab News, 2021: Banias tanker fire</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>35.950000,35.180000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Banias tanker incident / suspected drone attack - approximate impact/risk envelope</name>
+      <description><![CDATA[<b>Region / Country:</b> Syria<br/>
+    <b>Event type:</b> Reported / lower-confidence suspected attack<br/>
+    <b>Date range:</b> 2021<br/>
+    <b>Confidence:</b> Medium<br/>
+    <b>Summary:</b> Syrian oil ministry said tanker fire near Banias followed a suspected drone attack from Lebanese waters; place in lower-confidence layer.<br/>
+    <b>Sources to check:</b><ul><li>Regional reporting / Arab News, 2021: Banias tanker fire</li></ul>
+    <i>Map note: approximate analytical marker, not exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>36.390891,35.180000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>KML Legend / Method Note</name>
+      <description><![CDATA[<b>Legend</b><br/>
+Red = confirmed physical attacks<br/>
+Orange = chokepoint/transit disruption<br/>
+Purple = cyber disruption<br/>
+Green = non-attack industrial/accident/natural damage<br/>
+Yellow = OSINT/lower confidence<br/><br/>
+<b>Method note:</b> This KML prioritizes major, high-confidence events discussed in the 2021-2026 review. It is not a complete database of every small pipeline sabotage, leak, or local refinery fire worldwide.]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-30.000000,25.000000,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+  <Folder>
+    <name>◤ D — ENERGY / INDUSTRY / UTILITY GRID</name>
+    <open>0</open>
+    <description><![CDATA[Energy, industry, supply-chain and household-utility infrastructure layer (Apr 2026 update).]]></description>
+    <Placemark>
+      <name>Strait of Hormuz - partial reopening attempts, renewed seizures/shootings</name>
+      <description><![CDATA[Major update: Hormuz remains abnormal. Some vessels transited during partial reopening attempts, but renewed shootings/seizures and blockade pressure kept traffic unstable. Oil and insurance risk remain elevated. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>56.25,26.55,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Hormuz tanker/merchant route stress corridor</name>
+      <description><![CDATA[Approximate commercial transit corridor through the Gulf of Oman, Strait of Hormuz, and Persian Gulf currently under disruption pressure. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>55.2,25.2,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Gulf energy infrastructure damage zone - refineries/LNG/export terminals</name>
+      <description><![CDATA[Major update: Gulf energy facilities across Saudi Arabia, Kuwait, Qatar, UAE and export infrastructure have been damaged, shut, or affected by missile/drone/debris risk. This is the core energy-infrastructure shock zone. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>51.5,25.5,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Lebanon-Israel ceasefire/standoff - southern buffer zone</name>
+      <description><![CDATA[Major update: Lebanon front remains unstable despite wider ceasefire efforts. Israeli buffer-zone posture in southern Lebanon and Hezbollah-related resistance risk remain active. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>35.42,33.2,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Southern Lebanon - Litani buffer/standoff envelope</name>
+      <description><![CDATA[Broad analytical envelope for the southern Lebanon/Litani standoff zone. Not a legal boundary or exact line of control. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>35.1,33.0,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Ukraine - Odesa grid/substation pressure</name>
+      <description><![CDATA[Major update: Russian drone/missile pressure continues against Ukrainian infrastructure, including Odesa-region utility assets. Ukraine remains in high-intensity attritional phase. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>30.73,46.48,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Russia - Tuapse refinery halted/damaged by Ukrainian drone strikes</name>
+      <description><![CDATA[Major update: Russia Tuapse refinery operations halted/damaged after Ukrainian drone strikes, part of Ukraine renewed campaign against Russian energy sites. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>39.07,44.1,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sudan - acute food insecurity / aid collapse center</name>
+      <description><![CDATA[Major update: Sudan food crisis severe, with tens of millions facing acute food insecurity; war continues to destroy state capacity and aid access. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>32.55,15.5,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Chad-Sudan refugee pressure zone</name>
+      <description><![CDATA[Major update: Sudan spillover into Chad continues through refugee pressure, aid shortfalls, and border insecurity. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>22.8,13.8,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Global oil shock marker - Brent/WTI and lost supply pressure</name>
+      <description><![CDATA[Economic update: Hormuz disruption and damaged energy infrastructure pushed oil prices and created one of the largest modern supply shocks by daily output loss. Demand is also being hit by price and trade disruption. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>56.25,26.55,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>EU energy response - tax cuts, gas storage coordination</name>
+      <description><![CDATA[Economic/utility update: EU officials are preparing electricity-tax relief and coordinated gas-storage measures to cushion households and industry from energy-price shocks. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>4.35,50.85,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Germany growth downgrade linked to war energy/raw-material costs</name>
+      <description><![CDATA[Economic update: Germany cut 2026 growth expectations and raised inflation outlook, citing oil, gas, and raw-material cost pressure from the conflict system. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>13.4,52.52,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Aviation fuel cost shock - European long-haul pressure</name>
+      <description><![CDATA[Economic update: Jet-fuel spike is adding substantial cost per passenger on long-haul routes and pressuring airlines/travel demand. Marker placed near London/European aviation hub. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>0.0,51.47,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Corporate guidance + price hikes - global business impact</name>
+      <description><![CDATA[Economic update: Firms across consumer goods, travel, aerospace, mining, and industrial sectors have flagged higher costs, supply-chain disruption, or cut/withdrawn guidance. Marker placed at global market reference node: New York. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>-74.01,40.71,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Aluminum supply shock - UAE smelter/export risk</name>
+      <description><![CDATA[Industry update: Gulf aluminum disruption has driven major price shock; the Middle East is a large global aluminum supply base. Marker near UAE industrial/export hub. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>55.27,25.2,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Aluminum supply shock - Bahrain / Gulf producer risk</name>
+      <description><![CDATA[Industry update: Bahrain aluminum production/export infrastructure is part of the Gulf industrial-metals shock from the regional war. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>50.56,26.07,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>DRC copper-cobalt chemical supply strain - Kolwezi/Lualaba</name>
+      <description><![CDATA[Industry update: Congo copper and cobalt miners cut chemical use after Iran-war shipping disruption delayed/cancelled sulfuric acid and related inputs. This can affect copper/cobalt output and battery supply chains. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>25.47,-10.72,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Global manufacturing input-cost pressure</name>
+      <description><![CDATA[Industry update: Factory input costs and delivery delays rose globally due to logistics disruption and energy/freight costs. Marker placed at Singapore as a global trade/logistics hub. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>103.85,1.29,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Electronics/connector supply cost pressure</name>
+      <description><![CDATA[Industry update: Industrial electronics suppliers have warned of price hikes from raw-material and transport-cost increases, including oil-linked plastics/resins. Marker placed in U.S. industrial/electronics corridor. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>-75.16,40.0,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Cuba utility crisis - blackouts, fuel shortage, tourism hit</name>
+      <description><![CDATA[Utility update: Cuba remains in severe electricity/fuel stress, with long outages, water/medical-service strain, and tourism disruption. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>-82.37,23.11,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Matanzas fuel node - Cuba oil relief but short duration</name>
+      <description><![CDATA[Utility update: Matanzas oil deliveries provide temporary relief but do not resolve Cuba structural fuel shortage and grid fragility. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>-81.58,23.05,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Ukraine electricity infrastructure pressure - Odesa</name>
+      <description><![CDATA[Utility update: Ukrainian substations and civilian power infrastructure remain targeted by drone/missile strikes. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>30.73,46.48,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bangladesh imported-fuel power vulnerability</name>
+      <description><![CDATA[Utility update: Bangladesh power sector remains exposed to imported LNG/coal/fuel costs, making electricity pricing and supply vulnerable to Middle East disruption. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>90.41,23.81,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Europe household/industry electricity relief node</name>
+      <description><![CDATA[Utility update: Europe is preparing relief measures for households and industry, including electricity-tax cuts and gas storage coordination. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>4.35,50.85,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Iraq - U.S. dollar shipment halt / militia pressure</name>
+      <description><![CDATA[Regional update: U.S. halted physical dollar shipments to Iraq and suspended some security cooperation to pressure Baghdad over Iran-backed militias. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>44.37,33.31,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Syria-Iraq border watch - drone/militia spillover</name>
+      <description><![CDATA[Regional update: Syria-Iraq border remains a spillover watch zone after drone/militia-related incidents near bases and border areas. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>41.95,36.95,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Gaza - strikes, militia clashes, reconstruction logistics debate</name>
+      <description><![CDATA[Regional update: Gaza remains active with Israeli strikes, internal armed clashes, humanitarian access issues, and reconstruction logistics planning around ports/warehousing/security. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>34.47,31.5,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sahel - jihadist rivalries spill into Niger</name>
+      <description><![CDATA[Regional update: JNIM/Islamic State rivalry and Sahel-based violence have spilled into Niger; regional coordination remains strained. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>7.49,13.52,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Haiti - gang suppression force / Artibonite violence</name>
+      <description><![CDATA[Regional update: Haiti remains a severe armed-collapse zone; international gang-suppression force is understrength while gang attacks continue, including Artibonite region violence. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>-72.33,19.45,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Venezuela - Orinoco oil normalization amid global supply stress</name>
+      <description><![CDATA[Regional update: Venezuela oil output/export normalization efforts, including Chevron-linked activity in the Orinoco Belt, gain importance as buyers seek barrels outside Hormuz risk. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>-64.25,8.2,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Taiwan - defense budget / deterrence pressure</name>
+      <description><![CDATA[Regional update: Taiwan remains in deterrence pressure mode. U.S. officials warn against delaying defense budget while China applies diplomatic and military pressure. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>121.56,25.04,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>China diplomatic pressure on Taiwan - Africa overflight issue</name>
+      <description><![CDATA[Regional update: Beijing praised states that blocked Taiwan overflight during Africa travel, showing diplomatic coercion beyond the Taiwan Strait. Marker placed near Madagascar/SW Indian Ocean reference area. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>46.87,-18.91,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Myanmar - junta peace offer rejected / regime image management</name>
+      <description><![CDATA[Regional update: Myanmar military-backed government seeks talks with armed opposition, but key rebel groups rejected the offer; civil war remains unresolved. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>96.13,19.76,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sudan pledges and food-crisis support node</name>
+      <description><![CDATA[Regional update: International pledges and aid appeals continue but funding gaps and access constraints keep Sudan in severe humanitarian collapse. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>32.55,15.5,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Eastern DRC - M23/Rwanda track still unresolved</name>
+      <description><![CDATA[Watch update: No clean settlement. M23/Rwanda-DRC dynamics remain unresolved; mineral supply-chain impacts are separately tracked in industry layer. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>29.23,-1.68,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Lebanon ceasefire talks watch - Washington extension attempt</name>
+      <description><![CDATA[Watch update: Lebanon-Israel envoys seek ceasefire extension in Washington, but violations and buffer-zone disputes keep risk high. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>-77.04,38.9,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Iran-U.S. talks watch - controlled reopening vs blockade</name>
+      <description><![CDATA[Watch update: Iran-U.S. diplomacy remains fragile. Controlled reopening of Hormuz and U.S. maritime pressure create a bargaining-and-coercion phase. Confidence: High where tied to Reuters/AP/IEA/UN-linked reporting in latest sweep. Geography: approximate analytical marker, not an exact target coordinate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>51.39,35.69,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Hormuz - oil chokepoint</name>
+      <description><![CDATA[Reference: critical oil and gas shipping chokepoint between Iran and Oman. Current disruption is the primary global energy shock driver. Coordinates approximate.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>56.25,26.55,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bab el-Mandeb - Red Sea/Suez access</name>
+      <description><![CDATA[Reference: Red Sea access chokepoint. Watch for simultaneous disruption with Hormuz creating compounded shipping pressure.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>43.33,12.65,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Suez Canal</name>
+      <description><![CDATA[Reference: major Europe-Asia trade route. Red Sea disruption can reroute traffic around Africa.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>32.55,30.58,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Malacca</name>
+      <description><![CDATA[Reference: major Asia-Europe energy and goods shipping corridor.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>100.95,2.25,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Panama Canal</name>
+      <description><![CDATA[Reference: major Americas interoceanic shipping route.]]></description>
+      <styleUrl>#energy</styleUrl>
+      <Point><coordinates>-79.55,9.08,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+  <Folder>
+    <name>◤ E — OIL-SECTOR DELTA (attacks/accidents)</name>
+    <open>0</open>
+    <description><![CDATA[Latest oil-sector attack + accident + market-stress delta.]]></description>
+    <Placemark>
+      <name>Perm-area Transneft pumping station strike</name>
+      <description><![CDATA[<b>Region:</b> Russia<br/>
+    <b>Layer:</b> Conflict-linked oil infrastructure attack<br/>
+    <b>Status:</b> Recent<br/>
+    <b>Summary:</b> Ukraine reported striking a Transneft oil pumping station near Perm, with a fire reported.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>56.230000,58.010000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Perm-area Transneft pumping station strike - envelope</name>
+      <description><![CDATA[<b>Region:</b> Russia<br/>
+    <b>Layer:</b> Conflict-linked oil infrastructure attack<br/>
+    <b>Status:</b> Recent<br/>
+    <b>Summary:</b> Ukraine reported striking a Transneft oil pumping station near Perm, with a fire reported.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>56.825191,58.010000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Tuapse refinery strike cluster</name>
+      <description><![CDATA[<b>Region:</b> Russia / Black Sea<br/>
+    <b>Layer:</b> Conflict-linked oil infrastructure attack<br/>
+    <b>Status:</b> Recent<br/>
+    <b>Summary:</b> Tuapse refinery and surrounding logistics remain part of Ukraine's continuing strike campaign on Russian oil infrastructure.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>39.074000,44.100000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Tuapse refinery strike cluster - envelope</name>
+      <description><![CDATA[<b>Region:</b> Russia / Black Sea<br/>
+    <b>Layer:</b> Conflict-linked oil infrastructure attack<br/>
+    <b>Status:</b> Recent<br/>
+    <b>Summary:</b> Tuapse refinery and surrounding logistics remain part of Ukraine's continuing strike campaign on Russian oil infrastructure.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>39.575806,44.100000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Hormuz tanker/shipping disruption</name>
+      <description><![CDATA[<b>Region:</b> Gulf / Hormuz<br/>
+    <b>Layer:</b> Transit-system attack/disruption<br/>
+    <b>Status:</b> Ongoing<br/>
+    <b>Summary:</b> Ship seizures, attacks, and insecurity in Hormuz continue disrupting tanker movement and oil cargo flows.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>56.300000,26.570000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Strait of Hormuz tanker/shipping disruption - envelope</name>
+      <description><![CDATA[<b>Region:</b> Gulf / Hormuz<br/>
+    <b>Layer:</b> Transit-system attack/disruption<br/>
+    <b>Status:</b> Ongoing<br/>
+    <b>Summary:</b> Ship seizures, attacks, and insecurity in Hormuz continue disrupting tanker movement and oil cargo flows.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>57.307281,26.570000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Haifa oil refineries strike-related damage</name>
+      <description><![CDATA[<b>Region:</b> Israel<br/>
+    <b>Layer:</b> Conflict-linked oil infrastructure damage<br/>
+    <b>Status:</b> Recent baseline<br/>
+    <b>Summary:</b> Missile-related debris and direct impact damaged fuel infrastructure at the Haifa refining complex.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>35.000000,32.820000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Haifa oil refineries strike-related damage - envelope</name>
+      <description><![CDATA[<b>Region:</b> Israel<br/>
+    <b>Layer:</b> Conflict-linked oil infrastructure damage<br/>
+    <b>Status:</b> Recent baseline<br/>
+    <b>Summary:</b> Missile-related debris and direct impact damaged fuel infrastructure at the Haifa refining complex.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>35.321606,32.820000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Pemex Abkatun-area leak / Gulf spill</name>
+      <description><![CDATA[<b>Region:</b> Mexico / Gulf of Mexico<br/>
+    <b>Layer:</b> Accident / operational failure<br/>
+    <b>Status:</b> Recent<br/>
+    <b>Summary:</b> Major spill linked to a pipeline leak near the Abkatun field; not a confirmed attack.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-92.050000,19.250000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Pemex Abkatun-area leak / Gulf spill - envelope</name>
+      <description><![CDATA[<b>Region:</b> Mexico / Gulf of Mexico<br/>
+    <b>Layer:</b> Accident / operational failure<br/>
+    <b>Status:</b> Recent<br/>
+    <b>Summary:</b> Major spill linked to a pipeline leak near the Abkatun field; not a confirmed attack.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-91.620586,19.250000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Dos Bocas refinery fire</name>
+      <description><![CDATA[<b>Region:</b> Mexico<br/>
+    <b>Layer:</b> Accident / refinery fire<br/>
+    <b>Status:</b> Recent<br/>
+    <b>Summary:</b> Second reported Dos Bocas refinery fire in less than a month; operational and safety impact.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-93.088000,18.430000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Dos Bocas refinery fire - envelope</name>
+      <description><![CDATA[<b>Region:</b> Mexico<br/>
+    <b>Layer:</b> Accident / refinery fire<br/>
+    <b>Status:</b> Recent<br/>
+    <b>Summary:</b> Second reported Dos Bocas refinery fire in less than a month; operational and safety impact.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-92.755638,18.430000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Viva Energy refinery fire</name>
+      <description><![CDATA[<b>Region:</b> Australia<br/>
+    <b>Layer:</b> Accident / refinery fire<br/>
+    <b>Status:</b> Recent<br/>
+    <b>Summary:</b> Significant fire at one of Australia’s two oil refineries affected petrol and aviation gasoline output.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>144.810000,-38.100000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Viva Energy refinery fire - envelope</name>
+      <description><![CDATA[<b>Region:</b> Australia<br/>
+    <b>Layer:</b> Accident / refinery fire<br/>
+    <b>Status:</b> Recent<br/>
+    <b>Summary:</b> Significant fire at one of Australia’s two oil refineries affected petrol and aviation gasoline output.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>145.267929,-38.100000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>TotalEnergies production offline due to Hormuz</name>
+      <description><![CDATA[<b>Region:</b> Gulf / global oil markets<br/>
+    <b>Layer:</b> Systemic oil-sector stress<br/>
+    <b>Status:</b> Ongoing<br/>
+    <b>Summary:</b> Part of TotalEnergies upstream production remains offline and multiple tankers are delayed due to Hormuz instability.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>55.000000,25.000000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>TotalEnergies production offline due to Hormuz - envelope</name>
+      <description><![CDATA[<b>Region:</b> Gulf / global oil markets<br/>
+    <b>Layer:</b> Systemic oil-sector stress<br/>
+    <b>Status:</b> Ongoing<br/>
+    <b>Summary:</b> Part of TotalEnergies upstream production remains offline and multiple tankers are delayed due to Hormuz instability.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>56.192841,25.000000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Global oil-sector attack/accident delta legend</name>
+      <description><![CDATA[<b>Region:</b> Global<br/>
+    <b>Layer:</b> Reference<br/>
+    <b>Status:</b> Current<br/>
+    <b>Summary:</b> Red = attacks/disruptions, orange = accidents/operational failures, blue = systemic market/logistics stress.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-25.000000,18.000000,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Global oil-sector attack/accident delta legend - envelope</name>
+      <description><![CDATA[<b>Region:</b> Global<br/>
+    <b>Layer:</b> Reference<br/>
+    <b>Status:</b> Current<br/>
+    <b>Summary:</b> Red = attacks/disruptions, orange = accidents/operational failures, blue = systemic market/logistics stress.<br/>
+    <i>Approximate analytical marker for Google Earth; not an exact strike coordinate or legal boundary.</i>]]></description>
+      <styleUrl>#oil</styleUrl>
+      <Point><coordinates>-24.810547,18.000000,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+  <Folder>
+    <name>◤ F — NIGERIA NON-KINETIC STABILITY LAYER</name>
+    <open>0</open>
+    <description><![CDATA[Governance/security reform, judicial accountability, FX/fiscal capacity, and social-pressure markers — the stability counterweight to the kinetic Nigeria picture.]]></description>
+    <Placemark>
+      <name>About this layer</name>
+      <description><![CDATA[<b>Purpose:</b> Separate non-kinetic state-stability indicators from attack / insurgency mapping.<br/>
+<b>Categories:</b><br/>
+- Governance / security reform (green)<br/>
+- Political / judicial / corruption risk (pink)<br/>
+- Economic / energy / FX / fiscal capacity (yellow)<br/>
+- Social pressure / labor / service delivery (white)<br/><br/>
+<b>Use:</b> Overlay this on top of conflict maps to track whether the Nigerian state is stabilizing, fragmenting, or merely firefighting.]]></description>
+      <styleUrl>#nigeria</styleUrl>
+      <Point><coordinates>7.3986,9.0765,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Abuja - State police framework submitted</name>
+      <description><![CDATA[Internal-security reform marker. Represents the IGP / police committee process and federal governance push toward a framework for state police architecture.]]></description>
+      <styleUrl>#nigeria</styleUrl>
+      <Point><coordinates>7.3986,9.0765,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Abuja - Stella Oduah case / plea-bargain-judicial node</name>
+      <description><![CDATA[Political-judicial risk marker. Tracks high-profile anti-corruption / court actions involving former elite officeholders. Use as a pressure indicator on rule-of-law and elite accountability narratives.]]></description>
+      <styleUrl>#nigeria</styleUrl>
+      <Point><coordinates>7.4900,9.0580,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Abuja - CBN FX rules easing / oil-export proceeds policy</name>
+      <description><![CDATA[Economic-governance marker. Tracks monetary and foreign-exchange policy changes affecting investor confidence, export earnings, and state fiscal breathing room.]]></description>
+      <styleUrl>#nigeria</styleUrl>
+      <Point><coordinates>7.4433,9.0608,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Abuja - NUPRC petroleum licensing / upstream investment node</name>
+      <description><![CDATA[Energy-sector governance marker. Tracks petroleum exploration / licensing decisions that affect production outlook, investor access, and long-term state revenue capacity.]]></description>
+      <styleUrl>#nigeria</styleUrl>
+      <Point><coordinates>7.3900,9.0700,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Lekki, Lagos - Dangote refinery export / fuel-hub node</name>
+      <description><![CDATA[Strategic industrial marker. Represents refinery throughput, export growth, fuel-supply leverage, and implications for domestic prices and regional energy influence.]]></description>
+      <styleUrl>#nigeria</styleUrl>
+      <Point><coordinates>3.6150,6.4281,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Abuja - Health-sector labor / service-delivery pressure node</name>
+      <description><![CDATA[Analytic monitoring marker for health-worker unrest, hospital staffing stress, and labor-service delivery pressure in the federal capital. Use as a state-capacity stress indicator rather than a battlefield event.]]></description>
+      <styleUrl>#nigeria</styleUrl>
+      <Point><coordinates>7.3986,9.0765,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+</Document></kml>

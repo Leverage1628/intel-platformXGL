@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLOBAL INTELLIGENCE PLATFORM — MASTER OVERVIEW</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#020407;--s2:#080e1a;--edge:#0f1c2e;--edge2:#182840;--edge3:#203555;
+  --fire:#e83020;--amber:#d07800;--teal:#00b0c4;--sage:#18a050;--cobalt:#1460c0;--orange:#e06018;
+  --exch:#ff6a3d;--dipl:#30c8a0;--lev:#f0b020;--violet:#7020b8;--osint:#20a8e0;
+  --txt:#b4c6dc;--txt2:#506878;--txt3:#1c3040;--hi:#d8eafc;
+  --FD:'Barlow Condensed',sans-serif;--FM:'JetBrains Mono',monospace;--FB:'Rajdhani',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--txt);font-family:var(--FB);min-height:100vh;padding:0 0 70px;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 0% 0%,rgba(232,48,32,.05),transparent),radial-gradient(ellipse 60% 60% at 100% 100%,rgba(20,96,192,.05),transparent);}
+body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.03) 3px,rgba(0,0,0,.03) 4px);}
+.wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 20px;}
+.top{border-bottom:1px solid var(--edge2);padding:34px 0 24px;margin-bottom:28px;}
+.kic{font-family:var(--FM);font-size:9px;letter-spacing:4px;color:var(--orange);margin-bottom:12px;}
+.logo{font-family:var(--FD);font-size:40px;letter-spacing:5px;font-weight:700;color:var(--hi);line-height:.95;}
+.logo em{color:var(--fire);font-style:normal;}
+.logo span{display:block;font-size:19px;letter-spacing:7px;color:var(--txt2);margin-top:6px;}
+.tag{font-family:var(--FM);font-size:9px;letter-spacing:2px;color:var(--txt2);margin-top:14px;line-height:1.7;}
+.live{display:inline-flex;align-items:center;gap:6px;font-family:var(--FM);font-size:8px;letter-spacing:2px;color:var(--fire);border:1px solid rgba(232,48,32,.3);padding:3px 9px;background:rgba(232,48,32,.1);margin-top:16px;}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--fire);animation:p 1s infinite}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.2}}
+/* stat strip */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--edge2);border:1px solid var(--edge2);margin-bottom:28px;}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--ink);padding:16px 12px;text-align:center;}
+.stat .n{font-family:var(--FD);font-size:30px;font-weight:700;color:var(--hi);line-height:1;}
+.stat .l{font-family:var(--FM);font-size:7px;letter-spacing:1.5px;color:var(--txt3);margin-top:6px;}
+.sec{font-family:var(--FM);font-size:9px;letter-spacing:3px;color:var(--txt3);margin:34px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--edge);}
+/* primary access cards */
+.hero{display:block;border:1px solid var(--edge3);background:linear-gradient(135deg,rgba(20,96,192,.12),rgba(8,12,24,.6));padding:24px;text-decoration:none;margin-bottom:12px;transition:all .15s;}
+.hero:hover{border-color:var(--cobalt);transform:translateY(-1px)}
+.hero .k{font-family:var(--FM);font-size:8px;letter-spacing:3px;color:var(--teal);}
+.hero .t{font-family:var(--FD);font-size:24px;letter-spacing:2px;color:var(--hi);font-weight:700;margin:6px 0 4px;}
+.hero .d{font-size:12.5px;color:var(--txt);line-height:1.55;}
+.hero .go{font-family:var(--FM);font-size:9px;color:var(--cobalt);letter-spacing:1px;margin-top:10px;}
+.hk{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px;}
+@media(max-width:640px){.hk{grid-template-columns:1fr}}
+.card{border:1px solid var(--edge2);background:rgba(8,12,24,.5);padding:18px;text-decoration:none;display:block;transition:all .15s;}
+.card:hover{border-color:var(--txt3);background:rgba(10,16,28,.7)}
+.card .k{font-family:var(--FM);font-size:8px;letter-spacing:2px;}
+.card .t{font-family:var(--FD);font-size:17px;letter-spacing:1px;color:var(--hi);font-weight:600;margin:5px 0 4px;}
+.card .d{font-size:11.5px;color:var(--txt2);line-height:1.5;}
+.kk-kml{color:var(--sage)}.kk-earth{color:var(--teal)}.kk-guide{color:var(--orange)}.kk-git{color:var(--violet)}
+/* layer table */
+.layers{display:flex;flex-direction:column;gap:2px;margin-bottom:14px;}
+.lrow{display:grid;grid-template-columns:34px 1fr 70px;gap:12px;padding:11px 14px;border:1px solid var(--edge);background:rgba(5,8,16,.45);align-items:center;}
+.lrow .tag{font-family:var(--FD);font-size:18px;font-weight:700;text-align:center;}
+.lrow .nm{font-family:var(--FB);font-size:13.5px;color:var(--hi);font-weight:600;line-height:1.3;}
+.lrow .ds{font-family:var(--FB);font-size:11px;color:var(--txt2);line-height:1.4;margin-top:2px;}
+.lrow .ct{font-family:var(--FM);font-size:9px;color:var(--txt3);text-align:right;letter-spacing:1px;}
+.lrow .ct b{display:block;font-size:18px;color:var(--orange);font-weight:700;}
+.la{color:var(--fire)}.lb{color:var(--teal)}.lc{color:var(--cobalt)}.ld{color:var(--osint)}.le{color:var(--amber)}.lf{color:var(--sage)}
+/* theater grid */
+.tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-bottom:14px;}
+@media(max-width:640px){.tgrid{grid-template-columns:1fr}}
+.tcell{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--edge);background:rgba(5,8,16,.4);}
+.tcell .idx{font-family:var(--FM);font-size:14px;font-weight:700;min-width:30px;text-align:center;}
+.tcell .nm{font-family:var(--FB);font-size:12px;color:var(--txt);line-height:1.25;}
+.tcell .fl{font-family:var(--FM);font-size:8px;color:var(--txt3);margin-top:1px;}
+.i-c{color:var(--fire)}.i-h{color:var(--amber)}.i-m{color:var(--teal)}.i-l{color:var(--sage)}
+/* version timeline */
+.vrow{display:grid;grid-template-columns:54px 1fr;gap:12px;padding:8px 12px;border-left:1px solid var(--edge2);margin-left:8px;}
+.vrow .v{font-family:var(--FM);font-size:11px;color:var(--orange);font-weight:700;}
+.vrow .lbl{font-size:11.5px;color:var(--txt);line-height:1.45;}
+.vrow.cur{background:rgba(20,96,192,.07)}
+.note{font-family:var(--FM);font-size:10px;color:var(--txt2);line-height:1.7;border-left:2px solid var(--edge3);padding:5px 0 5px 14px;margin-bottom:10px;}
+.foot{font-family:var(--FM);font-size:8px;color:var(--txt3);letter-spacing:1px;text-align:center;margin-top:36px;line-height:1.9;}
+a.plain{color:var(--cobalt);text-decoration:none;}a.plain:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="kic">▣ CONSOLIDATED MASTER OVERVIEW</div>
+    <div class="logo">GLOBAL <em>INTEL</em> PLATFORM<span>MASTER MODEL</span></div>
+    <div class="tag">FULL-SPECTRUM CONFLICT · ECONOMY · ENERGY · POLITICS — EVERY LAYER, ONE INDEX<br/>10-WEEK ANALYTICAL CADENCE · ISW/CTP · ACLED · CRISIS GROUP · YALE HRL · IRC + OSINT UPLOADS</div>
+    <div class="live"><span class="dot"></span>CURRENT: v13 · WEEK 10 · 29 JUN 2026</div>
+  </div>
+
+  <!-- STAT STRIP -->
+  <div class="stats">
+    <div class="stat"><div class="n">249</div><div class="l">TOTAL PLACEMARKS</div></div>
+    <div class="stat"><div class="n">16</div><div class="l">LIVE THEATERS</div></div>
+    <div class="stat"><div class="n">6</div><div class="l">MAP LAYERS</div></div>
+    <div class="stat"><div class="n">10</div><div class="l">WEEKS TRACKED</div></div>
+    <div class="stat"><div class="n">13</div><div class="l">DASHBOARD VERSIONS</div></div>
+  </div>
+
+  <!-- PRIMARY ACCESS -->
+  <div class="sec">▣ PRIMARY ACCESS</div>
+  <a class="hero" href="global-conflict-tracker-v13.html">
+    <div class="k">▸ OPEN THE LIVE DASHBOARD</div>
+    <div class="t">v13 — WEEK 10 INTERACTIVE PLATFORM</div>
+    <div class="d">16 theaters across 5 categories. Confidence-graded intel logs, 10-week escalation history, auto-deltas, conflicting-source flagging, leverage map, strike-exchange tracker, and the diplomatic track. Fully offline-capable.</div>
+    <div class="go">LAUNCH DASHBOARD →</div>
+  </a>
+  <div class="hk">
+    <a class="card" href="MASTER-intel-platform.kml" download>
+      <div class="k kk-kml">⬇ DOWNLOAD</div>
+      <div class="t">MASTER KML</div>
+      <div class="d">All 249 placemarks in one layered file — 6 toggle-able folder groups for Google Earth / My Maps.</div>
+    </a>
+    <a class="card" href="https://earth.google.com/web/" target="_blank" rel="noopener">
+      <div class="k kk-earth">↗ OPEN</div>
+      <div class="t">GOOGLE EARTH WEB</div>
+      <div class="d">Projects → Import → upload the Master KML to explore every layer geographically.</div>
+    </a>
+  </div>
+
+  <!-- MAP LAYERS -->
+  <div class="sec">▣ MASTER KML — THE SIX LAYERS</div>
+  <div class="note">The Master KML merges the live dashboard with every originally-uploaded intelligence layer. Toggle each folder on/off in Google Earth to isolate a view.</div>
+  <div class="layers">
+    <div class="lrow"><div class="tag la">A</div><div><div class="nm">Live Theaters (v13)</div><div class="ds">The 16 currently-tracked theaters, split critical vs. active by escalation index.</div></div><div class="ct"><b>14</b>pins</div></div>
+    <div class="lrow"><div class="tag lb">B</div><div><div class="nm">Maritime Chokepoints + Energy Routes</div><div class="ds">Hormuz, Bab el-Mandeb, Malacca, Suez, Panama, Gibraltar, Turkish Straits + reference routes.</div></div><div class="ct"><b>101</b>pins</div></div>
+    <div class="lrow"><div class="tag lc">C</div><div><div class="nm">Oil Infrastructure Attacks (2021–26)</div><div class="ds">Confirmed attacks, transit/cyber disruption, non-attack damage, OSINT-grade markers.</div></div><div class="ct"><b>67</b>pins</div></div>
+    <div class="lrow"><div class="tag ld">D</div><div><div class="nm">Energy / Industry / Utility Grid</div><div class="ds">Energy, industry, supply-chain and household-utility infrastructure layer.</div></div><div class="ct"><b>42</b>pins</div></div>
+    <div class="lrow"><div class="tag le">E</div><div><div class="nm">Oil-Sector Delta</div><div class="ds">Latest oil-sector attack + accident + market-stress delta snapshot.</div></div><div class="ct"><b>18</b>pins</div></div>
+    <div class="lrow"><div class="tag lf">F</div><div><div class="nm">Nigeria Non-Kinetic Stability Layer</div><div class="ds">Governance reform, judicial accountability, FX/fiscal capacity, social-pressure markers.</div></div><div class="ct"><b>7</b>pins</div></div>
+  </div>
+
+  <!-- LIVE THEATER SNAPSHOT -->
+  <div class="sec">▣ LIVE THEATER SNAPSHOT — W10 INDICES</div>
+  <div class="tgrid">
+    <div class="tcell"><div class="idx i-c">96</div><div><div class="nm">Sudan Civil War — SAF vs RSF</div><div class="fl">⊹ diplomacy · El Obeid precipice</div></div></div>
+    <div class="tcell"><div class="idx i-c">93</div><div><div class="nm">Sahel Jihadist Insurgency — JNIM vs ISSP</div><div class="fl">two-group war · drones 10→80</div></div></div>
+    <div class="tcell"><div class="idx i-h">84</div><div><div class="nm">Russia–Ukraine War</div><div class="fl">⇄ exchange · ISW: Russia net −281 km²</div></div></div>
+    <div class="tcell"><div class="idx i-h">81</div><div><div class="nm">DRC — M23/Rwanda + ADF + Cobalt</div><div class="fl">Ebola 4th province</div></div></div>
+    <div class="tcell"><div class="idx i-h">79</div><div><div class="nm">US–Israel vs Iran — Spike &amp; Settle</div><div class="fl">⇄ exchange · ⊹ diplomacy · ⊗ disputed</div></div></div>
+    <div class="tcell"><div class="idx i-h">77</div><div><div class="nm">Israel–Gaza War</div><div class="fl">⊹ diplomacy · "running out of targets"</div></div></div>
+    <div class="tcell"><div class="idx i-h">76</div><div><div class="nm">Lebanon — Framework Signed (Contested)</div><div class="fl">⊹ diplomacy · "null &amp; void"</div></div></div>
+    <div class="tcell"><div class="idx i-h">76</div><div><div class="nm">Pakistan–Afghanistan War</div><div class="fl">Mandokhail airstrike flare-up</div></div></div>
+    <div class="tcell"><div class="idx i-m">70</div><div><div class="nm">Taiwan Strait — China Gray Zone</div><div class="fl">top Hormuz beneficiary</div></div></div>
+    <div class="tcell"><div class="idx i-m">67</div><div><div class="nm">Nigeria — ISWAP + Bandits + IPOB/ESN</div><div class="fl">IS Niger-Nigeria bridge</div></div></div>
+    <div class="tcell"><div class="idx i-m">65</div><div><div class="nm">Maritime Chokepoints — Hormuz</div><div class="fl">⊗ disputed · "governed by Iran"</div></div></div>
+    <div class="tcell"><div class="idx i-m">63</div><div><div class="nm">US Foreign Policy — Strikes + Brokerage</div><div class="fl">⊹ diplomacy · 3 mediation tracks</div></div></div>
+    <div class="tcell"><div class="idx i-m">58</div><div><div class="nm">Geopolitical Blocs + China-Cuba Intel</div><div class="fl">Gulf = structural hinge</div></div></div>
+    <div class="tcell"><div class="idx i-l">55</div><div><div class="nm">Global Economy — Contained</div><div class="fl">oil "relatively contained"</div></div></div>
+  </div>
+  <div class="note">Index = analytical escalation judgment (0–100), not a computed metric. Flags: ⇄ active strike exchange · ⊹ active diplomacy · ⊗ disputed sources. Open the dashboard for full intel logs, leverage maps, and assessments.</div>
+
+  <!-- DEPLOY / ARCHIVE -->
+  <div class="sec">▣ DEPLOY · ARCHIVE · GUIDES</div>
+  <div class="hk">
+    <a class="card" href="intel-platform-DEPLOY-GUIDE.html">
+      <div class="k kk-guide">▸ READ</div>
+      <div class="t">DEPLOY + USE GUIDE</div>
+      <div class="d">Host with a permanent URL, keep offline, run the weekly archive. Step by step.</div>
+    </a>
+    <a class="card" href="https://github.com/" target="_blank" rel="noopener">
+      <div class="k kk-git">↗ OPEN</div>
+      <div class="t">GITHUB PAGES</div>
+      <div class="d">Your living archive — each weekly version a permanent commit. Pages serves index.html at the root URL.</div>
+    </a>
+  </div>
+
+  <!-- VERSION LINEAGE -->
+  <div class="sec">▣ VERSION LINEAGE — v1 → v13</div>
+  <div class="vrow cur"><div class="v">v13</div><div class="lbl">Week 10 — Iran spike-and-settle (Bahrain/Kuwait struck, Doha Jun 30); Lebanon framework signed; ISW resolves Ukraine map; <b>Diplomatic Track</b></div></div>
+  <div class="vrow"><div class="v">v12</div><div class="lbl">Week 9 — US-Iran strike exchange; Lebanon framework; Ukraine 40-day op; <b>Strike-Exchange Tracker</b></div></div>
+  <div class="vrow"><div class="v">v11</div><div class="lbl">Week 8 — Hormuz vessel strike; UN evac halt; <b>Leverage Map</b>; UAE named on Sudan</div></div>
+  <div class="vrow"><div class="v">v10</div><div class="lbl">Week 7 — DISPUTED source tier; Deal Tracker; auto-deltas + Movers</div></div>
+  <div class="vrow"><div class="v">v8–v9</div><div class="lbl">Weeks 5–6 — Iran de-escalation; Sudan #1; confidence tags, sparklines, search, timeline; Lebanon entry</div></div>
+  <div class="vrow"><div class="v">v7</div><div class="lbl">Week 4 — Merged 20 user KML/KMZ files (the layers now in the Master KML)</div></div>
+  <div class="vrow"><div class="v">v1–v6</div><div class="lbl">Foundation → full-spectrum transformation → tactical-ops redesign</div></div>
+
+  <div class="foot">
+    GLOBAL INTELLIGENCE PLATFORM · MASTER OVERVIEW · 249 PLACEMARKS · 6 LAYERS · 16 THEATERS · 13 VERSIONS<br/>
+    SINGLE-FILE ARCHITECTURE · NO BACKEND · NO TRACKING · KML/KMZ/CSV EXPORT · GOOGLE EARTH COMPATIBLE<br/>
+    ANALYST SOURCES: ISW/CTP · ACLED · CRISIS GROUP · YALE HRL · IRC · RUSI · CSIS + USER OSINT
+  </div>
+</div>
+</body>
+</html>
