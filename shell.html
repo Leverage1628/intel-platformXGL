@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MERIDIAN — Strategic Intelligence · by Leverage</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Situation Room palette — slate-navy base, signal-cyan accent, disciplined severity scale */
+  --void:#0a0e14; --void2:#0c1119; --panel:#111722; --panel2:#141b28; --raised:#18202f;
+  --line:#1e2836; --line2:#273449; --line3:#324258;
+  --ice:#e8eef5; --text:#b8c6d6; --mute:#6b7d92; --dim:#43536a; --faint:#2a3646;
+  --cyan:#3dd6d0; --cyan-d:rgba(61,214,208,.10); --cyan-g:rgba(61,214,208,.35);
+  --amber:#e0a030; --amber-d:rgba(224,160,48,.10);
+  --red:#e2564e; --red-d:rgba(226,86,78,.11);
+  --grn:#4cc98a; --grn-d:rgba(76,201,138,.10);
+  --violet:#9a7ff0; --violet-d:rgba(154,127,240,.10);
+  --gold:#d4b24a; --gold-d:rgba(212,178,74,.10);
+  --gov:#5b9bd5; --gov-d:rgba(91,155,213,.11);
+  --econ:#4cc98a; --econ-d:rgba(76,201,138,.10);
+  --ext:#e07a5f; --ext-d:rgba(224,122,95,.11);
+  --FD:'Barlow Condensed',sans-serif; --FB:'Inter',sans-serif; --FM:'JetBrains Mono',monospace;
+  --r:6px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--void);color:var(--text);font-family:var(--FB);font-size:13px;line-height:1.5;display:flex;flex-direction:column;overflow:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 80% 55% at 15% -5%,rgba(61,214,208,.04),transparent 60%),radial-gradient(ellipse 70% 50% at 100% 105%,rgba(91,155,213,.035),transparent 60%);}
+
+/* ── TOP BAR ── */
+.topbar{position:relative;z-index:60;height:56px;min-height:56px;flex-shrink:0;background:rgba(12,17,25,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 18px;gap:14px;}
+.brand{display:flex;flex-direction:column;gap:1px;}
+.brand-main{font-family:var(--FD);font-size:21px;letter-spacing:4px;font-weight:700;color:var(--ice);line-height:1;}
+.brand-sub b{color:var(--cyan);font-weight:700;letter-spacing:1.5px;}
+.brand-sub{font-family:var(--FM);font-size:8px;letter-spacing:2.5px;color:var(--dim);}
+.live-chip{display:flex;align-items:center;gap:6px;font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--cyan);padding:4px 9px;border:1px solid var(--cyan-g);border-radius:100px;background:var(--cyan-d);}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.wk-chip{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--amber);padding:4px 9px;border:1px solid rgba(224,160,48,.3);border-radius:100px;background:var(--amber-d);}
+.search{margin-left:6px;display:flex;align-items:center;gap:7px;background:var(--void2);border:1px solid var(--line2);border-radius:var(--r);padding:6px 11px;transition:border-color .2s;}
+.search:focus-within{border-color:var(--cyan-g);}
+.search svg{width:12px;height:12px;stroke:var(--dim);}
+.search input{background:none;border:none;outline:none;color:var(--ice);font-family:var(--FM);font-size:10px;letter-spacing:.5px;width:130px;}
+.search input::placeholder{color:var(--dim);}
+.stats{display:flex;gap:14px;margin-left:auto;align-items:center;}
+.stat{display:flex;flex-direction:column;align-items:flex-end;gap:1px;}
+.stat b{font-family:var(--FM);font-size:16px;font-weight:600;line-height:1;}
+.stat span{font-family:var(--FM);font-size:7px;letter-spacing:1.5px;color:var(--dim);}
+.s-crit{color:var(--red)}.s-esc{color:var(--amber)}.s-desc{color:var(--grn)}.s-tot{color:var(--ice)}
+.clock{font-family:var(--FM);font-size:8px;letter-spacing:1px;color:var(--dim);text-align:right;line-height:1.5;padding-left:6px;border-left:1px solid var(--line);}
+
+/* ── TICKER / ALERT ── */
+.ticker{position:relative;z-index:55;flex-shrink:0;height:30px;background:var(--void2);border-bottom:1px solid var(--line);display:flex;align-items:center;overflow:hidden;}
+.ticker-tag{flex-shrink:0;height:100%;display:flex;align-items:center;gap:6px;padding:0 14px;font-family:var(--FM);font-size:8px;letter-spacing:2px;color:var(--amber);background:var(--amber-d);border-right:1px solid rgba(224,160,48,.25);}
+.ticker-tag::before{content:'';width:5px;height:5px;background:var(--amber);border-radius:50%;}
+.ticker-scroll{flex:1;overflow:hidden;white-space:nowrap;position:relative;}
+.ticker-track{display:inline-block;padding-left:100%;animation:scroll 90s linear infinite;font-family:var(--FM);font-size:9px;letter-spacing:.5px;color:var(--mute);}
+.ticker-track b{color:var(--text);font-weight:500;}
+.ticker-track .up{color:var(--red);}.ticker-track .dn{color:var(--grn);}
+.ticker:hover .ticker-track{animation-play-state:paused;}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+/* ── TOOLBAR ── */
+.toolbar{position:relative;z-index:50;flex-shrink:0;background:rgba(12,17,25,.9);border-bottom:1px solid var(--line);padding:8px 18px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;}
+.toolbar::-webkit-scrollbar{display:none;}
+.tb-label{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--dim);white-space:nowrap;flex-shrink:0;}
+.btn{font-family:var(--FM);font-size:9px;letter-spacing:.5px;padding:6px 12px;border:1px solid var(--line2);border-radius:var(--r);background:var(--void2);color:var(--text);cursor:pointer;transition:all .16s;white-space:nowrap;display:flex;align-items:center;gap:5px;}
+.btn:hover{border-color:var(--line3);background:var(--raised);color:var(--ice);}
+.btn-gov:hover{border-color:var(--gov);color:var(--gov);}
+.btn-econ:hover{border-color:var(--econ);color:var(--econ);}
+.btn-ext:hover{border-color:var(--ext);color:var(--ext);}
+.btn-cyan{color:var(--cyan);border-color:var(--cyan-g);}.btn-cyan:hover{background:var(--cyan-d);}
+.divider{width:1px;height:18px;background:var(--line2);flex-shrink:0;margin:0 2px;}
+.chip{font-family:var(--FM);font-size:8.5px;letter-spacing:.5px;padding:5px 11px;border:1px solid var(--line);border-radius:100px;background:none;color:var(--mute);cursor:pointer;transition:all .16s;white-space:nowrap;}
+.chip:hover{color:var(--text);border-color:var(--line3);}
+.chip.on{color:var(--void);background:var(--cyan);border-color:var(--cyan);font-weight:600;}
+.chip.on[data-f=critical]{background:var(--red);border-color:var(--red);}
+.chip.on[data-f=escalating]{background:var(--amber);border-color:var(--amber);}
+.chip.on[data-f=deescalating]{background:var(--grn);border-color:var(--grn);}
+.sub-row{position:relative;z-index:49;flex-shrink:0;background:var(--void);border-bottom:1px solid var(--line);padding:7px 18px;display:flex;align-items:center;gap:7px;overflow-x:auto;scrollbar-width:none;}
+.sub-row::-webkit-scrollbar{display:none;}
+.sub-chip{font-family:var(--FM);font-size:7.5px;letter-spacing:.5px;padding:4px 9px;border-radius:var(--r);background:none;color:var(--dim);cursor:pointer;transition:all .16s;white-space:nowrap;border:1px solid transparent;}
+.sub-chip:hover{color:var(--text);background:var(--void2);}
+.sub-chip.on{color:var(--cyan);background:var(--cyan-d);border-color:var(--cyan-g);}
+
+/* ── LAYOUT ── */
+.main{display:grid;grid-template-columns:436px 1fr;flex:1;min-height:0;position:relative;z-index:10;}
+.list-pane{border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;background:var(--void);}
+.list-scroll{overflow-y:auto;flex:1;scrollbar-width:thin;scrollbar-color:var(--line2) transparent;}
+.list-scroll::-webkit-scrollbar{width:6px}.list-scroll::-webkit-scrollbar-thumb{background:var(--line2);border-radius:3px}
+
+/* category + subregion headers */
+.cat-group{border-bottom:1px solid var(--line);}
+.cat-head{padding:11px 16px 9px;display:flex;align-items:center;gap:9px;cursor:pointer;position:sticky;top:0;z-index:15;background:var(--void2);transition:background .15s;}
+.cat-head:hover{background:var(--panel);}
+.cat-icon{width:22px;height:22px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+.ci-military{background:var(--red-d);color:var(--red)}.ci-political{background:var(--violet-d);color:var(--violet)}
+.ci-economic{background:var(--econ-d);color:var(--econ)}.ci-energy{background:var(--amber-d);color:var(--amber)}
+.ci-strategic{background:var(--gov-d);color:var(--gov)}
+.cat-name{font-family:var(--FD);font-size:13px;letter-spacing:1.5px;font-weight:600;color:var(--ice);}
+.cat-count{font-family:var(--FM);font-size:9px;color:var(--dim);margin-left:auto;background:var(--void);padding:2px 8px;border-radius:100px;}
+.cat-caret{font-size:9px;color:var(--dim);transition:transform .2s;}
+.cat-group.closed .cat-caret{transform:rotate(-90deg)}.cat-group.closed .cat-body{display:none}
+.sub-head{padding:7px 16px 6px 18px;display:flex;align-items:center;gap:8px;background:var(--void);cursor:pointer;position:sticky;top:42px;z-index:12;}
+.sub-head:hover{background:var(--void2)}
+.sub-mark{width:4px;height:4px;border-radius:1px;background:var(--cyan);opacity:.7;}
+.sub-name{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--mute);text-transform:uppercase;}
+.sub-count{font-family:var(--FM);font-size:8px;color:var(--dim);margin-left:auto;}
+
+/* theater row */
+.row{padding:11px 16px;display:grid;grid-template-columns:26px 1fr auto;gap:11px;align-items:center;cursor:pointer;border-bottom:1px solid var(--faint);transition:background .12s;position:relative;}
+.row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .15s;}
+.row:hover{background:var(--void2);}
+.row:hover::before{background:var(--line3);}
+.row.active{background:var(--panel);}
+.row.active::before{background:var(--cyan);}
+.row-flag{font-size:17px;line-height:1;text-align:center;}
+.row-main{min-width:0;}
+.row-name{font-family:var(--FB);font-weight:600;font-size:12.5px;color:var(--ice);line-height:1.3;letter-spacing:-.1px;}
+.row-sub{font-size:10.5px;color:var(--mute);margin-top:2px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;}
+.row-tags{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap;}
+.tag{font-family:var(--FM);font-size:7px;letter-spacing:.5px;padding:2px 5px;border-radius:3px;line-height:1;}
+.tag-gov{color:var(--gov);background:var(--gov-d)}
+.tag-econ{color:var(--econ);background:var(--econ-d)}
+.tag-ext{color:var(--ext);background:var(--ext-d)}
+.tag-dip{color:var(--cyan);background:var(--cyan-d)}
+.row-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+.row-idx{font-family:var(--FM);font-size:19px;font-weight:600;line-height:1;letter-spacing:-.5px;}
+.row-delta{font-family:var(--FM);font-size:9px;font-weight:600;display:flex;align-items:center;gap:2px;}
+.d-up{color:var(--red)}.d-dn{color:var(--grn)}.d-fl{color:var(--dim)}
+.row-spark{display:flex;align-items:flex-end;gap:1.5px;height:18px;margin-top:2px;}
+.sbar{width:3px;border-radius:1px;background:var(--faint);min-height:2px;}
+
+/* ── DETAIL PANE ── */
+.detail-pane{display:flex;flex-direction:column;overflow:hidden;background:var(--void2);}
+.mobile-back{display:none;}
+.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--dim);text-align:center;padding:40px;}
+.empty-mark{width:64px;height:64px;border:1px solid var(--line2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--line3);}
+.empty h2{font-family:var(--FD);font-size:16px;letter-spacing:2px;color:var(--mute);font-weight:500;}
+.empty p{font-family:var(--FM);font-size:9px;letter-spacing:1px;color:var(--dim);max-width:320px;line-height:1.6;}
+.detail{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--line2) transparent;}
+.detail::-webkit-scrollbar{width:6px}.detail::-webkit-scrollbar-thumb{background:var(--line2);border-radius:3px}
+
+.tabs{display:flex;background:rgba(12,17,25,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;padding:0 10px;overflow-x:auto;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{font-family:var(--FM);font-size:9px;letter-spacing:1px;padding:13px 13px;color:var(--dim);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;}
+.tab:hover{color:var(--text);}
+.tab.on{color:var(--ice);border-bottom-color:var(--cyan);}
+.panel{display:none;}.panel.on{display:block;}
+
+.hero{padding:22px 24px 18px;border-bottom:1px solid var(--line);}
+.hero-eyebrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.pill{font-family:var(--FM);font-size:8px;letter-spacing:1px;padding:3px 8px;border-radius:100px;border:1px solid;}
+.pill-cat{border-color:var(--line2);color:var(--mute);}
+.pill-sev{font-weight:600;}
+.sev-critical{color:var(--red);border-color:rgba(226,86,78,.4);background:var(--red-d)}
+.sev-high{color:var(--amber);border-color:rgba(224,160,48,.4);background:var(--amber-d)}
+.sev-medium{color:var(--gold);border-color:rgba(212,178,74,.4);background:var(--gold-d)}
+.sev-watch{color:var(--gov);border-color:rgba(91,155,213,.4);background:var(--gov-d)}
+.hero-title{font-family:var(--FD);font-size:27px;letter-spacing:.5px;font-weight:700;color:var(--ice);line-height:1.08;margin-bottom:6px;display:flex;align-items:center;gap:11px;}
+.hero-flag{font-size:26px;}
+.hero-sub{font-size:12px;color:var(--mute);line-height:1.4;}
+.hero-meta{display:flex;gap:16px;margin-top:14px;flex-wrap:wrap;}
+.hm{display:flex;flex-direction:column;gap:2px;}
+.hm-label{font-family:var(--FM);font-size:7px;letter-spacing:1.5px;color:var(--dim);}
+.hm-val{font-family:var(--FM);font-size:11px;color:var(--text);font-weight:500;}
+
+/* index gauge */
+.gauge{display:flex;align-items:center;gap:16px;margin-top:16px;padding:14px 16px;background:var(--void);border:1px solid var(--line);border-radius:8px;}
+.gauge-num{font-family:var(--FM);font-size:38px;font-weight:600;line-height:.9;letter-spacing:-1px;}
+.gauge-info{flex:1;}
+.gauge-bar{height:5px;background:var(--faint);border-radius:100px;overflow:hidden;margin-bottom:7px;}
+.gauge-fill{height:100%;border-radius:100px;}
+.gauge-scale{display:flex;justify-content:space-between;font-family:var(--FM);font-size:7px;color:var(--dim);letter-spacing:.5px;}
+.gauge-trend{font-family:var(--FM);font-size:9px;padding:4px 9px;border-radius:var(--r);white-space:nowrap;}
+.trend-up{color:var(--red);background:var(--red-d)}.trend-dn{color:var(--grn);background:var(--grn-d)}
+.trend-ss{color:var(--gold);background:var(--gold-d)}.trend-vl{color:var(--amber);background:var(--amber-d)}
+
+/* history sparkline big */
+.hist{padding:16px 24px;border-bottom:1px solid var(--line);}
+.hist-head{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--dim);margin-bottom:12px;}
+.hist-bars{display:flex;align-items:flex-end;gap:5px;height:56px;}
+.hist-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;}
+.hist-v{font-family:var(--FM);font-size:7px;color:var(--mute);}
+.hist-b{width:100%;max-width:20px;border-radius:2px 2px 0 0;min-height:3px;transition:height .3s;}
+.hist-w{font-family:var(--FM);font-size:6.5px;color:var(--dim);letter-spacing:.3px;}
+
+/* intel columns */
+.intel{display:grid;grid-template-columns:1fr;gap:0;}
+.icol{padding:16px 24px;border-bottom:1px solid var(--line);}
+.icol-head{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;margin-bottom:10px;display:flex;align-items:center;gap:7px;}
+.icol-head::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;}
+.ih-mil{color:var(--red)}.ih-pol{color:var(--violet)}.ih-eco{color:var(--econ)}
+.icol-body{font-size:13px;line-height:1.68;color:var(--text);}
+.icol-body p{margin-bottom:9px}.icol-body p:last-child{margin-bottom:0}
+
+.section{padding:16px 24px;border-bottom:1px solid var(--line);}
+.section-head{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--dim);margin-bottom:12px;}
+.assess-box{background:var(--void);border:1px solid var(--line);border-left:2px solid var(--cyan);border-radius:0 8px 8px 0;padding:15px 17px;font-size:13px;line-height:1.72;color:var(--text);}
+
+/* data cards (gov/lev/econ/ext) */
+.cards{display:flex;flex-direction:column;gap:7px;}
+.card{background:var(--void);border:1px solid var(--line);border-radius:8px;padding:12px 14px;transition:border-color .15s;}
+.card:hover{border-color:var(--line2);}
+.card-gov{border-left:2px solid var(--gov)}
+.card-lev{border-left:2px solid var(--amber)}
+.card-econ{border-left:2px solid var(--econ)}
+.card-ext{border-left:2px solid var(--ext)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px;}
+.card-actor{font-family:var(--FM);font-size:10px;color:var(--ice);font-weight:500;letter-spacing:.2px;}
+.card-actor .sub{font-family:var(--FM);font-size:7px;color:var(--dim);letter-spacing:.5px;text-transform:uppercase;margin-top:2px;}
+.card-body{font-size:12px;line-height:1.5;color:var(--text);}
+.card-extract{font-size:11px;line-height:1.45;color:var(--mute);margin-top:5px;}
+.pt-thesis{font-size:12px;line-height:1.5;color:var(--fg);opacity:.9;margin:2px 0 10px;padding:9px 11px;background:var(--card2,rgba(255,255,255,.03));border-radius:8px;font-style:italic;}
+.pl-wrap{padding:4px 0 2px;}
+.pl-stage{border-left:2px solid var(--line);padding:2px 0 2px 12px;margin:0 0 2px 6px;}
+.pl-stg-lbl{font-size:10px;font-weight:700;letter-spacing:.5px;margin-bottom:5px;text-transform:uppercase;}
+.pl-node{background:var(--card2,rgba(255,255,255,.02));border:1px solid var(--line);border-radius:7px;padding:7px 9px;margin-bottom:5px;position:relative;}
+.pl-actor{font-size:12.5px;font-weight:650;color:var(--fg);margin-bottom:2px;}
+.pl-detail{font-size:11px;line-height:1.45;color:var(--mute);}
+.pl-who{font-size:10.5px;color:var(--red);margin-top:4px;font-weight:600;}
+.pl-node .badge{margin-top:5px;}
+.pl-arrow{font-size:14px;color:var(--mute);text-align:left;margin:0 0 2px 12px;line-height:1;opacity:.55;}
+.hist-roots{font-size:13px;line-height:1.7;color:var(--text);}
+.htl{position:relative;margin-top:4px;}
+.htl-row{display:grid;grid-template-columns:92px 16px 1fr;gap:0;align-items:start;}
+.htl-date{font-family:var(--FM);font-size:11px;color:var(--amber);font-weight:600;padding:6px 8px 6px 0;text-align:right;white-space:nowrap;}
+.htl-line{position:relative;display:flex;justify-content:center;}
+.htl-line:before{content:'';position:absolute;top:0;bottom:-6px;width:1px;background:var(--line2);left:50%;transform:translateX(-50%);}
+.htl-row:last-child .htl-line:before{bottom:auto;height:14px;}
+.htl-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);margin-top:9px;position:relative;z-index:1;box-shadow:0 0 0 3px var(--void2);}
+.htl-e{font-size:12px;line-height:1.5;color:var(--text);padding:6px 0 12px 10px;}
+.hact{display:flex;flex-direction:column;gap:9px;margin-top:4px;}
+.hact-card{background:var(--void2);border:1px solid var(--line);border-left:3px solid var(--ext);border-radius:8px;padding:10px 12px;}
+.hact-name{font-size:12.5px;font-weight:700;color:var(--fg);margin-bottom:3px;}
+.hact-bio{font-size:11.5px;line-height:1.55;color:var(--mute);}
+.hist-bridge{font-size:12.5px;line-height:1.65;color:var(--text);border-left:3px solid var(--red);padding:8px 12px;background:var(--void2);border-radius:0 8px 8px 0;}
+.hsrc{display:flex;flex-direction:column;gap:7px;}
+.hsrc-row{border:1px solid var(--line);border-radius:7px;padding:8px 11px;background:var(--void2);}
+.hsrc-work{font-size:12px;font-weight:650;color:var(--grn);font-style:italic;}
+.hsrc-auth{font-size:11px;color:var(--mute);margin-left:8px;}
+.hsrc-note{font-size:11px;line-height:1.5;color:var(--mute);margin-top:3px;}
+.mth-sec{margin-bottom:16px;border:1px solid var(--line);border-radius:9px;padding:12px 14px;background:var(--void2);}
+.mth-h{font-size:11px;font-weight:750;letter-spacing:1px;color:var(--cyan);margin-bottom:7px;}
+.mth-b{font-size:12px;line-height:1.65;color:var(--text);}
+.mth-b b{color:var(--fg);}
+.hist-meta{font-size:10px;font-weight:600;color:var(--mute);white-space:nowrap;}
+.btn-hist{color:var(--ice);border-color:rgba(150,200,220,.35);}.btn-hist:hover{border-color:var(--ice);background:rgba(150,200,220,.08);}
+.btn-watch{color:var(--amber);border-color:rgba(240,180,90,.35);}.btn-watch:hover{border-color:var(--amber);background:rgba(240,180,90,.08);}
+.card-extract b{color:var(--amber);font-weight:600;}
+.badge{font-family:var(--FM);font-size:7px;letter-spacing:.4px;padding:3px 6px;border-radius:4px;border:1px solid;white-space:nowrap;flex-shrink:0;text-align:center;line-height:1.2;}
+.b-hi{color:var(--red);border-color:rgba(226,86,78,.4);background:var(--red-d)}
+.b-md{color:var(--amber);border-color:rgba(224,160,48,.4);background:var(--amber-d)}
+.b-lo{color:var(--grn);border-color:rgba(76,201,138,.4);background:var(--grn-d)}
+.b-documented{color:var(--red);border-color:rgba(226,86,78,.4);background:var(--red-d)}
+.b-alleged-credible{color:var(--amber);border-color:rgba(224,160,48,.4);background:var(--amber-d)}
+.b-denied{color:var(--violet);border-color:rgba(154,127,240,.4);background:var(--violet-d)}
+.b-HIGH{color:var(--red);border-color:rgba(226,86,78,.4);background:var(--red-d)}
+.b-MED{color:var(--amber);border-color:rgba(224,160,48,.4);background:var(--amber-d)}
+.b-LOW{color:var(--grn);border-color:rgba(76,201,138,.4);background:var(--grn-d)}
+.intro-note{font-size:12px;line-height:1.6;color:var(--mute);margin-bottom:12px;padding:11px 13px;border-radius:8px;background:var(--void);border:1px solid var(--line);}
+.intro-note b{color:var(--text);font-weight:600;}
+
+/* ── OVERLAY ── */
+.overlay{position:fixed;inset:0;z-index:900;background:rgba(6,9,14,.96);backdrop-filter:blur(6px);display:none;flex-direction:column;}
+.overlay.show{display:flex;}
+.ov-head{display:flex;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line);flex-shrink:0;}
+.ov-title{font-family:var(--FD);font-size:17px;letter-spacing:1.5px;color:var(--ice);font-weight:600;}
+.ov-close{margin-left:auto;font-family:var(--FM);font-size:9px;color:var(--mute);border:1px solid var(--line2);padding:7px 13px;border-radius:var(--r);cursor:pointer;transition:all .15s;letter-spacing:.5px;}
+.ov-close:hover{color:var(--ice);border-color:var(--line3);}
+.ov-scroll{flex:1;overflow-y:auto;padding:18px 22px;scrollbar-width:thin;}
+.ov-scroll::-webkit-scrollbar{width:6px}.ov-scroll::-webkit-scrollbar-thumb{background:var(--line2);border-radius:3px}
+.ov-group{margin-bottom:22px;}
+.ov-ghead{font-family:var(--FD);font-size:15px;letter-spacing:1px;font-weight:600;margin-bottom:9px;display:flex;align-items:center;gap:9px;color:var(--ice);}
+.ov-gflag{font-size:17px;}
+.ov-gmeta{font-family:var(--FM);font-size:8px;color:var(--dim);font-weight:400;letter-spacing:.5px;}
+.ov-legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px;font-family:var(--FM);font-size:8px;color:var(--mute);}
+.ov-legend span{display:flex;align-items:center;gap:5px;}
+.ldot{width:8px;height:8px;border-radius:2px;border:1px solid;}
+/* movers */
+.mv-row{display:grid;grid-template-columns:1fr 64px 90px;gap:12px;padding:11px 13px;border:1px solid var(--line);border-radius:8px;margin-bottom:6px;align-items:center;cursor:pointer;background:var(--void);transition:border-color .15s;}
+.mv-row:hover{border-color:var(--line3);}
+.mv-name{font-size:13px;font-weight:600;color:var(--ice);}
+.mv-meta{font-family:var(--FM);font-size:8px;color:var(--dim);margin-top:2px;letter-spacing:.5px;}
+.mv-delta{font-family:var(--FM);font-size:17px;font-weight:600;text-align:center;}
+.mv-spark{display:flex;align-items:flex-end;gap:2px;height:26px;}
+.mv-sec{font-family:var(--FM);font-size:9px;letter-spacing:1.5px;padding:8px 4px 8px;margin-top:8px;}
+/* board rows */
+.brd-row{display:grid;gap:11px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;margin-bottom:5px;align-items:center;cursor:pointer;background:var(--void);transition:border-color .15s;}
+.brd-row:hover{border-color:var(--line3);}
+.brd-lev{grid-template-columns:150px 130px 1fr 60px;}
+.brd-gov{grid-template-columns:160px 1fr;}
+.brd-econ{grid-template-columns:130px 130px 1fr 56px;}
+.brd-ext{grid-template-columns:120px 90px 1fr 76px;}
+.brd-th{font-family:var(--FM);font-size:8.5px;color:var(--cyan);letter-spacing:.3px;}
+.brd-a{font-family:var(--FM);font-size:9.5px;color:var(--ice);}
+.brd-s{font-family:var(--FM);font-size:7px;color:var(--dim);letter-spacing:.5px;text-transform:uppercase;}
+.brd-d{font-size:11.5px;color:var(--text);line-height:1.45;}
+
+
+/* PHASE 1 — theater class + tier + methodology */
+.tag-conflict{color:var(--red);background:var(--red-d)}
+.tag-watch{color:var(--gov);background:var(--gov-d)}
+.class-badge{font-family:var(--FM);font-size:7px;letter-spacing:.5px;padding:2px 6px;border-radius:3px;border:1px solid;}
+.cb-conflict{color:var(--red);border-color:rgba(226,86,78,.4);background:var(--red-d)}
+.cb-watch{color:var(--gov);border-color:rgba(91,155,213,.4);background:var(--gov-d)}
+.tier-pill{font-family:var(--FM);font-size:8px;letter-spacing:1px;padding:3px 9px;border-radius:100px;border:1px solid;font-weight:600;}
+.tr-CRITICAL{color:var(--red);border-color:rgba(226,86,78,.45);background:var(--red-d)}
+.tr-SEVERE{color:var(--amber);border-color:rgba(224,160,48,.45);background:var(--amber-d)}
+.tr-ELEVATED{color:var(--gold);border-color:rgba(212,178,74,.4);background:var(--gold-d)}
+.tr-GUARDED{color:var(--gov);border-color:rgba(91,155,213,.4);background:var(--gov-d)}
+.tr-STABLE{color:var(--grn);border-color:rgba(76,201,138,.4);background:var(--grn-d)}
+.btn-method{color:var(--cyan);border-color:var(--cyan-g);}.btn-method:hover{background:var(--cyan-d);}
+.method-sec{margin-bottom:24px;}
+.method-h{font-family:var(--FD);font-size:16px;letter-spacing:1px;color:var(--ice);font-weight:600;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--line);}
+.method-lead{font-size:13px;line-height:1.7;color:var(--text);margin-bottom:18px;padding:14px 16px;background:var(--void);border:1px solid var(--line);border-left:2px solid var(--cyan);border-radius:0 8px 8px 0;}
+.method-item{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid var(--faint);}
+.method-k{font-family:var(--FM);font-size:10px;color:var(--cyan);letter-spacing:.5px;line-height:1.4;}
+.method-d{font-size:12.5px;line-height:1.55;color:var(--text);}
+.method-principles{list-style:none;}
+.method-principles li{font-size:12.5px;line-height:1.6;color:var(--text);padding:7px 0 7px 22px;position:relative;border-bottom:1px solid var(--faint);}
+.method-principles li::before{content:'▸';position:absolute;left:4px;color:var(--cyan);}
+
+
+/* PHASE 2 — Systems Layer */
+.btn-sys{color:var(--violet);border-color:rgba(154,127,240,.4);}.btn-sys:hover{background:var(--violet-d);}
+.sys-card{background:var(--void);border:1px solid var(--line);border-radius:10px;padding:0;margin-bottom:16px;overflow:hidden;}
+.sys-head{display:flex;align-items:center;gap:12px;padding:15px 17px;border-bottom:1px solid var(--line);}
+.sys-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.sys-titles{flex:1;min-width:0;}
+.sys-name{font-family:var(--FD);font-size:17px;letter-spacing:.5px;font-weight:600;color:var(--ice);line-height:1.1;}
+.sys-type{font-family:var(--FM);font-size:8px;letter-spacing:1px;color:var(--dim);margin-top:3px;}
+.sys-tier{font-family:var(--FM);font-size:7px;letter-spacing:.5px;padding:3px 7px;border-radius:4px;border:1px solid;flex-shrink:0;}
+.sys-body{padding:15px 17px;}
+.sys-summary{font-size:12.5px;line-height:1.65;color:var(--text);margin-bottom:16px;}
+.sys-flow-label{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--dim);margin-bottom:9px;}
+.sys-nodes{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.sys-node{display:grid;grid-template-columns:20px 130px 1fr;gap:10px;align-items:start;padding:8px 10px;background:var(--void2);border-radius:6px;cursor:pointer;transition:background .14s;border:1px solid transparent;}
+.sys-node:hover{background:var(--raised);border-color:var(--line2);}
+.sys-node-flag{font-size:15px;line-height:1.2;text-align:center;}
+.sys-node-role{display:flex;flex-direction:column;gap:2px;}
+.sys-node-th{font-family:var(--FB);font-size:11px;font-weight:600;color:var(--ice);line-height:1.2;}
+.sys-node-r{font-family:var(--FM);font-size:7px;letter-spacing:.5px;color:var(--violet);text-transform:uppercase;}
+.sys-node-d{font-size:11px;line-height:1.45;color:var(--text);}
+.sys-meta{display:flex;flex-direction:column;gap:10px;padding-top:12px;border-top:1px solid var(--faint);}
+.sys-reverse,.sys-signif{font-size:11.5px;line-height:1.55;color:var(--mute);}
+.sys-reverse b,.sys-signif b{font-family:var(--FM);font-size:8px;letter-spacing:1px;color:var(--text);display:block;margin-bottom:3px;text-transform:uppercase;}
+.sys-signif{color:var(--text);}
+.sys-lead{font-size:13px;line-height:1.7;color:var(--text);margin-bottom:20px;padding:14px 16px;background:var(--void);border:1px solid var(--line);border-left:2px solid var(--violet);border-radius:0 8px 8px 0;}
+
+
+/* v19 — honesty + clarity */
+.asof{font-family:var(--FM);font-size:7px;letter-spacing:.5px;color:var(--dim);}
+.asof b{color:var(--mute);font-weight:500;}
+.hist-note{font-family:var(--FM);font-size:8px;letter-spacing:.5px;color:var(--amber);margin-top:8px;padding:6px 9px;background:var(--amber-d);border-radius:4px;line-height:1.4;}
+.hist-note.real{color:var(--dim);background:var(--void);border:1px solid var(--faint);}
+.search-scope{font-family:var(--FM);font-size:7px;letter-spacing:.5px;color:var(--dim);padding:2px 0 0 2px;}
+.match-tag{font-family:var(--FM);font-size:6.5px;letter-spacing:.4px;padding:1px 4px;border-radius:3px;background:var(--cyan-d);color:var(--cyan);margin-left:4px;}
+
+
+/* INVESTMENT BRIDGE */
+.btn-invest{color:var(--gold);border-color:rgba(212,178,74,.4);}.btn-invest:hover{background:var(--gold-d);}
+.inv-lead{font-size:13px;line-height:1.7;color:var(--text);margin-bottom:8px;padding:14px 16px;background:var(--void);border:1px solid var(--line);border-left:2px solid var(--gold);border-radius:0 8px 8px 0;}
+.inv-disclaimer{font-family:var(--FM);font-size:8px;letter-spacing:.5px;color:var(--dim);margin-bottom:18px;padding:8px 12px;background:var(--void2);border:1px solid var(--faint);border-radius:6px;line-height:1.5;}
+.inv-card{background:var(--void);border:1px solid var(--line);border-radius:10px;margin-bottom:14px;overflow:hidden;}
+.inv-head{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);}
+.inv-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.inv-title{flex:1;}
+.inv-name{font-family:var(--FD);font-size:18px;letter-spacing:.5px;font-weight:700;color:var(--ice);line-height:1;}
+.inv-use{font-family:var(--FM);font-size:8px;letter-spacing:.5px;color:var(--mute);margin-top:4px;}
+.inv-body{padding:14px 16px;display:flex;flex-direction:column;gap:12px;}
+.inv-row{display:flex;flex-direction:column;gap:4px;}
+.inv-k{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--dim);}
+.inv-v{font-size:12.5px;line-height:1.55;color:var(--text);}
+.inv-signal{background:var(--gold-d);border-radius:6px;padding:10px 12px;font-size:12px;line-height:1.55;color:var(--text);border:1px solid rgba(212,178,74,.2);}
+.inv-signal .inv-k{color:var(--gold);margin-bottom:4px;}
+.inv-catalyst{background:rgba(224,106,95,.08);border-radius:6px;padding:10px 12px;font-size:12px;line-height:1.55;color:var(--text);border:1px solid rgba(224,106,95,.28);}
+.inv-catalyst .inv-k{color:var(--red);margin-bottom:4px;}
+.wt-row{border:1px solid var(--line);border-radius:9px;padding:10px 13px;margin-bottom:9px;background:var(--void2);cursor:pointer;transition:border-color .15s;}
+.wt-row:hover{border-color:var(--line2);}
+.wt-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+.wt-th{font-family:var(--FM);font-size:10px;color:var(--mute);letter-spacing:.5px;}
+.wt-hz{font-family:var(--FM);font-size:9px;color:var(--amber);letter-spacing:.5px;white-space:nowrap;}
+.wt-ind{font-size:13px;font-weight:700;color:var(--fg);margin-bottom:4px;line-height:1.4;}
+.wt-mean{font-size:11.5px;line-height:1.55;color:var(--mute);}
+.wt-verdict{font-size:11px;margin-top:5px;color:var(--violet);font-weight:600;}
+.io-card{border:1px solid var(--line);border-left:3px solid var(--violet);border-radius:9px;padding:11px 13px;margin-bottom:10px;background:var(--void2);}
+.io-name{font-size:13px;font-weight:750;color:var(--fg);margin-bottom:7px;}
+.io-row{display:flex;gap:8px;margin-bottom:3px;}
+.io-k{font-family:var(--FM);font-size:8px;letter-spacing:1px;color:var(--dim);min-width:64px;padding-top:2px;}
+.io-v{font-size:11.5px;line-height:1.5;color:var(--text);}
+.io-tell{font-size:11.5px;line-height:1.5;color:var(--amber);margin-top:6px;padding:7px 9px;background:rgba(240,180,90,.06);border-radius:6px;}
+.io-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+.io-chip{font-family:var(--FM);font-size:9px;padding:4px 9px;border-radius:100px;background:var(--void);border:1px solid var(--line2);color:var(--text);cursor:pointer;}
+.io-chip:hover{border-color:var(--cyan);color:var(--cyan);}
+.sx-card{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:9px;padding:11px 13px;margin-bottom:10px;background:var(--void2);}
+.sx-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px;}
+.sx-who{font-size:12px;font-weight:750;color:var(--fg);}
+.sx-arrow{color:var(--red);}
+.sx-tgt{font-size:12px;font-weight:650;color:var(--red);}
+.sx-inst{font-size:11.5px;line-height:1.5;color:var(--text);}
+.sx-gap{font-size:11.5px;line-height:1.5;color:var(--amber);margin-top:5px;}
+.hm-row{border:1px solid var(--line);border-radius:9px;padding:10px 13px;margin-bottom:9px;background:var(--void2);cursor:pointer;}
+.hm-th{font-size:12.5px;font-weight:700;color:var(--fg);margin-bottom:4px;}
+.hm-nums{display:flex;gap:12px;flex-wrap:wrap;font-family:var(--FM);font-size:11px;margin-bottom:4px;}
+.hm-d{color:var(--red);font-weight:700;}
+.hm-x{color:var(--amber);font-weight:700;}
+.hm-f{color:var(--red);font-weight:700;border:1px solid rgba(224,106,95,.4);border-radius:4px;padding:0 6px;}
+.hm-a{color:var(--mute);}
+.hm-note{font-size:11px;line-height:1.5;color:var(--mute);}
+.btn-io{color:var(--violet);border-color:rgba(178,140,220,.35);}.btn-io:hover{border-color:var(--violet);}
+.btn-hm{color:var(--grn);border-color:rgba(90,200,140,.35);}.btn-hm:hover{border-color:var(--grn);}
+.btn-sx{color:var(--red);border-color:rgba(224,106,95,.35);}.btn-sx:hover{border-color:var(--red);}
+.refs{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:4px;}
+.refs-h{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--dim);margin-bottom:2px;}
+.ref-a{font-size:11px;color:var(--cyan);text-decoration:none;line-height:1.5;}
+.ref-a:hover{text-decoration:underline;}
+.fr-ok{color:var(--grn);}
+.fr-age{color:var(--amber);}
+.fr-old{color:var(--red);}
+.rv{margin-top:12px;border:1px solid var(--line);border-radius:9px;padding:11px 13px;background:var(--void2);}
+.rv-head{font-size:11px;font-weight:750;letter-spacing:.8px;color:var(--cyan);margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.rv-conf{font-family:var(--FM);font-size:8.5px;padding:2px 8px;border-radius:100px;letter-spacing:1px;}
+.rv-high{color:var(--grn);border:1px solid rgba(90,200,140,.4);}
+.rv-mod{color:var(--amber);border:1px solid rgba(240,180,90,.4);}
+.rv-low{color:var(--red);border:1px solid rgba(224,106,95,.4);}
+.rv-lbl{font-family:var(--FM);font-size:8px;letter-spacing:1.4px;color:var(--dim);margin:8px 0 3px;}
+.rv-mine{font-size:11.5px;line-height:1.55;color:var(--text);}
+.rv-alt{font-size:11.5px;line-height:1.55;color:var(--amber);}
+.rv-why{font-size:11.5px;line-height:1.55;color:var(--mute);}
+.inv-theaters{display:flex;flex-wrap:wrap;gap:6px;}
+.inv-th-chip{font-family:var(--FM);font-size:9px;padding:5px 10px;border-radius:100px;background:var(--void2);border:1px solid var(--line2);color:var(--text);cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .15s;}
+.inv-th-chip:hover{border-color:var(--cyan-g);color:var(--cyan);}
+
+
+/* ARMED GROUPS BOARD */
+.btn-grp{color:var(--red);border-color:rgba(226,86,78,.4);}.btn-grp:hover{background:var(--red-d);}
+.btn-bloc{color:var(--violet);border-color:rgba(154,127,240,.4);}.btn-bloc:hover{background:var(--violet-d);}
+.grp-card{background:var(--void);border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden;}
+.grp-head{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);}
+.grp-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.grp-t{flex:1;min-width:0;}
+.grp-name{font-family:var(--FD);font-size:19px;letter-spacing:.5px;font-weight:700;color:var(--ice);line-height:1;}
+.grp-full{font-family:var(--FM);font-size:8px;color:var(--dim);margin-top:4px;letter-spacing:.3px;}
+.grp-badges{display:flex;flex-direction:column;gap:4px;align-items:flex-end;flex-shrink:0;}
+.grp-threat{font-family:var(--FM);font-size:7px;letter-spacing:.5px;padding:3px 7px;border-radius:4px;border:1px solid;font-weight:600;}
+.grp-affil{font-family:var(--FM);font-size:7px;color:var(--dim);letter-spacing:.3px;}
+.grp-body{padding:0;}
+.grp-row{padding:13px 16px;border-bottom:1px solid var(--faint);}
+.grp-row:last-child{border-bottom:none;}
+.grp-k{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;margin-bottom:7px;display:flex;align-items:center;gap:6px;}
+.grp-k::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;}
+.gk-mil{color:var(--red)}.gk-log{color:var(--gov)}.gk-eco{color:var(--econ)}.gk-note{color:var(--cyan)}
+.grp-v{font-size:12.5px;line-height:1.6;color:var(--text);}
+.grp-v b{color:var(--amber);font-weight:600;}
+.grp-eco{background:var(--econ-d);border-left:2px solid var(--econ);padding:11px 13px;border-radius:0 6px 6px 0;}
+.grp-note-box{background:var(--cyan-d);border-left:2px solid var(--cyan);padding:10px 13px;border-radius:0 6px 6px 0;font-size:12px;line-height:1.55;color:var(--text);}
+.grp-theaters{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+.grp-th{font-family:var(--FM);font-size:8.5px;padding:4px 9px;border-radius:100px;background:var(--void2);border:1px solid var(--line2);color:var(--text);cursor:pointer;transition:all .14s;}
+.grp-th:hover{border-color:var(--cyan-g);color:var(--cyan);}
+/* BLOCS */
+.bloc-card{background:var(--void);border:1px solid var(--line);border-radius:10px;margin-bottom:14px;overflow:hidden;}
+.bloc-head{display:flex;align-items:center;gap:11px;padding:13px 16px;border-bottom:1px solid var(--line);}
+.bloc-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.bloc-name{font-family:var(--FD);font-size:17px;letter-spacing:.5px;font-weight:700;color:var(--ice);line-height:1;flex:1;}
+.bloc-arena{font-family:var(--FM);font-size:7.5px;letter-spacing:1px;color:var(--dim);}
+.bloc-body{padding:13px 16px;display:flex;flex-direction:column;gap:12px;}
+.bloc-k{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--dim);margin-bottom:5px;}
+.bloc-v{font-size:12.5px;line-height:1.6;color:var(--text);}
+.bloc-fault{background:var(--violet-d);border-left:2px solid var(--violet);padding:10px 13px;border-radius:0 6px 6px 0;}
+.bloc-fault .bloc-k{color:var(--violet);}
+.board-lead{font-size:13px;line-height:1.7;color:var(--text);margin-bottom:18px;padding:14px 16px;background:var(--void);border:1px solid var(--line);border-radius:0 8px 8px 0;}
+
+
+/* IMPROVEMENT PASS — global snapshot on empty state */
+.snapshot{width:100%;max-width:560px;display:flex;flex-direction:column;gap:16px;margin-top:8px;}
+.snap-title{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--dim);text-align:left;}
+.tierbar{display:flex;height:30px;border-radius:6px;overflow:hidden;border:1px solid var(--line);}
+.tierseg{display:flex;align-items:center;justify-content:center;font-family:var(--FM);font-size:9px;font-weight:600;color:var(--void);transition:flex .3s;}
+.tierlegend{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-start;}
+.tl{display:flex;align-items:center;gap:5px;font-family:var(--FM);font-size:8px;color:var(--mute);}
+.tl i{width:8px;height:8px;border-radius:2px;display:block;}
+.snap-movers{display:flex;flex-direction:column;gap:5px;}
+.snap-mv{display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--void);border:1px solid var(--line);border-radius:6px;cursor:pointer;text-align:left;transition:border-color .15s;}
+.snap-mv:hover{border-color:var(--line3);}
+.snap-mv-d{font-family:var(--FM);font-size:12px;font-weight:600;width:34px;flex-shrink:0;}
+.snap-mv-n{flex:1;font-size:12px;color:var(--ice);font-weight:500;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.snap-mv-i{font-family:var(--FM);font-size:12px;font-weight:600;flex-shrink:0;}
+.snap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.snap-cell{background:var(--void);border:1px solid var(--line);border-radius:6px;padding:10px;text-align:center;}
+.snap-cell b{display:block;font-family:var(--FM);font-size:17px;font-weight:600;line-height:1;margin-bottom:4px;}
+.snap-cell span{font-family:var(--FM);font-size:7px;letter-spacing:1px;color:var(--dim);}
+
+
+/* GROUPS + BLOCS BOARDS (v21) */
+.btn-groups{color:#e06a5f;border-color:rgba(224,106,95,.4);}.btn-groups:hover{background:rgba(224,106,95,.12);}
+.btn-blocs{color:#7fb3e0;border-color:rgba(127,179,224,.4);}.btn-blocs:hover{background:rgba(127,179,224,.12);}
+.grp-card{background:var(--void);border:1px solid var(--line);border-radius:10px;margin-bottom:14px;overflow:hidden;}
+.grp-head{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);}
+.grp-icon{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+.grp-t{flex:1;min-width:0;}
+.grp-name{font-family:var(--FD);font-size:19px;letter-spacing:.5px;font-weight:700;color:var(--ice);line-height:1;}
+.grp-full{font-family:var(--FM);font-size:8px;letter-spacing:.4px;color:var(--dim);margin-top:4px;}
+.grp-badges{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;}
+.grp-affil{font-family:var(--FM);font-size:7px;letter-spacing:.5px;padding:2px 6px;border-radius:3px;background:var(--void2);border:1px solid var(--line2);color:var(--mute);}
+.grp-str{font-family:var(--FM);font-size:8px;color:var(--mute);padding:8px 16px;background:var(--void2);border-bottom:1px solid var(--line);letter-spacing:.3px;}
+.grp-body{padding:14px 16px;display:flex;flex-direction:column;gap:13px;}
+.grp-sec{display:flex;flex-direction:column;gap:5px;}
+.grp-k{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--dim);display:flex;align-items:center;gap:6px;}
+.grp-k::before{content:'';width:3px;height:3px;border-radius:50%;background:currentColor;}
+.grp-v{font-size:12.5px;line-height:1.6;color:var(--text);}
+.grp-eco{background:rgba(212,178,74,.07);border:1px solid rgba(212,178,74,.18);border-radius:7px;padding:12px 13px;}
+.grp-eco .grp-k{color:var(--gold);}
+.grp-eco .grp-v{color:var(--text);}
+.grp-as{background:var(--void2);border-left:2px solid var(--cyan);border-radius:0 6px 6px 0;padding:11px 13px;font-size:12.5px;line-height:1.6;color:var(--text);}
+.grp-th{display:flex;flex-wrap:wrap;gap:6px;}
+.blc-card{background:var(--void);border:1px solid var(--line);border-radius:10px;margin-bottom:14px;padding:16px;}
+.blc-name{font-family:var(--FD);font-size:19px;letter-spacing:.5px;font-weight:700;color:var(--ice);}
+.blc-what{font-family:var(--FM);font-size:8.5px;letter-spacing:.5px;color:var(--mute);margin:4px 0 12px;}
+.blc-sides{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.blc-side{padding:10px 12px;border-radius:7px;font-size:12px;line-height:1.55;}
+.blc-a{background:rgba(224,106,95,.08);border-left:2px solid #e06a5f;color:var(--text);}
+.blc-b{background:rgba(127,179,224,.08);border-left:2px solid #7fb3e0;color:var(--text);}
+.blc-lbl{font-family:var(--FM);font-size:7px;letter-spacing:1px;display:block;margin-bottom:3px;opacity:.75;}
+.blc-row{display:flex;flex-direction:column;gap:5px;margin-bottom:11px;}
+.blc-k{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--dim);}
+.blc-v{font-size:12.5px;line-height:1.6;color:var(--text);}
+.blc-fault{background:rgba(224,164,74,.08);border:1px solid rgba(224,164,74,.2);border-radius:7px;padding:12px 13px;margin-bottom:11px;}
+.blc-fault .blc-k{color:var(--amber);}
+
+
+/* v22 — grouped toolbar, movers, cross-links */
+.tb-wrap{display:flex;flex-direction:column;gap:7px;}
+.tb-grp{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.tb-lbl{font-family:var(--FM);font-size:7px;letter-spacing:1.2px;color:var(--dim);min-width:52px;flex-shrink:0;text-align:right;padding-right:2px;}
+.btn-mov{color:var(--amber);border-color:rgba(224,164,74,.4);}.btn-mov:hover{background:var(--amber-d);}
+.mv-lead{font-size:13px;line-height:1.7;color:var(--text);margin-bottom:16px;padding:14px 16px;background:var(--void);border:1px solid var(--line);border-left:2px solid var(--amber);border-radius:0 8px 8px 0;}
+.mv-sec{font-family:var(--FM);font-size:9px;letter-spacing:1.5px;color:var(--dim);margin:18px 0 9px;padding-bottom:6px;border-bottom:1px solid var(--line);}
+.mv-row{display:flex;align-items:center;gap:11px;padding:11px 13px;background:var(--void);border:1px solid var(--line);border-radius:8px;margin-bottom:7px;cursor:pointer;transition:all .15s;}
+.mv-row:hover{border-color:var(--cyan-g);}
+.mv-d{font-family:var(--FM);font-size:15px;font-weight:700;min-width:42px;text-align:center;flex-shrink:0;}
+.mv-up{color:#e2564e;}.mv-dn{color:#4cc98a;}
+.mv-i{font-family:var(--FM);font-size:13px;font-weight:600;min-width:30px;text-align:center;color:var(--ice);flex-shrink:0;}
+.mv-t{flex:1;min-width:0;}
+.mv-n{font-size:13px;color:var(--text);font-weight:500;line-height:1.3;}
+.mv-s{font-family:var(--FM);font-size:8px;color:var(--dim);margin-top:3px;letter-spacing:.3px;}
+.mv-none{font-family:var(--FM);font-size:9px;color:var(--dim);padding:14px;text-align:center;letter-spacing:.5px;}
+.xl-wrap{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);}
+.xl-k{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--dim);margin-bottom:8px;}
+.xl-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.xl-chip{font-family:var(--FM);font-size:9px;padding:5px 10px;border-radius:100px;background:var(--void2);border:1px solid var(--line2);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px;}
+.xl-g{color:#e06a5f;border-color:rgba(224,106,95,.3);}.xl-g:hover{background:rgba(224,106,95,.13);}
+.xl-b{color:#7fb3e0;border-color:rgba(127,179,224,.3);}.xl-b:hover{background:rgba(127,179,224,.13);}
+.xl-s{color:var(--cyan);border-color:var(--cyan-g);}.xl-s:hover{background:var(--cyan-d);}
+.xl-i{color:var(--gold);border-color:rgba(212,178,74,.3);}.xl-i:hover{background:var(--gold-d);}
+
+
+/* v22 — toolbar groups, movers, cross-links */
+.tb-wrap{display:flex;flex-direction:column;gap:7px;}
+.tb-row{display:flex;gap:6px;align-items:center;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.tb-row::-webkit-scrollbar{display:none}
+.tb-lbl{font-family:var(--FM);font-size:7px;letter-spacing:1.2px;color:var(--dim);flex-shrink:0;padding-right:2px;min-width:52px;}
+.btn-movers{color:var(--amber);border-color:rgba(224,164,74,.4);}.btn-movers:hover{background:var(--amber-d);}
+.mv-lead{font-size:13px;line-height:1.7;color:var(--text);margin-bottom:16px;padding:14px 16px;background:var(--void);border:1px solid var(--line);border-left:2px solid var(--amber);border-radius:0 8px 8px 0;}
+.mv-grp{margin-bottom:22px;}
+.mv-h{font-family:var(--FM);font-size:9px;letter-spacing:1.5px;color:var(--dim);margin-bottom:9px;padding-bottom:6px;border-bottom:1px solid var(--line);}
+.mv-row{display:flex;align-items:center;gap:11px;padding:11px 13px;background:var(--void);border:1px solid var(--line);border-radius:8px;margin-bottom:7px;cursor:pointer;transition:all .15s;}
+.mv-row:hover{border-color:var(--cyan-g);background:var(--void2);}
+.mv-d{font-family:var(--FM);font-size:15px;font-weight:600;min-width:42px;text-align:center;padding:5px 7px;border-radius:6px;flex-shrink:0;}
+.mv-up{background:rgba(226,86,78,.14);color:#e2564e;}
+.mv-dn{background:rgba(76,201,138,.14);color:#4cc98a;}
+.mv-i{flex:1;min-width:0;}
+.mv-n{font-size:13.5px;color:var(--ice);font-weight:500;line-height:1.3;}
+.mv-s{font-family:var(--FM);font-size:8px;color:var(--dim);margin-top:3px;letter-spacing:.3px;}
+.mv-e{font-family:var(--FM);font-size:15px;color:var(--mute);flex-shrink:0;font-weight:600;}
+.mv-none{font-size:12.5px;color:var(--dim);padding:14px;text-align:center;font-style:italic;}
+/* cross-links inside theater detail */
+.xl-wrap{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);}
+.xl-k{font-family:var(--FM);font-size:8px;letter-spacing:1.5px;color:var(--dim);margin-bottom:7px;}
+.xl-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.xl-chip{font-family:var(--FM);font-size:9px;padding:5px 10px;border-radius:100px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .15s;border:1px solid;}
+.xl-g{background:rgba(224,106,95,.09);border-color:rgba(224,106,95,.3);color:#e06a5f;}
+.xl-g:hover{background:rgba(224,106,95,.18);}
+.xl-b{background:rgba(127,179,224,.09);border-color:rgba(127,179,224,.3);color:#7fb3e0;}
+.xl-b:hover{background:rgba(127,179,224,.18);}
+.xl-s{background:rgba(61,214,208,.09);border-color:rgba(61,214,208,.3);color:var(--cyan);}
+.xl-s:hover{background:rgba(61,214,208,.18);}
+
+
+/* CONTESTED LAYER (v24) */
+.ct-lead{font-size:13px;line-height:1.7;color:var(--text);padding:13px 15px;background:var(--void);border:1px solid var(--line);border-left:2px solid #9d7fc7;border-radius:0 8px 8px 0;margin-bottom:14px;}
+.ct-none{font-size:12.5px;line-height:1.7;color:var(--dim);padding:16px;background:var(--void);border:1px solid var(--line);border-radius:8px;font-style:italic;}
+.ct-card{background:var(--void);border:1px solid var(--line);border-radius:9px;margin-bottom:12px;overflow:hidden;}
+.ct-claim{padding:13px 15px;background:var(--void2);border-bottom:1px solid var(--line);}
+.ct-ck{font-family:var(--FM);font-size:7.5px;letter-spacing:1.4px;color:var(--dim);margin-bottom:5px;}
+.ct-cv{font-size:13.5px;line-height:1.55;color:var(--ice);font-weight:500;}
+.ct-body{padding:13px 15px;display:flex;flex-direction:column;gap:12px;}
+.ct-sec{display:flex;flex-direction:column;gap:4px;}
+.ct-k{font-family:var(--FM);font-size:7.5px;letter-spacing:1.4px;}
+.ct-v{font-size:12.5px;line-height:1.6;color:var(--text);}
+.ct-who .ct-k{color:#e0a030;}
+.ct-ev .ct-k{color:var(--cyan);}
+.ct-st{display:inline-flex;align-items:center;gap:5px;font-family:var(--FM);font-size:8px;letter-spacing:1px;padding:5px 10px;border-radius:5px;align-self:flex-start;font-weight:600;}
+.st-dis{background:rgba(76,201,138,.14);color:#4cc98a;border:1px solid rgba(76,201,138,.3);}
+.st-doc{background:rgba(226,86,78,.14);color:#e2564e;border:1px solid rgba(226,86,78,.3);}
+.st-unr{background:rgba(224,164,74,.14);color:var(--amber);border:1px solid rgba(224,164,74,.3);}
+.st-con{background:rgba(157,127,199,.14);color:#9d7fc7;border:1px solid rgba(157,127,199,.3);}
+.st-uns{background:rgba(140,150,165,.14);color:var(--mute);border:1px solid rgba(140,150,165,.3);}
+
+
+/* MOVERS · seeded segregation (v25) */
+.mv-seed{opacity:.72}
+.mv-est{background:rgba(140,150,165,.14);color:var(--mute);border:1px solid rgba(140,150,165,.3);font-size:8px!important;letter-spacing:.5px}
+.mv-hs{color:var(--mute)!important}
+.mv-note{font-size:11px;line-height:1.6;color:var(--dim);font-style:italic;padding:0 2px 9px}
+.mv-empty{font-size:12px;color:var(--dim);font-style:italic;padding:8px 2px}
+/* CONTESTED BOARD (v25) */
+.ctb-tally{display:flex;flex-wrap:wrap;margin-bottom:14px}
+.ctb-card{background:var(--void);border:1px solid var(--line);border-left:2px solid #9d7fc7;border-radius:0 9px 9px 0;padding:13px 15px;margin-bottom:11px;cursor:pointer;transition:border-color .15s}
+.ctb-card:active{border-color:#9d7fc7}
+.ctb-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px}
+.ctb-n{font-family:var(--FH);font-size:15px;letter-spacing:.4px;color:var(--ice);font-weight:600}
+.ctb-e{font-family:var(--FM);font-size:15px;font-weight:700}
+.e-crit{color:var(--red)}.e-sev{color:var(--amber)}.e-elev{color:var(--cyan)}
+.ctb-sum{font-size:12.5px;line-height:1.6;color:#9d7fc7;font-style:italic;margin-bottom:10px}
+.ctb-cl{display:flex;flex-direction:column;gap:5px;padding:9px 0;border-top:1px solid var(--line)}
+.ctb-ct{font-size:12.5px;line-height:1.55;color:var(--text)}
+.ctb-clean{margin-top:16px;padding-top:13px;border-top:1px solid var(--line)}
+.ctb-ch{font-family:var(--FM);font-size:8px;letter-spacing:1.4px;color:#4cc98a;margin-bottom:9px}
+.ctb-cl2{display:flex;flex-wrap:wrap;gap:6px}
+
+.btn-contest{border-color:rgba(157,127,199,.4);color:#9d7fc7}
+.hidden{display:none!important}
+@media (max-width:820px){
+  /* UNLOCK the page: let the whole document scroll instead of freezing chrome */
+  html,body{height:auto;min-height:100%;overflow:visible;}
+  body{overflow-y:auto;-webkit-overflow-scrolling:touch;}
+  .topbar{position:sticky;top:0;}
+  .main{display:block;flex:none;min-height:0;}
+  .list-pane{border-right:none;overflow:visible;display:block;}
+  .list-scroll{overflow:visible;flex:none;}
+  /* --- mobile header reflow --- */
+  .topbar{height:auto;min-height:52px;flex-wrap:wrap;padding:8px 12px;gap:8px 10px;z-index:100;}
+  .brand-main{font-size:17px;letter-spacing:2.5px;}
+  .brand-sub{font-size:7px;letter-spacing:1.5px;}
+  .clock{display:none;}
+  .wk-chip{display:none;}
+  .live-chip{margin-left:auto;}
+  .search{order:10;flex-basis:100%;margin-left:0;}
+  .search input{width:100%;}
+  .stats{gap:10px;margin-left:0;order:9;}
+  .stat b{font-size:15px;}
+  .stat span{font-size:7px;}
+  /* toolbar: horizontal scroll per row instead of cramming */
+  .toolbar{overflow:hidden;}
+  .tb-row{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+  .tb-row::-webkit-scrollbar{display:none;}
+  .tb-row .btn{flex-shrink:0;}
+  .tb-lbl{flex-shrink:0;}
+  .sub-row{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .sub-row::-webkit-scrollbar{display:none;}
+  .sub-row .chip{flex-shrink:0;}
+  .ticker-tag{font-size:8px;}
+  /* detail pane: full-screen overlay when a theater is tapped */
+  .detail-pane{display:none;}
+  .detail-pane.mobile-show{display:flex;position:fixed;inset:0;z-index:200;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+  .mobile-back{display:block;width:100%;padding:11px;margin-bottom:10px;background:var(--void2);border:1px solid var(--line2);border-radius:var(--r);color:var(--ice);font-family:var(--FM);font-size:12px;letter-spacing:1px;cursor:pointer;position:sticky;top:0;z-index:5;}
+}
+@media (max-width:480px){
+  .brand-sub{display:none;}
+  .stat:nth-child(3),.stat:nth-child(4){display:none;}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-main">MERIDIAN</div>
+    <div class="brand-sub"><b>LEVERAGE</b> · STRATEGIC INTELLIGENCE · v58</div>
+  </div>
+  <div class="live-chip"><span class="live-dot"></span>LIVE</div>
+  <div class="wk-chip">WEEK 16 · 16 JUL 2026</div>
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <input id="searchInput" type="text" placeholder="Search theaters, actors, systems, leverage…" oninput="onSearch(this.value)">
+  </div>
+  <div class="stats">
+    <div class="stat"><b class="s-crit" id="sc">—</b><span>CRITICAL</span></div>
+    <div class="stat"><b class="s-esc" id="se">—</b><span>ESCALATING</span></div>
+    <div class="stat"><b class="s-desc" id="sd">—</b><span>EASING</span></div>
+    <div class="stat"><b class="s-tot" id="st">—</b><span>THEATERS</span></div>
+  </div>
+  <div class="clock">13 JUL 2026 · WK16<br>55 THEATERS · v58</div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-tag">SITREP</div>
+  <div class="ticker-scroll"><div class="ticker-track" id="ticker"></div></div>
+</div>
+
+<div class="toolbar">
+    <div class="tb-wrap">
+      <div class="tb-row">
+        <span class="tb-lbl">EXPORT</span>
+        <button class="btn" onclick="exportKML()">↓ KML</button>
+        <button class="btn" onclick="exportCSV()">↓ CSV</button>
+        <span class="tb-lbl" style="margin-left:8px">ACTORS</span>
+        <button class="btn btn-groups" onclick="openGroups()">🏴 Groups</button>
+        <button class="btn btn-ext" onclick="openExt()">◆ Patrons</button>
+      </div>
+      <div class="tb-row">
+        <span class="tb-lbl">STRUCTURE</span>
+        <button class="btn btn-blocs" onclick="openBlocs()">⬡ Blocs</button>
+        <button class="btn btn-sys" onclick="openSystems()">◈ Systems</button>
+        <span class="tb-lbl" style="margin-left:8px">LEVERAGE</span>
+        <button class="btn btn-lev" onclick="openLeverage()">⚖ Military</button>
+        <button class="btn btn-econ" onclick="openEcon()">₿ Economic</button>
+        <button class="btn btn-sx" onclick="openSanctions()">⊘ Sanctions</button>
+        <button class="btn btn-pipe" onclick="openPipeline()">⛓ Pipeline</button>
+        <button class="btn btn-pattern" onclick="openPatterns()">◆ Patterns</button>
+        <button class="btn btn-invest" onclick="openInvest()">◇ Markets</button>
+      </div>
+      <div class="tb-row">
+        <span class="tb-lbl">DATA</span>
+        <button class="btn btn-contest" onclick="openContested()">◉ Contested</button>
+        <button class="btn btn-io" onclick="openInfoOps()">◈ InfoOps</button>
+        <button class="btn btn-hm" onclick="openHuman()">⚕ Human</button>
+        <button class="btn btn-movers" onclick="openMovers()">⇅ Movers</button>
+        <button class="btn btn-gov" onclick="openGov()">▣ Sources</button>
+        <button class="btn btn-hist" onclick="openHistory()">◷ History</button>
+        <button class="btn btn-watch" onclick="openWatch()">⏱ Watchlist</button>
+        <button class="btn btn-meth" onclick="openMethod()">⌘ Method</button>
+      </div>
+    </div>
+  </div>
+<div class="sub-row">
+  <span class="tb-label" style="padding-right:2px">FILTER</span>
+  <button class="chip on" data-f="all" onclick="setF('all',this)">All</button>
+  <button class="chip" data-f="critical" onclick="setF('critical',this)">Critical</button>
+  <button class="chip" data-f="escalating" onclick="setF('escalating',this)">Escalating</button>
+  <button class="chip" data-f="deescalating" onclick="setF('deescalating',this)">Easing</button>
+  <button class="chip" data-f="conflict" onclick="setF('conflict',this)">⚔ Conflict</button>
+  <button class="chip" data-f="watch" onclick="setF('watch',this)">◎ Watch</button>
+  <button class="chip" data-f="africa" onclick="setF('africa',this)">Africa</button>
+  <button class="chip" data-f="latam" onclick="setF('latam',this)">Lat Am</button>
+  <div class="divider"></div>
+  <div id="subFilter" style="display:flex;gap:6px;"></div>
+</div>
+
+<div class="main">
+  <div class="list-pane">
+    <div class="list-scroll" id="listWrap"></div>
+  </div>
+  <div class="detail-pane" id="detailPane">
+    <div class="empty" id="empty">
+      <div class="snapshot" id="snapshot"></div>
+    </div>
+    <div class="detail hidden" id="detail"></div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="ov-head"><div class="ov-title" id="ovTitle">BOARD</div><button class="ov-close" onclick="closeOverlay()">✕ CLOSE</button></div>
+  <div class="ov-scroll" id="ovScroll"></div>
+</div>
+<script>
+/* GLOBAL INTELLIGENCE PLATFORM v58 — Situation Room · Week 16 (13 Jul 2026)
+   Redesigned presentation layer. Data identical to v17. */
+const DB = /*__MERIDIAN_DB__*/;
+const METHOD = {"updated": "Week 16 · 13 Jul 2026", "purpose": "MERIDIAN is a strategic-intelligence platform built on a single analytical spine: power is best understood through leverage — who can compel whom, and what they extract for it. It tracks active conflicts and strategically critical situations through that lens, applying open-source intelligence tradecraft to separate documented fact from interpretation at every step.", "classes": [{"k": "⚔ CONFLICT", "d": "Active armed conflict, insurgency, state collapse, or acute crisis with ongoing violence. Tracked for escalation trajectory and humanitarian impact."}, {"k": "◎ STRATEGIC-WATCH", "d": "No active large-scale violence, but the leverage/extraction framework applies: resource chokeholds, great-power competition, sanctions regimes, electoral ruptures, or structural instability. Tracked for the same reasons even when quiet."}], "index": [{"k": "How to read it", "d": "The escalation index (0-100) is a structured analytic judgment of relative severity and trajectory, not a computed metric. It is grouped into tiers so that small numeric differences are not over-interpreted, and it is revised as reporting develops."}, {"k": "CRITICAL (90-100)", "d": "Mass-atrocity risk, state collapse, or war at peak intensity."}, {"k": "SEVERE (75-89)", "d": "Major active conflict or acute strategic crisis."}, {"k": "ELEVATED (55-74)", "d": "Significant instability or high strategic stakes, contained."}, {"k": "GUARDED (35-54)", "d": "Watch conditions; structural risk without acute crisis."}, {"k": "STABLE (0-34)", "d": "Low active risk; tracked for context or improvement."}], "sourcing": [{"k": "ANALYST TIER", "d": "Independent research institutions: ISW/CTP, ACLED, Crisis Group, Africa Center, Yale HRL, RUSI, CSIS, IISS. The default evidentiary base."}, {"k": "▣ GOV-SRC TIER", "d": "State and official data: UN Security Council listings, national statistics offices, ministries, WHO. Carries authority but also interest — shown alongside analyst data, not above it."}], "external": [{"k": "DOCUMENTED", "d": "Confirmed by investigators, official bodies, or on-record admission. The strongest tier."}, {"k": "ALLEGED", "d": "Credible reporting or expert assessment, not independently confirmed. Logged as a claim."}, {"k": "DENIED", "d": "Credible allegations that the named actor publicly denies. Shown to record the dispute, not to assert guilt."}], "principles": ["Separate what is known from what is assessed. Every claim is tagged by evidentiary strength; analytic judgment is never presented as established fact.", "Source triangulation. Corroborate across independent reporting before treating a claim as documented; a single source is logged as a claim, not a finding.", "Weight sources by reliability and access, and account for each source's interest — official data carries authority but also motive, and is shown alongside independent analysis rather than above it.", "Trace structural drivers, not just events. Track who backs whom and what they extract — leverage and resource dependence are more durable and more predictive than any single incident.", "Follow the connective tissue across theaters. Arms pipelines, financing chains, and sanctions-evasion networks that cross borders are tracked as systems, not isolated dots.", "Recency governs. Where older and newer reporting conflict, current sourcing wins; legacy and historical layers are dated to their origin and labeled as reference.", "Guard against bias. Steelman competing explanations, flag disputed claims explicitly, and distinguish absence of evidence from evidence of absence.", "Allegations are logged with their evidentiary tier — documented, alleged, or denied — and never laundered into fact."]};
+const SYSTEMS = [{"id": "drone-ecosystem", "name": "Iranian Drone-Supply Ecosystem", "icon": "◇", "color": "#e07a5f", "type": "Arms Pipeline", "tier": "documented", "summary": "A single sanctions-bloc UAV supply line — the Mohajer-6 / Shahed / Ababil family — running from Iranian production across three continents. The same airframes appear in the Sahel, Sudan, Venezuela, and (alleged) Cuba, plus the reverse flow of gold and uranium back to Tehran.", "nodes": [{"theater": "iran-us", "role": "Source", "detail": "IRGC/Quds production + technical advisors; the manufacturing origin"}, {"theater": "mali", "role": "Recipient", "detail": "Mohajer-6/Shahed to the junta; drones-for-gold"}, {"theater": "niger", "role": "Recipient", "detail": "Drones-for-uranium (~300t yellowcake alleged)"}, {"theater": "burkina", "role": "Recipient", "detail": "Ababil-2/Mohajer supply agreements (2024)"}, {"theater": "sudan", "role": "Recipient", "detail": "Mohajer-6 to SAF (documented)"}, {"theater": "venezuela", "role": "Hub", "detail": "El Libertador AB: CAVIM assembly of the same Mohajer line"}, {"theater": "cuba", "role": "Recipient (alleged)", "detail": "300+ Russia/Iran attack drones (Axios/US intel; Cuba denies)"}, {"theater": "myanmar", "role": "Recipient", "detail": "Iranian jet fuel powering the junta's aerial bombing campaign"}], "reverse": "Gold (Sahel artisanal) + uranium (Niger yellowcake) flow back to Iran as payment.", "significance": "Turns four separate theaters into one procurement network. Degrading the source (Iran) or the Venezuela assembly hub has cascading effects; it also means a Hormuz escalation and a Sahel drone strike draw on the same supply chain."}, {"id": "gold-laundering", "name": "Conflict-Gold Laundering Chain", "icon": "◈", "color": "#d4b24a", "type": "Financing Network", "tier": "documented", "summary": "African conflict gold — mined under RSF, Wagner/Africa Corps, and jihadist control — laundered through Gulf refineries (principally the UAE) into legitimate global markets, financing both the wars that produce it and external sponsors' wider aims.", "nodes": [{"theater": "sudan", "role": "Source", "detail": "RSF-controlled Darfur/Kordofan gold → Dubai (Hemedti's decade-old channel) · ~60t/yr also smuggled via Chad/Egypt/Ethiopia into Dubai"}, {"theater": "mali", "role": "Source", "detail": "Junta gold refineries; Wagner/Africa Corps concessions"}, {"theater": "burkina", "role": "Source", "detail": "Gold-refinery support underwriting Africa Corps presence"}, {"theater": "geopolitical", "role": "Launderer", "detail": "UAE as the principal Gulf refining/transit point into global markets"}, {"theater": "ukraine", "role": "End-use", "detail": "$2.5B+ African gold has funded Russia's war machine since 2022"}], "reverse": "Arms, mercenaries, and regime security flow back to the source states.", "significance": "Explains WHY the external sponsors are present — gold is the extraction that pays for the patronage. Sanctions on refiners/transit (not just fighters) are the unused lever."}, {"id": "sanctions-evasion", "name": "Sanctions-Evasion & Shadow Shipping", "icon": "◊", "color": "#5b9bd5", "type": "Evasion Network", "tier": "documented", "summary": "The maritime and financial infrastructure that moves sanctioned oil and goods — shadow tankers, ship-to-ship transfers, rebranded crude, and third-country routing — linking Iran, Russia, Venezuela, and Cuba into a shared evasion architecture.", "nodes": [{"theater": "iran-us", "role": "Core", "detail": "Hormuz control + designated-route regime; oil-waiver now revoked (Jul 7)"}, {"theater": "venezuela", "role": "Core", "detail": "Crude rebranded via third countries; ~$8B routed through opaque Qatar account"}, {"theater": "cuba", "role": "Dependent", "detail": "Relies on the same networks for the one Russian tanker/year keeping the grid alive"}, {"theater": "ukraine", "role": "Beneficiary-target", "detail": "Russia's shadow fleet moves sanctioned crude; +$15B revenue during Hormuz crisis"}, {"theater": "chokepoints", "role": "Terrain", "detail": "Hormuz, Bab el-Mandeb, Cape routing — where evasion is enforced or interdicted"}, {"theater": "korea", "role": "Evader", "detail": "DPRK coal/iron-ore/tungsten sanctions evasion; Russia-DPRK arms-for-tech trade"}], "reverse": "Hard currency flows back to the sanctioned states, sustaining the regimes.", "significance": "One enforcement architecture governs four theaters. The UK/France Hormuz armada (Jul 7) is an attempt to break the maritime layer of it."}, {"id": "critical-minerals", "name": "Critical-Minerals Dependency Map", "icon": "⬡", "color": "#4cc98a", "type": "Resource Chokehold", "tier": "documented", "summary": "The concentration of battery-metal, nuclear-fuel, rare-earth, and semiconductor supply in a handful of contested jurisdictions — and the great-power scramble to secure or de-risk it. The investment-relevant spine of the platform, spanning Africa, Southeast Asia, and Central Asia.", "nodes": [{"theater": "drc", "role": "Cobalt", "detail": "~70% of global reserves; CMOC (China) ships raw metal for processing; US countering via tripartite MoU"}, {"theater": "myanmar", "role": "Heavy rare earths", "detail": "~94% of China's heavy-REE imports (dysprosium/terbium); KIA-controlled Kachin mines"}, {"theater": "indonesia", "role": "Nickel", "detail": "World's dominant nickel producer+refiner; EV-battery supply-chain anchor"}, {"theater": "niger", "role": "Uranium", "detail": "SOMAÏR nationalized; Russia MoU; feeds the drones-for-yellowcake swap"}, {"theater": "taiwan", "role": "Semiconductors", "detail": "90%+ advanced chips (TSMC) vs China rare-earth/magnet dominance — the mutual hold"}, {"theater": "geopolitical", "role": "De-risking", "detail": "G7 Critical Minerals Alliance targeting Chinese processing concentration"}, {"theater": "venezuela", "role": "Oil reserves", "detail": "World's largest proven crude reserves, now US-administered"}, {"theater": "kazakhstan", "role": "Uranium", "detail": "~40% of global uranium; output cuts move world prices; Russia+China reactor lock-in"}, {"theater": "caucasus", "role": "Trade corridor", "detail": "TRIPP/Zangezur plugs the Middle Corridor gap — China-Europe minerals/trade bypassing Russia+Iran"}, {"theater": "mozambique", "role": "LNG gas", "detail": "$50B+ Total/Exxon/ENI projects; potential 20% of African gas by 2040 — Europe/Asia energy security"}], "reverse": "Capital, infrastructure, and security guarantees flow to resource holders.", "significance": "The 'why it matters to markets' layer — connects the conflict map to commodity/defense investment exposure. Chinese processing dominance is the single biggest chokepoint."}, {"id": "displacement-corridors", "name": "Displacement & Migration Corridors", "icon": "◉", "color": "#9a7ff0", "type": "Human Movement", "tier": "documented", "summary": "The mass-displacement routes generated by the conflict theaters, and how they become political leverage — at borders, in host-state politics, and as instruments of pressure.", "nodes": [{"theater": "sudan", "role": "Source", "detail": "14M+ displaced — world's largest crisis; Chad/Egypt/South Sudan spillover"}, {"theater": "mali", "role": "Source", "detail": "245k+ refugees into Mauritania (~5% of its population)"}, {"theater": "venezuela", "role": "Source", "detail": "~8M emigrated since 2015; 3M+ in Colombia"}, {"theater": "haiti", "role": "Source", "detail": "1.5M displaced; regional (DR/US) migration pressure"}, {"theater": "south-africa", "role": "Destination", "detail": "Migration weaponized into xenophobic electoral mobilization"}, {"theater": "mexico", "role": "Transit", "detail": "Migration cooperation as the US-leverage stabilizer"}, {"theater": "ethiopia", "role": "Source", "detail": "5.1M displaced in 2021 (record); 1M+ refugees hosted; Tigray/Amhara/Oromia"}, {"theater": "mozambique", "role": "Source", "detail": "1.3M displaced from Cabo Delgado by the gas-belt insurgency"}, {"theater": "bangladesh", "role": "Host/source", "detail": "~1M Rohingya in camps; minority-displacement pressure; India deportation friction"}, {"theater": "lakurawa", "role": "Source", "detail": "~500 villages under pressure in Sokoto/Kebbi; settlement clearance in the NW tri-border"}, {"theater": "cameroon", "role": "Source/Host", "detail": "500k+ IDPs (Anglophone); hosts 400k+ refugees from CAR/Nigeria/Chad; Far North raids driving new displacement"}, {"theater": "somalia", "role": "Source", "detail": "~3.8M internally displaced; recurrent famine risk; Al-Shabaab forced recruitment"}], "reverse": "Host-state political capital, border-cooperation leverage, remittances.", "significance": "Displacement is both a humanitarian output and a political input — the same flows that measure a war's severity become bargaining chips in destination-state politics."}, {"id": "info-ops", "name": "Information Operations Network", "type": "Narrative Warfare", "icon": "◉", "color": "#9d7fc7", "summary": "Coordinated disinformation as a strategic instrument — manufacturing coups, laundering atrocities, and shaping alignment without firing a shot. The cheapest form of leverage on the board.", "significance": "This system tracks a method rather than a resource. Its signature is repetition: the same fabricated beats recur across theaters (a leader 'missing,' an army chief 'assassinated,' the internet 'cut'), amplified across platforms and often in a language foreign to the target country — a tell that the audience is external, not domestic. The strategic objective is to make rupture look inevitable, so that it becomes so.", "nodes": [{"theater": "cote-divoire", "role": "Primary target", "detail": "Recurring fabricated-coup campaigns (May 2025, ~Apr 2026); Ivorian agency: 'a deliberate and coordinated disinformation campaign'; posts largely in English in a Francophone state; exploits real 4th-term + AES-sympathy grievances"}, {"theater": "balkans", "role": "Target", "detail": "Russian hybrid information operations backing Serbian non-recognition of Kosovo and Republika Srpska secession"}, {"theater": "sudan", "role": "Atrocity laundering", "detail": "RSF/UAE narrative management around the genocide determination; the HRC motion still declines to name the UAE"}, {"theater": "us-politics", "role": "Contested space", "detail": "The information environment itself as a domain of great-power competition"}, {"theater": "mali", "role": "Vector", "detail": "Russia/Africa Corps narrative operations supporting the juntas and framing France as the enemy — the template the Ivorian campaigns imitate"}, {"theater": "burkina", "role": "Vector", "detail": "Junta-aligned messaging; the AES model whose appeal the coup-disinformation campaigns are engineered to spread"}]}];
+const INVEST = [{"id":"cobalt","commodity":"Cobalt","icon":"⬢","color":"#4cc98a","use":"EV batteries, aerospace superalloys, defense","chokehold":"DRC ~70% of global reserves; China (CMOC) controls most mining + processing","theaters":["drc"],"signal":"DRC instability or a China export-policy shift moves cobalt prices; US-led de-risking (EGC/Trafigura MoU) is the counter-trend to watch","vectors":"Battery-metal miners, EV supply-chain ETFs, cobalt-exposed majors; China-processing concentration is the key risk variable"},{"id":"uranium","commodity":"Uranium","icon":"☢","color":"#e0a030","use":"Nuclear fuel, naval propulsion, weapons feedstock","chokehold":"Kazakhstan ~40% of global supply (Kazatomprom); Niger a secondary source; Russia+China lock in reactor/processing","theaters":["kazakhstan","niger"],"signal":"Non-Russian enrichment capacity is the bottleneck. Watch Niger-Rosatom offtake confirmation, Kazakh multi-vector deals (Axpo/CEZ/Kansai), and any Western enrichment buildout.","vectors":"Uranium miners, nuclear-fuel ETFs, utilities with fuel exposure; the Russia/China reactor lock-in is the strategic overhang","catalyst":"JUL 2026 — Niger yellowcake still stranded (ICSID block; Rosatom the only buyer); Kazakhstan splits new reactors Rosatom/CNNC; the Iran war revives the nuclear-security premium. Western utilities remain structurally short non-Russian enrichment."},{"id":"rare-earths","commodity":"Rare Earths","icon":"◈","color":"#e07a5f","use":"EV motors, wind turbines, missiles, robotics, F-35s","chokehold":"China ~90% of processing; Myanmar supplies ~94% of China's HEAVY-REE feedstock (KIA-controlled)","theaters":["myanmar","taiwan"],"signal":"The Nov-2026 control-pause expiry and Jan-2027 Pentagon ban are the calendar catalysts. Watch Western separation/magnet capacity (mine-to-magnet integration) and Myanmar supply disruptions.","vectors":"Ex-China rare-earth miners/processors, magnet makers, defense primes exposed to REE inputs; 'Pax Silica' diversification plays","catalyst":"JUL 2026 — China's Nov-2026 export-control pause expiry + Jan-1-2027 Pentagon ban on Chinese-origin REEs approach; Myanmar heavy-REE supply runs through KIA-taxed mines into Chinese separation. The mine-to-magnet Western gap remains the structural short."},{"id":"nickel","commodity":"Nickel","icon":"⬡","color":"#5b9bd5","use":"EV batteries (high-nickel cathodes), stainless steel","chokehold":"Indonesia ~50% of global supply; export ban forced onshore processing, largely Chinese-controlled","theaters":["indonesia"],"signal":"Indonesian export-policy shifts + Prabowo statism move nickel prices; Western IRA de-risking targets Chinese-controlled Indonesian supply","vectors":"Nickel miners, battery-metal ETFs, EV-cathode supply chain; Indonesia policy + Chinese-JV control are the swing factors"},{"id":"energy","commodity":"Oil & Gas / Chokepoints","icon":"◊","color":"#d4b24a","use":"Global energy supply; the master variable","chokehold":"Hormuz (~20-25% of seaborne oil), Bab el-Mandeb; Venezuela (largest reserves, US-administered); Mozambique LNG (top-10 potential)","theaters":["iran-us","chokepoints","venezuela","mozambique"],"signal":"Any sustained Hormuz closure OR a credible all-Gulf-export threat = the oil-spike scenario. Watch tanker insurance rates, SPR-release signals, and whether Saudi/UAE east-west pipelines can bypass the strait.","vectors":"Energy majors, oil/tanker/shipping equities, LNG developers, war-risk-sensitive insurers; Hormuz is the fastest-moving price trigger","catalyst":"JUL 16 2026 — IRGC threatens to choke off ALL regional oil & gas (not just Hormuz); US striking Iran around-the-clock as convoy protection; Iran hitting Gulf US bases. A simultaneous Hormuz + Bab-el-Mandeb + Gulf-loadport disruption is now the tail risk being priced. War-premium live; tanker war-risk insurance spiking."},{"id":"gold","commodity":"Gold","icon":"◉","color":"#d4b24a","use":"Safe-haven, conflict-finance, sanctions-evasion store of value","chokehold":"African conflict gold (Sudan/Sahel) laundered via UAE; Russia using gold to fund the Ukraine war","theaters":["sudan","mali","geopolitical"],"signal":"Record central-bank gold accumulation is the de-dollarization/trust gauge. Watch for any UAE-conduit sanction (would disrupt physical flows) and safe-haven flows on each Iran-war escalation.","vectors":"Gold miners, bullion ETFs, safe-haven allocation; rises with systemic geopolitical stress across the whole platform","catalyst":"JUL 2026 — EU banned Sudanese gold (Jul 13) but NOT the UAE conduit; war-premium + record central-bank buying keep gold elevated. The Dubai laundering circuit (Sudan/DRC/Sahel) stays open — sanctions hit the periphery, not the refiner. Gold remains the system-distrust hedge as the Iran war escalates."},{"id":"defense","commodity":"Defense & Drones","icon":"⚔","color":"#e2564e","use":"Arms demand driven by every conflict theater","chokehold":"Turkey (Baykar drones), US/EU primes, China volume arms; the Iranian drone ecosystem on the other side","theaters":["ukraine","iran-us","sudan","kashmir","korea"],"signal":"Air-defense + counter-UAS + munitions replenishment is the demand center as three theaters (Iran, Ukraine, Red Sea) consume interceptors. Watch the NDAA resolution and Patriot-tech-transfer follow-through.","vectors":"Defense primes, drone/UAV makers, missile-defense; broad conflict escalation across the platform is the tailwind","catalyst":"JUL 13-16 2026 — US to SHARE Patriot air-defense TECHNOLOGY with Ukraine (not just batteries); Blanche AG hearing opens; NDAA ($1.15T) blocked 50-46 over the unauthorized Iran war. Around-the-clock Iran strikes = live munitions burn + air-defense demand. The Saudi axis diversifies to non-NATO suppliers (Korean/Ukrainian)."}];
+const GROUPS = [{"id": "al-shabaab", "name": "Al-Shabaab", "full": "Harakat al-Shabaab al-Mujahideen", "affil": "al-Qaeda", "icon": "🏴", "color": "#b83d3d", "tier": "CRITICAL", "strength": "The WEALTHIEST al-Qaeda affiliate on earth — the benchmark", "theaters": ["somalia", "ethiopia"], "mil": "Al-Qaeda's strongest and most successful affiliate. Goal: destroy the Federal Government, expel foreign forces, and build a 'Greater Somalia' uniting ethnic Somalis across East Africa under strict Islamic rule. It is exploiting the ATMIS withdrawal vacuum — retook at least 5 districts in Lower Shabelle and Middle Jubba by late 2025, with the offensive intensifying into 2026. Attack tempo rose from 68 to 116 per month (+70%); attacks on civilians surged 306%; attacks on the US-trained Danab and Gorgor special forces surged 1,764%. Attempted to assassinate the president by IED in March 2025. Controls large rural swathes of south-central Somalia plus strongholds in the northern Al-Madow mountains, and mounts cross-border raids into Kenya and Ethiopia.", "log": "Deep clan integration makes it nearly impossible to dislodge from areas where it has roots. Its intelligence network PENETRATES Somali government and security institutions — enabling targeted assassinations and insider attacks, and meaning offensives are often known in advance. Controls key routes across south-central Somalia. When peacekeepers vacate a position, it reoccupies within weeks.", "eco": "THE BENCHMARK. Al-Shabaab is the wealthiest al-Qaeda affiliate in the world — the standard against which every other group's economy is measured (JNIM ranks second). It runs a genuine taxation and extortion STATE: levies on businesses, checkpoints, ports, agricultural produce, and the telecoms/hawala money-transfer economy that Somalia runs on. It taxes both the formal and informal economy, including businesses in government-held Mogadishu — meaning the state's own commercial base pays it. This is why counterinsurgency fails: it is not funded by patrons who can be cut off, but by the economy itself.", "assess": "Al-Shabaab is the proof-of-concept for every other group on this board: a jihadist organization that became a fiscal state, taxing the very economy the government depends on. It also delivers the platform's clearest strategic warning — when ATMIS drew down before the Somali army could replace it, 'liberated' territory fell within months. That is a lesson with direct bearing on every theater where a foreign force is holding a line."}, {"id": "jnim", "name": "JNIM", "full": "Jama'at Nusrat al-Islam wal-Muslimin", "affil": "al-Qaeda", "icon": "🏴", "color": "#4a9d5f", "tier": "CRITICAL", "strength": "~6,000 fighters — largest militant force in the Sahel", "theaters": ["mali", "burkina", "niger", "benin-togo", "cote-divoire", "ghana"], "mil": "Formed 2017 from the merger of Ansar Dine, Katibat Macina, Al-Mourabitoun, Ansarul Islam, and AQIM's Sahara branch. Doubled its attack tempo in 2025 vs 2024. Burkina Faso alone recorded 280+ JNIM attacks in H1 2025. Structured in three tiers — central leadership, regional commanders, local area commanders — anchored by a Majlis al-Shura that sets strategy and approves high-value operations. Now pressing southward toward the Gulf of Guinea littoral: a new senior leader (Sekou Muslimu) was appointed to expand into Benin, Côte d'Ivoire, Ghana, Niger, and Togo, with a separate emir for Benin. Carried out its first documented attack in Nigeria (Oct 2025, Kwara State).", "log": "A 'franchise model' — local autonomy under central strategic oversight, adapting taxation and recruitment to regional conditions. Mines double as logistics hubs: recruitment grounds, weapons-storage sites, and staging points. Cross-border mobility across the Mali-Burkina-Niger tri-border and now into the coastal states. Sanctioned commanders coordinate specific functions (Sidan ag Hitta ran Western-hostage negotiations; Jafar Dicko oversaw Burkina kidnappings via Ansarul Islam).", "eco": "A war economy worth roughly $100M+/yr — the wealthiest al-Qaeda affiliate after al-Shabaab. FOUR PILLARS: (1) ARTISANAL GOLD — the most profitable sector. JNIM doesn't dig; it controls the chokepoints (road to the mine, road from it, the riverbank where ore is washed, the market where it's sold) and levies a toll at each. Sites under its influence produce up to 725kg/yr (~$34M), exported to the UAE, Turkey, and Switzerland. Over 2,000 miners work the N'Abaw goldfields in Mali. It undercuts pro-government militias on price, building legitimacy. (2) KIDNAPPING — 845 of 1,100 recorded Sahel abductions (2017-23). Local businessmen fetch $3,000-5,000; foreigners can command millions (a member of Dubai's ruling family reportedly yielded $20M+). Kidnappings spike on first entering an area — to intimidate, gather intelligence, and remove local authority figures — then shift to forced recruitment of skilled workers (doctors, nurses). (3) CATTLE RUSTLING — men on motorbikes force Fulani herders to surrender livestock; the cattle are trucked to markets in Ghana, Mali, or Senegal and blended into legitimate stock. A single cow sells for ~$346 in a country where annual GDP per capita is under $3,000. (4) MONEY LAUNDERING + ECONOMIC WARFARE — lends to merchants, underwrites shops, uses formal banking; assassinates those who interfere with its investments. Systematically attacks foreign (esp. Chinese-run) mining sites — Narena, Morila — as a racketeering campaign to extort operators and delegitimize the state. Notably, little evidence of crypto adoption, unlike ISWAP.", "assess": "JNIM is the platform's most economically sophisticated non-state actor and the clearest proof of the extraction thesis: it does not need to own the gold, only to tax every chokepoint between the ore and the market. Its southward push toward the Gulf of Guinea is the single most important trend line in West Africa — it threatens to convert the Sahel's landlocked insurgency into a coastal one with access to ports."}, {"id": "iswap", "name": "ISWAP", "full": "Islamic State West Africa Province", "affil": "Islamic State", "icon": "🏴", "color": "#c74545", "tier": "CRITICAL", "strength": "Largest IS affiliate in Africa (US State Dept)", "theaters": ["nigeria", "cameroon", "niger", "lakurawa"], "mil": "Formed March 2015 when Boko Haram's Shekau pledged allegiance to IS; split from him over indiscriminate violence, defeated his faction in 2021, and absorbed many of his fighters. Carried out 500+ attacks in Borno State between January and October 2025. Drone attacks rose from 1 (2024) to 7 (2025). Reinforced its Gargash and Sambisa bases with ~100 additional trained fighters each and elevated Sambisa to a formal IS administrative province headed by a wali — a shift toward territorial governance. Active cells in Kogi, Zamfara, Sokoto, and Katsina states, plus Cameroon's Far North, Niger's Diffa, and Chad's Lac province.", "log": "Controls many of the hundreds of islands in Lake Chad — the rear base, logistics hub, and staging ground for attacks across all four basin countries. Captures and redeploys government heavy weapons (IS pays reward bounties for equipment seized from the Nigerian military). Rising leadership weight inside global IS: after the death of IS deputy Abu Khadija (Iraq, Mar 2025), West Africa's al-Furqan office head took a more prominent role, possibly heading IS's General Directorate of Provinces — meaning West Africa is now a command center, not a periphery.", "eco": "THE SIGNATURE STATISTIC: ISWAP's taxation take is roughly $191 MILLION — against Borno State's entire 2024 revenue of $18.4 million. The jihadist group out-taxes the government it fights by more than 10 to 1. And that figure excludes revenue from elsewhere in Nigeria, kidnapping proceeds, and IS bounty payments for captured military equipment. Broader analyses put total taxation revenue well over $100M/yr, sustaining operations across Niger, Chad, Mali, and Burkina Faso — effectively making Nigeria the financial hub of the wider IS network. The model: taxation of farming, fishing, herding, and trade routes; some services provided free (water, boats, basic healthcare) to build legitimacy — but rates are arbitrary and set at leaders' discretion, 'creating opportunities for abuse.' A fisherman in ISWAP waters without proof of payment can be flogged to death; a fish dealer who refuses loses his shipment, his life, or is abducted; herders face arbitrary cattle taxes that can wipe them out. Entire communities have been massacred for non-payment. ISWAP has experimented with cryptocurrency (Tether). US sanctions have targeted its financing architecture — including Lagos and Kano bureaux de change — and a joint US-Nigerian operation killed Abu-Bilal al-Minuki, the architect of ISWAP's financing.", "assess": "ISWAP is the most important counter-example to the idea that jihadist groups are merely destructive: it is a functioning parallel state with a revenue base ten times its government rival's. That fiscal asymmetry — not battlefield strength — is why it cannot be dislodged. It is also the connective tissue of the Lake Chad Basin, operating across Nigeria, Cameroon, Niger, and Chad simultaneously, which is precisely why the platform now tracks Cameroon."}, {"id": "boko-haram", "name": "Boko Haram (JAS)", "full": "Jama'atu Ahlis Sunna Lidda'awati wal-Jihad", "affil": "Independent (ex-IS)", "icon": "🏴", "color": "#8c4a9d", "tier": "SEVERE", "strength": "Diminished vs ISWAP but resurgent in capability", "theaters": ["nigeria", "cameroon", "lakurawa"], "mil": "The original Lake Chad insurgency. Lost the intra-jihadist war to ISWAP (Shekau killed himself in May 2021 during an ISWAP assault) but remains lethal and is closing the capability gap: in the March 2025 Wulgo attack on a Cameroonian base it killed 20 soldiers and SEIZED Soviet-made ZSU-23-4 Shilka radar-guided anti-aircraft guns, and it now employs explosive-laden drones. Distinguished from ISWAP by indiscriminate violence against Muslim civilians — the very issue that caused the 2016 split.", "log": "Operates from Lake Chad and Sambisa remnant areas; cross-border raids into Cameroon's Far North (Mayo-Tsanaga, Mayo-Sava, Logone-et-Chari). Captured government heavy weaponry is now a meaningful part of its arsenal, and drone acquisition marks a step-change. Cooperates opportunistically with Lakurawa in the northwest.", "eco": "Kidnap-for-ransom is the core earner — a Boko Haram-linked group netted ~$500,000 for a single judge. Nigeria's abduction economy is vast: 4,722 people taken in 997 incidents between July 2024 and June 2025, with ~$1.66M in ransoms paid and 762 victims killed. Also relies on raiding, cattle theft, and extortion of farming and fishing communities. Less sophisticated than ISWAP's taxation state — more predatory, less governmental — which is why it commands less territory but remains violent.", "assess": "Boko Haram is the cautionary tale about 'defeated' groups: militarily eclipsed by ISWAP, yet it just seized radar-guided anti-aircraft systems and fields attack drones. Its resurgence is the clearest driver of the new Cameroon theater."}, {"id": "issp", "name": "ISSP / IS-Sahel", "full": "Islamic State Sahel Province", "affil": "Islamic State", "icon": "🏴", "color": "#c74545", "tier": "SEVERE", "strength": "JNIM's principal rival in the Sahel", "theaters": ["niger", "mali", "burkina", "lakurawa"], "mil": "The Islamic State's Sahel arm and JNIM's direct competitor — the two fight each other as well as the states. Concentrated in the Mali-Niger-Burkina tri-border. Increasingly linked to the northwest Nigeria corridor: the UN reports IS-Sahel fighters operating in Nigeria's rear zones and working to connect with ISWAP.", "log": "Tri-border sanctuary; rear bases now extending into northwest Nigeria via the Lakurawa corridor. The strategic objective is a contiguous IS space linking the Sahel to the Lake Chad Basin.", "eco": "Shifted toward high-value foreign abductions to raise cash — in early 2025 it conducted or sponsored the kidnapping of six foreign nationals, including an Austrian woman in Agadez and four Moroccan truck drivers in Burkina Faso. ACLED assesses the shift is 'driven by the group's need for resources, given that foreigners command higher ransom fees than local abductees.' Also taxes gold sites and trade routes in its zones, competing directly with JNIM for the same revenue base.", "assess": "ISSP matters most as the other half of a two-front jihadist competition: JNIM and ISSP fight each other for the same taxation base, which sometimes slows both — but their rivalry is also what drives expansion into new territory, including the Nigerian northwest."}, {"id": "lakurawa", "name": "Lakurawa", "full": "Lakurawa (NW Nigeria tri-border)", "affil": "Hybrid jihadist-criminal", "icon": "🏴", "color": "#d4884a", "tier": "ELEVATED", "strength": "Tri-border hybrid; the ISSP-ISWAP conduit", "theaters": ["lakurawa", "nigeria", "niger", "benin-togo"], "mil": "Emerged ~2017-18 from a merger of Malian Macina/JNIM-linked Fulani fighters and a Nigerien herder self-defense faction — invited by Sokoto communities to fight bandits, then turned predatory. Declared a terrorist group by Nigeria (Nov 2024/Jan 2025). Hit by US airstrikes on Christmas Day 2025 (Sokoto/Bauni Forest camps). Massacred 162 civilians in Woro and Nuku, Kwara State (Feb 2026), after villagers refused to let it preach. Expanding south into Niger State's Borgu axis. Leader Amir Tajudeen moves between Nigeria, Niger, Mali, and Chad.", "log": "Sanctuary in the ungoverned Nigeria-Niger-Benin tri-border. ISS assesses it functions as a STRATEGIC CONDUIT — the link connecting the Sahel's IS/AQ franchises (ISSP, JNIM) toward Nigeria and the Gulf of Guinea. Cooperates with both Boko Haram/JAS and ISWAP. Niger's post-2023-coup tension with Nigeria blocks the joint operations needed to close the corridor.", "eco": "Governance-through-extraction across roughly 500 villages: coercive 'zakat' taxation, livestock confiscation, produce seizure, and a forced religious code, with rival vigilantes suppressed. High-value kidnapping demonstrates cross-border financial reach — the Kebbi deputy speaker was ransomed for ~$140,600, partly paid in CFA francs. The crime-terror nexus makes it self-financing and less dependent on external patrons than the larger franchises.", "assess": "Lakurawa's significance is structural, not its size: it is the seam. If the Sahel's jihadist economy and Lake Chad's taxation state ever fully connect, Lakurawa is the corridor through which it happens — which is why US airstrikes came to northwest Nigeria."}, {"id": "rsf", "name": "RSF", "full": "Rapid Support Forces", "affil": "State-backed paramilitary", "icon": "⚔", "color": "#d43d3d", "tier": "CRITICAL", "strength": "Genocide-designated; controls Darfur + besieging Kordofan", "theaters": ["sudan"], "mil": "Descended from the Janjaweed militias that killed as many as 400,000 in Darfur two decades ago. The US State Department has FORMALLY DETERMINED the RSF is committing genocide — murdering men and boys and systematically raping women and girls on ethnic grounds. El Fasher fell in October 2025 with ~6,000 killed in the first three days. The identical siege is now closing on El Obeid, where ~500,000 civilians are trapped. Fields drones supplied via its patron network.", "log": "THE UAE PIPELINE — the platform's best-documented external-supply chain. Arms flow from UAE bases to Amdjarass in Chad (officially a 'field hospital'; UN investigators found 'credible evidence' it was an arms-transfer front), then into RSF-held Sudan. Chad allows the transit in exchange for ~$2B in Emirati loans (2023-24). Alternative routes run through Libya (al-Kufra) and, increasingly, Ethiopia. In January 2026 Egypt, Saudi Arabia, and Somalia began denying the UAE overflight permission, squeezing the network and making Chad more vital.", "eco": "GOLD. Sudan is one of Africa's largest gold producers and most of its gold flows to Dubai — the UAE officially imported 39 tons in 2022, with perhaps another 60 tons smuggled via Chad, Egypt, and Ethiopia. The war has only increased the smuggling, letting the RSF (and the SAF) trade gold for weapons. This is the purest gold-for-guns economy on the platform, and it is why the UAE's patronage persists despite the genocide determination.", "assess": "The RSF is the clearest case in the platform of an armed group functioning as the delivery mechanism for someone else's extraction: it fights, and the gold flows to Dubai. Senator Sanders has now named the UAE directly as having 'financed and enabled this genocide for years' — while it remains a US 'major defense partner.'"}, {"id": "m23", "name": "M23 / AFC", "full": "March 23 Movement / Alliance Fleuve Congo", "affil": "Rwanda-backed", "icon": "⚔", "color": "#4a7dc7", "tier": "SEVERE", "strength": "Holds Goma + Bukavu; Rwanda-equipped", "theaters": ["drc"], "mil": "Rwanda-backed rebel coalition that seized Goma and Bukavu in early 2025 — the most significant territorial conquest in the eastern DRC in a generation. Under US pressure it fully withdrew from Uvira in South Kivu, but the Washington and Doha peace processes remain fragile and the African Union is trying to reassert a facilitation role.", "log": "Direct Rwandan Defence Force support (troops, equipment, command) — documented repeatedly by UN Group of Experts panels despite Kigali's denials. Supply lines run across the Rwandan border.", "eco": "COLTAN AND COBALT. The eastern DRC holds the world's critical-minerals prize, and M23's territorial control sits atop it. Minerals are smuggled through Rwanda and enter global supply chains laundered as Rwandan-origin — the mechanism by which a country with modest deposits became a significant coltan exporter. This is the extraction thesis in its most literal form: the conflict is the mechanism, the minerals are the point, and the end user is the global electronics and EV supply chain.", "assess": "M23 is the DRC theater's engine and the platform's most direct link between an armed group and the critical-minerals system. Every EV battery and smartphone touches this war somewhere upstream."}, {"id": "al-shabaab-moz", "name": "Al-Shabaab (Mozambique)", "full": "Ahlu Sunnah Wa-Jama (ISIS-Mozambique)", "affil": "Islamic State", "icon": "🏴", "color": "#c74545", "tier": "ELEVATED", "strength": "Persistent in Cabo Delgado despite Rwandan/SADC forces", "theaters": ["mozambique"], "mil": "An ISIS-linked insurgency in gas-rich Cabo Delgado since 2017 — locally called 'Al-Shabaab' but unrelated to Somalia's. Over 6,400 killed, 1.3 million displaced. The 2021 Palma attack (~800 dead) froze the LNG megaprojects. Rwandan and SADC forces secured the Afungi enclave, enabling TotalEnergies' January 2026 restart, but the insurgency persists in the north with beheadings and kidnappings.", "log": "Rural sanctuary in northern Cabo Delgado, outside the secured 'closed enclave' around the gas site. The enclave model protects the $20B project while leaving surrounding communities exposed — a security architecture built around capital, not people.", "eco": "Gas-adjacent grievance rather than a taxation state. The insurgency was triggered in part by the gas discovery itself and the conviction among Cabo Delgado's population — over 80% below the poverty line — that they would be excluded from the benefits. It funds itself through raiding, kidnapping, and local extortion rather than a sophisticated revenue architecture.", "assess": "This group exists because of extraction, not despite it: a resource discovery generated an insurgency, foreign troops secured the enclave, foreign majors take the gas, and the local population bears the cost. It is the platform's cleanest extraction-conflict causal chain."}];
+const BLOCS = [{"id": "aes-ecowas", "name": "AES vs ECOWAS", "icon": "⬡", "color": "#d4884a", "what": "The Sahel's rupture with West Africa's regional order", "sideA": "AES (Alliance of Sahel States): Mali, Burkina Faso, Niger — military juntas, exited ECOWAS (Jan 2025), formed a mutual-defense confederation", "sideB": "ECOWAS: Nigeria, Ghana, Senegal, Côte d'Ivoire + the coastal states — plus France/EU backing", "contest": "Sovereignty and security orientation. The AES states expelled French forces, turned to Russia's Africa Corps, and rejected ECOWAS's democratic-restoration demands. ECOWAS lost its leverage — sanctions failed, and the juntas consolidated.", "faultline": "The jihadist insurgency doesn't respect the split: JNIM and ISSP operate across both blocs and are now pushing south into ECOWAS coastal states (Benin, Togo, Côte d'Ivoire, Ghana). The rupture destroyed the cross-border cooperation needed to fight them — Niger's coup broke joint operations with Nigeria, which is precisely why the Lakurawa corridor stays open. · INFORMATION WAR: the fault line is now being exploited by coordinated coup-disinformation campaigns targeting Côte d'Ivoire — the region's key French-aligned economy — fabricating a military takeover to manufacture the appearance of AES-style rupture. Ivorian authorities call it 'a deliberate and coordinated disinformation campaign'; analysts describe a broader push promoting coups across West Africa. Attribution unresolved.", "theaters": ["mali", "burkina", "niger", "benin-togo", "lakurawa", "nigeria", "ghana", "cote-divoire"]}, {"id": "gulf-rivalry", "name": "The Gulf Rivalry", "icon": "⬡", "color": "#c74545", "what": "UAE vs Qatar/Saudi/Turkey/Egypt — fought through African proxies", "sideA": "UAE: backs the RSF (Sudan), Abiy's Ethiopia, Haftar's Libya; buys the gold", "sideB": "Saudi Arabia, Egypt, Turkey, Qatar, Iran: back Sudan's SAF; Egypt aligns with Eritrea vs Ethiopia", "contest": "Red Sea and Horn primacy, ports, gold, and agricultural land. The UAE has become the single most important foreign power keeping the RSF in the fight — arms via Amdjarass (Chad) and Libya — while Egypt, Saudi Arabia, and Turkey back the army. Egypt's rivalry with Ethiopia over the GERD dam pulls the Nile into the same contest.", "faultline": "Sudan is the battlefield, but the fault line runs through Chad (which takes ~$2B in UAE loans to permit the arms transit), Libya (the al-Kufra route), and Ethiopia (a UAE-financed RSF training camp near the GERD, per Reuters). In January 2026, Egypt, Saudi Arabia, and Somalia began denying the UAE overflight rights — an escalation of the proxy war into airspace denial. Somalia CANCELLED all bilateral UAE agreements (Jan 2026) over the RSF pipeline — while the UAE simultaneously patronizes Puntland with airstrikes. The same Red Sea port strategy drives both.", "theaters": ["sudan", "ethiopia", "chokepoints", "iran-us", "somalia"]}, {"id": "russia-africa", "name": "Russia's Africa Corps", "icon": "⬡", "color": "#8c4a9d", "what": "The post-Wagner state takeover of Russian influence in Africa", "sideA": "Russia (Africa Corps, MoD-controlled): Mali, Burkina, Niger, CAR, Libya", "sideB": "France (expelled), the EU, the US — the displaced Western security architecture", "contest": "Regime survival services in exchange for mining concessions and diplomatic alignment. Russia offers what the West won't: no governance conditions. In return it takes gold and mineral rights and gains UN votes.", "faultline": "The security results are poor — jihadist violence rose after Russian deployment in Mali and Burkina — but the political bargain holds because it's about regime survival, not counter-terrorism. Meanwhile Russia's DPRK alliance (troops and shells for the Ukraine war) shows the same logic operating globally: patrons who ask no questions.", "theaters": ["mali", "burkina", "niger", "ukraine", "korea"]}, {"id": "minerals-cold-war", "name": "The Minerals Cold War", "icon": "⬡", "color": "#4a9d5f", "what": "China's processing monopoly vs the Western de-risking bloc", "sideA": "China: ~90% of rare-earth processing, dominant in DRC cobalt (CMOC), Indonesian nickel JVs, Kazakh reactors (CNNC); buys Myanmar's heavy-REE feedstock", "sideB": "US/EU/G7 ('Pax Silica'): IRA/CRMA de-risking, the DRC EGC/Trafigura deal, Kazakh/Ukrainian minerals agreements, Middle Corridor investment", "contest": "Not the mines — the PROCESSING and the chokepoints. China's leverage is that it refines what everyone else digs. The Western counter is to build parallel supply chains, but it has forfeited key ground: the US 'wasn't even in the room' for Kazakhstan's reactor bids, and Indonesia's export ban handed downstream capacity largely to Chinese firms.", "faultline": "Every conflict theater with a mineral is a front: Myanmar (KIA controls ~94% of China's heavy-REE feedstock), DRC (M23 sits on the coltan), Indonesia (nickel), Kazakhstan (uranium), Ukraine (the minerals deal). The Caucasus TRIPP corridor is the connectivity front — a US-controlled route bypassing Russia and Iran.", "theaters": ["myanmar", "drc", "indonesia", "kazakhstan", "taiwan", "caucasus", "ukraine", "geopolitical"]}, {"id": "donroe", "name": "The Donroe Doctrine", "icon": "⬡", "color": "#e0a030", "what": "US hemispheric reassertion — Venezuela, Cuba, Colombia, Haiti", "sideA": "US: captured Maduro (Jan 2026), administers Venezuelan oil, sanctions Cuba, architected Haiti's GSF, aligns with Colombia's incoming Espriella government", "sideB": "China, Russia, Cuba, Nicaragua — plus Petro's outgoing Colombia; China/Russia/Pakistan abstained on the Haiti mandate", "contest": "Hemispheric primacy and resources — Venezuelan oil now flows through an opaque Qatari account under US administration; Cuba is being strangled into 100+ market reforms.", "faultline": "The tell is Haiti: the US architected and financed the Gang Suppression Force but kept it AFRICAN-LED by design — Chad (1,500), Benin (up to 2,000), Bangladesh, Mongolia — stabilizing the hemisphere without US boots. The same Chad simultaneously hosts the UAE's RSF arms pipeline. Colombia's incoming government will close its Havana and Managua embassies, tightening the ring.", "theaters": ["venezuela", "cuba", "colombia", "haiti", "mexico", "jamaica"]}, {"id": "sanctions-bloc", "name": "The Sanctions Bloc", "icon": "⬡", "color": "#5b9bd5", "what": "Iran-Russia-DPRK-Venezuela-Cuba: the mutual-survival network", "sideA": "Iran, Russia, North Korea, Venezuela, Cuba — sanctioned states trading with each other", "sideB": "The US-led sanctions architecture + the G7 financial system", "contest": "Survival outside the dollar system. Russia supplies DPRK with tech/energy/food for troops and shells; Iran supplied Russia with drones; DPRK's tungsten exports to China rose 13-fold; Venezuela's oil moves through opaque channels.", "faultline": "The Hormuz crisis is the sharpest edge — Iran is enforcing a transit regime (IRGC authorization, 'maritime service fees') that would be a permanent revenue stream and a permanent lever. New Supreme Leader Mojtaba Khamenei has enshrined 'the lever of closing the Strait of Hormuz' as strategic doctrine. Sanctions-evasion gold (Russia, Sudan) and DPRK coal move through the same shadow networks.", "theaters": ["iran-us", "ukraine", "korea", "venezuela", "cuba", "chokepoints", "sudan"]}, {"id": "indo-pacific", "name": "First Island Chain", "icon": "⬡", "color": "#4a7dc7", "what": "US alliance system vs Chinese expansion in the Western Pacific", "sideA": "US, Japan, ROK, Philippines, Australia, Taiwan — treaty alliances + AUKUS", "sideB": "China (+ Russia and DPRK as the northern anchor)", "contest": "Taiwan (~90% of advanced chips) and the South China Sea ($3.4T trade artery). China's gray-zone tactics — coast guards, water cannon, ramming — are calibrated to stay below the US Mutual Defense Treaty tripwire.", "faultline": "The alliance is showing strain: the US curtailed intelligence sharing with Seoul after a lawmaker exposed the Kusong enrichment site, and the Russia-DPRK war alliance (troops for tech) has converted a frozen Korean standoff into a live node of the Ukraine war. Myanmar's rare earths flow into the same Chinese supply chain that the Taiwan contest is ultimately about.", "theaters": ["taiwan", "south-china-sea", "korea", "myanmar", "indonesia"]},{"id":"saudi-axis","name":"The Saudi-Led Axis","icon":"☪","color":"#4cc98a","what":"Saudi Arabia + Qatar + Turkey + Pakistan + Egypt — a post-Iran-war security bloc meeting at quarterly FM level (Cairo, Jun 21 2026), dubbed an 'Islamic NATO' in Israeli reports. Pakistan's nuclear arsenal underpins it via the Saudi-Pakistani defense framework; Turkey brings NATO's second army and the KAAN fighter (Saudi SAMI co-invested); Qatar brings money and mediation; Egypt brings 438k troops.","contest":"Twin objectives that don't fully cohere: contain IRAN (and reclaim influence in Syria/Lebanon from its proxies) while also capping ISRAEL's 'military adventurism' — the Doha strike convinced Gulf capitals that 'we could be next.' Members split on whether to normalize with Israel or brace against it.","faultline":"The UAE is conspicuously EXCLUDED — Riyadh-Abu Dhabi mistrust now has institutional form, with both competing for the same post-oil investment. The deeper premise (Chatham House, May 2026): Gulf states 'should no longer rely on America for security guarantees' — and China won't fill the vacancy. The axis is what hedging looks like when the umbrella wobbles.","theaters":["saudi","turkey","pak-afg","egypt","uae-gulf","iran-us","syria","lebanon"]}];
+const SEV={critical:'var(--red)',high:'var(--amber)',medium:'var(--gold)',low:'var(--grn)',watch:'var(--gov)'};
+const SLBL={active:'ACTIVE',escalating:'ESCALATING',stalemate:'STALEMATE',declining:'EASING',frozen:'FROZEN',ceasefire:'CEASEFIRE',volatile:'VOLATILE',ongoing:'ONGOING',critical:'CRITICAL',watch:'WATCH'};
+const TCLS={up:'trend-up',dn:'trend-dn',ss:'trend-ss',vl:'trend-vl'};
+const TLBL={up:'▲ ESCALATING',dn:'▼ EASING',ss:'► STEADY',vl:'◆ VOLATILE'};
+const CCLR={military:'var(--red)',political:'var(--violet)',economic:'var(--econ)',energy:'var(--amber)',strategic:'var(--gov)'};
+const CICON={military:'⚔',political:'⬡',economic:'▤',energy:'⬢',strategic:'◎'};
+const CNAME={military:'MILITARY',political:'POLITICAL',economic:'ECONOMIC',energy:'ENERGY',strategic:'STRATEGIC'};
+const CORDER=['military','political','economic','energy','strategic'];
+const LEV={hi:['HIGH','b-hi'],md:['MED','b-md'],lo:['LOW','b-lo']};
+const TIER={'documented':'DOCUMENTED','alleged-credible':'ALLEGED','denied':'DENIED'};
+const AFRICA=['Horn / NE Africa','Sahel Core','Coastal Frontier','Central Africa','Southern Africa'];
+const SUBS=['Horn / NE Africa','Sahel Core','Coastal Frontier','Central Africa','Caribbean','Southern Africa','South America','North America','Middle East','Europe','Caucasus','South Asia','Central Asia','East Asia','Southeast Asia','Global'];
+const WEEKS=['W5','W6','W7','W8','W9','W10','W11','W12','W16','W17'];
+let flt='all',sel=null,q='',subFlt='all';
+
+function color(d){return CCLR[d.cat]||SEV[d.sev]||'#888';}
+function grp(a,k){return a.reduce((m,i)=>((m[i[k]]=m[i[k]]||[]).push(i),m),{});}
+function dlt(d){const h=d.esc_history,nz=h.filter(v=>v>0);if(nz.length<2)return 0;return h[h.length-1]-h[h.length-2];}
+function dstr(x){return x>0?'+'+x:x<0?''+x:'0';}
+function dcls(x){return x>0?'d-up':x<0?'d-dn':'d-fl';}
+
+function matchWhere(d){
+  // returns array of match locations, or [] if no match
+  if(!q) return ['all'];
+  const s=q.toLowerCase(); const hits=[];
+  if([d.name,d.sub,d.region,d.subregion,d.domain,d.note,d.mil,d.pol,d.eco,d.assess].join(' ').toLowerCase().includes(s)) hits.push('theater');
+  if((d.gov||[]).some(g=>(g.src+' '+g.detail).toLowerCase().includes(s))) hits.push('gov');
+  if((d.leverage||[]).some(l=>(l.actor+' '+l.asset).toLowerCase().includes(s))) hits.push('leverage');
+  if((d.econlev||[]).some(e=>(e.holder+' '+e.channel+' '+e.detail).toLowerCase().includes(s))) hits.push('econ');
+  if((d.external||[]).some(x=>(x.actor+' '+x.side+' '+x.flow+' '+x.for).toLowerCase().includes(s))) hits.push('external');
+  // systems: does this theater appear as a node in a matching system, or does a system match by name?
+  (typeof SYSTEMS!=='undefined'?SYSTEMS:[]).forEach(sys=>{
+    const sysText=(sys.name+' '+sys.type+' '+sys.summary+' '+sys.significance).toLowerCase();
+    const nodeHit=(sys.nodes||[]).some(n=>n.theater===d.id && sysText.includes(s));
+    const nameHit=(sys.nodes||[]).some(n=>n.theater===d.id) && sysText.includes(s);
+    if(nodeHit||nameHit) hits.push('system');
+  });
+  (typeof INVEST!=='undefined'?INVEST:[]).forEach(inv=>{
+    const invText=(inv.commodity+' '+inv.use+' '+inv.chokehold+' '+inv.signal+' '+inv.vectors).toLowerCase();
+    if((inv.theaters||[]).includes(d.id) && invText.includes(s)) hits.push('investment');
+  });
+  (typeof GROUPS!=='undefined'?GROUPS:[]).forEach(g=>{
+    const gText=(g.name+' '+g.full+' '+g.affil+' '+g.military+' '+g.logistics+' '+g.economy+' '+g.note).toLowerCase();
+    if((g.theaters||[]).includes(d.id) && gText.includes(s)) hits.push('group');
+  });
+  (typeof BLOCS!=='undefined'?BLOCS:[]).forEach(b=>{
+    const bText=(b.name+' '+b.arena+' '+b.members+' '+b.contest+' '+b.fault).toLowerCase();
+    if((b.theaters||[]).includes(d.id) && bText.includes(s)) hits.push('bloc');
+  });
+  return hits;
+}
+function matches(d){ return matchWhere(d).length>0; }
+function fdb(){
+  let d=DB.filter(matches);
+  if(subFlt!=='all')d=d.filter(x=>x.subregion===subFlt);
+  if(flt==='critical')return d.filter(x=>x.sev==='critical');
+  if(flt==='escalating')return d.filter(x=>x.trend==='up');
+  if(flt==='deescalating')return d.filter(x=>x.trend==='dn');
+  if(flt==='africa')return d.filter(x=>AFRICA.includes(x.subregion));
+  if(flt==='latam')return d.filter(x=>['South America','Caribbean','North America'].includes(x.subregion)&&x.id!=='us-politics');
+  if(flt==='conflict')return d.filter(x=>x.tclass==='conflict');
+  if(flt==='watch')return d.filter(x=>x.tclass==='watch');
+  return d;
+}
+function spark(h,c){return `<div class="row-spark">${h.map((v,i)=>{const ht=Math.max(2,Math.round(v/100*18));const now=i===h.length-1;return `<div class="sbar" style="height:${ht}px;${now?'background:'+c:''}"></div>`;}).join('')}</div>`;}
+
+function renderSubFilter(){
+  const present=[...new Set(DB.map(d=>d.subregion))];
+  document.getElementById('subFilter').innerHTML=SUBS.filter(s=>present.includes(s)).map(s=>
+    `<button class="sub-chip${subFlt===s?' on':''}" onclick="setSub('${s.replace(/'/g,"\\'")}')">${s}</button>`).join('');
+}
+function setSub(s){subFlt=(subFlt===s?'all':s);clearSel();renderSubFilter();renderList();}
+
+function renderTicker(){
+  const items=[...DB].sort((a,b)=>b.esc-a.esc).map(d=>{
+    const dl=dlt(d);const arrow=dl>0?`<span class="up">▲${dl}</span>`:dl<0?`<span class="dn">▼${Math.abs(dl)}</span>`:'';
+    return `${d.flag} <b>${d.name.split('—')[0].trim()}</b> ${d.esc} ${arrow}`;
+  }).join('  ·  ');
+  document.getElementById('ticker').innerHTML=items+'  ·  ';
+}
+
+function renderList(){
+  const data=fdb();
+  document.getElementById('sc').textContent=data.filter(x=>x.sev==='critical').length;
+  document.getElementById('se').textContent=data.filter(x=>x.trend==='up').length;
+  document.getElementById('sd').textContent=data.filter(x=>x.trend==='dn').length;
+  document.getElementById('st').textContent=data.length;
+  const wrap=document.getElementById('listWrap');
+  if(!data.length){wrap.innerHTML='<div style="padding:30px;text-align:center;font-family:var(--FM);font-size:10px;color:var(--dim);letter-spacing:1px">NO MATCHES</div>';return;}
+  const byCat=grp(data,'cat');
+  wrap.innerHTML=CORDER.filter(c=>byCat[c]).map(cat=>{
+    const items=byCat[cat].sort((a,b)=>b.esc-a.esc);
+    const bySub=grp(items,'subregion');
+    const subHtml=SUBS.filter(s=>bySub[s]).map(sub=>{
+      const rows=bySub[sub].map(d=>{
+        const dl=dlt(d),c=color(d);
+        const tags=[];
+        tags.push(d.tclass==='conflict'?'<span class="tag tag-conflict">⚔ CONFLICT</span>':'<span class="tag tag-watch">◎ WATCH</span>');
+        if(q){const w=matchWhere(d).filter(x=>x!=='theater'&&x!=='all');if(w.length)tags.push('<span class="match-tag">↳ '+w.join(' · ')+'</span>');}
+        if(d.gov&&d.gov.length)tags.push('<span class="tag tag-gov">GOV</span>');
+        if(d.econlev&&d.econlev.length)tags.push('<span class="tag tag-econ">ECON</span>');
+        if(d.external&&d.external.length)tags.push('<span class="tag tag-ext">EXT</span>');
+        if(d.diplomacy_active)tags.push('<span class="tag tag-dip">DIPL</span>');
+        return `<div class="row${d.id===sel?' active':''}" onclick="pick('${d.id}')">
+          <div class="row-flag">${d.flag||'●'}</div>
+          <div class="row-main">
+            <div class="row-name">${d.name}</div>
+            <div class="row-sub">${d.sub}</div>
+            ${tags.length?`<div class="row-tags">${tags.join('')}</div>`:''}
+          </div>
+          <div class="row-right">
+            <div class="row-idx" style="color:${c}">${d.esc}</div>
+            <div class="row-delta ${dcls(dl)}">${dl>0?'▲':dl<0?'▼':'►'} ${dstr(dl)}</div>
+            ${spark(d.esc_history,c)}
+          </div>
+        </div>`;
+      }).join('');
+      return `<div class="sub-head" onclick="event.stopPropagation()"><span class="sub-mark"></span><span class="sub-name">${sub}</span><span class="sub-count">${bySub[sub].length}</span></div>${rows}`;
+    }).join('');
+    return `<div class="cat-group">
+      <div class="cat-head" onclick="this.parentElement.classList.toggle('closed')">
+        <div class="cat-icon ci-${cat}">${CICON[cat]}</div>
+        <div class="cat-name">${CNAME[cat]}</div>
+        <div class="cat-count">${items.length}</div>
+        <div class="cat-caret">▾</div>
+      </div>
+      <div class="cat-body">${subHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+function bigHist(d){
+  const c=color(d);
+  const bars=`<div class="hist-bars">${d.esc_history.map((v,i)=>{
+    const h=Math.max(3,Math.round(v/100*42));const now=i===d.esc_history.length-1;
+    return `<div class="hist-col"><div class="hist-v">${v||'·'}</div><div class="hist-b" style="height:${h}px;background:${now?c:'var(--faint)'}"></div><div class="hist-w">${WEEKS[i]}</div></div>`;
+  }).join('')}</div>`;
+  const note=d.hist_real
+    ? `<div class="hist-note real">Tracked week-over-week since ${d.tracked_since||'2026'}.</div>`
+    : `<div class="hist-note">⚠ Trend estimate — this theater entered tracking ${d.tracked_since||'recently'}. Only the current value is independently verified; earlier bars are an analytic estimate of trajectory, not a recorded series.</div>`;
+  return bars+note;
+}
+function govCards(d){
+  if(!d.gov||!d.gov.length)return '';
+  return `<div class="cards">${d.gov.map(g=>`<div class="card card-gov"><div class="card-top"><div class="card-actor">${g.src}</div><span class="badge b-md">GOV-SRC</span></div><div class="card-body">${g.detail}</div></div>`).join('')}</div>`;
+}
+function levCards(d){
+  if(!d.leverage)return '';
+  return `<div class="cards">${d.leverage.map(l=>`<div class="card card-lev"><div class="card-top"><div class="card-actor">${l.actor}</div><span class="badge ${LEV[l.str][1]}">${LEV[l.str][0]}</span></div><div class="card-body">${l.asset}</div></div>`).join('')}</div>`;
+}
+function econCards(d){
+  if(!d.econlev)return '';
+  return `<div class="cards">${d.econlev.map(e=>`<div class="card card-econ"><div class="card-top"><div class="card-actor">${e.holder}<div class="sub">${e.channel}</div></div><span class="badge b-${e.exp}">${e.exp}</span></div><div class="card-body">${e.detail}</div></div>`).join('')}</div>`;
+}
+function extCards(d){
+  if(!d.external)return '';
+  return `<div class="cards">${d.external.map(x=>`<div class="card card-ext"><div class="card-top"><div class="card-actor">${x.actor}<div class="sub">▸ ${x.side}</div></div><span class="badge b-${x.tier}">${TIER[x.tier]}</span></div><div class="card-body">${x.flow}</div><div class="card-extract"><b>Extracts:</b> ${x.for}</div></div>`).join('')}</div>`;
+}
+
+const BUILD_DAY=new Date("2026-07-17");
+function freshCls(a){if(!a)return "fr-old";const mns={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};const p=a.split(" ");const dt=new Date(+p[2],mns[p[1]],+p[0]);const dd=(BUILD_DAY-dt)/86400000;return dd<=1?"fr-ok":dd<=3?"fr-age":"fr-old";}
+function histPanel(d){
+  const h=d.history; if(!h)return '';
+  const roots=h.roots?`<div class="section"><div class="section-head" style="color:var(--ice)">\u25f7 ROOTS \u00b7 HOW IT GOT HERE</div><div class="hist-roots">${h.roots}</div></div>`:'';
+  const tl=(h.timeline&&h.timeline.length)?`<div class="section"><div class="section-head" style="color:var(--amber)">\u25f7 TIMELINE</div><div class="htl">${h.timeline.map(t=>`<div class="htl-row"><div class="htl-date">${t.date}</div><div class="htl-line"><span class="htl-dot"></span></div><div class="htl-e">${t.e}</div></div>`).join('')}</div></div>`:'';
+  const act=(h.actors&&h.actors.length)?`<div class="section"><div class="section-head" style="color:var(--ext)">\u25f7 ACTORS \u00b7 WHO THEY ARE</div><div class="hact">${h.actors.map(a=>`<div class="hact-card"><div class="hact-name">${a.name}</div><div class="hact-bio">${a.bio}</div></div>`).join('')}</div></div>`:'';
+  const br=h.bridge?`<div class="section"><div class="section-head" style="color:var(--red)">\u25f7 THEN \u2192 NOW \u00b7 WHY THIS HISTORY IS THE CRISIS</div><div class="hist-bridge">${h.bridge}</div></div>`:'';
+  const src=(h.sources&&h.sources.length)?`<div class="section"><div class="section-head" style="color:var(--grn)">\u25f7 SOURCES \u00b7 SCHOLARSHIP &amp; PRIMARY TEXTS</div><div class="hsrc">${h.sources.map(x=>`<div class="hsrc-row"><span class="hsrc-work">${x.work}</span><span class="hsrc-auth">${x.author}${x.year?' \u00b7 '+x.year:''}</span>${x.note?`<div class="hsrc-note">${x.note}</div>`:''}</div>`).join('')}</div></div>`:'';
+  return roots+tl+br+act+src;
+}
+function pick(id){
+  sel=id;renderList();
+  const d=DB.find(x=>x.id===id);if(!d)return;
+  document.getElementById('empty').classList.add('hidden');
+  const det=document.getElementById('detail');det.classList.remove('hidden');
+  document.getElementById('detailPane').classList.add('mobile-show');
+  const c=color(d),dl=dlt(d);
+  const tabs=[['ov','OVERVIEW']];
+  if(d.gov&&d.gov.length)tabs.push(['gov','▣ GOV-SRC']);
+  if(d.leverage)tabs.push(['lev','⚖ LEVERAGE']);
+  if(d.econlev&&d.econlev.length)tabs.push(['econ','₿ ECON']);
+  if(d.external&&d.external.length)tabs.push(['ext','◆ EXTERNAL']);
+  if(d.contested)tabs.push(['contested','\u25c9 CONTESTED']);
+  if(d.history)tabs.push(['history','\u25f7 HISTORY']);
+  tabs.push(['assess','ASSESSMENT']);
+  det.innerHTML=`
+  <button class="mobile-back" onclick="clearSel()">← All theaters</button>
+  <div class="tabs">${tabs.map((t,i)=>`<div class="tab${i===0?' on':''}" onclick="swtab(this,'${t[0]}')">${t[1]}</div>`).join('')}</div>
+  <div class="panel on" id="p-ov">
+    <div class="hero">
+      <div class="hero-eyebrow">
+        <span class="pill pill-cat">${CICON[d.cat]} ${CNAME[d.cat]}</span>
+        <span class="tier-pill tr-${d.tier}">${d.tier}</span>
+        <span class="class-badge cb-${d.tclass}">${d.tclass==='conflict'?'⚔ CONFLICT':'◎ STRATEGIC-WATCH'}</span>
+        <span class="pill pill-cat">${SLBL[d.status]||d.status.toUpperCase()}</span>
+      </div>
+      <div class="hero-title"><span class="hero-flag">${d.flag||''}</span>${d.name}</div>
+      <div class="hero-sub">${d.sub}</div>
+      <div class="hero-meta">
+        <div class="hm"><span class="hm-label">REGION</span><span class="hm-val">${d.subregion}</span></div>
+        <div class="hm"><span class="hm-label">DOMAIN</span><span class="hm-val">${d.domain}</span></div>
+        <div class="hm"><span class="hm-label">SINCE</span><span class="hm-val">${d.since}</span></div>
+        <div class="hm"><span class="hm-label">DATA AS OF</span><span class="hm-val" style="color:var(--cyan)">${d.as_of||'—'}</span></div>
+      </div>
+      <div class="gauge">
+        <div class="gauge-num" style="color:${c}">${d.esc}</div>
+        <div class="gauge-info">
+          <div class="gauge-bar"><div class="gauge-fill" style="width:${d.esc}%;background:${c}"></div></div>
+          <div class="gauge-scale"><span>0</span><span>ESCALATION INDEX</span><span>100</span></div>
+        </div>
+        <div class="gauge-trend ${TCLS[d.trend]||'trend-ss'}">${TLBL[d.trend]||'► STEADY'} · Δ${dstr(dl)}</div>
+      </div>
+    </div>
+    <div class="hist"><div class="hist-head">ESCALATION HISTORY · ${WEEKS[0]}–${WEEKS[WEEKS.length-1]}</div>${bigHist(d)}</div>
+    <div class="section">
+      <div class="hero-meta" style="margin-top:0">
+        <div class="hm"><span class="hm-label">HUMAN COST</span><span class="hm-val" style="color:var(--red)">${d.cas}</span></div>
+      </div>
+      <div class="hm" style="margin-top:12px"><span class="hm-label">DISPLACEMENT</span><span class="hm-val" style="color:var(--amber)">${d.disp}</span></div>
+    </div>
+    <div class="intel">
+      <div class="icol"><div class="icol-head ih-mil">MILITARY</div><div class="icol-body">${(d.mil||'—').split('\n\n').map(p=>`<p>${p}</p>`).join('')}</div></div>
+      <div class="icol"><div class="icol-head ih-pol">POLITICAL</div><div class="icol-body">${(d.pol||'—').split('\n\n').map(p=>`<p>${p}</p>`).join('')}</div></div>
+      <div class="icol"><div class="icol-head ih-eco">ECONOMIC</div><div class="icol-body">${(d.eco||'—').split('\n\n').map(p=>`<p>${p}</p>`).join('')}</div></div>
+    </div>
+    <div class="section"><div class="section-head">FIELD NOTE</div><div class="intro-note">${d.note}${d.refs&&d.refs.length?`<div class="refs"><div class="refs-h">SOURCES · RECENT</div>${d.refs.map(r=>`<a class="ref-a" href="${r.u}" target="_blank" rel="noopener">↗ ${r.t}</a>`).join("")}</div>`:""}</div></div>
+  </div>
+  ${d.gov&&d.gov.length?`<div class="panel" id="p-gov"><div class="section"><div class="section-head" style="color:var(--gov)">▣ GOVERNMENTAL &amp; STATE SOURCING</div><div class="intro-note">Official data tracked as a distinct tier: state statistics offices, UN Security Council listings, national ministries. Government data carries authority but also interest.</div>${govCards(d)}</div></div>`:''}
+  ${d.leverage?`<div class="panel" id="p-lev"><div class="section"><div class="section-head" style="color:var(--amber)">⚖ LEVERAGE MAP</div><div class="intro-note">The asset each actor can apply to change outcomes — more durable than any single event.</div>${levCards(d)}</div></div>`:''}
+  ${d.econlev&&d.econlev.length?`<div class="panel" id="p-econ"><div class="section"><div class="section-head" style="color:var(--econ)">₿ ECONOMIC LEVERAGE</div><div class="intro-note">Financial and resource control — portfolio exposure, export dependence, commodity chokeholds, sanctions power. Often outlasts the kinetic kind.</div>${econCards(d)}</div></div>`:''}
+  ${d.external&&d.external.length?`<div class="panel" id="p-ext"><div class="section"><div class="section-head" style="color:var(--ext)">◆ EXTERNAL ACTORS</div><div class="intro-note">Who arms, funds, and backs whom — and what they extract. Every flow tagged <b style="color:var(--red)">DOCUMENTED</b>, <b style="color:var(--amber)">ALLEGED</b>, or <b style="color:var(--violet)">DENIED</b>. Allegations are logged, not asserted.</div>${extCards(d)}</div></div>`:''}
+  ${d.contested?`<div class="panel" id="p-contested">
+    <div class="section"><div class="section-head" style="color:#9d7fc7">\u25c9 CONTESTED \u00b7 CLAIM vs EVIDENCE</div>${contestedPanel(d)}</div>
+  </div>`:''}
+  ${d.history?`<div class="panel" id="p-history">${histPanel(d)}</div>`:''}
+  <div class="panel" id="p-assess">
+    <div class="section"><div class="section-head" style="color:var(--cyan)">STRATEGIC ASSESSMENT · <span class="${freshCls(d.as_of)}">${d.as_of||"—"}</span></div><div class="assess-box">${d.assess||'—'}</div>${d.rival?`<div class="rv"><div class="rv-head">▭ COMPETING READS <span class="rv-conf rv-${(d.rival.conf||'MOD').toLowerCase()}">CONFIDENCE: ${d.rival.conf||'MOD'}</span></div><div class="rv-lbl">THE PLATFORM’S READ</div><div class="rv-mine">${d.rival.lens}</div><div class="rv-lbl">RIVAL EXPLANATIONS · taken seriously</div><div class="rv-alt">${d.rival.alt}</div><div class="rv-lbl">WHY THE WEIGHTING</div><div class="rv-why">${d.rival.why}</div></div>`:''}${xlinks(d)}</div>
+    <div class="hist"><div class="hist-head">ESCALATION HISTORY · Δ THIS WEEK ${dstr(dl)}</div>${bigHist(d)}</div>
+  </div>`;
+  det.scrollTop=0;
+}
+function swtab(el,id){
+  el.parentElement.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');document.getElementById('p-'+id).classList.add('on');
+}
+
+function renderSnapshot(){
+  const el=document.getElementById('snapshot'); if(!el)return;
+  const TC={CRITICAL:'var(--red)',SEVERE:'var(--amber)',ELEVATED:'var(--gold)',GUARDED:'var(--gov)',STABLE:'var(--grn)'};
+  const order=['CRITICAL','SEVERE','ELEVATED','GUARDED','STABLE'];
+  const counts={}; DB.forEach(d=>counts[d.tier]=(counts[d.tier]||0)+1);
+  const total=DB.length;
+  const segs=order.filter(t=>counts[t]).map(t=>`<div class="tierseg" style="flex:${counts[t]};background:${TC[t]}" title="${t}: ${counts[t]}">${counts[t]}</div>`).join('');
+  const legend=order.filter(t=>counts[t]).map(t=>`<span class="tl"><i style="background:${TC[t]}"></i>${t}</span>`).join('');
+  const movers=DB.map(d=>({d,dl:dlt(d)})).filter(x=>x.dl!==0).sort((a,b)=>Math.abs(b.dl)-Math.abs(a.dl)).slice(0,4);
+  const mv=movers.length? movers.map(({d,dl})=>`<div class="snap-mv" onclick="pick('${d.id}')">
+      <span class="snap-mv-d" style="color:${dl>0?'var(--red)':'var(--grn)'}">${dl>0?'▲':'▼'}${Math.abs(dl)}</span>
+      <span class="snap-mv-n">${d.flag} ${d.name.split('—')[0].trim()}</span>
+      <span class="snap-mv-i" style="color:${color(d)}">${d.esc}</span></div>`).join('')
+    : `<div style="font-family:var(--FM);font-size:9px;color:var(--dim);padding:8px">No index changes this week.</div>`;
+  const conflict=DB.filter(d=>d.tclass==='conflict').length;
+  const watch=DB.filter(d=>d.tclass==='watch').length;
+  const nGroups=(typeof GROUPS!=='undefined')?GROUPS.length:0;
+  el.innerHTML=`
+    <div>
+      <div class="snap-title">GLOBAL POSTURE · ${total} THEATERS</div>
+      <div class="tierbar" style="margin-top:8px">${segs}</div>
+      <div class="tierlegend" style="margin-top:9px">${legend}</div>
+    </div>
+    <div class="snap-grid">
+      <div class="snap-cell"><b style="color:var(--red)">${conflict}</b><span>⚔ CONFLICT</span></div>
+      <div class="snap-cell"><b style="color:var(--gov)">${watch}</b><span>◎ WATCH</span></div>
+      <div class="snap-cell"><b style="color:var(--amber)">${nGroups}</b><span>🏴 GROUPS</span></div>
+    </div>
+    <div>
+      <div class="snap-title">BIGGEST MOVERS THIS WEEK</div>
+      <div class="snap-movers" style="margin-top:8px">${mv}</div>
+    </div>
+    <div style="font-family:var(--FM);font-size:8px;color:var(--dim);letter-spacing:.5px;line-height:1.6;text-align:left;padding-top:4px;border-top:1px solid var(--faint)">
+      Tap any theater for its dossier. Use the boards above to see the actors (Groups, Patrons), the structure (Blocs, Systems), and the leverage (Military, Economic, Markets).
+    </div>`;
+}
+function clearSel(){sel=null;document.getElementById('empty').classList.remove('hidden');renderSnapshot();document.getElementById('detail').classList.add('hidden');document.getElementById('detailPane').classList.remove('mobile-show');}
+function setF(f,btn){flt=f;document.querySelectorAll('.chip[data-f]').forEach(b=>b.classList.remove('on'));btn.classList.add('on');clearSel();renderList();}
+function onSearch(v){q=v.trim();clearSel();renderList();}
+function closeOverlay(){document.getElementById('overlay').classList.remove('show');}
+
+
+
+function stCls(s){
+  if(s.startsWith('DISPROVEN'))return 'st-dis';
+  if(s.startsWith('DOCUMENTED'))return 'st-doc';
+  if(s.startsWith('UNRESOLVED'))return 'st-unr';
+  if(s.startsWith('CONTESTED'))return 'st-con';
+  if(s.startsWith('UNSUPPORTED'))return 'st-uns';
+  if(s.startsWith('ALLEGED'))return 'st-unr';
+  return 'st-con';
+}
+function contestedPanel(d){
+  const c=d.contested;
+  if(!c) return '<div class="ct-none">No contested-claims data for this theater.</div>';
+  if(!c.claims||!c.claims.length) return `<div class="ct-none">${c.summary}</div>`;
+  return `<div class="ct-lead">${c.summary}</div>`+c.claims.map(x=>`
+    <div class="ct-card">
+      <div class="ct-claim"><div class="ct-ck">THE CLAIM</div><div class="ct-cv">${x.claim}</div></div>
+      <div class="ct-body">
+        <div class="ct-sec ct-who"><div class="ct-k">WHO BENEFITS IF IT'S BELIEVED</div><div class="ct-v">${x.who}</div></div>
+        <div class="ct-sec ct-ev"><div class="ct-k">WHAT THE EVIDENCE SUPPORTS</div><div class="ct-v">${x.evid}</div></div>
+        <span class="ct-st ${stCls(x.status)}">\u25c9 ${x.status}</span>
+      </div>
+    </div>`).join('');
+}
+function xlinks(d){
+  const gs=(typeof GROUPS!=='undefined'?GROUPS:[]).filter(g=>(g.theaters||[]).includes(d.id));
+  const bs=(typeof BLOCS!=='undefined'?BLOCS:[]).filter(b=>(b.theaters||[]).includes(d.id));
+  const ss=(typeof SYSTEMS!=='undefined'?SYSTEMS:[]).filter(s=>(s.nodes||[]).some(n=>n.theater===d.id));
+  if(!gs.length&&!bs.length&&!ss.length) return '';
+  let h='<div class="xl-wrap">';
+  if(gs.length){h+=`<div class="xl-k">ARMED GROUPS ACTIVE HERE</div><div class="xl-chips">${gs.map(g=>`<span class="xl-chip xl-g" onclick="openGroups()">${g.icon} ${g.name}</span>`).join('')}</div>`;}
+  if(bs.length){h+=`<div class="xl-k" style="margin-top:11px">BLOCS \u0026 ALIGNMENTS</div><div class="xl-chips">${bs.map(b=>`<span class="xl-chip xl-b" onclick="openBlocs()">\u2b21 ${b.name}</span>`).join('')}</div>`;}
+  if(ss.length){h+=`<div class="xl-k" style="margin-top:11px">SYSTEMS</div><div class="xl-chips">${ss.map(s=>`<span class="xl-chip xl-s" onclick="openSystems()">\u25c8 ${s.name}</span>`).join('')}</div>`;}
+  h+='</div>';
+  return h;
+}
+function board(title,color,groups){
+  if(groups===undefined){groups=color;color='';}
+  document.getElementById('ovTitle').textContent=title;
+  document.getElementById('overlay').classList.add('show');
+  document.getElementById('ovScroll').innerHTML=groups;
+}
+function openLeverage(){
+  const rows=[];DB.forEach(d=>(d.leverage||[]).forEach(l=>rows.push({d,l})));
+  const by={hi:rows.filter(r=>r.l.str==='hi'),md:rows.filter(r=>r.l.str==='md'),lo:rows.filter(r=>r.l.str==='lo')};
+  const lbl={hi:'HIGH LEVERAGE',md:'MEDIUM LEVERAGE',lo:'LOW LEVERAGE'},col={hi:'var(--red)',md:'var(--amber)',lo:'var(--grn)'};
+  const r=({d,l})=>`<div class="brd-row brd-lev" onclick="closeOverlay();pick('${d.id}')"><div class="brd-th">${d.flag} ${d.name.split('—')[0].trim()}</div><div class="brd-a">${l.actor}</div><div class="brd-d">${l.asset}</div><span class="badge ${LEV[l.str][1]}">${LEV[l.str][0]}</span></div>`;
+  board('⚖ GLOBAL LEVERAGE MAP','',['hi','md','lo'].map(s=>`<div class="mv-sec" style="color:${col[s]}">${lbl[s]} · ${by[s].length}</div>${by[s].map(r).join('')}`).join(''));
+}
+function openGov(){
+  const w=DB.filter(d=>d.gov&&d.gov.length);
+  board('▣ GOVERNMENTAL SOURCING BOARD','',
+    `<div class="intro-note" style="margin-bottom:16px">Every state-level source across the platform — statistics offices, official communiqués, UN Security Council listings, ministries. Official data as its own tier alongside the analyst institutions.</div>`+
+    w.map(d=>`<div class="ov-group"><div class="ov-ghead"><span class="ov-gflag">${d.flag}</span>${d.name}<span class="ov-gmeta">${d.subregion} · IDX ${d.esc}</span></div>${d.gov.map(g=>`<div class="brd-row brd-gov" onclick="closeOverlay();pick('${d.id}')"><div class="brd-a" style="color:var(--gov)">${g.src}</div><div class="brd-d">${g.detail}</div></div>`).join('')}</div>`).join(''));
+}
+function openEcon(){
+  const w=DB.filter(d=>d.econlev&&d.econlev.length);
+  board('₿ ECONOMIC-LEVERAGE BOARD','',
+    `<div class="intro-note" style="margin-bottom:16px">Every financial and resource lever — US Treasury portfolio exposure (TIC), export-market dependence, commodity chokeholds, sanctions power. Who can squeeze whom without firing a shot.</div>`+
+    w.map(d=>`<div class="ov-group"><div class="ov-ghead"><span class="ov-gflag">${d.flag}</span>${d.name}<span class="ov-gmeta">${d.subregion} · IDX ${d.esc}</span></div>${d.econlev.map(e=>`<div class="brd-row brd-econ" onclick="closeOverlay();pick('${d.id}')"><div class="brd-th">${e.channel}</div><div class="brd-a" style="color:var(--econ)">${e.holder}</div><div class="brd-d">${e.detail}</div><span class="badge b-${e.exp}">${e.exp}</span></div>`).join('')}</div>`).join(''));
+}
+function openPipeline(){
+  const w=DB.filter(d=>d.pipeline&&d.pipeline.length);
+  const STG={mine:['① MINE / EXTRACTION','var(--red)'],process:['② PROCESS / REFINE','var(--amber)'],mid:['③ COMPONENT / MIDSTREAM','var(--cyan)'],end:['④ END-BUYER / PRODUCT','var(--grn)']};
+  const chain=(p)=>{
+    const bySt={mine:[],process:[],mid:[],end:[]};
+    p.forEach(s=>{(bySt[s.stage]=bySt[s.stage]||[]).push(s);});
+    return ['mine','process','mid','end'].filter(k=>bySt[k]&&bySt[k].length).map((k,i,arr)=>{
+      const rows=bySt[k].map(s=>`<div class="pl-node"><div class="pl-actor">${s.actor}</div><div class="pl-detail">${s.detail}</div>${s.who?`<div class="pl-who">⚑ ${s.who}</div>`:''}${s.tier?`<span class="badge b-${s.tier}">${TIER[s.tier]||s.tier}</span>`:''}</div>`).join('');
+      const arrow=i<arr.length-1?`<div class="pl-arrow">↓</div>`:'';
+      return `<div class="pl-stage"><div class="pl-stg-lbl" style="color:${STG[k][1]}">${STG[k][0]}</div>${rows}</div>${arrow}`;
+    }).join('');
+  };
+  board('⛓ RESOURCE-PIPELINE BOARD','',
+    `<div class="intro-note" style="margin-bottom:14px">The full extraction chain per theater — <b>who digs it → who processes it → who builds with it → who profits</b>. This is the leverage-and-extraction lens made literal: the money and the material tracked from the pit to the product on the shelf. Conflict-financing nodes are flagged ⚑.</div>`+
+    w.map(d=>{
+      const mineral=d.pipeline[0]&&d.pipeline[0].mineral?`<span class="ov-gmeta">${[...new Set(d.pipeline.map(p=>p.mineral).filter(Boolean))].join(' · ')}</span>`:`<span class="ov-gmeta">${d.subregion} · IDX ${d.esc}</span>`;
+      return `<div class="ov-group"><div class="ov-ghead" onclick="closeOverlay();pick('${d.id}')" style="cursor:pointer"><span class="ov-gflag">${d.flag}</span>${d.name.split('—')[0].trim()}${mineral}</div><div class="pl-wrap">${chain(d.pipeline)}</div></div>`;
+    }).join(''));
+}
+function openPatterns(){
+  // Three cross-theater theses. Membership is derived from theater data where possible,
+  // with an explicit curated set per pattern (ids), so the board stays a stated argument.
+  const PATTERNS=[
+    {
+      key:'china-refine',
+      title:'The China Refining Chokehold',
+      color:'var(--red)',
+      thesis:"Producer states mine the transition metals at home and ship them to China to be processed. Beijing controls the midstream — separation, smelting, magnets, cathodes — which is where the value and the leverage actually sit. Mining the ore is not the same as controlling it.",
+      ids:['drc','mali','myanmar','indonesia'],
+      note:d=>({
+        drc:"Cobalt: China owns 15/19 mines and CMOC sets the world price; ~80% routed to China to refine.",
+        mali:"Lithium: Goulamina, Mali's flagship deposit, is China's Ganfeng — spodumene ships to China for conversion.",
+        myanmar:"Heavy rare earths: ~all Kachin output crosses into Yunnan; China holds 90%+ of global separation.",
+        indonesia:"Nickel: China controls ~75% of the HPAL/smelter capacity Jakarta forced onshore with its export ban."
+      }[d.id])
+    },
+    {
+      key:'dubai-gold',
+      title:'The Dubai Gold-Laundering Circuit',
+      color:'var(--amber)',
+      thesis:"Conflict and junta gold — mined in war zones, off the books, untaxed by the home state — routes overland to Dubai refiners, where it is melted, relabelled, and injected into global bullion flows with its origin erased. Gold, not the bulk minerals, is the preferred value-transfer metal precisely because refining makes it untraceable.",
+      ids:['sudan','burkina','mali','ethiopia','drc'],
+      note:d=>({
+        sudan:"RSF gold → Chad/Libya → Dubai; the single largest revenue source funding the war.",
+        burkina:"Junta + Africa Corps 'security-for-gold' concessions; part-routes to Russian war finance.",
+        mali:"Smuggled artisanal gold to Gulf refiners; the new Russian refinery aims to capture the leak.",
+        ethiopia:"Under-priced central-bank gold drives large volumes into smuggling toward Dubai.",
+        drc:"Eastern gold → Rwanda's Gasabo refinery (OFAC-sanctioned) → Dubai, mirroring the RSF circuit."
+      }[d.id])
+    },
+    {
+      key:'resource-nat',
+      title:'The Resource-Nationalism Revolt',
+      color:'var(--grn)',
+      thesis:"Producer states are trying to claw the midstream back — export bans, nationalizations, ownership-floor laws, quotas — to capture the refined-export margin instead of shipping raw ore. It is the defining economic move of the 2020s Global South. Most are still trapped by the processing dependency they are revolting against; one already escaped.",
+      ids:['indonesia','niger','mali','kazakhstan','drc','south-africa'],
+      note:d=>({
+        indonesia:"The template: 2020 raw-ore export ban + 2026 quotas ('hilirisasi') — but 75% Chinese-refined.",
+        niger:"Seized Orano's SOMAÏR uranium stake (2025) — and the yellowcake now sits stranded, unsellable.",
+        mali:"2023 Mining Code (state stake to 35%) + a Russia-backed national gold refinery.",
+        kazakhstan:"2025 Subsoil Code forces Kazatomprom's stake to ≥75% — but it still cannot enrich its own ore.",
+        drc:"Feb-2025 cobalt export ban → Oct-2025 quota (96,600t/yr) — Africa's boldest mineral-sovereignty play.",
+        "south-africa":"THE ONE THAT ESCAPED: kept its own PGM refining onshore — the midstream everyone else lost."
+      }[d.id])
+    }
+      ,{
+      key:'water-lev',
+      title:'Water as Leverage',
+      color:'var(--ice)',
+      thesis:"The upstream position is a weapon that never needs firing: dams, treaties and basins convert geography into permanent coercion. The GERD gives Addis a hand on Egypt's artery; India's Indus suspension is the first treaty-weaponization between nuclear powers; Lake Chad's shrinkage feeds four insurgencies; Turkish dams meter Iraq's rivers. Water is where climate and conflict stop being separate files.",
+      ids:['sudan','ethiopia','egypt','kashmir','chad','iraq','uae-gulf','saudi'],
+      note:d=>({
+        sudan:"RSF drone strikes on El Obeid’s water stations (Jul 2026) — water denial as siege weapon, the El Fasher playbook repeated.",
+        ethiopia:"GERD — the Nile hand on Egypt's artery; the unifying national project that is also the region's biggest coercion instrument.",
+        egypt:"Downstream existential exposure; the reported Fano backing is the shadow war the dam produces.",
+        kashmir:"Indus Waters Treaty suspended — hydrological coercion between nuclear powers for the first time.",
+        chad:"Lake Chad's shrinkage collapsed the basin economy that now feeds the insurgency belt.",
+        iraq:"Tigris-Euphrates metered by upstream Turkish dams — water as the quiet lever over Baghdad."
+        ,"uae-gulf":"Gulf desalination plants struck (Jul 2026) — ~90% of Kuwait’s water, and the UAE’s own, sit within Iranian missile range: water as wartime target.",
+        saudi:"~70% of Saudi drinking water is desalinated on a coast lined with plants inside the strike envelope — the Gulf’s existential exposure is now water, not just oil."
+      }[d.id])
+    }
+];
+  const card=(p)=>{
+    const rows=p.ids.map(id=>{
+      const d=DB.find(x=>x.id===id); if(!d) return '';
+      return `<div class="brd-row" style="border-left:2px solid ${p.color}" onclick="closeOverlay();pick('${d.id}')"><div class="brd-th">${d.flag} ${d.name.split('—')[0].trim()}</div><div class="brd-d">${p.note(d)||''}</div></div>`;
+    }).join('');
+    return `<div class="ov-group"><div class="ov-ghead" style="color:${p.color}"><span style="font-size:15px">◆</span> ${p.title}<span class="ov-gmeta">${p.ids.length} theaters</span></div><div class="pt-thesis">${p.thesis}</div>${rows}</div>`;
+  };
+  board('◆ CROSS-THEATER PATTERNS','',
+    `<div class="intro-note" style="margin-bottom:14px">The platform's central argument, made explicit. These three theses recur across theaters that never touch on the map — the connective tissue the pipelines imply. Each theater links to its full record.</div>`+
+    PATTERNS.map(card).join(''));
+}
+
+function openHistory(){
+  const w=DB.filter(d=>d.history);
+  const byReg={};
+  w.forEach(d=>{(byReg[d.subregion]=byReg[d.subregion]||[]).push(d);});
+  const groups=Object.entries(byReg).map(([reg,arr])=>{
+    const rows=arr.sort((a,b)=>b.esc-a.esc).map(d=>{
+      const h=d.history;
+      const tln=h.timeline?h.timeline.length:0;
+      const actn=h.actors?h.actors.length:0;
+      const first=h.timeline&&h.timeline.length?h.timeline[0].date:'';
+      const rootsSnip=h.roots?h.roots.slice(0,155)+'…':'';
+      return `<div class="brd-row" style="border-left:3px solid var(--ice)" onclick="closeOverlay();pick('${d.id}');setTimeout(()=>{const t=[...document.querySelectorAll('.tab')].find(x=>x.textContent.includes('HISTORY'));if(t)t.click();},60)"><div class="brd-th">${d.flag} ${d.name.split('—')[0].trim()}</div><div class="brd-d">${rootsSnip}</div><span class="hist-meta">${first?'since '+first+' · ':''}${tln} events · ${actn} actors</span></div>`;
+    }).join('');
+    return `<div class="ov-group"><div class="ov-ghead">${reg}<span class="ov-gmeta">${arr.length}</span></div>${rows}</div>`;
+  }).join('');
+  board('\u25f7 HISTORICAL CONTEXT','',
+    `<div class="intro-note" style="margin-bottom:14px">The roots, timelines, and actor backstories behind every tracked situation — <b>how each conflict got here and who the players are</b>. The dashboard tracks the present; this is the memory behind it. Tap any theater to open its full History tab. <span style="color:var(--mute)">Coverage is being expanded theater by theater (${w.length}/${DB.length} so far).</span></div>`+groups);
+}
+
+const INFOOPS=[
+ {name:"The Sahel Anti-French Ecosystem",op:"Russia (Africa Corps media wing) + AES junta channels",target:"Francophone West African publics; diaspora amplification",method:"Pan-Africanist framing fused with junta promotion; Sankara iconography repurposed; troll-farm amplification of real grievances (CFA franc, French bases)",tell:"Real colonial grievance + fabricated coup/atrocity claims mixed in the same channels — the truth is the delivery vehicle",theaters:['burkina','mali','niger','cote-divoire'],status:"active"},
+ {name:"Fabricated Coups · Côte d'Ivoire",op:"Russia/AES-aligned networks",target:"External audiences (English-language) + Ivorian north",method:"Recurrent manufactured coup reports and mutiny videos timed to succession anxieties",tell:"English-language output for a Francophone country — the audience is the tell",theaters:['cote-divoire'],status:"active"},
+ {name:"The 'Christian Genocide' Frame · Nigeria",op:"US advocacy networks + administration messaging",target:"US domestic opinion; evangelical constituencies",method:"Real mass killings recast as a single-cause religious extermination; casualty figures from unverified compilations",tell:"ACLED event data (religious targeting ≈5% of civilian-targeting incidents) contradicts the frame; the framing precedes the minerals ask",theaters:['nigeria','us-politics'],status:"active"},
+ {name:"Sudan · Dueling Atrocity Denial",op:"RSF (UAE-adjacent PR) vs SAF channels",target:"Gulf/Western opinion; peace-process leverage",method:"Each side documents the other's massacres while scrubbing its own; RSF runs polished English-language humanitarian branding",tell:"El Fasher's satellite-documented record vs RSF 'protection' messaging in the same week",theaters:['sudan'],status:"active"},
+ {name:"Taiwan · Inevitability + US-Doubt (yimeilun)",op:"Beijing state media + platform operations",target:"Taiwanese public confidence; global framing",method:"Twin tracks: reunification-as-history's-verdict + 'America will abandon you' skepticism seeding",tell:"The doubt campaign needs no falsehood — it amplifies real US ambiguity; effect measured in deterrence credibility",theaters:['taiwan','south-china-sea'],status:"active"},
+ {name:"Moldova · Full-Spectrum Lab",op:"Russia (FSB networks, Orthodox clergy channels, Ilan Shor structures)",target:"Moldovan electorate; Gagauzia; diaspora",method:"Vote-buying at industrial scale, clergy messaging, energy-blackmail narratives, EU-decadence framing",tell:"Promo-LEX documented payment networks; the lab exports what works to other theaters",theaters:['moldova'],status:"active"},
+ {name:"Kashmir · False-Flag Reflex",op:"Islamabad-aligned channels",target:"Domestic + international deflection",method:"Post-attack false-flag claims deployed within hours of every major incident",tell:"No supporting evidence across cases; sustained by India's own prior info-ops (EU DisinfoLab) damaging its narrator credibility",theaters:['kashmir'],status:"active"},
+ {name:"Al-Shabaab · Governance Brand",op:"Al-Shabaab media operations",target:"Somali public + diaspora taxation base",method:"Courts-and-order branding; anti-foreign-occupation framing around AUSSOM",tell:"The courts are used even by opponents (real) — the brand launders famine-weaponization and child recruitment (also real)",theaters:['somalia'],status:"active"},
+ {name:"ICC Delegitimization Campaign",op:"United States (Jul 2026) + prior Russian/Israeli tracks",target:"Member-state governments; global legitimacy of the court",method:"Sanctions on court personnel; pressure on states to withdraw; amplification of the prosecutor's internal crisis",tell:"The system's author leading the dismantling — message discipline across otherwise-opposed capitals",theaters:['geopolitical','us-politics'],status:"active"},
+ {name:"Presidential Feed as Market Instrument",op:"Trump Truth Social account",target:"Markets; news cycle tempo",method:"Market-moving posts (verified via archive) days after personal stock purchases; 13-posts-in-15-minutes volume as agenda-setting",tell:"CNN-documented trade-then-post sequence (Nvidia, Apr 2025); fabricated screenshots circulate in parallel — verification gate required",theaters:['us-politics','global-economy'],status:"active"}
+];
+function openInfoOps(){
+  const rows=INFOOPS.map(function(c){
+    const chips=c.theaters.map(function(id){var d=DB.find(function(x){return x.id===id;});return '<span class="io-chip" onclick="closeOverlay();pick(\''+id+'\')">'+(d?d.flag:'\u25cf')+' '+(d?d.name.split('\u2014')[0].trim():id)+'</span>';}).join('');
+    return '<div class="io-card"><div class="io-name">'+c.name+'</div>'
+      +'<div class="io-row"><span class="io-k">OPERATOR</span><span class="io-v">'+c.op+'</span></div>'
+      +'<div class="io-row"><span class="io-k">TARGET</span><span class="io-v">'+c.target+'</span></div>'
+      +'<div class="io-row"><span class="io-k">METHOD</span><span class="io-v">'+c.method+'</span></div>'
+      +'<div class="io-tell">\u25c9 THE TELL \u00b7 '+c.tell+'</div>'
+      +'<div class="io-chips">'+chips+'</div></div>';
+  }).join('');
+  board('\u25c8 INFLUENCE OPERATIONS','',
+    '<div class="intro-note" style="margin-bottom:14px">The machinery of the narrative wars \u2014 who runs the campaign, at whom, by what method, and <b>the tell</b> that exposes it. Campaigns are logged only where operator and method are documented or credibly attributed; the Contested boards hold the claim-level detail per theater. Truth mixed with fabrication is the dominant technique \u2014 the real grievance is the delivery vehicle.</div>'+rows);
+}
+const SANCTIONS=[
+ {who:"US OFAC",tgt:"RSF network + Rwanda Defence Force",inst:"SDN designations (Mar\u2013Jun 2026): RDF itself, Gasabo Gold, smuggling middlemen",gap:"UAE conduit untouched \u2014 the refining hub of the sanctioned gold remains open",th:['sudan','drc','uae-gulf']},
+ {who:"European Union",tgt:"Sudanese gold trade",inst:"Import ban + mercury/cyanide export ban (13 Jul 2026)",gap:"Parliament voted 476-28 to condemn the UAE; the Council declined to act \u2014 the shield in daylight",th:['sudan','uae-gulf']},
+ {who:"US (Pentagon 1260H + Treasury)",tgt:"Chinese military-linked firms",inst:"Designation list expanded (CATL, Alibaba, BYD, Baidu); Jan 2027 Chinese-origin REE procurement ban",gap:"Consumer-market interdependence limits enforcement bite",th:['global-economy']},
+ {who:"US Navy (blockade regime)",tgt:"Iranian oil exports",inst:"Maritime interdiction: 140+ vessels intercepted (blockade 1.0), ~$4.8B revenue cost; blockade 2.0 running",gap:"Teapot-refinery demand and dark-fleet transfers persist below interdiction rate",th:['iran-us','chokepoints']},
+ {who:"US State/Treasury",tgt:"International Criminal Court",inst:"Personnel sanctions + withdrawal-pressure campaign (Jul 2026)",gap:"A REVERSE entry \u2014 the instrument aimed at the referee, not a violator; logged because the platform tracks leverage wherever pointed",th:['geopolitical']},
+ {who:"US",tgt:"Cartels (CJNG, Sinaloa factions)",inst:"FTO/SDGT designations enabling material-support prosecutions + strike authorities",gap:"Designations expose the US gun-southbound pipeline to the same logic \u2014 unapplied",th:['mexico']},
+ {who:"Sanctions coalition (G7+)",tgt:"Russia",inst:"Oil price cap, shadow-fleet designations, FSB Centre 16 attribution",gap:"Shadow fleet + third-country refining launder the flows; attribution outpaces asset action",th:['russia-domestic','nato-flank']},
+ {who:"ICSID (arbitral order)",tgt:"Niger's SOMA\u00cfR uranium sales",inst:"Provisional measures barring transfer pending Orano's claim",gap:"Enforceable only on Western-linked buyers \u2014 Rosatom is the designed exception",th:['niger']}
+];
+function openSanctions(){
+  const rows=SANCTIONS.map(function(x){
+    const chips=x.th.map(function(id){var d=DB.find(function(q){return q.id===id;});return '<span class="io-chip" onclick="closeOverlay();pick(\''+id+'\')">'+(d?d.flag:'')+' '+(d?d.name.split('\u2014')[0].trim():id)+'</span>';}).join('');
+    return '<div class="sx-card"><div class="sx-top"><span class="sx-who">'+x.who+'</span><span class="sx-arrow">\u2192</span><span class="sx-tgt">'+x.tgt+'</span></div>'
+      +'<div class="sx-inst">'+x.inst+'</div>'
+      +'<div class="sx-gap">\u26a0 GAP/SHIELD \u00b7 '+x.gap+'</div>'
+      +'<div class="io-chips">'+chips+'</div></div>';
+  }).join('');
+  board('\u2298 SANCTIONS ARCHITECTURE','',
+    '<div class="intro-note" style="margin-bottom:14px">Coercive economic instruments as a mapped system: <b>who sanctions whom, with what, and \u2014 the analytical point \u2014 where the deliberate gaps are.</b> Every shield is a policy choice; the UAE conduit surviving two gold-sanction rounds is the case study. One reverse entry (US \u2192 ICC) is logged because leverage is tracked wherever it points.</div>'+rows);
+}
+function openHuman(){
+  const w=DB.filter(function(d){return d.human;});
+  var tD=0,tX=0;
+  w.forEach(function(d){tD+=(d.human.dead||0);tX+=(d.human.disp||0);});
+  const fmt=function(n){return n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?Math.round(n/1e3)+'k':''+n;};
+  const rows=w.sort(function(a,b){return (b.human.dead||0)-(a.human.dead||0);}).map(function(d){
+    const h=d.human;
+    return '<div class="hm-row" onclick="closeOverlay();pick(\''+d.id+'\')">'
+      +'<div class="hm-th">'+d.flag+' '+d.name.split('\u2014')[0].trim()+'</div>'
+      +'<div class="hm-nums"><span class="hm-d">\u2020 '+fmt(h.dead||0)+'</span><span class="hm-x">\u2924 '+fmt(h.disp||0)+'</span>'+(h.famine?'<span class="hm-f">\u26a0 FAMINE</span>':'')+(h.aid?'<span class="hm-a">AID: '+h.aid+'</span>':'')+'</div>'
+      +'<div class="hm-note">'+h.note+'</div></div>';
+  }).join('');
+  board('\u2695 HUMAN COST LEDGER','',
+    '<div class="intro-note" style="margin-bottom:14px">The price in one view: deaths and displacement per tracked conflict, famine and aid-access flags where they apply. Figures are the file\u2019s working numbers \u2014 scope noted per theater (a war\u2019s round vs its total), sourced in each theater\u2019s record. <b>Board totals: \u2020 '+fmt(tD)+' dead \u00b7 \u2924 '+fmt(tX)+' displaced</b> across '+w.length+' theaters. The extraction lens\u2019s bottom line is paid here.</div>'+rows);
+}
+const ELECTIONS=[
+ {t:'colombia',ind:'Runoff final certification',hz:'Jul 2026',note:'Preliminary: de la Espriella (far right). Certification or contested-count crisis pending.'},
+ {t:'us-politics',ind:'US midterm elections',hz:'3 Nov 2026',note:'The war-powers, tariff and deportation fights all price this date; House control = subpoena + purse leverage.'},
+ {t:'ethiopia',ind:'Election aftermath window',hz:'H2 2026',note:'The June vote\u2019s disputed aftermath is the TPLF/Fano escalation clock.'},
+ {t:'cote-divoire',ind:'Succession positioning',hz:'open',note:'No date \u2014 but every fabricated-coup campaign rehearses for this transition.'},
+ {t:'cameroon',ind:'Succession vacuum',hz:'actuarial',note:'A nonagenarian presidency with no mechanism; the real ballot is biological.'}
+];
+const WATCH=[
+ {t:'venezuela',ind:'Aug 1 dialogue convenes — or collapses',mean:'If the Rodríguez-Figuera working group actually meets, the managed transition is real; if it collapses or Machado’s bloc breaks it, the US “strategic patience” plan loses its vehicle.',hz:'1 Aug 2026',st:'NEAR'},
+ {t:'drc',ind:'Mid-August DRC-Rwanda peace agreement signed — or missed',mean:'The Washington Accords’ first hard deadline. A signature legitimizes the framework; a miss after Uvira confirms the accord is cover for consolidation.',hz:'mid-Aug 2026',st:'NEAR'},
+ {t:'colombia',ind:'Final count confirms de la Espriella — or a contested-count crisis',mean:'A razor margin either seats the Trump-backed right (ending “total peace”) or opens an institutional crisis with the left in the streets.',hz:'days',st:'NEAR'},
+ {t:'us-politics',ind:'NDAA standoff resolves — war-powers rider or capitulation',mean:'Whether Congress converts the 50-46 block into binding Iran war-powers language tests whether budget leverage still disciplines the executive.',hz:'Jul-Aug 2026',st:'WATCHING'},
+ {t:'global-economy',ind:'China rare-earth export-control pause expires',mean:'The Nov-2026 expiry is the scheduled supply shock; renewal terms reveal whether Beijing monetizes or weaponizes the chokehold into the Jan-2027 Pentagon ban.',hz:'Nov 2026',st:'WATCHING'},
+ {t:'iran-us',ind:'IRGC executes the all-regional energy chokeoff',mean:'Simultaneous disruption of Hormuz + Gulf loadports + Bab el-Mandeb = the oil-spike scenario and probable full regional war. The threat is declared; execution is the trip.',hz:'open',st:'ARMED'},
+ {t:'iran-us',ind:'US-Israel strike Iranian top leadership (Mojtaba)',mean:'A second decapitation converts the war from coercion to regime-change; succession chaos and loose-arsenal risk follow.',hz:'open',st:'ARMED'},
+ {t:'nato-flank',ind:'Russian kinetic operation on Baltic grid-sync infrastructure',mean:'The exact scenario Lithuanian intel warned of (Jul 15). Even “limited” kinetic sabotage forces the Article 5 question Latvia says arrives within 12 months.',hz:'≤12 months (per Riga)',st:'ARMED'},
+ {t:'sudan',ind:'El Obeid falls to the RSF',mean:'Kordofan’s hub (~500k people, 105k already displaced) gone = the partition line hardens and the RSF reconnects Darfur-Kordofan-central Sudan. ACTIVE: encirclement underway, drone strikes on fuel depots and WATER STATIONS. The UN has now determined the El Fasher campaign was genocide — that is the precedent for what taking this city would mean.',hz:'weeks',st:'NEAR'},
+ {t:'south-china-sea',ind:'Scarborough platform becomes a permanent structure',mean:'The Mischief Reef playbook’s final step. A fixed installation inside the Philippine EEZ would test the US treaty’s Article IV ambiguity directly.',hz:'open',st:'TRIPPED',verdict:'READ VALIDATED, NOT TRIPPED (Jun 17 2026): the floating structure was REMOVED within a week of detection after Manila protested. The platform’s probe-and-pause thesis held — Beijing tests, measures the reaction, withdraws, and returns. The tripwire stays live for the next attempt.'},
+ {t:'drc',ind:'Ebola reaches Goma or another urban center',mean:'80% unknown-chain transmission + a war zone = the containment-failure scenario; an urban outbreak in an M23-held city would be ungovernable.',hz:'open',st:'ARMED'},
+ {t:'ethiopia',ind:'Eritrea-Ethiopia shooting incident on the Assab axis',mean:'Any exchange of fire on the Red Sea corridor converts the powder keg to open interstate war — the Horn’s worst case.',hz:'open',st:'ARMED'},
+ {t:'haiti',ind:'GSF launches its first major offensive — or stalls under 1,500 troops',mean:'The force is combat-declared but skeletal. A real offensive tests Viv Ansanm’s cohesion; a stall confirms the mission repeats the MSS failure.',hz:'Q3 2026',st:'WATCHING'},
+ {t:'niger',ind:'Rosatom physically lifts the stranded yellowcake',mean:'Moving ICSID-blocked uranium completes Niger’s realignment and forces a Western response on the carriage chain.',hz:'open',st:'WATCHING'},
+ {t:'iran-us',ind:'Iranian retaliation strikes outside the Gulf theatre',mean:'Rezaei (adviser to Supreme Leader Mojtaba Khamenei) warned that ‘no political border will provide security against Iran’s offensive forces’ if US strikes continue. An attack beyond the Gulf littoral converts a regional war into a global one.',hz:'open',st:'ARMED'},
+ {t:'drc',ind:'Lobito Corridor carries significant Congolese mineral volumes',mean:'The $753M US-backed rail route to the Atlantic is the physical test of whether Washington can redirect Congolese minerals away from Chinese offtake. Volumes, not financing announcements, are the falsifiable measure.',hz:'2027+',st:'WATCHING'},
+ {t:'cuba',ind:'A third state cancels its Cuban medical-mission agreement',mean:'Jamaica cancelled in Mar 2026 under US visa pressure. If the unbundling spreads, Havana loses its largest remaining hard-currency stream — sanctions succeeding by disaggregation where six decades of embargo did not.',hz:'open',st:'WATCHING'},
+ {t:'myanmar',ind:'Junta reverses territorial losses with Chinese backing',mean:'Min Aung Hlaing signed all four of Xi’s Global Initiatives (Jul 6) and analysts call Chinese support central to regime survival. If the front stabilises, this file’s own ‘junta is losing’ frame is falsified.',hz:'6-12 months',st:'WATCHING'},
+ {t:'iran-us',ind:'Hormuz reopens under a negotiated route regime',mean:'The standing off-ramp: separately controlled routes + verified passage = the war’s first durable de-escalation and the oil-premium unwind. STATUS Jul 19: the Jun-2026 MoU carrying this has COLLAPSED (NPR); salvage efforts continue and the Persian Gulf Strait Authority now administers designated routes mid-war — the machinery exists without a political agreement behind it.',hz:'open',st:'OFFRAMP'},
+ {t:'lebanon',ind:'Rome talks yield an Israeli redeployment timetable',mean:'A dated withdrawal schedule (matching Trump’s redeploy push) would be the first front of the regional war to formally close.',hz:'Jul-Aug 2026',st:'OFFRAMP'},
+ {t:'myanmar',ind:'India (IREL) signs a KIA rare-earth offtake',mean:'The first structural crack in China’s heavy-REE monopoly — ore leaving Kachin without crossing Yunnan.',hz:'open',st:'OFFRAMP'}
+];
+function openWatch(){
+  const TIER={TRIPPED:['\u2713 TRIPPED \u00b7 VERDICTS ON RECORD','var(--violet)'],NEAR:['⏱ DATED · CALENDAR TRIPWIRES','var(--amber)'],ARMED:['⚠ ESCALATION TRIPWIRES · ARMED','var(--red)'],WATCHING:['◎ WATCHING','var(--cyan)'],OFFRAMP:['↳ DE-ESCALATION · THE OFF-RAMPS','var(--grn)']};
+  const order=['TRIPPED','NEAR','ARMED','WATCHING','OFFRAMP'];
+  const groups=order.map(k=>{
+    const list=WATCH.filter(w=>w.st===k);
+    if(!list.length)return '';
+    const rows=list.map(w=>{
+      const d=DB.find(x=>x.id===w.t)||{flag:'●',name:w.t};
+      return '<div class="wt-row" onclick="closeOverlay();pick(\''+w.t+'\')"><div class="wt-top"><span class="wt-th">'+d.flag+' '+(d.name||w.t).split('—')[0].trim()+'</span><span class="wt-hz">'+w.hz+'</span></div><div class="wt-ind">'+w.ind+'</div><div class="wt-mean">'+w.mean+'</div>'+(w.verdict?'<div class="wt-verdict">\u2713 '+w.verdict+'</div>':'')+'</div>';
+    }).join('');
+    return '<div class="ov-group"><div class="ov-ghead" style="color:'+TIER[k][1]+'">'+TIER[k][0]+'<span class="ov-gmeta">'+list.length+'</span></div>'+rows+'</div>';
+  }).join('');
+  const elRows=ELECTIONS.map(function(e){var d=DB.find(function(x){return x.id===e.t;});return '<div class="wt-row" onclick="closeOverlay();pick(\''+e.t+'\')"><div class="wt-top"><span class="wt-th">'+(d?d.flag:'')+' '+(d?d.name.split('—')[0].trim():e.t)+'</span><span class="wt-hz">'+e.hz+'</span></div><div class="wt-ind">'+e.ind+'</div><div class="wt-mean">'+e.note+'</div></div>';}).join('');
+  const elGroup='<div class="ov-group"><div class="ov-ghead" style="color:var(--violet)">☑ ELECTIONS · BALLOTS AS TRIPWIRES<span class="ov-gmeta">'+ELECTIONS.length+'</span></div>'+elRows+'</div>';
+  board('⏱ WATCHLIST · NAMED TRIPWIRES',
+    '<div class="intro-note" style="margin-bottom:14px">The platform’s falsifiable expectations, written in advance: <b>if X happens, it means Y</b>. Dated calendar items first, then armed escalation tripwires, then the off-ramps. When one trips, the record shows what the analysis expected — that is the point. Tap any row to open its theater.</div>'+groups+elGroup);
+}
+function openInvest(){
+  document.getElementById('ovTitle').textContent='\u25c7 INVESTMENT BRIDGE \u00b7 RESOURCE CHOKEHOLDS \u2192 MARKET EXPOSURE';
+  document.getElementById('overlay').classList.add('show');
+  const nameOf=id=>{const t=DB.find(x=>x.id===id);return t?t:{flag:'\u25cf',name:id};};
+  document.getElementById('ovScroll').innerHTML=`
+    <div class="inv-lead">The bridge from the conflict map to markets. Each resource the platform tracks as a chokehold is mapped here to its strategic use, the theaters that control supply, the signal to watch, and the general categories of market exposure. This is where the critical-minerals and energy systems become investment-relevant.</div>
+    <div class="inv-disclaimer">\u26a0 EDUCATIONAL / ANALYTICAL ONLY \u2014 not financial advice. This maps supply-chain and geopolitical exposure; it does not recommend securities. Markets are driven by many factors beyond the geopolitics shown here. Do your own research and consult a licensed advisor.</div>
+    ${INVEST.map(inv=>`
+    <div class="inv-card">
+      <div class="inv-head">
+        <div class="inv-icon" style="background:${inv.color}22;color:${inv.color}">${inv.icon}</div>
+        <div class="inv-title"><div class="inv-name">${inv.commodity}</div><div class="inv-use">${inv.use.toUpperCase()}</div></div>
+      </div>
+      <div class="inv-body">
+        <div class="inv-row"><div class="inv-k">SUPPLY CHOKEHOLD</div><div class="inv-v">${inv.chokehold}</div></div>
+        <div class="inv-row"><div class="inv-k">DRIVING THEATERS \u00b7 TAP TO OPEN</div><div class="inv-theaters">${inv.theaters.map(id=>{const t=nameOf(id);return `<span class="inv-th-chip" onclick="closeOverlay();pick('${id}')">${t.flag||'\u25cf'} ${t.name?t.name.split('\u2014')[0].trim():id}</span>`;}).join('')}</div></div>
+        ${inv.catalyst?`<div class="inv-catalyst"><div class="inv-k">\u26a1 LIVE CATALYST</div>${inv.catalyst}</div>`:''}
+        <div class="inv-signal"><div class="inv-k">SIGNAL TO WATCH</div>${inv.signal}</div>
+        <div class="inv-row"><div class="inv-k">EXPOSURE VECTORS</div><div class="inv-v">${inv.vectors}</div></div>
+      </div>
+    </div>`).join('')}`;
+}
+
+function openGroups(){
+  document.getElementById('ovTitle').textContent='\ud83c\udff4 ARMED GROUPS \u00b7 MILITARY \u00b7 LOGISTICS \u00b7 ECONOMY';
+  document.getElementById('overlay').classList.add('show');
+  const nm=id=>{const t=DB.find(x=>x.id===id);return t||{flag:'\u25cf',name:id};};
+  document.getElementById('ovScroll').innerHTML=`
+    <div class="inv-lead">The platform is organized by place \u2014 but these actors are not. JNIM operates across six theaters as one command with one economy; ISWAP taxes four countries from Lake Chad. This board tracks the groups themselves: what they fight with, how they supply, and \u2014 the part that matters most \u2014 how they make money. Their economies are extraction economies, and that is why they endure.</div>
+    ${GROUPS.map(g=>`
+    <div class="grp-card">
+      <div class="grp-head">
+        <div class="grp-icon" style="background:${g.color}22;color:${g.color}">${g.icon}</div>
+        <div class="grp-t">
+          <div class="grp-name">${g.name}</div>
+          <div class="grp-full">${g.full}</div>
+          <div class="grp-badges">
+            <span class="tag tag-${g.tier==='CRITICAL'?'crit':(g.tier==='SEVERE'?'sev':'elev')}">${g.tier}</span>
+            <span class="grp-affil">${g.affil.toUpperCase()}</span>
+          </div>
+        </div>
+      </div>
+      <div class="grp-str">\u25b8 ${g.strength}</div>
+      <div class="grp-body">
+        <div class="grp-sec"><div class="grp-k">MILITARY</div><div class="grp-v">${g.mil}</div></div>
+        <div class="grp-sec"><div class="grp-k">LOGISTICS \u00b7 SUPPLY \u00b7 SANCTUARY</div><div class="grp-v">${g.log}</div></div>
+        <div class="grp-eco"><div class="grp-k">ECONOMY \u00b7 HOW IT PAYS FOR ITSELF</div><div class="grp-v">${g.eco}</div></div>
+        <div class="grp-sec"><div class="grp-k">THEATERS \u00b7 TAP TO OPEN</div><div class="grp-th">${g.theaters.map(id=>{const t=nm(id);return `<span class="inv-th-chip" onclick="closeOverlay();pick('${id}')">${t.flag||'\u25cf'} ${t.name?t.name.split('\u2014')[0].trim():id}</span>`;}).join('')}</div></div>
+        <div class="grp-as">${g.assess}</div>
+      </div>
+    </div>`).join('')}`;
+}
+function openSystems(){
+  document.getElementById('ovTitle').textContent='◈ SYSTEMS LAYER · CROSS-THEATER NETWORKS';
+  document.getElementById('overlay').classList.add('show');
+  const nameOf=id=>{const t=DB.find(x=>x.id===id);return t?t:{flag:'●',name:id};};
+  document.getElementById('ovScroll').innerHTML=`
+    <div class="sys-lead">The connective tissue between theaters. These are the arms pipelines, financing chains, evasion networks, resource chokeholds, and human corridors that cross borders — tracked as systems rather than isolated events. Each node links to its theater.</div>`+
+    SYSTEMS.map(s=>`
+    <div class="sys-card">
+      <div class="sys-head">
+        <div class="sys-icon" style="background:${s.color}22;color:${s.color}">${s.icon}</div>
+        <div class="sys-titles"><div class="sys-name">${s.name}</div><div class="sys-type">${s.type.toUpperCase()}</div></div>
+        <div class="sys-tier b-${s.tier}" style="border-color:${s.color}66;color:${s.color}">${(s.tier||'').toUpperCase()}</div>
+      </div>
+      <div class="sys-body">
+        <div class="sys-summary">${s.summary}</div>
+        <div class="sys-flow-label">▸ NODES · ${s.nodes.length}</div>
+        <div class="sys-nodes">${s.nodes.map(n=>{const t=nameOf(n.theater);return `<div class="sys-node" onclick="closeOverlay();pick('${n.theater}')"><div class="sys-node-flag">${t.flag||'●'}</div><div class="sys-node-role"><div class="sys-node-th">${t.name?t.name.split('—')[0].trim():n.theater}</div><div class="sys-node-r">${n.role}</div></div><div class="sys-node-d">${n.detail}</div></div>`;}).join('')}</div>
+        <div class="sys-meta">
+          <div class="sys-reverse"><b>Reverse flow</b>${s.reverse}</div>
+          <div class="sys-signif"><b>Why it matters</b>${s.significance}</div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+function openExt(){
+  const w=DB.filter(d=>d.external&&d.external.length);
+  const legend=`<div class="ov-legend"><span><span class="ldot" style="border-color:var(--red);background:var(--red-d)"></span>DOCUMENTED</span><span><span class="ldot" style="border-color:var(--amber);background:var(--amber-d)"></span>ALLEGED</span><span><span class="ldot" style="border-color:var(--violet);background:var(--violet-d)"></span>DENIED</span></div>`;
+  board('◆ EXTERNAL-ACTOR / PATRONAGE BOARD','',
+    `<div class="intro-note" style="margin-bottom:10px">Every external patron per theater — weapons, funding, influence flowing in; gold, uranium, farmland, ports, alignment flowing out. Three models: <b>gold-for-guns</b>, <b>drone diplomacy</b>, <b>aid-as-cover</b>. The US aid withdrawal and French expulsion created the vacuum they fill.</div>${legend}`+
+    w.map(d=>`<div class="ov-group"><div class="ov-ghead"><span class="ov-gflag">${d.flag}</span>${d.name}<span class="ov-gmeta">${d.subregion} · IDX ${d.esc}</span></div>${d.external.map(x=>`<div class="brd-row brd-ext" onclick="closeOverlay();pick('${d.id}')"><div class="brd-a">${x.actor}</div><div class="brd-s">▸ ${x.side}</div><div class="brd-d">${x.flow}<div class="card-extract" style="margin-top:3px"><b>Extracts:</b> ${x.for}</div></div><span class="badge b-${x.tier}">${TIER[x.tier]}</span></div>`).join('')}</div>`).join(''));
+}
+function openMethod(){
+  const N=DB.length;
+  const pipe=DB.filter(d=>d.pipeline&&d.pipeline.length).length;
+  const hist=DB.filter(d=>d.history).length;
+  const ctReal=DB.filter(d=>d.contested&&d.contested.claims&&d.contested.claims.length).length;
+  const ctStub=DB.filter(d=>d.contested&&(!d.contested.claims||!d.contested.claims.length)).length;
+  const seeded=DB.filter(d=>d.hist_real===false).length;
+  const ext=DB.filter(d=>d.external&&d.external.length).length;
+  const fresh={};DB.forEach(d=>{fresh[d.as_of||'—']=(fresh[d.as_of||'—']||0)+1;});
+  const freshStr=Object.entries(fresh).sort((a,b)=>b[1]-a[1]).map(([k,v])=>v+' @ '+k).join(' · ');
+  const tiers={};DB.forEach(d=>{tiers[d.tier]=(tiers[d.tier]||0)+1;});
+  const sec=(t,b)=>`<div class="mth-sec"><div class="mth-h">${t}</div><div class="mth-b">${b}</div></div>`;
+  board('⌘ METHODOLOGY · HOW THIS PLATFORM WORKS','',
+    `<div class="intro-note" style="margin-bottom:14px">MERIDIAN's doctrine, definitions, and honesty rules — written down so the reader can audit the analyst. Coverage numbers below are computed live from the data, not typed by hand.</div>`
+    +sec('THE LENS · LEVERAGE &amp; EXTRACTION',
+      'Every theater is read through one question: <b>who extracts what from whom, who backs whom, and what does the backer take in return?</b> Conflicts are treated as economies with a war attached, not the reverse. This is why every theater carries a Leverage map, an Economic-leverage board, and (where a physical commodity flows) a mine→end-buyer Pipeline. Events matter when they move leverage; a battle that changes nothing on those boards is noise.')
+    +sec('THE ESCALATION INDEX (0–100)',
+      'A single analyst-assigned severity score per theater, comparable across the board. Approximate bands, assigned by judgment rather than formula: <b>90+</b> active mass-casualty war or systemic global risk (Sudan, Hormuz) · <b>~75–89</b> open armed conflict or acute crisis · <b>~55–75</b> contested/strategic-watch, violence present or latent · <b>&lt;~55</b> structural tension worth tracking. Boundary cases are placed by trajectory and spillover judgment, so a theater’s tier may sit one band off its raw number by design. The number encodes intensity + trajectory + spillover potential, weighted by human cost. It is a judgment, not a formula — the Method exists so the judgment is inspectable. Current tiers: '+Object.entries(tiers).map(([k,v])=>k+' '+v).join(' · ')+'.')
+    +sec('SOURCE RELIABILITY · THREE TIERS',
+      '<b style="color:var(--red)">DOCUMENTED</b> — multiple independent reputable sources, official records, satellite/OSINT, or on-record admission. Stated as fact.<br><b style="color:var(--amber)">ALLEGED-CREDIBLE</b> — serious single-source reporting, UN panel findings under dispute, intelligence leaks. Logged with attribution, never asserted.<br><b style="color:var(--violet)">DENIED</b> — claims the accused party rejects; the denial is part of the record. Every External-board flow and Pipeline node carries one of these badges. The rule: <b>allegations are logged, not asserted</b> — the reader always sees which tier a claim sits in.')
+    +sec('DATA HONESTY RULES',
+      '1. <b>Estimated history is labeled.</b> '+seeded+' of '+N+' theaters entered tracking recently; their 10-week curves are analyst back-estimates, flagged hist_real:false, segregated on the Movers board as "NOT YET TRACKABLE · EST" and excluded from delta rankings until two real weeks accumulate.<br>2. <b>"No change" is a valid sweep result.</b> News sweeps update only theaters that materially moved; unmoved theaters keep their prior note and get a verification stamp only when actually checked.<br>3. <b>Stubs stay honest.</b> '+ctStub+' Contested boards currently read "no narrative war identified" — a finding, not a gap. They are filled only when a real information war exists.<br>4. <b>as_of = last verified, not last edited.</b> Current freshness: '+freshStr+'.<br>5. <b>Week rollover.</b> esc_history is a 10-slot window whose last slot is the current week. At each new tracking week the window must be rolled (drop the oldest point, append the new week\u2019s label) via the rollweek maintenance script \u2014 slot labels may skip weeks when tracking pauses, and the label gap is kept visible rather than smoothed.')
+    +sec('THE CONTESTED DOCTRINE',
+      'Where narratives are weapons, the platform tracks the fight over the story as its own layer: each claim is logged with <b>who asserts it, who benefits, what the evidence shows, and a status verdict</b> (documented / contested / debunked). '+ctReal+' theaters carry live claim-vs-evidence boards. The test for inclusion: the narrative itself must be doing strategic work — recruiting, justifying intervention, laundering an atrocity, or moving markets.')
+    +sec('BOARD ARCHITECTURE',
+      'Theater cards hold the vertical detail (Overview, Gov-sources, Leverage, Econ, External, Contested, History, Assessment). Cross-theater boards hold the horizontal reads: <b>Systems</b> (networks spanning theaters — arms pipelines, gold laundering, evasion fleets), <b>Pipeline</b> ('+pipe+' theaters traced mine→end-buyer), <b>Patterns</b> (recurring leverage structures), <b>Blocs</b> (formal alignments), <b>Groups</b> (armed non-state actors), <b>Movers</b> (weekly deltas), <b>History</b> ('+hist+'/'+N+' theaters with roots+timeline+actor backstories), <b>Markets</b> (investment bridge), <b>Patrons</b> ('+ext+' theaters with external-actor boards). Nothing appears on a horizontal board that is not anchored in a theater record.')
+    +sec('UPDATE WORKFLOW',
+      'Each build: (1) news sweep against live reporting, prioritized by index and volatility; (2) patch only sourced, material changes — dated inline (e.g. "JUL 15 —"); (3) full engine validation: JS syntax check, stub-DOM runtime execution, board-render tests, data-integrity audit (no duplicate IDs, all required fields, esc_history length, coordinate sanity); (4) version bump with changelog. Fabricating updates to look busy corrupts the file — the discipline is that an honest "verified, unchanged" outranks an invented development.<br><b>Primary-statement monitoring:</b> head-of-state feeds (incl. Truth Social) are treated as primary sources with a verification gate \u2014 posts count only when confirmed via the public archive (trumpstruth.org) or independent wire reporting, because fabricated screenshots circulate constantly (PolitiFact-documented). Verified posts are logged as DOCUMENTED statements of intent, never as accomplished facts.')
+    +sec('RED-TEAM DOCTRINE \u00b7 ARGUING WITH OURSELVES','Adopted from an external review (Jul 2026) that correctly identified the platform\u2019s biggest risk: <b>a single coherent lens can underweight what it is not optimized to see</b> \u2014 local politics, identity, governance failure, criminal incentives, historical grievance. Standing counters now built in: <b>(1) Competing Reads</b> on key theaters carry the platform\u2019s read beside rival explanations with a stated CONFIDENCE level (HIGH/MOD/LOW), so inference is never dressed as evidence. <b>(2) The four standing questions</b>, asked of every major assessment: is local governance failure more important than external influence? \u00b7 are economic incentives sufficient, or do history and identity matter more? \u00b7 is this criminal enterprise rather than ideological insurgency? \u00b7 does the evidence support a coordinated strategy, or are unrelated dynamics being grouped? <b>(3) Observation vs interpretation</b>: dated notes are the observed record; Assessment and Competing Reads are interpretation, labeled as such. <b>(4) Benchmarking</b> against, not substituting for, the named external set \u2014 ACLED (events), International Crisis Group (political analysis), Small Arms Survey (weapons flows), ISS Africa and CDD West Africa (African-led security analysis), RUSI/IISS (military balance), Chatham House (political economy). Where they disagree with this board, the disagreement is signal.')
+    +sec('CHANGELOG \u00b7 RECENT BUILDS','<b>v58</b> Jul 17 sweep (6th-night strikes, blockade metrics, Fedorov firing); inline source links (refs); freshness-decay stamps; Watchlist TRIPPED tier \u00b7 <b>v58</b> cited-history standard complete 55/55 \u00b7 <b>v52</b> Asia histories \u00b7 <b>v51</b> week-rollover fix + rollweek tool + Europe/Eurasia histories \u00b7 <b>v50</b> full audit (7 sparkline desyncs fixed, tier-anchor doc corrected) \u00b7 <b>v48-49</b> Watchlist board + Middle East histories \u00b7 <b>v47</b> Markets live catalysts \u00b7 <b>v44-46</b> history layer 55/55, Africa citations, Jul 15-16 sweeps \u00b7 <b>v43</b> three dead boards recovered (Method/Systems/Patrons), board() arg fix')
+    +sec('KNOWN LIMITS',
+      '<b>Reconciliation risk (found and fixed, Jul 17 2026):</b> the History layer was authored from model knowledge while the news layer is swept from live reporting — the two can drift apart. An audit found Venezuela’s history still describing Maduro in the present tense as ‘a ruler who won’t leave’ months after a US raid captured him (3 Jan 2026); the timeline, actors and roots were corrected and an unverified casualty figure (4,333 quake dead) was withdrawn in favour of sourced reporting (~1,450). A cross-theater consistency scan found no other case. This class of error is now checked at sweep time. One analyst-AI pipeline, not a newsroom: single-point judgment on index scores; web-search source pool skews English-language; back-histories on newer theaters are estimates; freshness varies by theater (see stamps). The platform is a structured argument about the world, and its method is printed here so the argument can be checked.'));
+}
+function openBlocs(){
+  document.getElementById('ovTitle').textContent='\u2b21 BLOCS \u0026 ALIGNMENTS \u00b7 THE STRUCTURAL FAULT LINES';
+  document.getElementById('overlay').classList.add('show');
+  const nm=id=>{const t=DB.find(x=>x.id===id);return t||{flag:'\u25cf',name:id};};
+  document.getElementById('ovScroll').innerHTML=`
+    <div class="inv-lead">Not a map of all diplomacy \u2014 only the structural alignments that actually explain the conflicts on this board. Each bloc shows who is on each side, what is genuinely being contested, and the fault line where it breaks. These are the \u201cwhy\u201d behind the external-actor flows tracked in every theater.</div>
+    ${BLOCS.map(b=>`
+    <div class="blc-card">
+      <div class="blc-name">${b.icon} ${b.name}</div>
+      <div class="blc-what">${b.what.toUpperCase()}</div>
+      <div class="blc-sides">
+        <div class="blc-side blc-a"><span class="blc-lbl">SIDE A</span>${b.sideA}</div>
+        <div class="blc-side blc-b"><span class="blc-lbl">SIDE B</span>${b.sideB}</div>
+      </div>
+      <div class="blc-row"><div class="blc-k">WHAT'S ACTUALLY CONTESTED</div><div class="blc-v">${b.contest}</div></div>
+      <div class="blc-fault"><div class="blc-k">\u26a0 FAULT LINE</div><div class="blc-v">${b.faultline}</div></div>
+      <div class="blc-row"><div class="blc-k">THEATERS \u00b7 TAP TO OPEN</div><div class="inv-theaters">${b.theaters.map(id=>{const t=nm(id);return `<span class="inv-th-chip" onclick="closeOverlay();pick('${id}')">${t.flag||'\u25cf'} ${t.name?t.name.split('\u2014')[0].trim():id}</span>`;}).join('')}</div></div>
+    </div>`).join('')}`;
+}
+
+
+function openContested(){
+  const withC=DB.filter(d=>d.contested&&d.contested.claims&&d.contested.claims.length).sort((a,b)=>b.esc-a.esc);
+  const none=DB.filter(d=>d.contested&&(!d.contested.claims||!d.contested.claims.length));
+  // tally statuses
+  const tally={};
+  withC.forEach(d=>d.contested.claims.forEach(c=>{const k=c.status.split('\u2014')[0].trim();tally[k]=(tally[k]||0)+1;}));
+  const nClaims=Object.values(tally).reduce((a,b)=>a+b,0);
+  const chips=Object.entries(tally).sort((a,b)=>b[1]-a[1]).map(([k,v])=>
+    `<span class="ct-st ${stCls(k)}" style="margin:0 5px 5px 0">${k} \u00b7 ${v}</span>`).join('');
+  const cards=withC.map(d=>`
+    <div class="ctb-card" onclick="closeOverlay();pick('${d.id}')">
+      <div class="ctb-head">
+        <div class="ctb-n">${d.flag||''} ${d.name}</div>
+        <div class="ctb-e ${d.esc>=90?'e-crit':(d.esc>=75?'e-sev':'e-elev')}">${d.esc}</div>
+      </div>
+      <div class="ctb-sum">${d.contested.summary}</div>
+      ${d.contested.claims.map(c=>`<div class="ctb-cl">
+        <span class="ct-st ${stCls(c.status)}">${c.status.split('\u2014')[0].trim()}</span>
+        <div class="ctb-ct">${c.claim}</div>
+      </div>`).join('')}
+    </div>`).join('');
+  board('\u25c9 CONTESTED \u00b7 THE NARRATIVE WAR',
+    `<div class="intro-note">Where the story and the ground don't match. Every claim is scored on what the evidence actually supports \u2014 not on who said it. <b>${withC.length} of ${DB.length} theaters</b> carry an active narrative war (${nClaims} contested claims). The other ${none.length} are marked as having none: <b>the absence of an information operation is itself a finding</b>, so it is stated rather than left blank.</div>
+     <div class="ctb-tally">${chips}</div>
+     ${cards}
+     <div class="ctb-clean"><div class="ctb-ch">\u2713 NO SIGNIFICANT NARRATIVE WAR (${none.length})</div>
+       <div class="ctb-cl2">${none.map(d=>`<span class="grp-th" onclick="closeOverlay();pick('${d.id}')">${d.flag||''} ${d.name.split('\u2014')[0].trim()}</span>`).join('')}</div></div>`);
+}
+function openMovers(){
+  const real=DB.filter(d=>d.hist_real!==false);
+  const seeded=DB.filter(d=>d.hist_real===false);
+  const wd=d=>{const h=d.esc_history;return h[h.length-1]-h[h.length-2];};
+  const up=real.filter(d=>wd(d)>0).sort((a,b)=>wd(b)-wd(a));
+  const dn=real.filter(d=>wd(d)<0).sort((a,b)=>wd(a)-wd(b));
+  const fl=real.filter(d=>wd(d)===0).sort((a,b)=>b.esc-a.esc);
+  const row=d=>{const x=wd(d);const s=x>0?'+'+x:(x<0?''+x:'0');
+    return `<div class="mv-row" onclick="closeOverlay();pick('${d.id}')">
+      <div class="mv-d ${x>0?'mv-up':(x<0?'mv-dn':'mv-fl')}">${s}</div>
+      <div class="mv-n">${d.flag||''} ${d.name}</div>
+      <div class="mv-e">${d.esc}</div></div>`;};
+  const srow=d=>`<div class="mv-row mv-seed" onclick="closeOverlay();pick('${d.id}')">
+      <div class="mv-d mv-est">EST</div>
+      <div class="mv-n">${d.flag||''} ${d.name}</div>
+      <div class="mv-e">${d.esc}</div></div>`;
+  board('\u21c5 MOVERS \u00b7 WEEK-OVER-WEEK',
+    `<div class="intro-note">Ranked by change since last week. <b>Only theaters with real tracked history appear in the movement columns</b> \u2014 newly-seeded theaters have estimated back-history and cannot show meaningful deltas, so they are listed separately below rather than polluting the signal.</div>
+     <div class="mv-sec"><div class="mv-h mv-hu">\u25b2 ESCALATING (${up.length})</div>${up.map(row).join('')||'<div class="mv-empty">None this week.</div>'}</div>
+     <div class="mv-sec"><div class="mv-h mv-hd">\u25bc EASING (${dn.length})</div>${dn.map(row).join('')||'<div class="mv-empty">None this week.</div>'}</div>
+     <div class="mv-sec"><div class="mv-h mv-hf">\u2014 HOLDING (${fl.length})</div>${fl.map(row).join('')}</div>
+     <div class="mv-sec"><div class="mv-h mv-hs">\u25c8 NOT YET TRACKABLE (${seeded.length}) \u00b7 estimated back-history</div>
+       <div class="mv-note">These theaters entered tracking recently. Their 10-week curves are analyst estimates, not observed movement \u2014 so no delta is claimed until two real weeks accumulate.</div>
+       ${seeded.map(srow).join('')}</div>`);
+}
+function buildKML(data){
+  const cm={military:'ff4e56e2',political:'fff07f9a',economic:'ff8ac94c',energy:'ff30a0e0',strategic:'ffd59b5b'};
+  const ic={military:'red',political:'purple',economic:'grn',energy:'wht',strategic:'ltblu'};
+  const st=Object.keys(cm).map(k=>`<Style id="s-${k}"><IconStyle><color>${cm[k]}</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/${ic[k]}-circle.png</href></Icon></IconStyle><LabelStyle><scale>.7</scale></LabelStyle></Style>`).join('');
+  const bs=grp(data,'subregion');
+  const folders=SUBS.filter(s=>bs[s]).map(sub=>`<Folder><name>${sub}</name>${bs[sub].filter(d=>!d.offmap&&d.lat!=null&&d.lon!=null).map(d=>{
+    const dl=dlt(d);const ext=(d.external||[]).map(x=>`${x.actor}→${x.side} [${TIER[x.tier]}]: ${x.flow}`).join(' | ');
+    return `<Placemark><name>${d.flag||''} ${d.name}${d.external?' ◆':''}</name><description><![CDATA[<b>${d.name}</b><br/>Index: ${d.esc}/100 (Δ${dstr(dl)})<br/>Status: ${SLBL[d.status]||d.status}<br/>${d.note}<br/>${ext?'<b>External:</b> '+ext:''}<br/><i>v58 · Week 16</i>]]></description><styleUrl>#s-${d.cat}</styleUrl><Point><coordinates>${d.lon},${d.lat},0</coordinates></Point></Placemark>`;
+  }).join('')}</Folder>`).join('');
+  return `<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>MERIDIAN by Leverage — Week 16</name>${st}${folders}</Document></kml>`;
+}
+function dl(c,n,m){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:m}));a.download=n;a.click();}
+function exportKML(){dl(buildKML(fdb()),'MERIDIAN-Leverage-W16.kml','application/vnd.google-earth.kml+xml');}
+function exportCSV(){
+  const data=fdb();const h=['Name','Category','Subregion','Domain','Severity','Status','Index','Delta','Lat','Lon'];
+  const rows=data.map(d=>[`"${d.name}"`,d.cat,`"${d.subregion}"`,`"${d.domain}"`,d.sev,SLBL[d.status]||d.status,d.esc,dstr(dlt(d)),d.lat,d.lon].join(','));
+  dl([h.join(','),...rows].join('\n'),'MERIDIAN-Leverage-W16.csv','text/csv');
+}
+renderSubFilter();renderTicker();renderList();renderSnapshot();
+</script>
+</body>
+</html>
