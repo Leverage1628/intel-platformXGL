@@ -41,6 +41,12 @@ console.log('  human ledger    '+human+'/'+DB.length);
 console.log('  contested stubs '+stubs+' (intentionally honest)');
 console.log('--- FRESHNESS ---');
 console.log('  >3 days old: '+stale.length+(stale.length?' ['+stale.slice(0,8).map(d=>d.id).join(',')+(stale.length>8?',…':'')+']':''));
+
+  var _cm={};DB.forEach(function(d){var k=d.checkmode||'CHECKED';_cm[k]=(_cm[k]||0)+1});
+  console.log('--- CHECK MODE ---');
+  console.log('  SWEPT (new material found): '+(_cm.SWEPT||0));
+  console.log('  CHECKED (searched, nothing material): '+(_cm.CHECKED||0));
+  console.log('  CARRIED (date advanced without individual check): '+(_cm.CARRIED||0)+(_cm.CARRIED>10?'  <- TOO MANY':''));
 if(veryStale.length) warns.push(veryStale.length+' theaters >7 days unverified: '+veryStale.slice(0,10).map(d=>d.id).join(','));
 
 warns.forEach(w=>console.log('WARN  '+w));
