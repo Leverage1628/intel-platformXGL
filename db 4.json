@@ -379,6 +379,33 @@
     "d": "21 Jul 2026",
     "c": "ICC leadership-level breakthrough; RSF drone strikes on civilians; UK gold-network sanctions"
    }
+  ],
+  "spill": [
+   {
+    "n": "Chad",
+    "dir": "both",
+    "w": "Eastern Chad hosts the refugee mass and the evidence base — the ICC deputy prosecutor's 'breakthrough' followed a visit there. Chad also risks deeper entanglement as RSF supply routes cross its territory."
+   },
+   {
+    "n": "South Sudan",
+    "dir": "both",
+    "w": "The RSF's January 2026 push into Blue Nile was launched FROM South Sudanese territory, alongside SPLM-N. Juba's own oil economy depends on pipelines running through Sudan."
+   },
+   {
+    "n": "Libya",
+    "dir": "in",
+    "w": "Haftar's eastern Libya is a documented RSF resupply corridor — the same logistics hub Russia's Africa Corps uses for the Sahel."
+   },
+   {
+    "n": "UAE",
+    "dir": "in",
+    "w": "The gold corridor. UK sanctions in July 2026 targeted the revenue structure rather than the commanders — the first action aimed at the financing rather than the fighting."
+   },
+   {
+    "n": "Egypt",
+    "dir": "in",
+    "w": "Cairo backs the SAF and holds the Nile question; a partitioned Sudan changes the upstream water calculus permanently."
+   }
   ]
  },
  {
@@ -984,6 +1011,28 @@
     "v": "v59",
     "d": "21 Jul 2026",
     "c": "Anéfis fall; Gold Agency; Algeria thaw; JNIM fuel-corridor strategy named"
+   }
+  ],
+  "spill": [
+   {
+    "n": "Senegal / Mauritania / Guinea / Côte d’Ivoire",
+    "dir": "in",
+    "w": "JNIM targets the Kayes mining region and the corridors to these four states — Mali's PRIMARY FUEL IMPORT ROUTES. The strangulation strategy is aimed at the neighbours' roads, not Bamako's walls."
+   },
+   {
+    "n": "Niger",
+    "dir": "both",
+    "w": "Niamey revoked 33 transport operators' licences for refusing to haul fuel to blockaded Mali — coercing its own truckers into a neighbour's war economy."
+   },
+   {
+    "n": "Algeria",
+    "dir": "both",
+    "w": "Ansar Dine's HQ sits at Tinzaouaten on the Algerian border; relations thawed in 2026 after a year-long rift over a downed drone."
+   },
+   {
+    "n": "Russia",
+    "dir": "in",
+    "w": "Africa Corps fights alongside FAMa and is PAID IN MINING CONCESSIONS — security financed by the sale of the thing being secured."
    }
   ]
  },
@@ -2312,6 +2361,23 @@
     "d": "21 Jul 2026",
     "c": "Seven armed actors added across all four fronts; US intervention logged with split verdict"
    }
+  ],
+  "spill": [
+   {
+    "n": "Niger / Sahel",
+    "dir": "in",
+    "w": "JNIM maintains a designated NIGERIAN BRIGADE; the Lakurawa implant operates on the Sokoto-Kebbi frontier. The Sahel war has a Nigerian chapter under its own flag."
+   },
+   {
+    "n": "Cameroon / Chad",
+    "dir": "both",
+    "w": "Lake Chad basin operations against ISWAP and JAS cross all three borders; Chad lost 23 soldiers at Barka Tolorom in May 2026."
+   },
+   {
+    "n": "United States",
+    "dir": "in",
+    "w": "Joint operations since May 2026 — SEAL raids and airstrikes killed ISWAP's al-Minuki and ~175 fighters, under a 'Christian genocide' framing ACLED's data does not support."
+   }
   ]
  },
  {
@@ -2345,7 +2411,7 @@
   "cas": "10,000+ since 2022; ADF killed 149 civ in Ituri last month (ACLED)",
   "disp": "6M+ IDPs",
   "flag": "🇨🇩",
-  "note": "AUG 18 DEADLINE APPROACHES: the DRC-M23 final peace agreement deadline falls on 18 August — the date the Doha framework's full deal is meant to be concluded. The platform's read: M23's parallel administration has deepened throughout the negotiation, so the deadline tests whether a deal ratifies the facts on the ground rather than reversing them · JUL 2026 — EBOLA: THIRD-LARGEST OUTBREAK ON RECORD, AND THE PLATFORM'S OWN TRIPWIRE ALREADY FIRED: 2,124 confirmed cases and 828 deaths as of 16 Jul (ECDC/DRC MoH); ITURI alone holds 1,904 cases and 692 deaths across 27 of 36 health zones; five provinces affected (Ituri, North Kivu, South Kivu, Tshopo, Haut Uele), with Tshopo putting cases 500km west of the epicentre · SPEED IS THE STORY: two months to 2,000 cases, against TEN MONTHS in the 2018-20 outbreak; WHO warns the true toll may be TWICE the confirmed count · the Bundibugyo strain was declared a PHEIC on 17 May · contact tracing sits at ~78-80%, below the 90-95% needed to contain · CORRECTION TO THIS FILE: a case was confirmed in GOMA on 17 May — in M23-held territory — meaning this platform's Watchlist tripwire ('Ebola reaches Goma or another urban center') TRIPPED two months before it was logged; recorded now rather than quietly updated · IRC warns of accelerating cross-border risk into SOUTH SUDAN, whose health system and politics are described as being on the edge; CDC entry restrictions on DRC/Uganda/South Sudan travellers expire ~21 Jul · Uganda has begun its 42-day countdown to declaring its own outbreak over (20 cases, 2 deaths); France confirmed an imported case 24 Jun; Oxford began preparing vaccine trials 57 days after the PHEIC · JUL 2026 — LOBITO CORRIDOR FINANCED: two international lenders provided $753M to modernise 1,300km of the Lobito Corridor railway linking Benguela port to the DRC border — $553M of it from a US development body. The corridor is Washington's physical answer to Chinese offtake dominance: a westward route carrying Congolese minerals to the Atlantic instead of east through Chinese-financed infrastructure · the pipeline board's 'who moves the ore' question now has a competing rail answer, financed · JUL 2026 — M23'S DEMOGRAPHIC REENGINEERING: the Doha framework (full deal targeted summer 2026) holds on paper while M23 entrenches a parallel state — UN Group of Experts + HRW document M23 dismantling IDP/refugee camps (forced ~700k to disperse at Goma's fall) and repatriating thousands of mostly-Hutu 'refugees' to Rwanda since May under screening the UN told HRW was 'done under pressure' · ~2M IDPs have returned to origin areas; M23 runs its own land reform, taxation, and airport control (only it can reopen Goma airport, after France/DRC raised ~$1.7B for humanitarian ops) · the entrenchment makes any future deal negotiate with a de facto administration — the Banyamulenge citizenship question (this theater's rival read) is now being answered by force on the ground · JUL 15 — EBOLA OUTPACING CONTAINMENT: WHO reports 80% of NEW Ebola cases in eastern DRC now emerge from UNKNOWN transmission chains — the outbreak is spreading faster than it can be tracked, and the ADF-violence/epidemic convergence in Ituri (already flagged) is the mechanism: the war zone is the blind spot · C64 opposition coalition POSTPONED nationwide protests after Burundian President Ndayishimiye's mediation — the political fuse burns slower, for now · PIPELINE + RWANDA EXPANDED (Wk16) · The extraction chain is now traced mine→end-buyer for all 4 minerals — see the ⛓ Pipeline board · RWANDA is the load-bearing external actor: 7,000–12,000 RDF troops fight with M23 (RDF sanctioned by OFAC Mar 2026); Rubaya coltan (~15% of world tantalum) is smuggled via Goma–Gisenyi, relabelled 'Rwandan' with ITSCI tags applied AFTER the border, and laundered into Apple/Microsoft/Sony/Nvidia/Toyota supply chains (Global Witness, 10 Jun 2026, 2,000+ tonnes traced); M23 earns ~$800k/mo at $4/kg · GOLD laundered via Gasabo Gold refinery (OFAC/EU sanctioned) → Dubai, mirroring the RSF/UAE circuit · COBALT: China owns 15/19 mines, CMOC sets the price → Kinshasa's Feb-2025 ban → Oct-2025 quota (96,600t/yr) → US Washington Accords counter (Virtus $700M, first US operator back in a decade) · 200+ killed in a Mar-2026 Rubaya shaft collapse · UPDATED · ADF killed 149 civilians in Ituri last month (=Jan-Apr total combined, ACLED) · Ebola now in 4th province (Bundibugyo strain, WHO) · ADF shifting north from N.Kivu into Ituri = both violence hotspot + Ebola-response center · M23 took Uvira; FARDC killed M23 spokesman Ngoma in record drone campaign · DRC + M23 pledged comprehensive peace agreement by MID-AUGUST; both sides reinforcing South Kivu — possible imminent battle for Uvira · Uvira status murky: M23 claimed retreat under US pressure but plainclothes militants still occupy + clash with Wazalendo · FARDC record air/drone campaign (killed spokesman Ngoma) around Rubaya coltan mine · Rwanda-Burundi powder keg (Uvira 26km from Bujumbura); comprehensive peace deal still pledged mid-Aug",
+  "note": "17-22 JUL 2026 — MONITORING WITHOUT MOVEMENT: the UN SANCTIONED several individuals and entities tied to the eastern conflict; Congolese army officers travelled to GOMA for ceasefire monitoring under the Doha process; the DRC, Rwanda and observer states convened the FIFTH Joint Security Coordination Mechanism meeting under the Washington Accords · fighting between M23-allied TWIRWANEHO and pro-government forces continues in the South Kivu highlands · THE PATTERN THIS PLATFORM TRACKS: five coordination meetings, eight negotiating pillars, two signed frameworks — and M23 has not returned territory. The 18 Aug deadline was already missed once; process is substituting for outcome · AUG 18 DEADLINE APPROACHES: the DRC-M23 final peace agreement deadline falls on 18 August — the date the Doha framework's full deal is meant to be concluded. The platform's read: M23's parallel administration has deepened throughout the negotiation, so the deadline tests whether a deal ratifies the facts on the ground rather than reversing them · JUL 2026 — EBOLA: THIRD-LARGEST OUTBREAK ON RECORD, AND THE PLATFORM'S OWN TRIPWIRE ALREADY FIRED: 2,124 confirmed cases and 828 deaths as of 16 Jul (ECDC/DRC MoH); ITURI alone holds 1,904 cases and 692 deaths across 27 of 36 health zones; five provinces affected (Ituri, North Kivu, South Kivu, Tshopo, Haut Uele), with Tshopo putting cases 500km west of the epicentre · SPEED IS THE STORY: two months to 2,000 cases, against TEN MONTHS in the 2018-20 outbreak; WHO warns the true toll may be TWICE the confirmed count · the Bundibugyo strain was declared a PHEIC on 17 May · contact tracing sits at ~78-80%, below the 90-95% needed to contain · CORRECTION TO THIS FILE: a case was confirmed in GOMA on 17 May — in M23-held territory — meaning this platform's Watchlist tripwire ('Ebola reaches Goma or another urban center') TRIPPED two months before it was logged; recorded now rather than quietly updated · IRC warns of accelerating cross-border risk into SOUTH SUDAN, whose health system and politics are described as being on the edge; CDC entry restrictions on DRC/Uganda/South Sudan travellers expire ~21 Jul · Uganda has begun its 42-day countdown to declaring its own outbreak over (20 cases, 2 deaths); France confirmed an imported case 24 Jun; Oxford began preparing vaccine trials 57 days after the PHEIC · JUL 2026 — LOBITO CORRIDOR FINANCED: two international lenders provided $753M to modernise 1,300km of the Lobito Corridor railway linking Benguela port to the DRC border — $553M of it from a US development body. The corridor is Washington's physical answer to Chinese offtake dominance: a westward route carrying Congolese minerals to the Atlantic instead of east through Chinese-financed infrastructure · the pipeline board's 'who moves the ore' question now has a competing rail answer, financed · JUL 2026 — M23'S DEMOGRAPHIC REENGINEERING: the Doha framework (full deal targeted summer 2026) holds on paper while M23 entrenches a parallel state — UN Group of Experts + HRW document M23 dismantling IDP/refugee camps (forced ~700k to disperse at Goma's fall) and repatriating thousands of mostly-Hutu 'refugees' to Rwanda since May under screening the UN told HRW was 'done under pressure' · ~2M IDPs have returned to origin areas; M23 runs its own land reform, taxation, and airport control (only it can reopen Goma airport, after France/DRC raised ~$1.7B for humanitarian ops) · the entrenchment makes any future deal negotiate with a de facto administration — the Banyamulenge citizenship question (this theater's rival read) is now being answered by force on the ground · JUL 15 — EBOLA OUTPACING CONTAINMENT: WHO reports 80% of NEW Ebola cases in eastern DRC now emerge from UNKNOWN transmission chains — the outbreak is spreading faster than it can be tracked, and the ADF-violence/epidemic convergence in Ituri (already flagged) is the mechanism: the war zone is the blind spot · C64 opposition coalition POSTPONED nationwide protests after Burundian President Ndayishimiye's mediation — the political fuse burns slower, for now · PIPELINE + RWANDA EXPANDED (Wk16) · The extraction chain is now traced mine→end-buyer for all 4 minerals — see the ⛓ Pipeline board · RWANDA is the load-bearing external actor: 7,000–12,000 RDF troops fight with M23 (RDF sanctioned by OFAC Mar 2026); Rubaya coltan (~15% of world tantalum) is smuggled via Goma–Gisenyi, relabelled 'Rwandan' with ITSCI tags applied AFTER the border, and laundered into Apple/Microsoft/Sony/Nvidia/Toyota supply chains (Global Witness, 10 Jun 2026, 2,000+ tonnes traced); M23 earns ~$800k/mo at $4/kg · GOLD laundered via Gasabo Gold refinery (OFAC/EU sanctioned) → Dubai, mirroring the RSF/UAE circuit · COBALT: China owns 15/19 mines, CMOC sets the price → Kinshasa's Feb-2025 ban → Oct-2025 quota (96,600t/yr) → US Washington Accords counter (Virtus $700M, first US operator back in a decade) · 200+ killed in a Mar-2026 Rubaya shaft collapse · UPDATED · ADF killed 149 civilians in Ituri last month (=Jan-Apr total combined, ACLED) · Ebola now in 4th province (Bundibugyo strain, WHO) · ADF shifting north from N.Kivu into Ituri = both violence hotspot + Ebola-response center · M23 took Uvira; FARDC killed M23 spokesman Ngoma in record drone campaign · DRC + M23 pledged comprehensive peace agreement by MID-AUGUST; both sides reinforcing South Kivu — possible imminent battle for Uvira · Uvira status murky: M23 claimed retreat under US pressure but plainclothes militants still occupy + clash with Wazalendo · FARDC record air/drone campaign (killed spokesman Ngoma) around Rubaya coltan mine · Rwanda-Burundi powder keg (Uvira 26km from Bujumbura); comprehensive peace deal still pledged mid-Aug",
   "leverage": [
    {
     "actor": "Rwanda (Kagame / RDF)",
@@ -2472,7 +2538,7 @@
   "tclass": "conflict",
   "tier": "SEVERE",
   "hist_real": true,
-  "as_of": "20 Jul 2026",
+  "as_of": "22 Jul 2026",
   "tracked_since": "Wk4 (2026)",
   "domain_tag": "Military",
   "contested": {
@@ -2731,6 +2797,14 @@
   },
   "refs": [
    {
+    "t": "Critical Threats · Congo War Security Review (17 Jul 2026)",
+    "u": "https://www.criticalthreats.org/briefs/congo-war-security-review"
+   },
+   {
+    "t": "The New Humanitarian · mining interests and missed deadlines",
+    "u": "https://www.thenewhumanitarian.org/analysis/2025/11/10/mining-interests-missed-deadlines-why-congolese-see-little-hope-m23-peace"
+   },
+   {
     "t": "Africa Intelligence Brief, 18 Jul 2026: Aug 18 deadline",
     "u": "https://www.riotimesonline.com/africa-intelligence-brief-saturday-july-18-2026/"
    },
@@ -2745,14 +2819,6 @@
    {
     "t": "CFR: third-largest outbreak on record",
     "u": "https://www.cfr.org/articles/africa-has-faced-a-rare-ebola-outbreak-for-months-heres-what-to-know"
-   },
-   {
-    "t": "CDC: current situation and entry measures",
-    "u": "https://www.cdc.gov/ebola/situation-summary/index.html"
-   },
-   {
-    "t": "Africa Intelligence Brief: Lobito Corridor financing",
-    "u": "https://www.riotimesonline.com/africa-intelligence-brief-2026-07-08/"
    }
   ],
   "checkmode": "SWEPT",
@@ -2762,6 +2828,33 @@
     "v": "v59",
     "d": "21 Jul 2026",
     "c": "Eight armed groups added with national origin; 18 Aug tripwire armed"
+   }
+  ],
+  "spill": [
+   {
+    "n": "Rwanda",
+    "dir": "in",
+    "w": "Troops, equipment and command support to M23 per successive UN Groups of Experts — denied by Kigali. Rwandan mineral exports rise in step with M23's territorial control. Kigali's stated cause is the FDLR, a Rwandan Hutu force on Congolese soil that Kinshasa fights ALONGSIDE."
+   },
+   {
+    "n": "Uganda",
+    "dir": "both",
+    "w": "THE CONTRADICTION: Uganda has supported M23 and maintains troops in the east from where it receives SMUGGLED GOLD — while ALSO deploying thousands of troops in late 2024/early 2025 to BLOCK M23's advance on Lubero and establish a buffer zone. Kampala also runs joint operations (Shujaa) against the Ugandan-origin ADF. It is simultaneously a beneficiary, a spoiler and a counter-insurgent."
+   },
+   {
+    "n": "Burundi",
+    "dir": "both",
+    "w": "Burundian troops fight alongside the Congolese army; CTP assesses M23 and Rwanda launched the UVIRA offensive at least partly to KNOCK BURUNDI OUT OF THE WAR. Hundreds of Congolese and Burundian troops retreated INTO Burundi as Uvira fell — 400 killed, 200,000 displaced. Bujumbura and Kigali now trade accusations of backing each other's rebels."
+   },
+   {
+    "n": "Sudan",
+    "dir": "in",
+    "w": "Sudan's war destabilises the Central African Republic on the DRC's northern flank, compounding an already contested border zone."
+   },
+   {
+    "n": "Zambia / Tanzania",
+    "dir": "out",
+    "w": "Cobalt from 150,000-200,000 artisanal miners is smuggled out through Zambia, Burundi and Tanzania, facilitated by border officials — the illicit half of the supply chain that ends in consumer electronics."
    }
   ]
  },
@@ -3050,6 +3143,28 @@
     "v": "v59",
     "d": "21 Jul 2026",
     "c": "Four actors added incl. Vectus Global; GSF stall verdict recorded"
+   }
+  ],
+  "spill": [
+   {
+    "n": "United States",
+    "dir": "in",
+    "w": "Weapons trafficked overwhelmingly from Florida arm the gangs; Erik Prince's Vectus Global runs drone strikes under an unpublished contract."
+   },
+   {
+    "n": "Chad",
+    "dir": "in",
+    "w": "1,500 Chadian troops pledged to the Gang Suppression Force — a state that cannot secure Lake Chad exporting security to the Caribbean."
+   },
+   {
+    "n": "Jamaica",
+    "dir": "both",
+    "w": "The same Florida arms pipeline supplies both; one trafficking system, two national crises."
+   },
+   {
+    "n": "Dominican Republic",
+    "dir": "out",
+    "w": "Santo Domingo has ruled out contributing troops while absorbing the migration pressure."
    }
   ]
  },
@@ -3885,6 +4000,33 @@
     "v": "v59",
     "d": "21 Jul 2026",
     "c": "esc 96→97; Bonji desalination strike and 18 US dead added; water pattern updated to reciprocal"
+   }
+  ],
+  "spill": [
+   {
+    "n": "Iraq",
+    "dir": "both",
+    "w": "PMF factions on the Iraqi state payroll act on Tehran's guidance; a US service member was killed in Iraq in July 2026 during the controlled detonation of a downed Iranian drone."
+   },
+   {
+    "n": "Yemen",
+    "dir": "out",
+    "w": "Iran has told the Houthis to close the Red Sea gateway IF the US strikes Iran's power network — a published conditional linking two straits."
+   },
+   {
+    "n": "Lebanon",
+    "dir": "out",
+    "w": "Hezbollah's degradation and the unresolved disarmament question are downstream of this war."
+   },
+   {
+    "n": "Syria",
+    "dir": "out",
+    "w": "Damascus now INTERDICTS Iranian weapons bound for Hezbollah — the clearest evidence of al-Sharaa's strategic reorientation."
+   },
+   {
+    "n": "Pakistan / Qatar / Oman",
+    "dir": "in",
+    "w": "The mediator set. As of July 2026 no Western state is trusted by both parties."
    }
   ]
  },
@@ -4910,6 +5052,23 @@
     "d": "21 Jul 2026",
     "c": "TTP, BLA and Islamic Emirate added; Balochistan casualties; sanctuary dispute recorded"
    }
+  ],
+  "spill": [
+   {
+    "n": "Afghanistan",
+    "dir": "in",
+    "w": "The Islamic Emirate shelters the TTP and refuses to expel it — the sanctuary Pakistan's own strategic-depth policy created, now used against Islamabad."
+   },
+   {
+    "n": "Iran",
+    "dir": "both",
+    "w": "Baloch groups operate across the Iran-Pakistan frontier; Tehran and Islamabad have exchanged strikes over it. Pakistan is simultaneously MEDIATING between the US and Iran as of July 2026."
+   },
+   {
+    "n": "China",
+    "dir": "in",
+    "w": "CPEC and Gwadar make Chinese nationals and infrastructure deliberate BLA targets — the corridor is the grievance, not incidental to it."
+   }
   ]
  },
  {
@@ -5755,6 +5914,28 @@
     "v": "v59",
     "d": "21 Jul 2026",
     "c": "Iran-Houthi Red Sea linkage recorded; ASEAN Manila call added"
+   }
+  ],
+  "spill": [
+   {
+    "n": "Iran",
+    "dir": "in",
+    "w": "Hormuz threat, explicitly conditioned on strikes against Iran's power network."
+   },
+   {
+    "n": "Yemen",
+    "dir": "in",
+    "w": "Bab el-Mandeb interdiction plus a declared blockade of Saudi Arabia — three access questions contested at once."
+   },
+   {
+    "n": "Global economy",
+    "dir": "out",
+    "w": "Brent above $90 and US pump prices at $4.00 — the price now moves on DECLARATIONS, not only interdictions."
+   },
+   {
+    "n": "ASEAN",
+    "dir": "out",
+    "w": "Asian importers absorb the largest share of the cost and only called for reopening in July 2026, through Manila."
    }
   ]
  },
@@ -11309,6 +11490,28 @@
     "v": "v59",
     "d": "21 Jul 2026",
     "c": "STC dissolution arc added to timeline — the file previously described it in the present tense"
+   }
+  ],
+  "spill": [
+   {
+    "n": "Saudi Arabia",
+    "dir": "out",
+    "w": "The Houthis declared a BLOCKADE OF SAUDI ARABIA in July 2026 after striking Abha airport — breaking a four-year truce Riyadh spent heavily to buy."
+   },
+   {
+    "n": "Somalia",
+    "dir": "both",
+    "w": "UN monitors document an AQAP-al-Shabaab alliance sustaining a logistical and operational network ACROSS THE GULF OF ADEN — two shores, one system."
+   },
+   {
+    "n": "UAE",
+    "dir": "in",
+    "w": "Abu Dhabi funded the STC's separatist project, then withdrew its remaining forces in January 2026 as the project collapsed. Patron abandonment as a strategic event."
+   },
+   {
+    "n": "Chokepoints",
+    "dir": "out",
+    "w": "Bab el-Mandeb interdiction, now explicitly coupled by Tehran to any US strike on Iran's power network."
    }
   ]
  },
