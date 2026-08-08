@@ -1,0 +1,13 @@
+{
+  "name": "meridian",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "check": "node guard.js",
+    "build": "node build.js",
+    "ci": "npm run check"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
