@@ -1,0 +1,141 @@
+Proposed files to archive (move into archive/versions/) — generated on 2026-08-08
+
+The following files are suggested for archival to reduce root clutter and normalize names. I will copy them into archive/versions/ in the branch so you can review, and we will leave originals in place until you confirm deletion.
+
+List (examples gathered from repo root):
+28
+29v
+30v
+31v
+32v
+35v
+39v
+40V
+41V
+43V
+45
+46
+47
+IndexV25A
+MASTER-intel-platform-overview index.html
+MASTER-intel-platform.kml
+"README 2.md"
+README-build.md
+README-deploy.md
+V12
+V17
+V17.3.0 GTP.kml
+V18
+V19
+V20
+V22
+V23
+V24
+V25
+V26
+V27
+V32
+V34
+V44
+"db 10.json"
+"db 2.json"
+"db 3.json"
+"db 4.json"
+"db 5.json"
+"db 6.json"
+"db 8.json"
+"db 9.json"
+db5.0D.json
+"db:07:19:26.json"
+dbD1.6.json
+dbD5.1D.json
+dbDelta2.5.json
+dbdelta2.1.json
+dbdelta2.2.json
+dbdelta2.4.json
+dbdelta2.7.json
+dbdelta2.8.json
+dbdelta3.3.json
+dbdelta4.1.json
+deltaDB.json
+global-conflict-tracker-v15.kml
+"guard 2.js"
+"guard 3.js"
+"guard 4.js"
+"guardD5.3.js"
+"guardDelta4.1.js"
+index 13.html
+"index 2.html"
+"index 4.html"
+"index 5.html"
+"index 6.html"
+"index 8.html"
+"index 9.html"
+index..55
+index.5.1D.html
+index.51
+index.53
+index.55
+index.D52
+index.D53
+index.Delta1.1.html
+index.Delta1.4.html
+index.Delta1.6.html
+index.Delta2.0.html
+index.Delta3.3.html
+index.V52
+index.delta1.8.html
+index.delta1.9.html
+index.delta2.8.html
+index.v49
+index.v51
+index.v52
+index2.7delta.html
+indexAlpha.html
+indexD2.5.html
+indexD5.3.html
+indexD5.4.html
+indexDelta4.2.html
+indexV48
+indexV50
+"indexV59 10.html"
+"indexV59 2.html"
+"indexV59 4.html"
+"indexV59 5.html"
+"indexV59 8.html"
+"indexV59 9.html"
+indexV59.delta2.1.html
+indexV59.html
+indexV59Delta .html
+indexV60.delta2.7.html
+indexV60.html
+indexV605.0D.html
+indexbad
+indexdelta2.4.html
+indexdelta4.3.html
+indexv47
+indexv48
+indexv50
+intel-platform-v12.kml
+nojekyll
+"shell 10.html"
+"shell 3.html"
+"shell 4.html"
+"shell 5.html"
+"shell 6.html"
+"shell 8.html"
+"shell 9.html"
+shell.Delta3.3.html
+shell5.0D.html
+shellD5.4.html
+shellDelta2.3.html
+shellDelta4.1.html
+shellDelta4.3.html
+shelldelta.2.6.html
+shelldelta2.2.html
+shelldelta2.4.html
+shelldelta2.5.html
+shelldelta2.8.html
+"shells .d1.6.html"
+
+Note: I will copy these files into archive/versions/ with their original filenames preserved so you can review the copies before any deletion. I will NOT delete the originals without your explicit approval.
