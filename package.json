@@ -5,9 +5,17 @@
   "scripts": {
     "check": "node guard.js",
     "build": "node build.js",
-    "ci": "npm run check"
+    "ci": "npm run check",
+    "build:css": "postcss assets/css/styles.min.css -o assets/css/styles.min.css",
+    "hash:css": "node scripts/hash-and-update.js",
+    "build:all": "npm run build:css && npm run hash:css"
   },
   "engines": {
     "node": ">=14"
+  },
+  "devDependencies": {
+    "postcss-cli": "^10.1.0",
+    "cssnano": "^5.1.15",
+    "@fullhuman/postcss-purgecss": "^4.0.3"
   }
 }
